@@ -1,0 +1,26 @@
+[project]
+name = "tacit"
+version = "0.1.0"
+description = "A library for explicit data pipelines"
+readme = "README.md"
+authors = [
+    { name = "Alvaro Clemente", email = "clemente.varo@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pandera>=0.26.1",
+    "polars>=1.35.1",
+]
+
+[project.scripts]
+tacit = "tacit:main"
+
+[build-system]
+requires = ["uv_build>=0.9.8,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipython>=9.7.0",
+    "pytest>=8.4.2",
+]
