@@ -167,6 +167,7 @@ today with no changes.
 
 | File | Purpose |
 |------|---------|
+| [TESTING.md](TESTING.md) | Testing strategy: six layers, pydantic-style pyright tests, error messages as API |
 | [logbook_ibis.md](logbook_ibis.md) | Detailed ibis research diary |
 | [logbook_pandera.md](logbook_pandera.md) | Detailed pandera research diary |
 | [ibis_subclass_test.py](ibis_subclass_test.py) | Subclassing experiments |
