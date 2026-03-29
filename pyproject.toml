@@ -8,8 +8,8 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
-    "pandera>=0.26.1",
-    "polars>=1.35.1",
+    "ibis-framework[duckdb]>=9.0.0",
+    "pandera[ibis]>=0.26.1",
 ]
 
 [project.scripts]
