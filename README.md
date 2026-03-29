@@ -51,10 +51,9 @@ def engineer_features(df: tacit.DataFrame[Iris]) -> tacit.DataFrame[IrisFeatures
     )
 
 # Parse at pipeline boundaries.
-raw = ibis.duckdb.connect().read_csv("iris.csv")
-iris = Iris.parse(raw)                 # coerce types + validate (eager)
+table = ibis.duckdb.connect().read_csv("iris.csv")
+iris = Iris.parse(table)                 # coerce types + validate (eager)
 features = engineer_features(iris)
-output = IrisFeatures.parse(features)  # parse before export
 ```
 
 Column access (`df.sepal_length`) is ibis-native — you get the full expression API
