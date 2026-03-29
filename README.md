@@ -43,6 +43,7 @@ class IrisFeatures(Iris):
     petal_area: float
 
 # Type-annotated functions define the contract between stages.
+@tacit.contract
 def engineer_features(df: tacit.DataFrame[Iris]) -> tacit.DataFrame[IrisFeatures]:
     return df.mutate(
         sepal_ratio=df.sepal_length / df.sepal_width,
