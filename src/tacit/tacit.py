@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Annotated, Any, Sequence, get_origin, get_type_hints
 
-import pandera.polars as pa
+import pandera as pa
 
 
 # TODO(alvaro): Review this implementation
