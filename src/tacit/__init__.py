@@ -1,4 +1,3 @@
-from .dataframe import DataFrame
-from .schema import Schema
+from .schema import DataFrame, Schema
 
 __all__ = ["DataFrame", "Schema"]
