@@ -97,7 +97,7 @@ The foundation: define schemas as Python classes, get field metadata out.
 
 The typed DataFrame and the structural boundary check.
 
-- [ ] `DataFrame` subclasses `ir.Table` with `Generic[S]`
+- [ ] `DataFrame[S]` subclasses `ir.Table` (PEP 695 type parameter syntax)
 - [ ] `DataFrame._from_table()` wraps an ibis Table
 - [ ] `Schema.cast(table)` checks columns/types against ibis metadata,
       returns `DataFrame[S]`
