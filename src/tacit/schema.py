@@ -16,9 +16,7 @@ class DataFrame[S: "Schema"](ir.Table):
 
     __slots__ = ("_tacit_schema",)
 
-    # S is phantom (not stored in instance attrs). Without this stub, pyright
-    # infers S as covariant, making DataFrame[Child] assignable to
-    # DataFrame[Parent]. Both positions force invariance inference.
+    # PEP 695 infers variance from usage; S in both positions forces invariant.
     def __tacit_type_is_invariant__(self, x: S) -> S: ...
 
     @classmethod

@@ -12,14 +12,8 @@ class IrisFeatures(Iris):
     sepal_ratio: float
 
 
-# --- Positive: same schema, same type ---
-
-
 def identity(df: DataFrame[Iris]) -> DataFrame[Iris]:
     return df
-
-
-# --- Negative: different schemas are never assignable ---
 
 
 def child_not_parent(df: DataFrame[IrisFeatures]) -> DataFrame[Iris]:
@@ -28,5 +22,3 @@ def child_not_parent(df: DataFrame[IrisFeatures]) -> DataFrame[Iris]:
 
 def parent_not_child(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]:
     return df  # pyright: ignore[reportReturnType]
-
-

@@ -14,18 +14,12 @@ class IrisFeatures(Iris):
     sepal_ratio: float
 
 
-# --- Positive: these should type-check clean ---
-
-
 def correct_cast(raw: ir.Table) -> DataFrame[Iris]:
     return Iris.cast(raw)
 
 
 def correct_cast_child(raw: ir.Table) -> DataFrame[IrisFeatures]:
     return IrisFeatures.cast(raw)
-
-
-# --- Negative: these SHOULD produce type errors ---
 
 
 def forgot_cast(raw: ir.Table) -> DataFrame[Iris]:
