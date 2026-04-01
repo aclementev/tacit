@@ -1,14 +1,12 @@
 from __future__ import annotations
 
-from typing import ClassVar, Generic, Self, TypeVar, get_origin, get_type_hints
+from typing import ClassVar, Self, get_origin, get_type_hints
 
 import ibis
 import ibis.expr.types as ir
 
-S = TypeVar("S", bound="Schema")
 
-
-class DataFrame(ir.Table, Generic[S]):
+class DataFrame[S: "Schema"](ir.Table):
     """Schema-aware DataFrame. Wraps an ibis Table with a schema type parameter.
 
     DataFrame[S] IS an ibis Table (subclass), so the full ibis API works
