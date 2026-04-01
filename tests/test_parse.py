@@ -13,9 +13,6 @@ def _iris_table() -> ibis.Table:
     return ibis.memtable({"sepal_length": [5.1, 4.9], "species": ["setosa", "setosa"]})
 
 
-# --- cast() happy path ---
-
-
 def test_cast_returns_dataframe():
     df = Iris.cast(_iris_table())
     assert isinstance(df, DataFrame)
@@ -35,15 +32,9 @@ def test_cast_sets_tacit_schema():
 
 def test_cast_does_not_execute_query():
     """cast() only inspects metadata — it should work on unexecutable expressions."""
-    con = ibis.duckdb.connect()
-    # A table expression referencing a non-existent source would fail on execute,
-    # but cast() should succeed because it only checks schema metadata.
     table = ibis.table({"sepal_length": "float64", "species": "string"}, name="nonexistent")
     df = Iris.cast(table)
     assert isinstance(df, DataFrame)
-
-
-# --- cast() error cases ---
 
 
 def test_cast_rejects_missing_columns():

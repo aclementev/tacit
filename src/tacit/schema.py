@@ -22,7 +22,6 @@ class DataFrame(ir.Table, Generic[S]):
     def _from_table(
         cls, table: ir.Table, schema_type: type[Schema]
     ) -> DataFrame[S]:
-        """Wrap an existing ibis Table as a typed DataFrame."""
         df = cls(table.op())
         object.__setattr__(df, "_tacit_schema", schema_type)
         return df
