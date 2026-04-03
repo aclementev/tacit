@@ -194,6 +194,54 @@ Rationale: structural checks catch the vast majority of pipeline bugs (wrong col
 type mismatches) without forcing query execution. Full validation is for boundary
 functions where you don't trust the data source.
 
+### Constraints use Annotated metadata with pandera Checks
+
+Column-level constraints use `typing.Annotated` with pandera `Check` objects
+directly. tacit re-exports `pandera.ibis.Check` as `tacit.Check` — no custom
+wrapper types.
+
+```python
+from typing import Annotated
+from tacit import Schema, Check, Nullable
+
+class Order(Schema):
+    amount: Annotated[float, Check.ge(0)]
+    status: Annotated[str, Check.isin(["pending", "shipped"])]
+    notes: Annotated[str, Nullable(True)]
+    name: str                                     # no constraints, just type
+```
+
+Why Annotated over Field() or custom types:
+
+- **No translation layer.** `Check.ge(0)` IS a pandera Check — it goes straight
+  into `pa.Column(dtype, checks=[...])`.
+- **Type and constraints in one annotation.** `get_type_hints(cls, include_extras=True)`
+  returns both the base type and constraint metadata.
+- **Composability.** Multiple constraints are additional Annotated args.
+- **No default-value ambiguity.** Unlike `Field()`, constraints are type metadata.
+- **Backward compatible.** Plain `amount: float` works unchanged.
+
+Field() can be added later without breaking Annotated users. Custom type aliases
+are already possible: `PositiveFloat = Annotated[float, Check.ge(0)]`.
+
+See [constraint_syntax.md](research/constraint_syntax.md) for the full analysis.
+
+### Non-nullable by default
+
+Columns are non-nullable by default (`nullable=False` in pandera). Users opt into
+nullability with `Nullable(True)` in Annotated metadata.
+
+Rationale: surprise nulls in production data are a top source of pipeline bugs.
+This matches the strict-by-default philosophy. `Nullable(False)` is redundant
+but allowed for explicitness.
+
+### Constraint errors propagate from pandera
+
+`parse()` lets pandera's `SchemaError` propagate directly for constraint
+violations. No wrapping. pandera already provides clear error messages naming
+the column, check, and failure cases. A `tacit.ValidationError` wrapper can be
+added later as a non-breaking subclass if needed.
+
 
 ## Open Questions
 
@@ -259,29 +307,7 @@ def engineer_features(df: tacit.DataFrame[Iris]) -> tacit.DataFrame[IrisFeatures
 Without either, the type checker flags the error: `ibis.Table` is not
 assignable to `tacit.DataFrame[IrisFeatures]`. You cannot forget.
 
-### Constraint syntax
-
-How do users express "non-negative float" or "string matching regex X"?
-Options:
-
-```python
-# Option A: Annotated metadata (like annotated-types / Pydantic)
-class Order(tacit.Schema):
-    amount: Annotated[float, tacit.Ge(0)]
-    status: Annotated[str, tacit.OneOf("pending", "shipped", "delivered")]
-
-# Option B: Field() calls (like Pydantic / pandera)
-class Order(tacit.Schema):
-    amount: float = tacit.Field(ge=0)
-    status: str = tacit.Field(isin=["pending", "shipped", "delivered"])
-
-# Option C: Custom types (like NewType)
-NonNegativeFloat = tacit.Constrained(float, ge=0)
-class Order(tacit.Schema):
-    amount: NonNegativeFloat
-```
-
-These are not mutually exclusive. Needs exploration.
+### Constraint syntax *(resolved — see Decisions)*
 
 ### Lazy validation with ibis
 
@@ -332,6 +358,27 @@ with full type safety. Python lacks the type-level computation needed for this
    (dynamic schema classes) without static checking. Pragmatic stopgap.
 
 This is the v2 differentiator. v0 is concrete schemas at pipeline boundaries.
+
+### Column[T] descriptors for expression building
+
+A SQLAlchemy-style `Column[T]` annotation would make schema fields usable as ibis
+deferred expressions:
+
+```python
+class Order(Schema):
+    amount: Column[float] = Column(Check.ge(0))
+
+t.filter(Order.amount > 0)       # Order.amount → ibis._.amount (Deferred)
+t.mutate(doubled=Order.amount * 2)
+```
+
+pyright correctly resolves the descriptor protocol — `Order.amount` is typed as
+`Deferred`, not `float`. The pattern is proven at scale by SQLAlchemy's `Mapped[T]`.
+
+**Trade-off**: every constrained field must be annotated `Column[float]` instead of
+`float`. v0 ships with Annotated to see if the ergonomics are acceptable. If typed
+column references are needed, the `Column[T]` upgrade is well-understood and
+non-breaking. See [constraint_syntax.md](research/constraint_syntax.md) for details.
 
 ### Other future work
 
