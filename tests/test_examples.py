@@ -5,6 +5,7 @@ import pytest
 
 EXAMPLES_DIR = Path(__file__).resolve().parent.parent / "examples"
 IRIS_CSV = str(EXAMPLES_DIR / "data" / "iris.csv")
+LINEITEM_CSV = str(EXAMPLES_DIR / "data" / "lineitem.csv")
 
 
 def _load_example(name: str):
@@ -29,3 +30,18 @@ def test_iris_pipeline():
     row = result.iloc[0]
     assert row["sepal_ratio"] == pytest.approx(row["sepal_length"] / row["sepal_width"])
     assert row["petal_area"] == pytest.approx(row["petal_length"] * row["petal_width"])
+
+
+def test_tpch_q1():
+    mod = _load_example("tpch_q1")
+    result = mod.pipeline(LINEITEM_CSV).execute()
+
+    assert result.shape == (4, 10)
+    assert set(result.columns) == set(mod.PricingSummary._get_fields())
+
+    # Rows are ordered by (l_returnflag, l_linestatus), so first group is A/F
+    af = result.iloc[0]
+    assert af["l_returnflag"] == "A"
+    assert af["l_linestatus"] == "F"
+    assert af["count_order"] == 4
+    assert af["sum_qty"] == pytest.approx(108.0)

@@ -78,3 +78,10 @@ def pricing_summary_report(
         )
         .order_by("l_returnflag", "l_linestatus")
     )
+
+
+def pipeline(path: str) -> tacit.DataFrame[PricingSummary]:
+    con = ibis.duckdb.connect()
+    raw = con.read_csv(path)
+    lineitem = LineItem.parse(raw)
+    return pricing_summary_report(lineitem)
