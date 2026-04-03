@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from typing import ClassVar, Self, get_origin, get_type_hints
+from typing import Annotated, ClassVar, Self, get_args, get_origin, get_type_hints
 
 import ibis
 import ibis.expr.types as ir
 import pandera.ibis as pa
+
+from .constraints import Nullable
 
 
 class DataFrame[S: "Schema"](ir.Table):
@@ -42,14 +44,35 @@ class Schema:
     """
 
     _fields: ClassVar[dict[str, type]]
+    _field_checks: ClassVar[dict[str, list[pa.Check]]]
+    _field_nullable: ClassVar[dict[str, bool]]
 
     def __init_subclass__(cls, **kwargs: object) -> None:
         super().__init_subclass__(**kwargs)
-        cls._fields = {
-            name: typ
-            for name, typ in get_type_hints(cls).items()
-            if get_origin(typ) is not ClassVar
-        }
+        fields: dict[str, type] = {}
+        field_checks: dict[str, list[pa.Check]] = {}
+        field_nullable: dict[str, bool] = {}
+
+        for name, hint in get_type_hints(cls, include_extras=True).items():
+            if get_origin(hint) is ClassVar:
+                continue
+
+            if get_origin(hint) is Annotated:
+                args = get_args(hint)
+                fields[name] = args[0]
+                checks = [a for a in args[1:] if isinstance(a, pa.Check)]
+                if checks:
+                    field_checks[name] = checks
+                for a in args[1:]:
+                    if isinstance(a, Nullable):
+                        field_nullable[name] = a.allow
+                        break
+            else:
+                fields[name] = hint
+
+        cls._fields = fields
+        cls._field_checks = field_checks
+        cls._field_nullable = field_nullable
 
     @classmethod
     def _get_fields(cls) -> dict[str, type]:
@@ -61,10 +84,11 @@ class Schema:
 
     @classmethod
     def _pandera_schema(cls) -> pa.DataFrameSchema:
-        columns = {
-            name: pa.Column(dtype)
-            for name, dtype in cls._ibis_schema().items()
-        }
+        columns = {}
+        for name, dtype in cls._ibis_schema().items():
+            checks = cls._field_checks.get(name, [])
+            nullable = cls._field_nullable.get(name, False)
+            columns[name] = pa.Column(dtype, checks=checks, nullable=nullable)
         return pa.DataFrameSchema(columns, strict=True)
 
     @classmethod
