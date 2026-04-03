@@ -77,8 +77,6 @@ def test_ibis_schema_empty():
     assert len(schema) == 0
 
 
-# --- Annotated constraint extraction ---
-
 
 class Constrained(Schema):
     amount: Annotated[float, Check.ge(0)]

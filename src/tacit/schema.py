@@ -92,6 +92,19 @@ class Schema:
         return pa.DataFrameSchema(columns, strict=True)
 
     @classmethod
+    def _check_columns(cls, target: ibis.Schema, actual: ibis.Schema) -> None:
+        target_names = set(target.names)
+        actual_names = set(actual.names)
+
+        missing = sorted(target_names - actual_names)
+        if missing:
+            raise ValueError(f"Missing columns: {missing}")
+
+        extra = sorted(actual_names - target_names)
+        if extra:
+            raise ValueError(f"Extra columns: {extra}")
+
+    @classmethod
     def parse(cls, table: ir.Table) -> DataFrame[Self]:
         """Full parsing: coerce types + validate with pandera + wrap as DataFrame.
 
@@ -104,14 +117,7 @@ class Schema:
         """
         target = cls._ibis_schema()
         actual = table.schema()
-
-        missing = sorted(set(target.names) - set(actual.names))
-        if missing:
-            raise ValueError(f"Missing columns: {missing}")
-
-        extra = sorted(set(actual.names) - set(target.names))
-        if extra:
-            raise ValueError(f"Extra columns: {extra}")
+        cls._check_columns(target, actual)
 
         # Pandera's ibis backend doesn't support coercion — handle it ourselves
         cast_map = {
@@ -138,14 +144,7 @@ class Schema:
         """
         target = cls._ibis_schema()
         actual = table.schema()
-
-        missing = sorted(set(target.names) - set(actual.names))
-        if missing:
-            raise ValueError(f"Missing columns: {missing}")
-
-        extra = sorted(set(actual.names) - set(target.names))
-        if extra:
-            raise ValueError(f"Extra columns: {extra}")
+        cls._check_columns(target, actual)
 
         type_errors = []
         for col_name, expected_type in target.items():

@@ -164,8 +164,6 @@ def test_pandera_schema_defaults_non_nullable():
         assert col.nullable is False
 
 
-# --- Constraint validation via parse() ---
-
 
 class Order(Schema):
     amount: Annotated[float, Check.ge(0)]
