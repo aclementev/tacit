@@ -1,4 +1,5 @@
 import ibis
+import pandera.ibis as pa
 import pytest
 
 from tacit import DataFrame, Schema
@@ -98,3 +99,57 @@ def test_cast_checks_extra_before_types():
     })
     with pytest.raises(ValueError, match="Extra"):
         Iris.cast(table)
+
+
+# --- parse() tests ---
+
+
+def test_parse_returns_dataframe():
+    df = Iris.parse(_iris_table())
+    assert isinstance(df, DataFrame)
+
+
+def test_parse_preserves_data():
+    df = Iris.parse(_iris_table())
+    result = df.execute()
+    assert len(result) == 2
+    assert list(result["sepal_length"]) == [5.1, 4.9]
+
+
+def test_parse_sets_tacit_schema():
+    df = Iris.parse(_iris_table())
+    assert df._tacit_schema is Iris
+
+
+def test_parse_coerces_compatible_types():
+    """parse() handles int64 → float64 coercion (cast() would reject this)."""
+    table = ibis.memtable({"sepal_length": [5, 4], "species": ["setosa", "setosa"]})
+    df = Iris.parse(table)
+    result = df.execute()
+    assert list(result["sepal_length"]) == [5.0, 4.0]
+
+
+def test_parse_rejects_missing_columns():
+    table = ibis.memtable({"species": ["setosa"]})
+    with pytest.raises(ValueError, match="sepal_length"):
+        Iris.parse(table)
+
+
+def test_parse_rejects_extra_columns():
+    table = ibis.memtable({
+        "sepal_length": [5.1],
+        "species": ["setosa"],
+        "EXTRA": [999],
+    })
+    with pytest.raises(ValueError, match="EXTRA"):
+        Iris.parse(table)
+
+
+def test_pandera_schema_has_strict_mode():
+    schema = Iris._pandera_schema()
+    assert schema.strict is True
+
+
+def test_pandera_schema_has_expected_columns():
+    schema = Iris._pandera_schema()
+    assert set(schema.columns.keys()) == {"sepal_length", "species"}

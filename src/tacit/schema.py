@@ -4,6 +4,7 @@ from typing import ClassVar, Self, get_origin, get_type_hints
 
 import ibis
 import ibis.expr.types as ir
+import pandera.ibis as pa
 
 
 class DataFrame[S: "Schema"](ir.Table):
@@ -57,6 +58,48 @@ class Schema:
     @classmethod
     def _ibis_schema(cls) -> ibis.Schema:
         return ibis.schema(cls._get_fields())
+
+    @classmethod
+    def _pandera_schema(cls) -> pa.DataFrameSchema:
+        columns = {
+            name: pa.Column(dtype)
+            for name, dtype in cls._ibis_schema().items()
+        }
+        return pa.DataFrameSchema(columns, strict=True)
+
+    @classmethod
+    def parse(cls, table: ir.Table) -> DataFrame[Self]:
+        """Full parsing: coerce types + validate with pandera + wrap as DataFrame.
+
+        Executes queries against the engine. Use at pipeline boundaries where
+        you're ingesting untrusted data.
+
+        Raises:
+            ValueError: Missing or extra columns.
+            pandera.errors.SchemaError: Data fails validation checks.
+        """
+        target = cls._ibis_schema()
+        actual = table.schema()
+
+        missing = sorted(set(target.names) - set(actual.names))
+        if missing:
+            raise ValueError(f"Missing columns: {missing}")
+
+        extra = sorted(set(actual.names) - set(target.names))
+        if extra:
+            raise ValueError(f"Extra columns: {extra}")
+
+        # Pandera's ibis backend doesn't support coercion — handle it ourselves
+        cast_map = {
+            col: target_type
+            for col, target_type in target.items()
+            if actual[col] != target_type
+        }
+        if cast_map:
+            table = table.cast(cast_map)
+
+        validated = cls._pandera_schema().validate(table)
+        return DataFrame._from_table(validated, cls)
 
     @classmethod
     def cast(cls, table: ir.Table) -> DataFrame[Self]:
