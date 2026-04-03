@@ -305,6 +305,66 @@ Implement the chosen constraint syntax.
 ---
 
 
+### M5: Fully typed @contract decorator
+
+**Goal:** Make `@tacit.contract` fully transparent to pyright so that decorated
+function bodies can return either `ir.Table` or `DataFrame[S]`, while call sites
+always see `DataFrame[S]`.
+
+Today, `@contract` handles `cast()` at runtime, but pyright can't see through
+`functools.wraps` — users must still call `Schema.cast()` in the function body
+to avoid type errors. This is the last boilerplate gap in the contract UX.
+
+**What works after M5:**
+
+```python
+@tacit.contract
+def transform(df: tacit.DataFrame[Input]) -> tacit.DataFrame[Output]:
+    return df.mutate(total=df.x + df.y).drop("y")  # no cast() needed, pyright happy
+
+@tacit.contract
+def transform_explicit(df: tacit.DataFrame[Input]) -> tacit.DataFrame[Output]:
+    return Output.cast(df.mutate(total=df.x + df.y).drop("y"))  # also fine
+```
+
+**Acceptance criteria:**
+- `@contract` body accepts `ir.Table` or `DataFrame[S]` return without pyright error
+- Call sites see `DataFrame[S]` return type
+- Existing runtime behavior unchanged
+- Type checking tests cover both patterns
+
+**Tickets:**
+
+#### T11: @contract type transparency spike
+**Type:** spike
+**Depends on:** T8
+
+Time-boxed research to find a typing approach. Evaluate:
+- `ParamSpec` + `TypeVar` (can the decorator express relaxed body return?)
+- `@overload` on `contract()` itself
+- Protocol-based approach (`ContractReturn[S]` accepting both types)
+- pyright plugin / custom type stubs if standard typing can't express this
+
+- [ ] Document decision with rationale and proof-of-concept in `docs/research/`
+- [ ] Update DESIGN.md if needed
+
+#### T12: Implement fully typed @contract
+**Type:** feature
+**Depends on:** T11
+
+Implement the chosen approach from T11.
+
+- [ ] `@contract` body accepts `ir.Table` return without pyright error
+- [ ] `@contract` body accepts `DataFrame[S]` return without pyright error
+- [ ] Call sites see correct `DataFrame[S]` return type
+- [ ] Existing runtime behavior unchanged
+- [ ] `tests/typechecking/check_contract.py` updated with both return patterns
+- [ ] All existing tests still pass
+
+
+---
+
+
 ## Ticket index
 
 | ID | Issue | Type | Milestone | Depends on |
@@ -319,6 +379,8 @@ Implement the chosen constraint syntax.
 | T8 | #13 TPC-H example and contract type checks | feature | M3 (#4) | #12 |
 | T9 | #14 Constraint syntax spike | spike | M4 (#5) | #10 |
 | T10 | #15 Constraint implementation | feature | M4 (#5) | #14 |
+| T11 | #24 @contract type transparency spike | spike | M5 (#23) | #13 |
+| T12 | #25 Implement fully typed @contract | feature | M5 (#23) | #24 |
 
 ```
 M1: Structural contracts          M2: Validated pipelines
@@ -342,5 +404,11 @@ M1: Structural contracts          M2: Validated pipelines
                               ┌────┐    ┌─────┐
                          T5──▶│ T9 │───▶│ T10 │
                               └────┘    └─────┘
+                              spike      impl
+
+                               M5: Typed contract
+                              ┌─────┐    ┌─────┐
+                        T8───▶│ T11 │───▶│ T12 │
+                              └─────┘    └─────┘
                               spike      impl
 ```
