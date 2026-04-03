@@ -178,3 +178,4 @@ today with no changes.
 | [pandera_programmatic.py](pandera_programmatic.py) | Programmatic schema construction |
 | [e2e_proof_of_concept.py](e2e_proof_of_concept.py) | Full end-to-end proof of concept (runtime) |
 | [type_check_test.py](type_check_test.py) | Static type checking proof (pyright) |
+| [constraint_syntax.md](constraint_syntax.md) | Constraint syntax spike: Annotated + pandera Check decision |
