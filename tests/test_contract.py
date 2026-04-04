@@ -1,7 +1,6 @@
 import ibis
 import pytest
 
-import tacit
 from tacit import DataFrame, Schema, contract
 
 

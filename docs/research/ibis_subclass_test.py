@@ -8,7 +8,6 @@ Tests:
 """
 import ibis
 import ibis.expr.types as ir
-import ibis.expr.operations as ops
 
 
 # --- 1. Basic subclass ---
@@ -43,7 +42,7 @@ print(f"  my_table.columns: {my_table.columns}")
 # Can we execute it?
 try:
     result = my_table.execute()
-    print(f"  execute() works: True")
+    print("  execute() works: True")
     print(f"  result:\n{result}")
 except Exception as e:
     print(f"  execute() error: {e}")
@@ -131,7 +130,7 @@ try:
 
     # Does execute work?
     result = p_instance.execute()
-    print(f"  execute() works: True")
+    print("  execute() works: True")
 except Exception as e:
     import traceback
     print(f"  Error: {type(e).__name__}: {e}")
@@ -155,7 +154,6 @@ class DataFrame(ir.Table):
         return typing._GenericAlias(cls, (schema_type,))
 
 try:
-    from typing import Generic, TypeVar
     AliasResult = DataFrame[SchemaType]
     print(f"  DataFrame[SchemaType] = {AliasResult}")
     print(f"  type = {type(AliasResult)}")

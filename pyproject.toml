@@ -28,6 +28,9 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
+[tool.ruff]
+extend-exclude = ["docs"]
+
 [tool.pyright]
 pythonVersion = "3.12"
 include = ["src"]

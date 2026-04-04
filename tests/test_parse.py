@@ -2,7 +2,6 @@ from typing import Annotated
 
 import ibis
 import pandera.errors
-import pandera.ibis as pa
 import pytest
 
 from tacit import Check, DataFrame, Nullable, Schema

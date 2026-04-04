@@ -6,9 +6,8 @@ Expected: errors on lines marked # ERROR, no errors on lines marked # OK
 """
 from __future__ import annotations
 
-import ibis
 import ibis.expr.types as ir
-from typing import Generic, TypeVar, get_type_hints
+from typing import Generic, TypeVar
 
 S = TypeVar("S")
 
