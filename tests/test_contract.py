@@ -119,12 +119,13 @@ def test_contract_passes_through_non_dataframe_return():
     assert fn(_iris_table()) == 42
 
 
-def test_contract_with_no_annotations():
-    @contract
-    def fn(x, y):
-        return x + y
+def test_contract_with_no_annotations_raises():
+    """@contract with no DataFrame annotations is a programming error."""
+    with pytest.raises(TypeError, match=r"no DataFrame\[S\] annotations"):
 
-    assert fn(1, 2) == 3
+        @contract
+        def fn(x, y):
+            return x + y
 
 
 def test_contract_with_kwargs():
@@ -199,3 +200,56 @@ def test_contract_preserves_function_metadata():
 
     assert my_transform.__name__ == "my_transform"
     assert my_transform.__doc__ == "My docstring."
+
+
+# --- returns= parameter ---
+
+
+def test_contract_returns_param_casts_output():
+    @contract(returns=IrisFeatures)
+    def fn(df: DataFrame[Iris]):
+        return df.mutate(sepal_ratio=df.sepal_length / 1.0)
+
+    result = fn(_iris_table())
+    assert isinstance(result, DataFrame)
+    assert result._tacit_schema is IrisFeatures
+
+
+def test_contract_returns_param_validates_output():
+    @contract(returns=IrisFeatures, validate=True)
+    def fn(df: DataFrame[Iris]):
+        return df.mutate(sepal_ratio=df.sepal_length / 1.0)
+
+    result = fn(_iris_table())
+    assert isinstance(result, DataFrame)
+    assert result._tacit_schema is IrisFeatures
+
+
+def test_contract_returns_param_still_checks_input():
+    @contract(returns=Iris)
+    def fn(df: DataFrame[Iris]):
+        assert isinstance(df, DataFrame)
+        assert df._tacit_schema is Iris
+        return df
+
+    fn(_iris_table())
+
+
+def test_contract_returns_param_overrides_annotation():
+    """returns= takes precedence over the return type annotation."""
+
+    @contract(returns=IrisFeatures)
+    def fn(df: DataFrame[Iris]) -> DataFrame[Iris]:
+        return df.mutate(sepal_ratio=df.sepal_length / 1.0)
+
+    result = fn(_iris_table())
+    assert result._tacit_schema is IrisFeatures
+
+
+def test_contract_returns_param_output_schema_mismatch():
+    @contract(returns=IrisFeatures)
+    def fn(df: DataFrame[Iris]):
+        return df
+
+    with pytest.raises((ValueError, TypeError), match=r"return value.*IrisFeatures"):
+        fn(_iris_table())

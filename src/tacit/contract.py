@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 import functools
-from typing import Any, get_type_hints
+from typing import Any, Callable, ParamSpec, TypeVar, get_type_hints, overload
 
 import ibis.expr.types as ir
 
 from .schema import DataFrame, Schema
+
+P = ParamSpec("P")
+R = TypeVar("R")
+S = TypeVar("S", bound=Schema)
 
 
 def _get_schema_type(annotation: Any) -> type[Schema] | None:
@@ -60,7 +64,19 @@ def _enforce(
         ) from exc
 
 
-def contract(fn=None, /, *, validate: bool = False):
+@overload
+def contract(fn: Callable[P, R], /) -> Callable[P, R]: ...
+@overload
+def contract(
+    *, returns: type[S], validate: bool = ...
+) -> Callable[[Callable[P, ir.Table]], Callable[P, DataFrame[S]]]: ...
+@overload
+def contract(
+    *, validate: bool = ...
+) -> Callable[[Callable[P, R]], Callable[P, R]]: ...
+
+
+def contract(fn=None, /, *, validate=False, returns=None) -> Any:
     """Decorator that enforces DataFrame schema contracts at function boundaries.
 
     Inspects type annotations to find DataFrame[S] parameters and return type.
@@ -70,19 +86,34 @@ def contract(fn=None, /, *, validate: bool = False):
 
     Non-DataFrame parameters and return values are passed through unchanged.
 
+    The ``returns`` parameter lets the decorator own the output schema so the
+    function body can return a plain ``ir.Table`` without a type error::
+
+        @tacit.contract(returns=IrisFeatures)
+        def transform(df: DataFrame[Iris]) -> ir.Table:
+            return df.mutate(sepal_ratio=df.sepal_length / df.sepal_width)
+
+    Call sites still see ``DataFrame[IrisFeatures]`` as the return type.
+
     Usage:
         @tacit.contract
-        def transform(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]: ...
+        def transform(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]:
+            return IrisFeatures.cast(df.mutate(...))
 
         @tacit.contract(validate=True)
-        def ingest(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]: ...
+        def ingest(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]:
+            return IrisFeatures.cast(df.mutate(...))
+
+        @tacit.contract(returns=IrisFeatures)
+        def transform(df: DataFrame[Iris]) -> ir.Table:
+            return df.mutate(...)
     """
     if fn is not None:
-        return _wrap(fn, validate=validate)
-    return lambda f: _wrap(f, validate=validate)
+        return _wrap(fn, validate=validate, returns=returns)
+    return lambda f: _wrap(f, validate=validate, returns=returns)
 
 
-def _wrap(fn, *, validate: bool):
+def _wrap(fn, *, validate, returns=None):
     hints = get_type_hints(fn)
     return_hint = hints.pop("return", None)
 
@@ -92,7 +123,17 @@ def _wrap(fn, *, validate: bool):
         if schema is not None:
             param_schemas[name] = schema
 
-    return_schema = _get_schema_type(return_hint) if return_hint else None
+    if returns is not None:
+        return_schema = returns
+    else:
+        return_schema = _get_schema_type(return_hint) if return_hint else None
+
+    if not param_schemas and return_schema is None:
+        raise TypeError(
+            f"@contract on {fn.__qualname__}() found no DataFrame[S] annotations "
+            f"to enforce. Add DataFrame[S] type annotations to parameters or "
+            f"return type, or use @contract(returns=S)."
+        )
 
     @functools.wraps(fn)
     def wrapper(*args, **kwargs):
