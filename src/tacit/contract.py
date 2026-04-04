@@ -128,6 +128,13 @@ def _wrap(fn, *, validate, returns=None):
     else:
         return_schema = _get_schema_type(return_hint) if return_hint else None
 
+    if not param_schemas and return_schema is None:
+        raise TypeError(
+            f"@contract on {fn.__qualname__}() found no DataFrame[S] annotations "
+            f"to enforce. Add DataFrame[S] type annotations to parameters or "
+            f"return type, or use @contract(returns=S)."
+        )
+
     @functools.wraps(fn)
     def wrapper(*args, **kwargs):
         import inspect

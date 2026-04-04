@@ -119,12 +119,13 @@ def test_contract_passes_through_non_dataframe_return():
     assert fn(_iris_table()) == 42
 
 
-def test_contract_with_no_annotations():
-    @contract
-    def fn(x, y):
-        return x + y
+def test_contract_with_no_annotations_raises():
+    """@contract with no DataFrame annotations is a programming error."""
+    with pytest.raises(TypeError, match=r"no DataFrame\[S\] annotations"):
 
-    assert fn(1, 2) == 3
+        @contract
+        def fn(x, y):
+            return x + y
 
 
 def test_contract_with_kwargs():
