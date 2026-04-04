@@ -1,18 +1,15 @@
 from __future__ import annotations
 
 import functools
-from typing import TYPE_CHECKING, Any, get_type_hints, overload
+from typing import Any, Callable, ParamSpec, TypeVar, get_type_hints, overload
 
 import ibis.expr.types as ir
 
 from .schema import DataFrame, Schema
 
-if TYPE_CHECKING:
-    from typing import Callable, ParamSpec, TypeVar
-
-    P = ParamSpec("P")
-    R = TypeVar("R")
-    S = TypeVar("S", bound=Schema)
+P = ParamSpec("P")
+R = TypeVar("R")
+S = TypeVar("S", bound=Schema)
 
 
 def _get_schema_type(annotation: Any) -> type[Schema] | None:
