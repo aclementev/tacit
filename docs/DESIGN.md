@@ -194,6 +194,39 @@ Rationale: structural checks catch the vast majority of pipeline bugs (wrong col
 type mismatches) without forcing query execution. Full validation is for boundary
 functions where you don't trust the data source.
 
+#### Fully typed contracts with `returns=`
+
+Python's type system checks function bodies against their own return annotation,
+independently of any decorator. This means `@contract` can't relax the body return
+type — if a function declares `-> DataFrame[Output]`, the body must produce that
+type (typically via `.cast()`).
+
+The `returns=` parameter solves this by moving the output schema to the decorator:
+
+```python
+@tacit.contract(returns=IrisFeatures)
+def transform(df: DataFrame[Iris]) -> ir.Table:
+    return df.mutate(sepal_ratio=df.sepal_length / df.sepal_width)
+```
+
+The body can return any `ir.Table` without a type error. Call sites still see
+`DataFrame[IrisFeatures]` as the return type — pyright infers this from the
+decorator's overloaded signature.
+
+Both patterns are supported:
+
+```python
+# Explicit cast — body is fully type-checked
+@tacit.contract
+def transform(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]:
+    return IrisFeatures.cast(df.mutate(...))
+
+# returns= — decorator owns the output schema, no cast needed
+@tacit.contract(returns=IrisFeatures)
+def transform(df: DataFrame[Iris]) -> ir.Table:
+    return df.mutate(...)
+```
+
 ### Constraints use Annotated metadata with pandera Checks
 
 Column-level constraints use `typing.Annotated` with pandera `Check` objects

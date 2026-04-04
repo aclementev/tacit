@@ -199,3 +199,56 @@ def test_contract_preserves_function_metadata():
 
     assert my_transform.__name__ == "my_transform"
     assert my_transform.__doc__ == "My docstring."
+
+
+# --- returns= parameter ---
+
+
+def test_contract_returns_param_casts_output():
+    @contract(returns=IrisFeatures)
+    def fn(df: DataFrame[Iris]):
+        return df.mutate(sepal_ratio=df.sepal_length / 1.0)
+
+    result = fn(_iris_table())
+    assert isinstance(result, DataFrame)
+    assert result._tacit_schema is IrisFeatures
+
+
+def test_contract_returns_param_validates_output():
+    @contract(returns=IrisFeatures, validate=True)
+    def fn(df: DataFrame[Iris]):
+        return df.mutate(sepal_ratio=df.sepal_length / 1.0)
+
+    result = fn(_iris_table())
+    assert isinstance(result, DataFrame)
+    assert result._tacit_schema is IrisFeatures
+
+
+def test_contract_returns_param_still_checks_input():
+    @contract(returns=Iris)
+    def fn(df: DataFrame[Iris]):
+        assert isinstance(df, DataFrame)
+        assert df._tacit_schema is Iris
+        return df
+
+    fn(_iris_table())
+
+
+def test_contract_returns_param_overrides_annotation():
+    """returns= takes precedence over the return type annotation."""
+
+    @contract(returns=IrisFeatures)
+    def fn(df: DataFrame[Iris]) -> DataFrame[Iris]:
+        return df.mutate(sepal_ratio=df.sepal_length / 1.0)
+
+    result = fn(_iris_table())
+    assert result._tacit_schema is IrisFeatures
+
+
+def test_contract_returns_param_output_schema_mismatch():
+    @contract(returns=IrisFeatures)
+    def fn(df: DataFrame[Iris]):
+        return df
+
+    with pytest.raises((ValueError, TypeError), match=r"return value.*IrisFeatures"):
+        fn(_iris_table())
