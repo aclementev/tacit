@@ -93,8 +93,8 @@ class Schema:
 
     @classmethod
     def _check_columns(cls, target: ibis.Schema, actual: ibis.Schema) -> None:
-        target_names = set(target.keys())
-        actual_names = set(actual.keys())
+        target_names = set(target.names)  # type: ignore[reportArgumentType]  # ibis has no py.typed
+        actual_names = set(actual.names)  # type: ignore[reportArgumentType]  # ibis has no py.typed
 
         missing = sorted(target_names - actual_names)
         if missing:

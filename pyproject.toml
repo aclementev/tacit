@@ -32,10 +32,6 @@ testpaths = ["tests"]
 
 [tool.pyright]
 pythonVersion = "3.12"
-include = ["src", "tests", "examples"]
-exclude = ["docs/research", "tests/typechecking"]
+include = ["src"]
 # pandera.ibis has no __all__; pyright treats its public API as private
 reportPrivateImportUsage = false
-# ibis Column stubs lack operator dunder methods and aggregation methods
-reportOperatorIssue = false
-reportAttributeAccessIssue = false
