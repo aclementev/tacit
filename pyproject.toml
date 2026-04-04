@@ -27,6 +27,10 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+filterwarnings = [
+    # ibis 12.0.0 uses deprecated duckdb API; pending upstream fix
+    "ignore:fetch_arrow_table\\(\\) is deprecated:DeprecationWarning:ibis.backends.duckdb",
+]
 
 [tool.ruff]
 extend-exclude = ["docs"]
