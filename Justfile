@@ -2,9 +2,10 @@
 default:
     @just --list
 
-# Run linting (ruff check + pyright)
+# Run linting and format check (ruff check + ruff format --check + pyright)
 lint:
     uv run ruff check
+    uv run ruff format --check
     uv run pyright
 
 # Run the formatter and auto-fixable lint issues

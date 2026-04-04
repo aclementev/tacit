@@ -77,7 +77,6 @@ def test_ibis_schema_empty():
     assert len(schema) == 0
 
 
-
 class Constrained(Schema):
     amount: Annotated[float, Check.ge(0)]
     status: Annotated[str, Check.isin(["pending", "shipped"])]
