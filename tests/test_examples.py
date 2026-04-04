@@ -10,6 +10,7 @@ LINEITEM_CSV = str(EXAMPLES_DIR / "data" / "lineitem.csv")
 
 def _load_example(name: str):
     spec = importlib.util.spec_from_file_location(name, EXAMPLES_DIR / f"{name}.py")
+    assert spec is not None and spec.loader is not None
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod

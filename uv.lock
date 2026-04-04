@@ -677,12 +677,13 @@ name = "tacit"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "ibis-framework", extra = ["duckdb"] },
+    { name = "ibis-framework" },
     { name = "pandera", extra = ["ibis"] },
 ]
 
 [package.dev-dependencies]
 dev = [
+    { name = "ibis-framework", extra = ["duckdb"] },
     { name = "ipython" },
     { name = "pyright" },
     { name = "pytest" },
@@ -690,12 +691,13 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "ibis-framework", extras = ["duckdb"], specifier = ">=9.0.0" },
+    { name = "ibis-framework", specifier = ">=9.0.0" },
     { name = "pandera", extras = ["ibis"], specifier = ">=0.27.0" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "ibis-framework", extras = ["duckdb"], specifier = ">=9.0.0" },
     { name = "ipython", specifier = ">=9.7.0" },
     { name = "pyright", specifier = ">=1.1.400" },
     { name = "pytest", specifier = ">=8.4.2" },

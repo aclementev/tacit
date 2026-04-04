@@ -8,10 +8,6 @@ import ibis
 import tacit
 
 
-# ──────────────────────────────────────────────
-# Schemas
-# ──────────────────────────────────────────────
-
 class LineItem(tacit.Schema):
     """TPC-H lineitem table."""
     l_orderkey: int
@@ -42,10 +38,6 @@ class PricingSummary(tacit.Schema):
     avg_disc: float
     count_order: int
 
-
-# ──────────────────────────────────────────────
-# Query
-# ──────────────────────────────────────────────
 
 @tacit.contract
 def pricing_summary_report(
