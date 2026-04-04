@@ -4,12 +4,14 @@ TPC-H Query 1: Pricing Summary Report
 Demonstrates tacit with an analytics workload.
 Schemas define the contract for a well-known benchmark query.
 """
+
 import ibis
 import tacit
 
 
 class LineItem(tacit.Schema):
     """TPC-H lineitem table."""
+
     l_orderkey: int
     l_partkey: int
     l_suppkey: int
@@ -27,6 +29,7 @@ class LineItem(tacit.Schema):
 
 class PricingSummary(tacit.Schema):
     """Output of TPC-H Q1: pricing summary report."""
+
     l_returnflag: str
     l_linestatus: str
     sum_qty: float
@@ -49,15 +52,12 @@ def pricing_summary_report(
     schema contracts automatically.
     """
     return (
-        lineitem
-        .filter(lineitem.l_shipdate <= "1998-09-02")
+        lineitem.filter(lineitem.l_shipdate <= "1998-09-02")
         .group_by("l_returnflag", "l_linestatus")
         .agg(
             sum_qty=lineitem.l_quantity.sum(),
             sum_base_price=lineitem.l_extendedprice.sum(),
-            sum_disc_price=(
-                lineitem.l_extendedprice * (1 - lineitem.l_discount)
-            ).sum(),
+            sum_disc_price=(lineitem.l_extendedprice * (1 - lineitem.l_discount)).sum(),
             sum_charge=(
                 lineitem.l_extendedprice
                 * (1 - lineitem.l_discount)

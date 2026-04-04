@@ -25,9 +25,7 @@ class DataFrame[S: "Schema"](ir.Table):
     def __tacit_type_is_invariant__(self, x: S) -> S: ...
 
     @classmethod
-    def _from_table(
-        cls, table: ir.Table, schema_type: type[Schema]
-    ) -> DataFrame[S]:
+    def _from_table(cls, table: ir.Table, schema_type: type[Schema]) -> DataFrame[S]:
         df = cls(table.op())
         object.__setattr__(df, "_tacit_schema", schema_type)
         return df

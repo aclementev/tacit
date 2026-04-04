@@ -2,7 +2,6 @@ from typing import Annotated
 
 import ibis
 import pandera.errors
-import pandera.ibis as pa
 import pytest
 
 from tacit import Check, DataFrame, Nullable, Schema
@@ -36,7 +35,9 @@ def test_cast_sets_tacit_schema():
 
 def test_cast_does_not_execute_query():
     """cast() only inspects metadata — it should work on unexecutable expressions."""
-    table = ibis.table({"sepal_length": "float64", "species": "string"}, name="nonexistent")
+    table = ibis.table(
+        {"sepal_length": "float64", "species": "string"}, name="nonexistent"
+    )
     df = Iris.cast(table)
     assert isinstance(df, DataFrame)
 
@@ -54,30 +55,36 @@ def test_cast_rejects_multiple_missing_columns():
 
 
 def test_cast_rejects_extra_columns():
-    table = ibis.memtable({
-        "sepal_length": [5.1],
-        "species": ["setosa"],
-        "EXTRA": [999],
-    })
+    table = ibis.memtable(
+        {
+            "sepal_length": [5.1],
+            "species": ["setosa"],
+            "EXTRA": [999],
+        }
+    )
     with pytest.raises(ValueError, match="EXTRA"):
         Iris.cast(table)
 
 
 def test_cast_rejects_wrong_type():
-    table = ibis.memtable({
-        "sepal_length": ["not_a_float"],
-        "species": ["setosa"],
-    })
+    table = ibis.memtable(
+        {
+            "sepal_length": ["not_a_float"],
+            "species": ["setosa"],
+        }
+    )
     with pytest.raises(TypeError, match=r"sepal_length.*float64.*string"):
         Iris.cast(table)
 
 
 def test_cast_reports_all_type_mismatches():
     """All mismatched columns are reported, not just the first."""
-    table = ibis.memtable({
-        "sepal_length": ["bad"],
-        "species": [123],
-    })
+    table = ibis.memtable(
+        {
+            "sepal_length": ["bad"],
+            "species": [123],
+        }
+    )
     with pytest.raises(TypeError) as exc_info:
         Iris.cast(table)
     msg = str(exc_info.value)
@@ -94,12 +101,14 @@ def test_cast_checks_missing_before_types():
 
 def test_cast_checks_extra_before_types():
     """Extra columns are caught before type checking."""
-    table = ibis.memtable({
-        "sepal_length": [5.1],
-        "species": ["setosa"],
-        "bonus": [1],
-        "extra": [2],
-    })
+    table = ibis.memtable(
+        {
+            "sepal_length": [5.1],
+            "species": ["setosa"],
+            "bonus": [1],
+            "extra": [2],
+        }
+    )
     with pytest.raises(ValueError, match="Extra"):
         Iris.cast(table)
 
@@ -139,11 +148,13 @@ def test_parse_rejects_missing_columns():
 
 
 def test_parse_rejects_extra_columns():
-    table = ibis.memtable({
-        "sepal_length": [5.1],
-        "species": ["setosa"],
-        "EXTRA": [999],
-    })
+    table = ibis.memtable(
+        {
+            "sepal_length": [5.1],
+            "species": ["setosa"],
+            "EXTRA": [999],
+        }
+    )
     with pytest.raises(ValueError, match="EXTRA"):
         Iris.parse(table)
 
@@ -162,7 +173,6 @@ def test_pandera_schema_defaults_non_nullable():
     schema = Iris._pandera_schema()
     for col in schema.columns.values():
         assert col.nullable is False
-
 
 
 class Order(Schema):
@@ -224,7 +234,9 @@ def test_parse_passes_multiple_checks_when_valid():
 
 
 def test_parse_rejects_null_by_default():
-    table = ibis.memtable({"sepal_length": [5.1, None], "species": ["setosa", "setosa"]})
+    table = ibis.memtable(
+        {"sepal_length": [5.1, None], "species": ["setosa", "setosa"]}
+    )
     with pytest.raises(pandera.errors.SchemaError, match="sepal_length"):
         Iris.parse(table)
 

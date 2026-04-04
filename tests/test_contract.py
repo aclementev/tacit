@@ -1,7 +1,6 @@
 import ibis
 import pytest
 
-import tacit
 from tacit import DataFrame, Schema, contract
 
 
@@ -19,11 +18,13 @@ def _iris_table() -> ibis.Table:
 
 
 def _iris_features_table() -> ibis.Table:
-    return ibis.memtable({
-        "sepal_length": [5.1, 4.9],
-        "species": ["setosa", "setosa"],
-        "sepal_ratio": [1.0, 1.0],
-    })
+    return ibis.memtable(
+        {
+            "sepal_length": [5.1, 4.9],
+            "species": ["setosa", "setosa"],
+            "sepal_ratio": [1.0, 1.0],
+        }
+    )
 
 
 # --- Default behavior (cast) ---
@@ -61,7 +62,9 @@ def test_contract_casts_input_and_output_schemas():
 
 def test_contract_does_not_execute_query():
     """Default cast mode only inspects metadata — works on unexecutable expressions."""
-    table = ibis.table({"sepal_length": "float64", "species": "string"}, name="nonexistent")
+    table = ibis.table(
+        {"sepal_length": "float64", "species": "string"}, name="nonexistent"
+    )
 
     @contract
     def fn(df: DataFrame[Iris]) -> DataFrame[Iris]:
@@ -155,11 +158,13 @@ def test_contract_input_extra_columns():
     def fn(df: DataFrame[Iris]) -> DataFrame[Iris]:
         return df
 
-    table = ibis.memtable({
-        "sepal_length": [5.1],
-        "species": ["setosa"],
-        "EXTRA": [1],
-    })
+    table = ibis.memtable(
+        {
+            "sepal_length": [5.1],
+            "species": ["setosa"],
+            "EXTRA": [1],
+        }
+    )
     with pytest.raises(ValueError, match=r"parameter 'df'.*Iris"):
         fn(table)
 

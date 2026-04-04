@@ -6,10 +6,8 @@ each one.
 """
 import ibis
 import ibis.expr.types as ir
-import ibis.expr.operations as ops
-import inspect
 import functools
-from typing import TypeVar, get_type_hints
+from typing import get_type_hints
 
 
 # --- Strategy: Use __init_subclass__ to auto-wrap methods ---

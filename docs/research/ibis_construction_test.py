@@ -9,8 +9,6 @@ Focus on:
 """
 import ibis
 import ibis.expr.types as ir
-import ibis.expr.operations as ops
-import functools
 
 
 # --- 1. How Tables are built internally ---
@@ -108,7 +106,7 @@ print(f"  Chained._schema_type: {chained._schema_type}")
 
 # Does execute still work?
 result = chained.execute()
-print(f"  Execute works: True")
+print("  Execute works: True")
 print(f"  Result:\n{result}")
 
 
@@ -244,7 +242,7 @@ print(f"  Chained schema: {chained3._schema_type_val}")
 
 # Execute
 result3 = chained3.execute()
-print(f"  Execute works: True")
+print("  Execute works: True")
 print(f"  Result:\n{result3}")
 
 

@@ -56,8 +56,7 @@ def _enforce(
         return schema_type.cast(value)
     except (TypeError, ValueError) as exc:
         raise type(exc)(
-            f"Contract violation on {label} "
-            f"[{schema_type.__name__}]: {exc}"
+            f"Contract violation on {label} [{schema_type.__name__}]: {exc}"
         ) from exc
 
 
@@ -68,9 +67,7 @@ def contract(
     *, returns: type[S], validate: bool = ...
 ) -> Callable[[Callable[P, ir.Table]], Callable[P, DataFrame[S]]]: ...
 @overload
-def contract(
-    *, validate: bool = ...
-) -> Callable[[Callable[P, R]], Callable[P, R]]: ...
+def contract(*, validate: bool = ...) -> Callable[[Callable[P, R]], Callable[P, R]]: ...
 
 
 def contract(fn=None, /, *, validate=False, returns=None) -> Any:

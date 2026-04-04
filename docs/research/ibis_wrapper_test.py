@@ -5,7 +5,6 @@ an inner ibis.Table via __getattr__?
 """
 import ibis
 import ibis.expr.types as ir
-import ibis.expr.operations as ops
 from typing import TypeVar, Generic
 
 
@@ -88,7 +87,7 @@ print("=" * 60)
 
 try:
     result = w.execute()
-    print(f"  execute() works: True")
+    print("  execute() works: True")
     print(f"  type: {type(result)}")
     print(f"  result:\n{result}")
 except Exception as e:
@@ -114,7 +113,6 @@ class DataFrameMeta(type):
 
 # Option B: register with ABC
 try:
-    import abc
     # ir.Table uses AbstractMeta not ABCMeta, so register won't work
     # But let's check
     ir.Table.register(DataFrameWrapper)
