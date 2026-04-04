@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import functools
+import inspect
 from typing import Any, Callable, ParamSpec, TypeVar, get_type_hints, overload
 
 import ibis.expr.types as ir
@@ -14,15 +15,11 @@ S = TypeVar("S", bound=Schema)
 
 def _get_schema_type(annotation: Any) -> type[Schema] | None:
     """Extract the Schema type S from a DataFrame[S] annotation, or None."""
-    origin = getattr(annotation, "__origin__", None)
-    if origin is not DataFrame:
+    if getattr(annotation, "__origin__", None) is not DataFrame:
         return None
-    args = getattr(annotation, "__args__", None)
-    if not args:
-        return None
-    schema_type = args[0]
-    if isinstance(schema_type, type) and issubclass(schema_type, Schema):
-        return schema_type
+    args = getattr(annotation, "__args__", ())
+    if args and isinstance(args[0], type) and issubclass(args[0], Schema):
+        return args[0]
     return None
 
 
@@ -137,8 +134,6 @@ def _wrap(fn, *, validate, returns=None):
 
     @functools.wraps(fn)
     def wrapper(*args, **kwargs):
-        import inspect
-
         sig = inspect.signature(fn)
         bound = sig.bind(*args, **kwargs)
         bound.apply_defaults()
