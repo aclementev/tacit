@@ -8,7 +8,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "ibis-framework[duckdb]>=9.0.0",
+    "ibis-framework>=9.0.0",
     "pandera[ibis]>=0.27.0",
 ]
 
@@ -16,12 +16,26 @@ dependencies = [
 tacit = "tacit:main"
 
 [build-system]
-requires = ["uv_build>=0.9.8,<0.10.0"]
+requires = ["uv_build>=0.11.0,<0.12.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "ibis-framework[duckdb]>=9.0.0",
     "ipython>=9.7.0",
     "pyright>=1.1.400",
     "pytest>=8.4.2",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.pyright]
+pythonVersion = "3.12"
+include = ["src", "tests", "examples"]
+exclude = ["docs/research", "tests/typechecking"]
+# pandera.ibis has no __all__; pyright treats its public API as private
+reportPrivateImportUsage = false
+# ibis Column stubs lack operator dunder methods and aggregation methods
+reportOperatorIssue = false
+reportAttributeAccessIssue = false

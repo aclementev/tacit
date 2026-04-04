@@ -8,10 +8,6 @@ import ibis
 import tacit
 
 
-# ──────────────────────────────────────────────
-# Schemas
-# ──────────────────────────────────────────────
-
 class LineItem(tacit.Schema):
     """TPC-H lineitem table."""
     l_orderkey: int
@@ -43,10 +39,6 @@ class PricingSummary(tacit.Schema):
     count_order: int
 
 
-# ──────────────────────────────────────────────
-# Query
-# ──────────────────────────────────────────────
-
 @tacit.contract
 def pricing_summary_report(
     lineitem: tacit.DataFrame[LineItem],
@@ -56,7 +48,7 @@ def pricing_summary_report(
     The @tacit.contract decorator enforces input and output
     schema contracts automatically.
     """
-    return (
+    return (  # type: ignore[reportReturnType]  # @contract handles Table → DataFrame
         lineitem
         .filter(lineitem.l_shipdate <= "1998-09-02")
         .group_by("l_returnflag", "l_linestatus")
@@ -84,4 +76,4 @@ def pipeline(path: str) -> tacit.DataFrame[PricingSummary]:
     con = ibis.duckdb.connect()
     raw = con.read_csv(path)
     lineitem = LineItem.parse(raw)
-    return pricing_summary_report(lineitem)
+    return pricing_summary_report(lineitem)  # type: ignore[reportReturnType]  # @contract wraps return

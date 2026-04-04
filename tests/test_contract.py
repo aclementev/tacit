@@ -52,7 +52,7 @@ def test_contract_casts_output():
 def test_contract_casts_input_and_output_schemas():
     @contract
     def transform(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]:
-        return df.mutate(sepal_ratio=df.sepal_length / 1.0)
+        return df.mutate(sepal_ratio=df.sepal_length / 1.0)  # type: ignore[reportReturnType]
 
     result = transform(_iris_table())
     assert isinstance(result, DataFrame)
@@ -81,7 +81,7 @@ def test_contract_validate_parses_input():
         assert df._tacit_schema is Iris
         return df
 
-    fn(_iris_table())
+    fn(_iris_table())  # type: ignore[reportArgumentType]
 
 
 def test_contract_validate_coerces_types():
@@ -92,7 +92,7 @@ def test_contract_validate_coerces_types():
     def fn(df: DataFrame[Iris]) -> DataFrame[Iris]:
         return df
 
-    result = fn(table)
+    result = fn(table)  # type: ignore[reportArgumentType]
     data = result.execute()
     assert list(data["sepal_length"]) == [5.0, 4.0]
 
@@ -103,9 +103,9 @@ def test_contract_validate_coerces_types():
 def test_contract_passes_through_non_dataframe_params():
     @contract
     def fn(df: DataFrame[Iris], multiplier: float) -> DataFrame[IrisFeatures]:
-        return df.mutate(sepal_ratio=df.sepal_length * multiplier)
+        return df.mutate(sepal_ratio=df.sepal_length * multiplier)  # type: ignore[reportReturnType]
 
-    result = fn(_iris_table(), multiplier=2.0)
+    result = fn(_iris_table(), multiplier=2.0)  # type: ignore[reportCallIssue]
     assert isinstance(result, DataFrame)
     data = result.execute()
     assert list(data["sepal_ratio"]) == [10.2, 9.8]
@@ -124,7 +124,7 @@ def test_contract_with_no_annotations():
     def fn(x, y):
         return x + y
 
-    assert fn(1, 2) == 3
+    assert fn(1, 2) == 3  # type: ignore[reportCallIssue]
 
 
 def test_contract_with_kwargs():
@@ -132,7 +132,7 @@ def test_contract_with_kwargs():
     def fn(df: DataFrame[Iris], *, verbose: bool = False) -> DataFrame[Iris]:
         return df
 
-    result = fn(_iris_table(), verbose=True)
+    result = fn(_iris_table(), verbose=True)  # type: ignore[reportCallIssue]
     assert isinstance(result, DataFrame)
 
 
@@ -176,7 +176,7 @@ def test_contract_input_wrong_type():
 def test_contract_output_schema_mismatch():
     @contract
     def fn(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]:
-        return df
+        return df  # type: ignore[reportReturnType]  # intentional mismatch for testing
 
     with pytest.raises((ValueError, TypeError), match=r"return value.*IrisFeatures"):
         fn(_iris_table())
