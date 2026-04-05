@@ -39,7 +39,7 @@ filterwarnings = [
 ]
 
 [tool.ruff]
-extend-exclude = ["docs"]
+include = ["{src,tests,examples}/**/*.{py,pyi}", "pyproject.toml"]
 
 [tool.pyright]
 pythonVersion = "3.12"
