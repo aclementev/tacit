@@ -14,11 +14,10 @@ breaks — a column gets renamed upstream, a type changes from int to string, a
 join produces unexpected nulls — you find out three stages downstream when
 something produces garbage results. Or worse, you don't find out at all.
 
-## The solution: data contracts
+## Schemas make assumptions explicit
 
-A **data contract** makes every assumption explicit and checkable. In tacit,
-a contract is a Python class that declares exactly what a DataFrame must look
-like:
+A [**schema**](concepts/schemas.md) is a Python class that declares exactly
+what a DataFrame looks like — column names, types, and constraints:
 
 ```python
 from typing import Annotated
@@ -33,29 +32,70 @@ class Iris(tacit.Schema):
 ```
 
 This says: the DataFrame has these five columns, with these types, and
-`sepal_width` must be positive. When you call `Iris.parse(table)`, tacit
-validates all of it — and if the data doesn't match, you get a clear error
-at the boundary where the bad data entered, not deep inside your pipeline
-logic.
+`sepal_width` must be positive. Anyone — human or coding agent — can
+"go to definition" and understand the full contract without running anything.
+
+At pipeline boundaries, `Iris.parse(table)` coerces types and validates every
+constraint. If the data doesn't match, you get a clear error where the bad data
+entered, not deep inside your pipeline logic. Between internal steps,
+`Iris.cast(table)` does a lightweight structural check — column names and types
+only, zero execution cost.
 
 Once parsed, your code can safely assume the data is correct. No defensive
 checks scattered through your transformations. No silent failures.
 
-## What you get from a single definition
+## Contracts enforce them at function boundaries
 
-Because a data contract is a Python class with type annotations, the Python
-ecosystem gives you more than just runtime validation:
+A [**contract**](concepts/contracts.md) ties schemas to the functions that
+transform data. The type signature *is* the contract — what goes in, what comes
+out:
 
-- **Runtime validation** — `parse()` coerces types and validates constraints
-  at pipeline boundaries, pushed down to the engine as SQL
-- **Static type checking** — type checkers verify that every pipeline stage
-  respects the contract before your code runs
-- **Editor support** — autocomplete on column names, go-to-definition on
-  schemas, find-all-references on consumers
-- **Safe refactoring** — rename a column in a schema and your type checker
-  flags every function that needs updating
-- **AI-agent friendliness** — agents read the schema, generate code that
-  satisfies it, and the type checker verifies correctness offline
+```python
+@tacit.contract
+def engineer_features(df: tacit.DataFrame[Iris]) -> tacit.DataFrame[IrisFeatures]:
+    return df.mutate(
+        sepal_ratio=df.sepal_length / df.sepal_width,
+        petal_area=df.petal_length * df.petal_width,
+    )
+```
+
+The `@contract` decorator enforces the schema on inputs and outputs at runtime.
+Type checkers verify it statically. "Find all references" on `Iris` shows every
+function that consumes that schema — rename a column and your type checker flags
+every site that needs updating, across teams, across repos.
+
+## Built on ibis and pandera, not replacing them
+
+Tacit is not a new DataFrame library or a new validation framework. It builds
+on [ibis](https://ibis-project.org/) for execution and
+[pandera](https://pandera.readthedocs.io/) for validation, and provides a
+unified interface with type safety on top.
+
+A `tacit.DataFrame[S]` *is* an ibis Table — you get the full ibis expression
+API with autocomplete. Validation constraints are pandera `Check` objects —
+anything pandera can validate, tacit can validate. You can drop down to raw
+ibis or pandera at any point.
+
+This also means tacit inherits some of their current limitations — for example,
+ibis's type stubs don't cover every dynamic API, so some type checker warnings
+may require annotations. We document workarounds as we find them.
+
+## How is tacit different from...
+
+**Raw pandera** — pandera validates DataFrames, but doesn't provide typed
+wrappers or static type checking. You validate, then work with an untyped
+DataFrame. Tacit adds `DataFrame[S]` so your editor and type checker know the
+schema throughout the pipeline.
+
+**Great Expectations** — a test-suite approach: you write expectations
+separately from your code and run them as a validation step. Tacit integrates
+validation into the code itself — the schema is the source of truth, not a
+parallel test suite that can drift.
+
+**dbt tests** — SQL-only, post-hoc. You write tests in YAML or SQL that run
+after transformations. Tacit validates at the Python layer, at the boundary
+where data enters your pipeline, with the same schema that gives you type
+safety and editor support.
 
 ## Design principles
 
@@ -68,3 +108,24 @@ ecosystem gives you more than just runtime validation:
   not an execution environment.
 - **Ibis-native.** Transformations use ibis's expression API directly. Tacit
   handles contracts, ibis handles execution.
+
+## Who is this for
+
+Tacit is for data engineers and ML engineers building DataFrame pipelines in
+Python who want their data assumptions to be explicit, checkable, and enforced
+by the type system.
+
+It's a good fit if you:
+
+- Use ibis (or want to) for backend-portable DataFrame operations
+- Want Pydantic-style schemas for your pipeline data
+- Care about type safety and editor support in data code
+- Work in teams where schema changes need to be traceable
+
+It's probably not for you if:
+
+- You don't use DataFrames (tacit is specifically for tabular data pipelines)
+- You need a pipeline orchestrator (use Dagster, Airflow, Prefect — tacit
+  works alongside them)
+- You want to validate data outside of Python (consider dbt tests or
+  Great Expectations)
