@@ -43,17 +43,20 @@ class PricingSummary(tacit.Schema):
 
 
 @tacit.contract
+def filter_shipped(
+    lineitem: tacit.DataFrame[LineItem],
+) -> tacit.DataFrame[LineItem]:
+    """Filter to line items shipped before the cutoff date."""
+    return lineitem.filter(lineitem.l_shipdate <= "1998-09-02")
+
+
+@tacit.contract
 def pricing_summary_report(
     lineitem: tacit.DataFrame[LineItem],
 ) -> tacit.DataFrame[PricingSummary]:
-    """TPC-H Q1 — pricing summary report.
-
-    The @tacit.contract decorator enforces input and output
-    schema contracts automatically.
-    """
+    """TPC-H Q1 — pricing summary report."""
     return (
-        lineitem.filter(lineitem.l_shipdate <= "1998-09-02")
-        .group_by("l_returnflag", "l_linestatus")
+        lineitem.group_by("l_returnflag", "l_linestatus")
         .agg(
             sum_qty=lineitem.l_quantity.sum(),
             sum_base_price=lineitem.l_extendedprice.sum(),
@@ -76,4 +79,5 @@ def pipeline(path: str) -> tacit.DataFrame[PricingSummary]:
     con = ibis.duckdb.connect()
     raw = con.read_csv(path)
     lineitem = LineItem.parse(raw)
-    return pricing_summary_report(lineitem)
+    shipped = filter_shipped(lineitem)
+    return pricing_summary_report(shipped)
