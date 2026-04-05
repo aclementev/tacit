@@ -7,7 +7,7 @@ appear in usage examples, apply these rules in order:
 
 1. **Our issue** — if the error is caused by tacit's own types, fix it.
 2. **Contributable upstream fix** — if it's an upstream annotation bug we can
-   fix with a small PR, document it in `docs/contributions/` and propose the fix.
+   fix with a small PR, document it in `dev/contributions/` and propose the fix.
 3. **Minimal workaround** — if it's an upstream design limitation we can't fix,
    document the least invasive workaround for users.
 

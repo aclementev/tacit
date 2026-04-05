@@ -345,7 +345,7 @@ Time-boxed research to find a typing approach. Evaluate:
 - Protocol-based approach (`ContractReturn[S]` accepting both types)
 - pyright plugin / custom type stubs if standard typing can't express this
 
-- [ ] Document decision with rationale and proof-of-concept in `docs/research/`
+- [ ] Document decision with rationale and proof-of-concept in `dev/research/`
 - [ ] Update DESIGN.md if needed
 
 #### T12: Implement fully typed @contract
