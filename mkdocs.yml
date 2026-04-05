@@ -3,6 +3,9 @@ site_description: Pydantic-style schemas for data pipelines, built on ibis.
 site_url: https://alvaroclemente.github.io/tacit/
 repo_url: https://github.com/alvaroclemente/tacit
 repo_name: alvaroclemente/tacit
+watch:
+  - docs/
+  - src/
 
 theme:
   name: material
