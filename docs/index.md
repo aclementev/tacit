@@ -18,16 +18,15 @@ transform them. From that single definition:
   pyrefly) verify that every pipeline stage respects the contract before your
   code runs. Forget to add a column after a `.mutate()`? Your editor underlines
   it immediately.
-- **Make contracts readable** — "go to definition" on any schema shows every
-  column, its type, and its constraints. Both humans and coding agents can
-  understand the contract without running anything or reading documentation.
+- **Make contracts self-documenting** — "go to definition" on any schema shows
+  every column, its type, and its constraints. No Slack threads, no stale wiki
+  pages, no asking the person who wrote the pipeline six months ago. The code
+  has the full context — for teammates, for your future self, and for coding
+  agents that can discover schemas autonomously without extra context files.
 - **Make changes safe** — pipeline functions declare their schemas in type
   annotations, so "find all references" shows every consumer of a table across
   your codebase. Rename a column and your type checker flags every function that
   needs updating — across teams, across repos.
-- **Work with coding agents** — agents see the schema as context, generate code
-  that satisfies it, and the type checker verifies correctness offline. Schemas
-  are the acceptance test — fewer hallucinated column names, fewer broken merges.
 
 All of this works across any
 [ibis-supported backend](https://ibis-project.org/backends/) — DuckDB, Spark,
@@ -66,6 +65,7 @@ class Iris(tacit.Schema):
 # Inheritance composes schemas — no duplication.
 class IrisFeatures(Iris):
     sepal_ratio: float
+    petal_ratio: float
     petal_area: float
 
 
@@ -75,6 +75,7 @@ class IrisFeatures(Iris):
 def engineer_features(df: tacit.DataFrame[Iris]) -> tacit.DataFrame[IrisFeatures]:
     return df.mutate(
         sepal_ratio=df.sepal_length / df.sepal_width,  # (1)
+        petal_ratio=df.petal_length / df.petal_width,
         petal_area=df.petal_length * df.petal_width,
     )
 

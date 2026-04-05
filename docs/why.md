@@ -83,10 +83,14 @@ may require annotations. We document workarounds as we find them.
 
 ## How is tacit different from...
 
-**Raw pandera** — pandera validates DataFrames, but doesn't provide typed
-wrappers or static type checking. You validate, then work with an untyped
-DataFrame. Tacit adds `DataFrame[S]` so your editor and type checker know the
-schema throughout the pipeline.
+**Raw pandera** — pandera is excellent at runtime validation, and tacit builds
+on it — all constraint checking is pandera under the hood. But pandera alone
+validates and hands you back an untyped DataFrame. Your editor doesn't know
+what columns exist after validation, your type checker can't verify that one
+pipeline stage feeds correctly into the next, and there's no static safety
+between validation points. Tacit is the missing piece: it extends pandera with
+`DataFrame[S]` so the schema stays visible to your editor and type checker
+throughout the entire pipeline, not just at the validation boundary.
 
 **Great Expectations** — a test-suite approach: you write expectations
 separately from your code and run them as a validation step. Tacit integrates

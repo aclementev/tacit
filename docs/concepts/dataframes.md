@@ -24,10 +24,10 @@ iris = Iris.parse(table)          # DataFrame[Iris]
 result = iris.mutate(x=iris.sepal_length * 2)  # ir.Table — no longer typed
 ```
 
-This is a current limitation of the library. Statically verifying what happens
-inside a `.mutate()` or `.filter()` — whether columns were added, removed, or
-renamed — is very hard to express in Python's type system. Rather than pretend
-the result still satisfies the original schema, tacit drops the type.
+This is by design. After arbitrary transformations — adding columns, dropping
+them, renaming, joining — tacit can't statically verify that the result still
+matches any particular schema. Rather than pretend it does, the type drops off.
+You re-enter typed territory explicitly via `cast()` or `parse()`.
 
 To re-enter typed territory, use `cast()`:
 

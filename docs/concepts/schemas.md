@@ -88,37 +88,6 @@ pipelines — a join produces more columns than expected, or an upstream change
 adds a column that shadows a downstream computation. Strict mode catches this
 immediately.
 
-## `parse()` vs `cast()`
-
-Both are called on the schema class and return a typed `DataFrame[S]`. They
-differ in how much work they do:
-
-| | `parse()` | `cast()` |
-|---|-----------|----------|
-| Check columns exist | Yes | Yes |
-| Reject extra columns | Yes | Yes |
-| Check types | Yes | Yes |
-| Coerce types | Yes | No |
-| Validate constraints | Yes | No |
-| Executes queries | Yes | No |
-
-**Use `parse()` at pipeline boundaries** — where you're ingesting data you
-don't fully trust (files, databases, API responses). It coerces types (e.g.,
-string → float from a CSV) and validates all constraints.
-
-**Use `cast()` between internal steps** — where you trust the data but want
-type safety. It checks column names and types against ibis metadata with zero
-execution cost. Think of it as a lightweight `parse()` that verifies structure
-without running queries.
-
-```python
-# At the boundary: full validation
-iris = Iris.parse(con.read_csv("iris.csv"))
-
-# Between internal steps: structural check only
-features = IrisFeatures.cast(df.mutate(...))
-```
-
 ## Adding constraints
 
 Schemas can also declare constraints on individual columns using `Annotated`
