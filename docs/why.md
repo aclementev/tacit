@@ -1,6 +1,6 @@
 # Why tacit
 
-## The problem: implicit assumptions
+## Implicit assumptions
 
 Every DataFrame operation makes assumptions about the data. When you write
 `df.sepal_length / df.sepal_width`, you're assuming both columns exist, that
@@ -67,14 +67,15 @@ every site that needs updating, across teams, across repos.
 ## Built on ibis and pandera, not replacing them
 
 Tacit is not a new DataFrame library or a new validation framework. It builds
-on [ibis](https://ibis-project.org/) for execution and
-[pandera](https://pandera.readthedocs.io/) for validation, and provides a
-unified interface with type safety on top.
+on [ibis](https://ibis-project.org/) for the DataFrame API and query execution,
+and [pandera](https://pandera.readthedocs.io/) for data validation. Tacit
+provides a unified interface with type safety on top.
 
-A `tacit.DataFrame[S]` *is* an ibis Table — you get the full ibis expression
-API with autocomplete. Validation constraints are pandera `Check` objects —
-anything pandera can validate, tacit can validate. You can drop down to raw
-ibis or pandera at any point.
+A `tacit.DataFrame[S]` *is* an ibis Table — you write transformations with the
+full ibis expression API, execute against any ibis backend, and get autocomplete
+on column names. Validation constraints are pandera `Check` objects — anything
+pandera can validate, tacit can validate. You can drop down to raw ibis or
+pandera at any point.
 
 This also means tacit inherits some of their current limitations — for example,
 ibis's type stubs don't cover every dynamic API, so some type checker warnings
@@ -104,10 +105,10 @@ safety and editor support.
 - **Parsing is the gateway.** `Schema.parse()` coerces types and validates in
   one call. No separate coercion step.
 - **Library, not framework.** Use tacit with Dagster, Airflow, a script, a
-  notebook — anything. It provides tools for writing type-safe transformations,
-  not an execution environment.
+  notebook — anything that runs Python and ibis. It provides tools for writing
+  type-safe transformations, not an execution environment.
 - **Ibis-native.** Transformations use ibis's expression API directly. Tacit
-  handles contracts, ibis handles execution.
+  handles contracts, ibis handles the DataFrame API and query execution.
 
 ## Who is this for
 
@@ -125,7 +126,6 @@ It's a good fit if you:
 It's probably not for you if:
 
 - You don't use DataFrames (tacit is specifically for tabular data pipelines)
-- You need a pipeline orchestrator (use Dagster, Airflow, Prefect — tacit
-  works alongside them)
-- You want to validate data outside of Python (consider dbt tests or
-  Great Expectations)
+- Your DataFrame library isn't
+  [supported by ibis](https://ibis-project.org/backends/) — tacit is built on
+  ibis and requires an ibis backend
