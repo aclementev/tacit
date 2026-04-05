@@ -6,7 +6,7 @@ a real analytical query — filtering, aggregations, and composing multiple
 `@contract` functions into a pipeline.
 
 The full source is at
-[`examples/tpch_q1.py`](https://github.com/alvaroclemente/tacit/blob/main/examples/tpch_q1.py).
+[`examples/tpch_q1.py`](https://github.com/aclementev/tacit/blob/main/examples/tpch_q1.py).
 
 ## Schemas
 

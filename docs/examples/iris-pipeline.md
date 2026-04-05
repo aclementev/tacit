@@ -5,7 +5,7 @@ and predicts species. Demonstrates schema inheritance, `parse()` at boundaries,
 and `@contract` for typed transformations.
 
 The full source is at
-[`examples/iris_pipeline.py`](https://github.com/alvaroclemente/tacit/blob/main/examples/iris_pipeline.py).
+[`examples/iris_pipeline.py`](https://github.com/aclementev/tacit/blob/main/examples/iris_pipeline.py).
 
 ## Schemas
 
