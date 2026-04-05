@@ -1,36 +1,49 @@
-# Tacit
+# tacit
 
-*We called it tacit because data contracts shouldn't be.*
+Pydantic-style schemas for DataFrame pipelines, built on
+[ibis](https://ibis-project.org/) and
+[pandera](https://pandera.readthedocs.io/).
 
-Pydantic-style schemas for data pipelines, built on [ibis](https://ibis-project.org/).
+Every DataFrame operation makes implicit assumptions about the data — which
+columns exist, their types, whether nulls are allowed. Tacit makes them
+explicit: you define **schemas** as Python classes and enforce **contracts** on
+the functions that transform them. From that single definition:
 
-Define your data contracts once. Get type-safe transformations with editor support,
-structural and runtime validation, across any ibis-supported backend (DuckDB, Spark,
-BigQuery, Polars, Postgres, and [many more](https://ibis-project.org/backends/)).
+- **Catch errors where they happen** — pandera validates actual data at pipeline
+  boundaries. Missing columns, wrong types, constraint violations — caught where
+  bad data enters, not three stages downstream.
+- **Catch errors before they happen** — type checkers (mypy, pyright, ty,
+  pyrefly) verify that every pipeline stage respects the contract before your
+  code runs.
+- **Make contracts self-documenting** — "go to definition" on any schema shows
+  every column, its type, and its constraints. No Slack threads, no stale wiki
+  pages. The code has the full context — for teammates, for your future self,
+  and for coding agents that can discover schemas without extra context files.
+- **Make changes safe** — rename a column in a schema and your type checker
+  flags every function that needs updating — across teams, across repos.
 
-## Why
+Works across any
+[ibis-supported backend](https://ibis-project.org/backends/) — DuckDB, Spark,
+BigQuery, Snowflake, Polars, Postgres, and more.
 
-Data pipelines break silently. A column gets renamed upstream, a type changes from
-int to string, a join produces unexpected nulls — and you find out three stages
-downstream when something produces garbage results.
+**[Documentation](https://aclementev.github.io/tacit/)**
 
-Tacit makes the shape of your data explicit and checkable:
+## Install
 
-- **At read time**: your editor autocompletes column names from the schema
-- **At check time**: the type checker catches mismatches between pipeline stages
-- **At run time**: parsing and validation ensure the actual data matches the contract
+```bash
+uv add tacit
 
-If a teammate changes a schema, every downstream consumer lights up in CI.
-The same applies when an AI agent generates a pipeline step — the schema is
-the acceptance test.
+# or with pip directly
+pip install tacit
+```
 
-## Quick Example
+## Quick example
 
 ```python
 import ibis
 import tacit
 
-# Define schemas as classes. Inheritance composes them.
+
 class Iris(tacit.Schema):
     sepal_length: float
     sepal_width: float
@@ -38,76 +51,80 @@ class Iris(tacit.Schema):
     petal_width: float
     species: str
 
+
 class IrisFeatures(Iris):
     sepal_ratio: float
+    petal_ratio: float
     petal_area: float
 
-# Type-annotated functions define the contract between stages.
+
 @tacit.contract
 def engineer_features(df: tacit.DataFrame[Iris]) -> tacit.DataFrame[IrisFeatures]:
     return df.mutate(
         sepal_ratio=df.sepal_length / df.sepal_width,
+        petal_ratio=df.petal_length / df.petal_width,
         petal_area=df.petal_length * df.petal_width,
     )
 
-# Parse at pipeline boundaries.
-table = ibis.duckdb.connect().read_csv("iris.csv")
-iris = Iris.parse(table)                 # coerce types + validate (eager)
+
+con = ibis.duckdb.connect()
+raw = con.read_csv("iris.csv")
+
+iris = Iris.parse(raw)
 features = engineer_features(iris)
 ```
 
-Column access (`df.sepal_length`) is ibis-native — you get the full expression API
-with autocomplete, because the DataFrame knows its schema.
+Schemas are Python classes — your editor autocompletes column names from them.
+`parse()` coerces types and validates at the boundary. `@contract` enforces
+input/output schemas at runtime. `DataFrame[S]` is an ibis Table, so you get
+the full ibis expression API with no wrapping.
 
-## Core Concepts
+## What else
 
-**Schemas** are Python classes. They declare column names and types. They compose
-via inheritance — no duplication.
-
-```python
-class Base(tacit.Schema):
-    id: int
-    created_at: str
-
-class User(Base):
-    name: str
-    email: str
-
-class UserWithScore(User):
-    risk_score: float
-```
-
-**Parsing** is the gateway from untyped to typed:
-
-- `Schema.parse(table)` — full parsing. Coerces types, runs constraints,
-  executes against the engine (no data pulled into Python).
-  Use at pipeline boundaries where you don't trust the data.
-- `Schema.cast(table)` — structural check only. Verifies column names and types
-  against ibis metadata. Zero execution cost. Use between internal steps.
-
-**Typed functions** declare what goes in and what comes out:
+**Constraints** — go beyond column names and types with value-level checks,
+powered by pandera:
 
 ```python
-def transform(df: tacit.DataFrame[User]) -> tacit.DataFrame[UserWithScore]:
-    return df.mutate(risk_score=compute_risk(df))
+from typing import Annotated
+
+class Order(tacit.Schema):
+    amount: Annotated[float, tacit.Check.ge(0)]
+    status: Annotated[str, tacit.Check.isin(["pending", "shipped"])]
+    notes: Annotated[str, tacit.Nullable()]
 ```
 
-The optional `@tacit.contract` decorator enforces these signatures at runtime.
+**`cast()` vs `parse()`** — `parse()` runs full validation (executes queries).
+`cast()` checks column names and types only — zero execution cost, for internal
+pipeline steps where the data has already been validated.
 
-## Design Principles
+**`validate=True`** — `@contract` uses `cast()` by default. Pass
+`validate=True` at pipeline entry points to run full `parse()` validation on
+inputs and outputs.
 
-- **Strict by default.** Unexpected columns are an error, not silently ignored.
-  You can opt into loose mode when you need it.
-- **Parsing is the gateway.** `Schema.parse()` coerces types (e.g., string → float
-  from CSV) and validates in one call. No separate coercion step.
-- **Library, not framework.** Tacit doesn't run your pipeline. Use it with
-  Dagster, Airflow, a script, a notebook — anything. It provides tools for writing
-  type-safe transformations, not an execution environment.
-- **Ibis-native.** Transformations use ibis's expression API directly. Tacit
-  doesn't wrap or replace it — ibis handles execution and backend flexibility,
-  tacit handles contracts.
+See the [documentation](https://aclementev.github.io/tacit/) for the full
+guide, API reference, and examples.
+
+## FAQ
+
+**Does this work with pandas?** — Tacit builds on ibis, which
+[moved away from pandas](https://ibis-project.org/posts/farewell-pandas/) as a
+backend. If your data currently lives in pandas DataFrames, you can use a
+well-supported engine like DuckDB or Polars as the execution backend — ibis
+reads from and converts back to pandas seamlessly, while giving you a
+modern query engine underneath.
+
+**Which backends are supported?** — Any engine that ibis supports. Tacit
+delegates all query execution to ibis, so backend support is inherited
+automatically. See the
+[ibis backends page](https://ibis-project.org/backends/) for the full list.
+
+**Which checks and constraints are available?** — Tacit delegates constraint
+validation to pandera's ibis backend. Anything in pandera's
+[Check API](https://pandera.readthedocs.io/en/stable/reference/generated/pandera.api.checks.Check.html)
+that has ibis support will work. See pandera's
+[ibis compatibility status](https://pandera.readthedocs.io/en/stable/supported_libraries.html)
+for what's currently available.
 
 ## Status
 
-Early development. The API is not stable. See [DESIGN.md](DESIGN.md) for the
-vision and current decisions.
+Early development. The API is not stable.

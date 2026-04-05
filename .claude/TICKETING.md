@@ -39,7 +39,7 @@ Context, references to docs, design decisions.
 
 ## Workflow
 
-1. Tickets start as GitHub Issues, created from the PRD (`docs/PRD.md`)
+1. Tickets start as GitHub Issues, created from the PRD (`dev/PRD.md`)
 2. Each milestone is also a GitHub Issue, referencing the PRD
 3. The coding agent uses **issue comments** to:
    - Document progress and decisions made during implementation
@@ -51,7 +51,7 @@ Context, references to docs, design decisions.
 
 ## References
 
-- PRD and milestone definitions: `docs/PRD.md`
-- Testing strategy: `docs/research/TESTING.md`
-- Design decisions: `docs/DESIGN.md`
-- Research summary: `docs/research/SUMMARY.md`
+- PRD and milestone definitions: `dev/PRD.md`
+- Testing strategy: `dev/research/TESTING.md`
+- Design decisions: `dev/DESIGN.md`
+- Research summary: `dev/research/SUMMARY.md`
