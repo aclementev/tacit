@@ -24,6 +24,12 @@ dev = [
     "pytest>=8.4.2",
     "ruff>=0.11.0",
 ]
+docs = [
+    "mkdocs<2",
+    "mkdocs-material<10",
+    "mkdocstrings[python]>=0.29.0",
+    "mkdocs-llmstxt>=0.2.0",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

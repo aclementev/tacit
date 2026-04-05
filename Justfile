@@ -21,3 +21,11 @@ test *args:
 check:
     just lint
     just test
+
+# Serve docs locally with live reloading
+docs-dev:
+    uv run --group docs mkdocs serve
+
+# Build docs for deployment
+docs-build:
+    uv run --group docs mkdocs build --strict
