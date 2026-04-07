@@ -1,10 +1,10 @@
 from typing import Annotated
 
 import ibis
-import pandera.errors
 import pytest
 
 from tacit import Check, DataFrame, Nullable, Schema
+from tacit.errors import CheckExecutionError, CoercionError, ConstraintError, StructuralError
 
 
 class Iris(Schema):
@@ -44,13 +44,13 @@ def test_cast_does_not_execute_query():
 
 def test_cast_rejects_missing_columns():
     table = ibis.memtable({"species": ["setosa"]})
-    with pytest.raises(ValueError, match="sepal_length"):
+    with pytest.raises(StructuralError, match="sepal_length"):
         Iris.cast(table)
 
 
 def test_cast_rejects_multiple_missing_columns():
     table = ibis.memtable({"unrelated": [1]})
-    with pytest.raises(ValueError, match="Missing columns"):
+    with pytest.raises(StructuralError, match="missing columns"):
         Iris.cast(table)
 
 
@@ -62,7 +62,7 @@ def test_cast_rejects_extra_columns():
             "EXTRA": [999],
         }
     )
-    with pytest.raises(ValueError, match="EXTRA"):
+    with pytest.raises(StructuralError, match="EXTRA"):
         Iris.cast(table)
 
 
@@ -73,7 +73,7 @@ def test_cast_rejects_wrong_type():
             "species": ["setosa"],
         }
     )
-    with pytest.raises(TypeError, match=r"sepal_length.*float64.*string"):
+    with pytest.raises(StructuralError, match=r"sepal_length.*float64.*string"):
         Iris.cast(table)
 
 
@@ -85,7 +85,7 @@ def test_cast_reports_all_type_mismatches():
             "species": [123],
         }
     )
-    with pytest.raises(TypeError) as exc_info:
+    with pytest.raises(StructuralError) as exc_info:
         Iris.cast(table)
     msg = str(exc_info.value)
     assert "sepal_length" in msg
@@ -95,7 +95,7 @@ def test_cast_reports_all_type_mismatches():
 def test_cast_checks_missing_before_types():
     """Missing columns are caught before type checking (can't check types on absent columns)."""
     table = ibis.memtable({"species": [123]})
-    with pytest.raises(ValueError, match="Missing"):
+    with pytest.raises(StructuralError, match="missing columns"):
         Iris.cast(table)
 
 
@@ -109,7 +109,7 @@ def test_cast_checks_extra_before_types():
             "extra": [2],
         }
     )
-    with pytest.raises(ValueError, match="Extra"):
+    with pytest.raises(StructuralError, match="extra columns"):
         Iris.cast(table)
 
 
@@ -143,7 +143,7 @@ def test_parse_coerces_compatible_types():
 
 def test_parse_rejects_missing_columns():
     table = ibis.memtable({"species": ["setosa"]})
-    with pytest.raises(ValueError, match="sepal_length"):
+    with pytest.raises(StructuralError, match="sepal_length"):
         Iris.parse(table)
 
 
@@ -155,7 +155,13 @@ def test_parse_rejects_extra_columns():
             "EXTRA": [999],
         }
     )
-    with pytest.raises(ValueError, match="EXTRA"):
+    with pytest.raises(StructuralError, match="EXTRA"):
+        Iris.parse(table)
+
+
+def test_parse_rejects_invalid_coercion():
+    table = ibis.memtable({"sepal_length": ["bad"], "species": ["setosa"]})
+    with pytest.raises(CoercionError, match="failed to cast column 'sepal_length'"):
         Iris.parse(table)
 
 
@@ -211,19 +217,19 @@ def test_parse_passes_when_constraints_satisfied():
 
 def test_parse_rejects_ge_violation():
     table = _order_table(amount=[-5.0, 10.0])
-    with pytest.raises(pandera.errors.SchemaError, match="amount"):
+    with pytest.raises(ConstraintError, match="amount"):
         Order.parse(table)
 
 
 def test_parse_rejects_isin_violation():
     table = _order_table(status=["pending", "INVALID"])
-    with pytest.raises(pandera.errors.SchemaError, match="status"):
+    with pytest.raises(ConstraintError, match="status"):
         Order.parse(table)
 
 
 def test_parse_rejects_multiple_checks_on_same_column():
     table = ibis.memtable({"score": [150.0]})
-    with pytest.raises(pandera.errors.SchemaError, match="score"):
+    with pytest.raises(ConstraintError, match="score"):
         BoundedScore.parse(table)
 
 
@@ -237,7 +243,7 @@ def test_parse_rejects_null_by_default():
     table = ibis.memtable(
         {"sepal_length": [5.1, None], "species": ["setosa", "setosa"]}
     )
-    with pytest.raises(pandera.errors.SchemaError, match="sepal_length"):
+    with pytest.raises(ConstraintError, match="sepal_length"):
         Iris.parse(table)
 
 
@@ -249,14 +255,23 @@ def test_parse_accepts_null_when_nullable():
 
 def test_parse_rejects_null_on_required_field():
     table = ibis.memtable({"required": ["a", None], "optional": ["x", "y"]})
-    with pytest.raises(pandera.errors.SchemaError, match="required"):
+    with pytest.raises(ConstraintError, match="required"):
         WithNullable.parse(table)
 
 
 def test_parse_enforces_inherited_constraints():
     table = ibis.memtable({"value": [-1.0], "name": ["test"]})
-    with pytest.raises(pandera.errors.SchemaError, match="value"):
+    with pytest.raises(ConstraintError, match="value"):
         ConstrainedChild.parse(table)
+
+
+def test_parse_maps_check_execution_failures():
+    class Exploding(Schema):
+        value: Annotated[int, Check(lambda _: 1 / 0, error="boom")]
+
+    table = ibis.memtable({"value": [1, 2, 3]})
+    with pytest.raises(CheckExecutionError, match="check boom raised ZeroDivisionError"):
+        Exploding.parse(table)
 
 
 def test_parse_passes_inherited_constraints_when_valid():

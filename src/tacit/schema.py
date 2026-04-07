@@ -4,9 +4,17 @@ from typing import Annotated, ClassVar, Self, get_args, get_origin, get_type_hin
 
 import ibis
 import ibis.expr.types as ir
+import pandera.errors as pe
 import pandera.ibis as pa
 
 from .constraints import Nullable
+from .errors import (
+    ValidationPhase,
+    coercion_error_for_cast_failure,
+    structural_error_for_columns,
+    structural_error_for_type_mismatches,
+    validation_error_from_pandera,
+)
 
 
 class DataFrame[S: "Schema"](ir.Table):
@@ -90,17 +98,25 @@ class Schema:
         return pa.DataFrameSchema(columns, strict=True)
 
     @classmethod
-    def _check_columns(cls, target: ibis.Schema, actual: ibis.Schema) -> None:
+    def _check_columns(
+        cls,
+        target: ibis.Schema,
+        actual: ibis.Schema,
+        *,
+        phase: ValidationPhase,
+    ) -> None:
         target_names = set(target.names)  # type: ignore[reportArgumentType]  # ibis has no py.typed
         actual_names = set(actual.names)  # type: ignore[reportArgumentType]  # ibis has no py.typed
 
         missing = sorted(target_names - actual_names)
-        if missing:
-            raise ValueError(f"Missing columns: {missing}")
-
         extra = sorted(actual_names - target_names)
-        if extra:
-            raise ValueError(f"Extra columns: {extra}")
+        if missing or extra:
+            raise structural_error_for_columns(
+                schema=cls,
+                phase=phase,
+                missing=missing,
+                extra=extra,
+            )
 
     @classmethod
     def parse(cls, table: ir.Table) -> DataFrame[Self]:
@@ -110,12 +126,12 @@ class Schema:
         you're ingesting untrusted data.
 
         Raises:
-            ValueError: Missing or extra columns.
-            pandera.errors.SchemaError: Data fails validation checks.
+            tacit.errors.ValidationError: Data fails structural, coercion, or
+                validation checks.
         """
         target = cls._ibis_schema()
         actual = table.schema()
-        cls._check_columns(target, actual)
+        cls._check_columns(target, actual, phase=ValidationPhase.PARSE)
 
         # Pandera's ibis backend doesn't support coercion — handle it ourselves
         cast_map = {
@@ -124,9 +140,36 @@ class Schema:
             if actual[col] != target_type
         }
         if cast_map:
-            table = table.cast(cast_map)
+            try:
+                table = table.cast(cast_map)
+            except Exception as exc:
+                coercion_error = coercion_error_for_cast_failure(
+                    schema=cls,
+                    phase=ValidationPhase.PARSE,
+                    cast_map=cast_map,
+                    original=exc,
+                )
+                raise coercion_error from exc
 
-        validated = cls._pandera_schema().validate(table)
+        try:
+            validated = cls._pandera_schema().validate(table)
+        except (pe.SchemaError, pe.SchemaErrors) as exc:
+            validation_error = validation_error_from_pandera(
+                schema=cls,
+                phase=ValidationPhase.PARSE,
+                original=exc,
+            )
+            raise validation_error from exc
+        except Exception as exc:
+            if cast_map:
+                coercion_error = coercion_error_for_cast_failure(
+                    schema=cls,
+                    phase=ValidationPhase.PARSE,
+                    cast_map=cast_map,
+                    original=exc,
+                )
+                raise coercion_error from exc
+            raise
         return DataFrame._from_table(validated, cls)
 
     @classmethod
@@ -137,22 +180,34 @@ class Schema:
         boundaries where you trust the data but want type safety.
 
         Raises:
-            ValueError: Missing or extra columns (strict mode).
-            TypeError: Column type mismatch.
+            tacit.errors.StructuralError: Missing, extra, or wrong-type columns.
         """
         target = cls._ibis_schema()
         actual = table.schema()
-        cls._check_columns(target, actual)
+        target_names = set(target.names)  # type: ignore[reportArgumentType]
+        actual_names = set(actual.names)  # type: ignore[reportArgumentType]
+        missing = sorted(target_names - actual_names)
+        extra = sorted(actual_names - target_names)
+        if missing or extra:
+            raise structural_error_for_columns(
+                schema=cls,
+                phase=ValidationPhase.CAST,
+                missing=missing,
+                extra=extra,
+            )
 
-        type_errors = []
+        type_errors: list[tuple[str, object, object]] = []
         for col_name, expected_type in target.items():
             actual_type = actual[col_name]
             if actual_type != expected_type:
                 type_errors.append(
-                    f"  {col_name}: expected {expected_type}, got {actual_type}"
+                    (col_name, expected_type, actual_type)
                 )
         if type_errors:
-            detail = "\n".join(type_errors)
-            raise TypeError(f"Column type mismatches:\n{detail}")
+            raise structural_error_for_type_mismatches(
+                schema=cls,
+                phase=ValidationPhase.CAST,
+                mismatches=type_errors,
+            )
 
         return DataFrame._from_table(table, cls)

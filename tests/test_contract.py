@@ -2,6 +2,7 @@ import ibis
 import pytest
 
 from tacit import DataFrame, Schema, contract
+from tacit.errors import ConstraintError, StructuralError
 
 
 class Iris(Schema):
@@ -149,7 +150,7 @@ def test_contract_input_missing_columns():
         return df
 
     table = ibis.memtable({"species": ["setosa"]})
-    with pytest.raises(ValueError, match=r"parameter 'df'.*Iris"):
+    with pytest.raises(StructuralError, match=r"Iris.*parameter 'df'"):
         fn(table)
 
 
@@ -165,7 +166,7 @@ def test_contract_input_extra_columns():
             "EXTRA": [1],
         }
     )
-    with pytest.raises(ValueError, match=r"parameter 'df'.*Iris"):
+    with pytest.raises(StructuralError, match=r"Iris.*parameter 'df'"):
         fn(table)
 
 
@@ -175,7 +176,7 @@ def test_contract_input_wrong_type():
         return df
 
     table = ibis.memtable({"sepal_length": ["bad"], "species": ["setosa"]})
-    with pytest.raises(TypeError, match=r"parameter 'df'.*Iris"):
+    with pytest.raises(StructuralError, match=r"Iris.*parameter 'df'"):
         fn(table)
 
 
@@ -184,7 +185,7 @@ def test_contract_output_schema_mismatch():
     def fn(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]:
         return df
 
-    with pytest.raises((ValueError, TypeError), match=r"return value.*IrisFeatures"):
+    with pytest.raises(StructuralError, match=r"IrisFeatures.*return value"):
         fn(_iris_table())
 
 
@@ -256,5 +257,19 @@ def test_contract_returns_param_output_schema_mismatch():
     def fn(df: DataFrame[Iris]):
         return df
 
-    with pytest.raises((ValueError, TypeError), match=r"return value.*IrisFeatures"):
+    with pytest.raises(StructuralError, match=r"IrisFeatures.*return value"):
         fn(_iris_table())
+
+
+def test_contract_validate_propagates_constraint_error_with_contract_context():
+    class PositiveIris(Schema):
+        sepal_length: float
+        species: str
+
+    @contract(validate=True)
+    def fn(df: DataFrame[PositiveIris]) -> DataFrame[PositiveIris]:
+        return df
+
+    table = ibis.memtable({"sepal_length": [5.1], "species": [None]})
+    with pytest.raises(ConstraintError, match=r"parameter 'df'"):
+        fn(table)
