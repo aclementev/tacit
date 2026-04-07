@@ -4,7 +4,12 @@ import ibis
 import pytest
 
 from tacit import Check, DataFrame, Nullable, Schema
-from tacit.errors import CheckExecutionError, CoercionError, ConstraintError, StructuralError
+from tacit.errors import (
+    CheckExecutionError,
+    CoercionError,
+    ConstraintError,
+    StructuralError,
+)
 
 
 class Iris(Schema):
@@ -270,7 +275,9 @@ def test_parse_maps_check_execution_failures():
         value: Annotated[int, Check(lambda _: 1 / 0, error="boom")]
 
     table = ibis.memtable({"value": [1, 2, 3]})
-    with pytest.raises(CheckExecutionError, match="check boom raised ZeroDivisionError"):
+    with pytest.raises(
+        CheckExecutionError, match="check boom raised ZeroDivisionError"
+    ):
         Exploding.parse(table)
 
 

@@ -2,7 +2,16 @@ from __future__ import annotations
 
 import functools
 import inspect
-from typing import Any, Callable, ParamSpec, TypeVar, get_args, get_origin, get_type_hints, overload
+from typing import (
+    Any,
+    Callable,
+    ParamSpec,
+    TypeVar,
+    get_args,
+    get_origin,
+    get_type_hints,
+    overload,
+)
 
 import ibis.expr.types as ir
 

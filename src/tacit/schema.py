@@ -200,9 +200,7 @@ class Schema:
         for col_name, expected_type in target.items():
             actual_type = actual[col_name]
             if actual_type != expected_type:
-                type_errors.append(
-                    (col_name, expected_type, actual_type)
-                )
+                type_errors.append((col_name, expected_type, actual_type))
         if type_errors:
             raise structural_error_for_type_mismatches(
                 schema=cls,
