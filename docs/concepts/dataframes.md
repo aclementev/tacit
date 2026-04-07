@@ -92,3 +92,29 @@ You can only get one through:
 This means a `DataFrame[S]` always represents data that has been verified
 against schema `S` — either fully via `parse()`, or structurally via `cast()`
 with the user vouching for the rest.
+
+## Validation errors
+
+`cast()` and `parse()` raise tacit's own exception types from `tacit.errors`.
+This gives you a stable way to handle validation failures without depending on
+backend-specific exception classes:
+
+```python
+from tacit.errors import CoercionError, ConstraintError, StructuralError
+
+try:
+    orders = Order.parse(raw)
+except StructuralError:
+    # Missing columns, extra columns, wrong dtypes in structural validation
+    ...
+except CoercionError:
+    # Data couldn't be cast into the schema's target types
+    ...
+except ConstraintError:
+    # Data has the right shape but violates checks/nullability
+    ...
+```
+
+All of these inherit from `ValidationError`. Each exception exposes the schema
+being enforced and the validation phase, and preserves the original pandera or
+backend exception when there is one.
