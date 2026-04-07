@@ -118,3 +118,29 @@ break the output schema's structural checks (or constraint checks, with
 `validate=True`).
 
 The contract is a boundary check, not a line-by-line audit.
+
+## Error handling
+
+Contract failures use the same exception family as `cast()` and `parse()`, but
+with contract-specific boundary context attached:
+
+```python
+from tacit.errors import ValidationError, ValidationPhase
+
+try:
+    result = transform(df)
+except ValidationError as exc:
+    if exc.phase is ValidationPhase.CONTRACT_INPUT:
+        ...
+    elif exc.phase is ValidationPhase.CONTRACT_OUTPUT:
+        ...
+```
+
+The concrete subclasses are:
+
+- `StructuralError`
+- `CoercionError`
+- `ConstraintError`
+- `CheckExecutionError`
+
+Import them from `tacit.errors`.

@@ -2,10 +2,20 @@ from __future__ import annotations
 
 import functools
 import inspect
-from typing import Any, Callable, ParamSpec, TypeVar, get_type_hints, overload
+from typing import (
+    Any,
+    Callable,
+    ParamSpec,
+    TypeVar,
+    get_args,
+    get_origin,
+    get_type_hints,
+    overload,
+)
 
 import ibis.expr.types as ir
 
+from .errors import ValidationError, ValidationPhase, recontextualize_validation_error
 from .schema import DataFrame, Schema
 
 P = ParamSpec("P")
@@ -15,9 +25,9 @@ S = TypeVar("S", bound=Schema)
 
 def _get_schema_type(annotation: Any) -> type[Schema] | None:
     """Extract the Schema type S from a DataFrame[S] annotation, or None."""
-    if getattr(annotation, "__origin__", None) is not DataFrame:
+    if get_origin(annotation) is not DataFrame:
         return None
-    args = getattr(annotation, "__args__", ())
+    args = get_args(annotation)
     if args and isinstance(args[0], type) and issubclass(args[0], Schema):
         return args[0]
     return None
@@ -41,8 +51,8 @@ def _enforce(
 
     Raises:
         TypeError: If value is not an ibis Table expression.
-        ValueError/TypeError: Re-raised from cast()/parse() with context about
-            which parameter and schema failed.
+        tacit.errors.ValidationError: Re-raised from cast()/parse() with
+            contract-specific boundary context.
     """
     if not isinstance(value, ir.Table):
         raise TypeError(
@@ -54,10 +64,18 @@ def _enforce(
         if validate:
             return schema_type.parse(value)
         return schema_type.cast(value)
-    except (TypeError, ValueError) as exc:
-        raise type(exc)(
-            f"Contract violation on {label} [{schema_type.__name__}]: {exc}"
-        ) from exc
+    except ValidationError as exc:
+        phase = (
+            ValidationPhase.CONTRACT_OUTPUT
+            if label == "return value"
+            else ValidationPhase.CONTRACT_INPUT
+        )
+        contract_exc = recontextualize_validation_error(
+            exc,
+            phase=phase,
+            boundary_label=label,
+        )
+        raise contract_exc from exc
 
 
 @overload
