@@ -270,6 +270,11 @@ def looks_like_coercion_failure(exc: BaseException) -> bool:
         "Conversion" in name
         or "Conversion Error" in text
         or "Could not convert" in text
+        or (
+            "InvalidOperationError" in name
+            and "conversion from `" in text
+            and "failed in column" in text
+        )
     )
 
 

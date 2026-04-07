@@ -20,6 +20,7 @@ build-backend = "uv_build"
 dev = [
     "ibis-framework[duckdb]>=9.0.0",
     "ipython>=9.7.0",
+    "polars>=1.0.0",
     "pyright>=1.1.400",
     "pytest>=8.4.2",
     "ruff>=0.11.0",
