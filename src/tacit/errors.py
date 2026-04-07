@@ -230,6 +230,20 @@ def validation_error_from_pandera(
     )
 
 
+def validation_error_from_execution(
+    *,
+    schema: type[Schema],
+    phase: ValidationPhase,
+    original: BaseException,
+) -> ValidationError:
+    return ValidationError(
+        schema=schema,
+        phase=phase,
+        detail=_ensure_period(_summarize_original(original)),
+        original=original,
+    )
+
+
 def recontextualize_validation_error(
     exc: ValidationError,
     *,
@@ -246,6 +260,16 @@ def recontextualize_validation_error(
         failure_cases=exc.failure_cases,
         column=exc.column,
         original=exc.original,
+    )
+
+
+def looks_like_coercion_failure(exc: BaseException) -> bool:
+    name = type(exc).__name__
+    text = str(exc)
+    return (
+        "Conversion" in name
+        or "Conversion Error" in text
+        or "Could not convert" in text
     )
 
 

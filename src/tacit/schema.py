@@ -11,8 +11,10 @@ from .constraints import Nullable
 from .errors import (
     ValidationPhase,
     coercion_error_for_cast_failure,
+    looks_like_coercion_failure,
     structural_error_for_columns,
     structural_error_for_type_mismatches,
+    validation_error_from_execution,
     validation_error_from_pandera,
 )
 
@@ -161,7 +163,7 @@ class Schema:
             )
             raise validation_error from exc
         except Exception as exc:
-            if cast_map:
+            if cast_map and looks_like_coercion_failure(exc):
                 coercion_error = coercion_error_for_cast_failure(
                     schema=cls,
                     phase=ValidationPhase.PARSE,
@@ -169,7 +171,12 @@ class Schema:
                     original=exc,
                 )
                 raise coercion_error from exc
-            raise
+            validation_error = validation_error_from_execution(
+                schema=cls,
+                phase=ValidationPhase.PARSE,
+                original=exc,
+            )
+            raise validation_error from exc
         return DataFrame._from_table(validated, cls)
 
     @classmethod

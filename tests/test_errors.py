@@ -64,6 +64,23 @@ def test_parse_coercion_failure_raises_coercion_error():
     assert "failed to cast column 'amount' to float64" in str(exc)
 
 
+def test_parse_unrelated_execution_failure_after_cast_is_not_coercion_error():
+    class SingleFloat(Schema):
+        a: float
+
+    with pytest.raises(ValidationError) as exc_info:
+        SingleFloat.parse(ibis.table({"a": "int64"}, name="nonexistent"))
+
+    exc = exc_info.value
+    assert type(exc) is ValidationError
+    assert not isinstance(exc, CoercionError)
+    assert exc.phase is ValidationPhase.PARSE
+    assert exc.schema is SingleFloat
+    assert exc.original is not None
+    assert exc_info.value.__cause__ is exc.original
+    assert "unbound tables" in str(exc).lower()
+
+
 def test_parse_constraint_failure_raises_constraint_error():
     with pytest.raises(ConstraintError) as exc_info:
         Order.parse(ibis.memtable({"amount": [-1.0], "status": ["pending"]}))
