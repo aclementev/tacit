@@ -1,0 +1,14 @@
+expected errors: 7
+pyright              caught 7/7  missed 0  spurious: 10 (+0 import-untyped)
+      10x Operator "." not supported for types "." and "." (reportOperatorIssue)
+pyright-repo         caught 7/7  missed 0  spurious: 0 (+0 import-untyped)
+mypy                 caught 0/7  missed 7  spurious: 0 (+13 import-untyped)
+mypy-ignoremissing   caught 0/7  missed 7  spurious: 0 (+0 import-untyped)
+mypy-tacit-typed     caught 0/7  missed 7  spurious: 0 (+0 import-untyped)
+mypy-follow          caught 0/7  missed 7  spurious: 0 (+0 import-untyped)
+mypy-strict          caught 0/7  missed 7  spurious: 17 (+13 import-untyped)
+      11x Untyped decorator makes function "." untyped  [untyped-decorator]
+      5x Class cannot subclass "." (has type ".")  [misc]
+      1x Function is missing a return type annotation  [no-untyped-def]
+ty                   caught 3/7  missed 4  spurious: 0 (+0 import-untyped)
+pyrefly              caught 3/7  missed 4  spurious: 0 (+0 import-untyped)

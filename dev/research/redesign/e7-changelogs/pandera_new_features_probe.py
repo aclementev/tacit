@@ -1,0 +1,16 @@
+import ibis, pandera.ibis as pa
+t = ibis.memtable({"a": [1, 2, 3], "s": ["x", "y", "z"]})
+def tryit(label, fn):
+    try: r = fn(); print(f"{label}: OK ->", str(r)[:160].replace("\n", " "))
+    except Exception as e: print(f"{label}: FAIL {type(e).__name__}: {str(e)[:120]}")
+tryit("infer_schema", lambda: pa.infer_schema(t))
+s = pa.DataFrameSchema({"a": pa.Column(int, pa.Check.ge(0)), "s": pa.Column(str)})
+tryit("to_yaml", lambda: s.to_yaml())
+tryit("to_json", lambda: s.to_json())
+tryit("from_yaml roundtrip", lambda: pa.DataFrameSchema.from_yaml(s.to_yaml()))
+tryit("lazy multi-missing", lambda: pa.DataFrameSchema({"x": pa.Column(int), "y": pa.Column(int)}).validate(t, lazy=True))
+tryit("Check.str_length", lambda: pa.DataFrameSchema({"s": pa.Column(str, pa.Check.str_length(1, 1))}).validate(t))
+tryit("unique", lambda: pa.DataFrameSchema({"a": pa.Column(int, unique=True)}).validate(t))
+tryit("Column(required=False)", lambda: pa.DataFrameSchema({"zz": pa.Column(int, required=False)}).validate(t.select("a")).columns)
+tryit("add_missing_columns", lambda: pa.DataFrameSchema({"zz": pa.Column(int, default=0)}, add_missing_columns=True).validate(t.select("a")).columns)
+tryit("sample/head", lambda: pa.DataFrameSchema({"a": pa.Column(int)}).validate(t, head=2))

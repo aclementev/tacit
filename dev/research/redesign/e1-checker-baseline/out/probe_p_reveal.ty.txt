@@ -1,0 +1,33 @@
+probe/p_reveal.py:20:17: info[revealed-type] Revealed type: `DataFrame[Iris]`
+probe/p_reveal.py:21:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:22:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:23:17: info[revealed-type] Revealed type: `Column`
+probe/p_reveal.py:24:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:25:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:26:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:27:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:28:17: info[revealed-type] Revealed type: `Table`
+probe/p_reveal.py:29:17: info[revealed-type] Revealed type: `Table`
+probe/p_reveal.py:30:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:31:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:32:17: info[revealed-type] Revealed type: `DataFrame[Iris]`
+probe/p_reveal.py:33:17: info[revealed-type] Revealed type: `DataFrame[Iris]`
+probe/p_reveal.py:34:17: info[revealed-type] Revealed type: `DataFrame[IrisFeatures]`
+probe/p_reveal.py:35:17: info[revealed-type] Revealed type: `Table`
+probe/p_reveal.py:36:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_reveal.py:59:13: info[revealed-type] Revealed type: `(df: DataFrame[Iris], n: int = 1) -> DataFrame[IrisFeatures]`
+probe/p_reveal.py:60:13: info[revealed-type] Revealed type: `(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]`
+probe/p_reveal.py:61:13: info[revealed-type] Revealed type: `(df: DataFrame[Iris], n: int = 1) -> DataFrame[IrisFeatures]`
+probe/p_reveal.py:62:13: info[revealed-type] Revealed type: `(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]`
+probe/p_reveal.py:63:13: info[revealed-type] Revealed type: `Overload[[**P, R](fn: (**P) -> R, /) -> ((**P) -> R), [S](*, returns: type[S], validate: bool = ...) -> ([**P'return]((**P'return) -> Table, /) -> ((**P'return) -> DataFrame[S])), (*, validate: bool = ...) -> ([**P'return, R'return]((**P'return) -> R'return, /) -> ((**P'return) -> R'return))]`
+probe/p_reveal.py:64:13: info[revealed-type] Revealed type: `<class 'Iris'>`
+probe/p_reveal.py:65:13: info[revealed-type] Revealed type: `<class 'DataFrame'>`
+probe/p_reveal.py:66:13: info[revealed-type] Revealed type: `<class 'Table'>`
+probe/p_reveal.py:70:17: info[revealed-type] Revealed type: `DataFrame[IrisFeatures]`
+probe/p_reveal.py:71:17: info[revealed-type] Revealed type: `DataFrame[IrisFeatures]`
+probe/p_reveal.py:72:17: info[revealed-type] Revealed type: `DataFrame[IrisFeatures]`
+probe/p_reveal.py:73:10: error[invalid-argument-type] Argument is incorrect: Expected `DataFrame[Iris]`, found `Literal["not a df"]`
+probe/p_reveal.py:74:14: error[invalid-argument-type] Argument is incorrect: Expected `int`, found `Literal["x"]`
+probe/p_reveal.py:75:22: error[invalid-argument-type] Argument is incorrect: Expected `int`, found `Literal["x"]`
+probe/p_reveal.py:76:18: error[invalid-argument-type] Argument is incorrect: Expected `DataFrame[Iris]`, found `Literal[42]`
+Found 32 diagnostics

@@ -1,0 +1,12 @@
+probe/p_mro2.py:7:13: note: Revealed type is "def () -> ibis.common.bases.Abstract"
+probe/p_mro2.py:8:13: note: Revealed type is "def () -> ibis.common.bases.Immutable"
+probe/p_mro2.py:9:13: note: Revealed type is "def () -> ibis.common.typing.Coercible"
+probe/p_mro2.py:10:13: note: Revealed type is "def (arg: ibis.expr.operations.core.Node) -> ibis.expr.types.core.Expr"
+probe/p_mro2.py:11:13: note: Revealed type is "def () -> ibis.expr.types.rich.FixedTextJupyterMixin"
+probe/p_mro2.py:19:29: error: Incompatible return value type (got "str", expected "P1")  [return-value]
+probe/p_mro2.py:20:29: error: Incompatible return value type (got "str", expected "P2")  [return-value]
+probe/p_mro2.py:21:29: error: Incompatible return value type (got "str", expected "P3")  [return-value]
+probe/p_mro2.py:22:29: error: Incompatible return value type (got "str", expected "P4")  [return-value]
+probe/p_mro2.py:23:29: error: Incompatible return value type (got "str", expected "P5")  [return-value]
+probe/p_mro2.py:24:29: error: Incompatible return value type (got "str", expected "P6")  [return-value]
+Found 6 errors in 1 file (checked 1 source file)

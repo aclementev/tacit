@@ -1,0 +1,7 @@
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.pyrefly_cache/
+*.parquet
+*.duckdb
+data/

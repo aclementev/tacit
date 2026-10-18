@@ -1,0 +1,16 @@
+probe/p_mypy_var.py
+probe/p_mypy_var.py:12:12 - error: Type "DataFrame[Child]" is not assignable to return type "DataFrame[Parent]"
+    "DataFrame[Child]" is not assignable to "DataFrame[Parent]"
+      Type parameter "S@DataFrame" is invariant, but "Child" is not the same as "Parent" (reportReturnType)
+probe/p_mypy_var.py:15:12 - error: Type "DataFrame[Parent]" is not assignable to return type "DataFrame[Child]"
+    "DataFrame[Parent]" is not assignable to "DataFrame[Child]"
+      Type parameter "S@DataFrame" is invariant, but "Parent" is not the same as "Child" (reportReturnType)
+probe/p_mypy_var.py:18:12 - error: Type "Table" is not assignable to return type "DataFrame[Parent]"
+    "Table" is not assignable to "DataFrame[Parent]" (reportReturnType)
+probe/p_mypy_var.py:31:12 - error: Type "Plain[Child]" is not assignable to return type "Plain[Parent]"
+    "Plain[Child]" is not assignable to "Plain[Parent]"
+      Type parameter "S@Plain" is invariant, but "Child" is not the same as "Parent" (reportReturnType)
+probe/p_mypy_var.py:34:12 - error: Type "Plain[Parent]" is not assignable to return type "Plain[Child]"
+    "Plain[Parent]" is not assignable to "Plain[Child]"
+      Type parameter "S@Plain" is invariant, but "Parent" is not the same as "Child" (reportReturnType)
+5 errors, 0 warnings, 0 informations

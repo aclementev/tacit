@@ -1,0 +1,174 @@
+{
+    "version": "1.1.414",
+    "time": "1792361531931",
+    "generalDiagnostics": [
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/iris_pipeline.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[IrisFeatures]\"\n  \"Table\" is not assignable to \"DataFrame[IrisFeatures]\"",
+            "range": {
+                "start": {
+                    "line": 31,
+                    "character": 11
+                },
+                "end": {
+                    "line": 35,
+                    "character": 5
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/iris_pipeline.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[IrisPrediction]\"\n  \"Table\" is not assignable to \"DataFrame[IrisPrediction]\"",
+            "range": {
+                "start": {
+                    "line": 40,
+                    "character": 11
+                },
+                "end": {
+                    "line": 46,
+                    "character": 5
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/readme_quick_example.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[IrisFeatures]\"\n  \"Table\" is not assignable to \"DataFrame[IrisFeatures]\"",
+            "range": {
+                "start": {
+                    "line": 20,
+                    "character": 11
+                },
+                "end": {
+                    "line": 24,
+                    "character": 5
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/tpch_q1.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[LineItem]\"\n  \"Table\" is not assignable to \"DataFrame[LineItem]\"",
+            "range": {
+                "start": {
+                    "line": 49,
+                    "character": 11
+                },
+                "end": {
+                    "line": 49,
+                    "character": 63
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/tpch_q1.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[PricingSummary]\"\n  \"Table\" is not assignable to \"DataFrame[PricingSummary]\"",
+            "range": {
+                "start": {
+                    "line": 57,
+                    "character": 11
+                },
+                "end": {
+                    "line": 74,
+                    "character": 5
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/tpch_q1.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"sum\" for class \"Column\"\n  Attribute \"sum\" is unknown",
+            "range": {
+                "start": {
+                    "line": 60,
+                    "character": 40
+                },
+                "end": {
+                    "line": 60,
+                    "character": 43
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/tpch_q1.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"sum\" for class \"Column\"\n  Attribute \"sum\" is unknown",
+            "range": {
+                "start": {
+                    "line": 61,
+                    "character": 52
+                },
+                "end": {
+                    "line": 61,
+                    "character": 55
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/tpch_q1.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"mean\" for class \"Column\"\n  Attribute \"mean\" is unknown",
+            "range": {
+                "start": {
+                    "line": 68,
+                    "character": 40
+                },
+                "end": {
+                    "line": 68,
+                    "character": 44
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/tpch_q1.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"mean\" for class \"Column\"\n  Attribute \"mean\" is unknown",
+            "range": {
+                "start": {
+                    "line": 69,
+                    "character": 47
+                },
+                "end": {
+                    "line": 69,
+                    "character": 51
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/examples/tpch_q1.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"mean\" for class \"Column\"\n  Attribute \"mean\" is unknown",
+            "range": {
+                "start": {
+                    "line": 70,
+                    "character": 41
+                },
+                "end": {
+                    "line": 70,
+                    "character": 45
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        }
+    ],
+    "summary": {
+        "filesAnalyzed": 3,
+        "errorCount": 10,
+        "warningCount": 0,
+        "informationCount": 0,
+        "timeInSec": 3.002
+    }
+}
+

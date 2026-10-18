@@ -1,0 +1,6 @@
+ERROR probe/p_hack.py:45:44-45: Returned type `V1[Child]` is not assignable to declared return type `V1[Parent]` [bad-return]
+ERROR probe/p_hack.py:46:44-45: Returned type `V2[Child]` is not assignable to declared return type `V2[Parent]` [bad-return]
+ERROR probe/p_hack.py:47:44-45: Returned type `V3[Child]` is not assignable to declared return type `V3[Parent]` [bad-return]
+ERROR probe/p_hack.py:48:44-45: Returned type `V4[Child]` is not assignable to declared return type `V4[Parent]` [bad-return]
+ERROR probe/p_hack.py:49:44-45: Returned type `V5[Child]` is not assignable to declared return type `V5[Parent]` [bad-return]
+ INFO 5 errors

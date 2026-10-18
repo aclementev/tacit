@@ -1,0 +1,2 @@
+python-version = "3.13"
+project-includes = ["docs_snippets", "tc", "tc_raw", "examples", "snippets", "probe"]

@@ -1,0 +1,14 @@
+probe/p_mro2.py:7:13: info[revealed-type] Revealed type: `<class 'Abstract'>`
+probe/p_mro2.py:8:13: info[revealed-type] Revealed type: `<class 'Immutable'>`
+probe/p_mro2.py:9:13: info[revealed-type] Revealed type: `<class 'Coercible'>`
+probe/p_mro2.py:10:13: info[revealed-type] Revealed type: `<class 'Expr'>`
+probe/p_mro2.py:11:13: info[revealed-type] Revealed type: `<class 'ibis.expr.types.rich.FixedTextJupyterMixin @ /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/rich.py:24:11'> | <class 'ibis.expr.types.rich.FixedTextJupyterMixin @ /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/rich.py:28:11'>`
+probe/p_mro2.py:17:10: warning[unsupported-base] Unsupported class base with type `<class 'ibis.expr.types.rich.FixedTextJupyterMixin @ /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/rich.py:24:11'> | <class 'ibis.expr.types.rich.FixedTextJupyterMixin @ /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/rich.py:28:11'>`
+probe/p_mro2.py:19:29: error[invalid-return-type] Return type does not match returned value: expected `P1`, found `str`
+probe/p_mro2.py:20:29: error[invalid-return-type] Return type does not match returned value: expected `P2`, found `str`
+probe/p_mro2.py:21:29: error[invalid-return-type] Return type does not match returned value: expected `P3`, found `str`
+probe/p_mro2.py:22:29: error[invalid-return-type] Return type does not match returned value: expected `P4`, found `str`
+probe/p_mro2.py:23:29: error[invalid-return-type] Return type does not match returned value: expected `P5`, found `str`
+probe/p_mro2.py:24:29: error[invalid-return-type] Return type does not match returned value: expected `P6`, found `str`
+probe/p_mro2.py:25:35: error[invalid-return-type] Return type does not match returned value: expected `Table`, found `str`
+Found 13 diagnostics

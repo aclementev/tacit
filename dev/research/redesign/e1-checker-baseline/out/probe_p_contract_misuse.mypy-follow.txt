@@ -1,0 +1,2 @@
+probe/p_contract_misuse.py:19:2: error: Value of type variable "S" of "contract" cannot be "int"  [type-var]
+Found 1 error in 1 file (checked 1 source file)

@@ -1,0 +1,4 @@
+[environment]
+python-version = "3.13"
+[src]
+include = ["docs_snippets", "tc", "tc_raw", "examples", "snippets", "probe"]

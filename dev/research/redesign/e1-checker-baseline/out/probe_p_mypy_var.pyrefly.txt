@@ -1,0 +1,6 @@
+ERROR probe/p_mypy_var.py:12:12-14: Returned type `DataFrame[Child]` is not assignable to declared return type `DataFrame[Parent]` [bad-return]
+ERROR probe/p_mypy_var.py:15:12-14: Returned type `DataFrame[Parent]` is not assignable to declared return type `DataFrame[Child]` [bad-return]
+ERROR probe/p_mypy_var.py:31:12-14: Returned type `Plain[Child]` is not assignable to declared return type `Plain[Parent]` [bad-return]
+ERROR probe/p_mypy_var.py:34:12-14: Returned type `Plain[Parent]` is not assignable to declared return type `Plain[Child]` [bad-return]
+ERROR probe/p_mypy_var.py:37:12-14: Returned type `Plain2[Child]` is not assignable to declared return type `Plain2[Parent]` [bad-return]
+ INFO 5 errors

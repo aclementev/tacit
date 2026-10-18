@@ -1,0 +1,2 @@
+docs_snippets/gs_validate.py:29:1: error: Missing return statement  [empty-body]
+Found 1 error in 1 file (checked 23 source files)

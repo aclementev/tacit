@@ -1,0 +1,8 @@
+probe/p_mypy_any.py
+probe/p_mypy_any.py:9:12 - error: Type "DataFrame[Iris]" is not assignable to return type "int"
+    "DataFrame[Iris]" is not assignable to "int" (reportReturnType)
+probe/p_mypy_any.py:13:12 - error: Type "DataFrame[Iris]" is not assignable to return type "str"
+    "DataFrame[Iris]" is not assignable to "str" (reportReturnType)
+probe/p_mypy_any.py:17:12 - error: Type "int" is not assignable to return type "DataFrame[Iris]"
+    "int" is not assignable to "DataFrame[Iris]" (reportReturnType)
+3 errors, 0 warnings, 0 informations

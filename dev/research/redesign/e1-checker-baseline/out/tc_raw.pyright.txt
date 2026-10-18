@@ -1,0 +1,302 @@
+{
+    "version": "1.1.414",
+    "time": "1792361329040",
+    "generalDiagnostics": [
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 26,
+                    "character": 39
+                },
+                "end": {
+                    "line": 26,
+                    "character": 50
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 31,
+                    "character": 39
+                },
+                "end": {
+                    "line": 31,
+                    "character": 50
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 36,
+                    "character": 39
+                },
+                "end": {
+                    "line": 36,
+                    "character": 50
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 44,
+                    "character": 27
+                },
+                "end": {
+                    "line": 44,
+                    "character": 38
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 49,
+                    "character": 39
+                },
+                "end": {
+                    "line": 49,
+                    "character": 50
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 54,
+                    "character": 27
+                },
+                "end": {
+                    "line": 54,
+                    "character": 38
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 59,
+                    "character": 27
+                },
+                "end": {
+                    "line": 59,
+                    "character": 38
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 64,
+                    "character": 27
+                },
+                "end": {
+                    "line": 64,
+                    "character": 38
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[Output]\"\n  \"Table\" is not assignable to \"DataFrame[Output]\"",
+            "range": {
+                "start": {
+                    "line": 87,
+                    "character": 11
+                },
+                "end": {
+                    "line": 87,
+                    "character": 49
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Operator \"+\" not supported for types \"Column\" and \"Column\"",
+            "range": {
+                "start": {
+                    "line": 87,
+                    "character": 27
+                },
+                "end": {
+                    "line": 87,
+                    "character": 38
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Type \"DataFrame[Input]\" is not assignable to return type \"DataFrame[Output]\"\n  \"DataFrame[Input]\" is not assignable to \"DataFrame[Output]\"\n    Type parameter \"S@DataFrame\" is invariant, but \"Input\" is not the same as \"Output\"",
+            "range": {
+                "start": {
+                    "line": 92,
+                    "character": 11
+                },
+                "end": {
+                    "line": 92,
+                    "character": 25
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_contract.py",
+            "severity": "error",
+            "message": "Type \"DataFrame[Input]\" is not assignable to return type \"DataFrame[Output]\"\n  \"DataFrame[Input]\" is not assignable to \"DataFrame[Output]\"\n    Type parameter \"S@DataFrame\" is invariant, but \"Input\" is not the same as \"Output\"",
+            "range": {
+                "start": {
+                    "line": 98,
+                    "character": 11
+                },
+                "end": {
+                    "line": 98,
+                    "character": 12
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_invariance.py",
+            "severity": "error",
+            "message": "Type \"DataFrame[IrisFeatures]\" is not assignable to return type \"DataFrame[Iris]\"\n  \"DataFrame[IrisFeatures]\" is not assignable to \"DataFrame[Iris]\"\n    Type parameter \"S@DataFrame\" is invariant, but \"IrisFeatures\" is not the same as \"Iris\"",
+            "range": {
+                "start": {
+                    "line": 19,
+                    "character": 11
+                },
+                "end": {
+                    "line": 19,
+                    "character": 13
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_invariance.py",
+            "severity": "error",
+            "message": "Type \"DataFrame[Iris]\" is not assignable to return type \"DataFrame[IrisFeatures]\"\n  \"DataFrame[Iris]\" is not assignable to \"DataFrame[IrisFeatures]\"\n    Type parameter \"S@DataFrame\" is invariant, but \"Iris\" is not the same as \"IrisFeatures\"",
+            "range": {
+                "start": {
+                    "line": 23,
+                    "character": 11
+                },
+                "end": {
+                    "line": 23,
+                    "character": 13
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_safety.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[Iris]\"\n  \"Table\" is not assignable to \"DataFrame[Iris]\"",
+            "range": {
+                "start": {
+                    "line": 25,
+                    "character": 11
+                },
+                "end": {
+                    "line": 25,
+                    "character": 14
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_safety.py",
+            "severity": "error",
+            "message": "Operator \"/\" not supported for types \"Column\" and \"float\"",
+            "range": {
+                "start": {
+                    "line": 29,
+                    "character": 35
+                },
+                "end": {
+                    "line": 29,
+                    "character": 56
+                }
+            },
+            "rule": "reportOperatorIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_safety.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[IrisFeatures]\"\n  \"Table\" is not assignable to \"DataFrame[IrisFeatures]\"",
+            "range": {
+                "start": {
+                    "line": 30,
+                    "character": 11
+                },
+                "end": {
+                    "line": 30,
+                    "character": 17
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/tc_raw/check_transparent.py",
+            "severity": "error",
+            "message": "Operator \">\" not supported for types \"Column\" and \"float\"",
+            "range": {
+                "start": {
+                    "line": 26,
+                    "character": 21
+                },
+                "end": {
+                    "line": 26,
+                    "character": 42
+                }
+            },
+            "rule": "reportOperatorIssue"
+        }
+    ],
+    "summary": {
+        "filesAnalyzed": 4,
+        "errorCount": 18,
+        "warningCount": 0,
+        "informationCount": 0,
+        "timeInSec": 1.108
+    }
+}
+

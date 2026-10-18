@@ -1,0 +1,15 @@
+tc_raw/check_transparent.py:3:1: error: Skipping analyzing "ibis": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_transparent.py:4:1: error: Skipping analyzing "ibis.expr.types": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_transparent.py:4:1: error: Skipping analyzing "ibis.expr": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_transparent.py:6:1: error: Skipping analyzing "tacit": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_safety.py:3:1: error: Skipping analyzing "ibis.expr.types": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_safety.py:3:1: error: Skipping analyzing "ibis.expr": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_safety.py:3:1: error: Skipping analyzing "ibis": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_safety.py:5:1: error: Skipping analyzing "tacit": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_invariance.py:3:1: error: Skipping analyzing "tacit": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_contract.py:7:1: error: Skipping analyzing "ibis.expr.types": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_contract.py:7:1: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+tc_raw/check_contract.py:7:1: error: Skipping analyzing "ibis.expr": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_contract.py:7:1: error: Skipping analyzing "ibis": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+tc_raw/check_contract.py:9:1: error: Skipping analyzing "tacit": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+Found 13 errors in 4 files (checked 4 source files)

@@ -1,0 +1,8 @@
+probe/p_repro_mixin.py:15:12: warning[unsupported-base] Unsupported class base with type `<class 'probe.p_repro_mixin.M @ probe/p_repro_mixin.py:7:11'> | <class 'probe.p_repro_mixin.M @ probe/p_repro_mixin.py:11:11'>`
+probe/p_repro_mixin.py:16:38: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `int`
+probe/p_repro_mixin.py:23:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_repro_mixin.py:24:17: info[revealed-type] Revealed type: `Unknown`
+probe/p_repro_mixin.py:36:38: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `int`
+probe/p_repro_mixin.py:43:17: info[revealed-type] Revealed type: `int`
+probe/p_repro_mixin.py:47:12: error[invalid-return-type] Return type does not match returned value: expected `D2`, found `Base2`
+Found 7 diagnostics

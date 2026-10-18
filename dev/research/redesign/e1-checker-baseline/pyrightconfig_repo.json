@@ -1,0 +1,1 @@
+{ "pythonVersion": "3.13", "include": ["docs_snippets", "tc", "tc_raw", "examples", "snippets", "probe"], "reportPrivateImportUsage": false, "reportOperatorIssue": false, "reportUnnecessaryTypeIgnoreComment": true }

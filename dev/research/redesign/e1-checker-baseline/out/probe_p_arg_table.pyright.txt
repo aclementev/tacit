@@ -1,0 +1,4 @@
+probe/p_arg_table.py
+probe/p_arg_table.py:13:11 - error: Argument of type "Table" cannot be assigned to parameter "df" of type "DataFrame[Iris]" in function "needs"
+    "Table" is not assignable to "DataFrame[Iris]" (reportArgumentType)
+1 error, 0 warnings, 0 informations

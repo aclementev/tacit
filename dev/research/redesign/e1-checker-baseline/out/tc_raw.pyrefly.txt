@@ -1,0 +1,4 @@
+ERROR tc_raw/check_contract.py:93:12-26: Returned type `DataFrame[Input]` is not assignable to declared return type `DataFrame[Output]` [bad-return]
+ERROR tc_raw/check_invariance.py:20:12-14: Returned type `DataFrame[IrisFeatures]` is not assignable to declared return type `DataFrame[Iris]` [bad-return]
+ERROR tc_raw/check_invariance.py:24:12-14: Returned type `DataFrame[Iris]` is not assignable to declared return type `DataFrame[IrisFeatures]` [bad-return]
+ INFO 3 errors

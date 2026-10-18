@@ -1,0 +1,38 @@
+##### pyright  examples: 22 errors
+  examples/iris_pipeline.py:32: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  examples/iris_pipeline.py:33: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  examples/iris_pipeline.py:34: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  examples/iris_pipeline.py:35: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+  examples/iris_pipeline.py:41: Type "Table" is not assignable to return type "DataFrame[IrisPrediction]" |   "Table" is not assignable to "DataFrame[IrisPrediction]" (reportReturnType)
+  examples/iris_pipeline.py:43: Operator "<" not supported for types "Column" and "float" (reportOperatorIssue)
+  examples/iris_pipeline.py:44: Operator "<" not supported for types "Column" and "float" (reportOperatorIssue)
+  examples/readme_quick_example.py:21: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  examples/readme_quick_example.py:22: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  examples/readme_quick_example.py:23: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  examples/readme_quick_example.py:24: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+  examples/tpch_q1.py:50: Operator "<=" not supported for types "Column" and "Literal['1998-09-02']" (reportOperatorIssue)
+  examples/tpch_q1.py:50: Type "Table" is not assignable to return type "DataFrame[LineItem]" |   "Table" is not assignable to "DataFrame[LineItem]" (reportReturnType)
+  examples/tpch_q1.py:58: Type "Table" is not assignable to return type "DataFrame[PricingSummary]" |   "Table" is not assignable to "DataFrame[PricingSummary]" (reportReturnType)
+  examples/tpch_q1.py:61: Cannot access attribute "sum" for class "Column" |   Attribute "sum" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:62: Cannot access attribute "sum" for class "Column" |   Attribute "sum" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:63: Operator "-" not supported for types "Literal[1]" and "Column" (reportOperatorIssue)
+  examples/tpch_q1.py:66: Operator "-" not supported for types "Literal[1]" and "Column" (reportOperatorIssue)
+  examples/tpch_q1.py:67: Operator "+" not supported for types "Literal[1]" and "Column" (reportOperatorIssue)
+  examples/tpch_q1.py:69: Cannot access attribute "mean" for class "Column" |   Attribute "mean" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:70: Cannot access attribute "mean" for class "Column" |   Attribute "mean" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:71: Cannot access attribute "mean" for class "Column" |   Attribute "mean" is unknown (reportAttributeAccessIssue)
+##### pyright-repo  examples: 10 errors
+  examples/iris_pipeline.py:32: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  examples/iris_pipeline.py:41: Type "Table" is not assignable to return type "DataFrame[IrisPrediction]" |   "Table" is not assignable to "DataFrame[IrisPrediction]" (reportReturnType)
+  examples/readme_quick_example.py:21: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  examples/tpch_q1.py:50: Type "Table" is not assignable to return type "DataFrame[LineItem]" |   "Table" is not assignable to "DataFrame[LineItem]" (reportReturnType)
+  examples/tpch_q1.py:58: Type "Table" is not assignable to return type "DataFrame[PricingSummary]" |   "Table" is not assignable to "DataFrame[PricingSummary]" (reportReturnType)
+  examples/tpch_q1.py:61: Cannot access attribute "sum" for class "Column" |   Attribute "sum" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:62: Cannot access attribute "sum" for class "Column" |   Attribute "sum" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:69: Cannot access attribute "mean" for class "Column" |   Attribute "mean" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:70: Cannot access attribute "mean" for class "Column" |   Attribute "mean" is unknown (reportAttributeAccessIssue)
+  examples/tpch_q1.py:71: Cannot access attribute "mean" for class "Column" |   Attribute "mean" is unknown (reportAttributeAccessIssue)
+##### mypy-tacit-typed  examples: 0 errors
+##### mypy-follow  examples: 0 errors
+##### ty  examples: 0 errors
+##### pyrefly  examples: 0 errors

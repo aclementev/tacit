@@ -1,0 +1,2 @@
+probe/p_mypy_any.py:17:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[Iris]`, found `int`
+Found 1 diagnostic

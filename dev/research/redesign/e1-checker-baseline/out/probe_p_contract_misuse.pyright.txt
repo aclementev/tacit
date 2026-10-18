@@ -1,0 +1,9 @@
+probe/p_contract_misuse.py
+probe/p_contract_misuse.py:14:2 - error: Argument of type "(df: DataFrame[Input]) -> int" cannot be assigned to parameter of type "(**P@contract) -> Table"
+    Type "(df: DataFrame[Input]) -> int" is not assignable to type "(**P@contract) -> Table"
+      Function return type "int" is incompatible with type "Table"
+        "int" is not assignable to "Table" (reportArgumentType)
+probe/p_contract_misuse.py:19:19 - error: Argument of type "type[int]" cannot be assigned to parameter "returns" of type "type[S@contract]" in function "contract"
+    Type "int" is not assignable to type "Schema"
+      "int" is not assignable to "Schema" (reportArgumentType)
+2 errors, 0 warnings, 0 informations

@@ -1,0 +1,47 @@
+probe/p_reveal.py
+probe/p_reveal.py:20:17 - information: Type of "df" is "DataFrame[Iris]"
+probe/p_reveal.py:21:17 - information: Type of "df.sepal_length" is "Column"
+probe/p_reveal.py:22:17 - information: Type of "df.sepal_lenght" is "Column"
+probe/p_reveal.py:23:17 - information: Type of "df["sepal_length"]" is "Column"
+probe/p_reveal.py:24:17 - error: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+probe/p_reveal.py:24:17 - information: Type of "df.sepal_length / df.sepal_width" is "Unknown"
+probe/p_reveal.py:25:17 - error: Operator "+" not supported for types "Column" and "Column" (reportOperatorIssue)
+probe/p_reveal.py:25:17 - information: Type of "df.sepal_length + df.sepal_width" is "Unknown"
+probe/p_reveal.py:26:17 - error: Operator ">" not supported for types "Column" and "Literal[5]" (reportOperatorIssue)
+probe/p_reveal.py:26:17 - information: Type of "df.sepal_length > 5" is "Unknown"
+probe/p_reveal.py:27:17 - error: Operator "*" not supported for types "Column" and "float" (reportOperatorIssue)
+probe/p_reveal.py:27:17 - information: Type of "df.sepal_length * 2" is "Unknown"
+probe/p_reveal.py:28:17 - information: Type of "df.mutate(x=df.sepal_length)" is "Table"
+probe/p_reveal.py:29:17 - information: Type of "df.filter(df.sepal_length > 5)" is "Table"
+probe/p_reveal.py:29:27 - error: Operator ">" not supported for types "Column" and "Literal[5]" (reportOperatorIssue)
+probe/p_reveal.py:30:17 - information: Type of "df.species.upper()" is "Unknown"
+probe/p_reveal.py:30:28 - error: Cannot access attribute "upper" for class "Column"
+    Attribute "upper" is unknown (reportAttributeAccessIssue)
+probe/p_reveal.py:31:17 - information: Type of "df.sepal_length.sum()" is "Unknown"
+probe/p_reveal.py:31:33 - error: Cannot access attribute "sum" for class "Column"
+    Attribute "sum" is unknown (reportAttributeAccessIssue)
+probe/p_reveal.py:32:17 - information: Type of "Iris.cast(raw)" is "DataFrame[Iris]"
+probe/p_reveal.py:33:17 - information: Type of "Iris.parse(raw)" is "DataFrame[Iris]"
+probe/p_reveal.py:34:17 - information: Type of "IrisFeatures.cast(raw)" is "DataFrame[IrisFeatures]"
+probe/p_reveal.py:35:17 - information: Type of "raw" is "Table"
+probe/p_reveal.py:36:17 - information: Type of "raw.sepal_length" is "Column"
+probe/p_reveal.py:59:13 - information: Type of "bare" is "(df: DataFrame[Iris], n: int = 1) -> DataFrame[IrisFeatures]"
+probe/p_reveal.py:60:13 - information: Type of "bare_validate" is "(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]"
+probe/p_reveal.py:61:13 - information: Type of "with_returns" is "(df: DataFrame[Iris], n: int = 1) -> DataFrame[IrisFeatures]"
+probe/p_reveal.py:62:13 - information: Type of "with_returns_validate" is "(df: DataFrame[Iris]) -> DataFrame[IrisFeatures]"
+probe/p_reveal.py:63:13 - information: Type of "contract" is "Overload[(fn: (**P@contract) -> R@contract, /) -> ((**P@contract) -> R@contract), (*, returns: type[S@contract], validate: bool = ...) -> ((((**P@contract) -> Table)) -> ((**P@contract) -> DataFrame[S@contract])), (*, validate: bool = ...) -> ((((**P@contract) -> R@contract)) -> ((**P@contract) -> R@contract))]"
+probe/p_reveal.py:64:13 - information: Type of "Iris" is "type[Iris]"
+probe/p_reveal.py:65:13 - information: Type of "DataFrame" is "type[DataFrame[Unknown]]"
+probe/p_reveal.py:66:13 - information: Type of "ir.Table" is "type[Table]"
+probe/p_reveal.py:70:17 - information: Type of "bare(df)" is "DataFrame[IrisFeatures]"
+probe/p_reveal.py:71:17 - information: Type of "with_returns(df)" is "DataFrame[IrisFeatures]"
+probe/p_reveal.py:72:17 - information: Type of "with_returns(df, n=2)" is "DataFrame[IrisFeatures]"
+probe/p_reveal.py:73:10 - error: Argument of type "Literal['not a df']" cannot be assigned to parameter "df" of type "DataFrame[Iris]"
+    "Literal['not a df']" is not assignable to "DataFrame[Iris]" (reportArgumentType)
+probe/p_reveal.py:74:16 - error: Argument of type "Literal['x']" cannot be assigned to parameter "n" of type "int"
+    "Literal['x']" is not assignable to "int" (reportArgumentType)
+probe/p_reveal.py:75:24 - error: Argument of type "Literal['x']" cannot be assigned to parameter "n" of type "int"
+    "Literal['x']" is not assignable to "int" (reportArgumentType)
+probe/p_reveal.py:76:18 - error: Argument of type "Literal[42]" cannot be assigned to parameter "df" of type "DataFrame[Iris]"
+    "Literal[42]" is not assignable to "DataFrame[Iris]" (reportArgumentType)
+11 errors, 0 warnings, 28 informations

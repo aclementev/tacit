@@ -1,0 +1,11 @@
+ INFO probe/p_mro2.py:7:12-22: revealed type: type[Abstract] [reveal-type]
+ INFO probe/p_mro2.py:8:12-23: revealed type: type[Immutable] [reveal-type]
+ INFO probe/p_mro2.py:9:12-23: revealed type: type[Coercible] [reveal-type]
+ INFO probe/p_mro2.py:10:12-18: revealed type: type[Expr] [reveal-type]
+ INFO probe/p_mro2.py:11:12-35: revealed type: type[ibis.expr.types.rich.FixedTextJupyterMixin@24:11-32] | type[ibis.expr.types.rich.FixedTextJupyterMixin@28:11-32] [reveal-type]
+ERROR probe/p_mro2.py:17:10-31: Invalid base class: `ibis.expr.types.rich.FixedTextJupyterMixin@24:11-32 | ibis.expr.types.rich.FixedTextJupyterMixin@28:11-32` [invalid-inheritance]
+ERROR probe/p_mro2.py:19:29-30: Returned type `str` is not assignable to declared return type `P1` [bad-return]
+ERROR probe/p_mro2.py:20:29-30: Returned type `str` is not assignable to declared return type `P2` [bad-return]
+ERROR probe/p_mro2.py:21:29-30: Returned type `str` is not assignable to declared return type `P3` [bad-return]
+ERROR probe/p_mro2.py:22:29-30: Returned type `str` is not assignable to declared return type `P4` [bad-return]
+ INFO 5 errors

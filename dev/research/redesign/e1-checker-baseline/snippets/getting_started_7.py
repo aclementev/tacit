@@ -1,0 +1,3 @@
+@tacit.contract(validate=True)
+def ingest(raw: tacit.DataFrame[Iris]) -> tacit.DataFrame[IrisFeatures]:
+    ...

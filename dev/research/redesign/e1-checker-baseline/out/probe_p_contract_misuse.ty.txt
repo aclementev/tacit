@@ -1,0 +1,3 @@
+probe/p_contract_misuse.py:14:1: error[invalid-argument-type] Argument is incorrect: Expected `(...) -> Table`, found `def bad_returns_int(df: DataFrame[Input]) -> int`
+probe/p_contract_misuse.py:19:11: error[invalid-argument-type] Argument to function `contract` is incorrect: Argument type `int` does not satisfy upper bound `Schema` of type variable `S`
+Found 2 diagnostics

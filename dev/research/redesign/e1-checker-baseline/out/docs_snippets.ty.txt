@@ -1,0 +1,4 @@
+docs_snippets/contracts_validate.py:30:23: error[invalid-argument-type] Argument to bound method `Table.mutate` is incorrect: Expected `Value | Deferred`, found `EllipsisType`
+docs_snippets/dataframes_wrongschema.py:32:16: error[invalid-argument-type] Argument to function `needs_features` is incorrect: Expected `DataFrame[IrisFeatures]`, found `DataFrame[Iris]`
+docs_snippets/gs_validate.py:29:43: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `DataFrame[IrisFeatures]`
+Found 3 diagnostics

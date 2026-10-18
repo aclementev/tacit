@@ -1,0 +1,5 @@
+probe/p_hack.py:23:52: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `S@V2`
+probe/p_hack.py:36:52: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `S@V4`
+probe/p_hack.py:46:44: error[invalid-return-type] Return type does not match returned value: expected `V2[Parent]`, found `V2[Child]`
+probe/p_hack.py:47:44: error[invalid-return-type] Return type does not match returned value: expected `V3[Parent]`, found `V3[Child]`
+Found 4 diagnostics

@@ -1,0 +1,4 @@
+tc_raw/check_contract.py:93:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[Output]`, found `DataFrame[Input]`
+tc_raw/check_invariance.py:20:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[Iris]`, found `DataFrame[IrisFeatures]`
+tc_raw/check_invariance.py:24:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[IrisFeatures]`, found `DataFrame[Iris]`
+Found 3 diagnostics

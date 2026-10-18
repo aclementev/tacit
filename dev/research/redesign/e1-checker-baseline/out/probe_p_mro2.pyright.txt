@@ -1,0 +1,21 @@
+probe/p_mro2.py
+probe/p_mro2.py:7:13 - information: Type of "Abstract" is "type[Abstract]"
+probe/p_mro2.py:8:13 - information: Type of "Immutable" is "type[Immutable]"
+probe/p_mro2.py:9:13 - information: Type of "Coercible" is "type[Coercible]"
+probe/p_mro2.py:10:13 - information: Type of "Expr" is "type[Expr]"
+probe/p_mro2.py:11:13 - information: Type of "FixedTextJupyterMixin" is "type[FixedTextJupyterMixin]"
+probe/p_mro2.py:19:29 - error: Type "str" is not assignable to return type "P1"
+    "str" is not assignable to "P1" (reportReturnType)
+probe/p_mro2.py:20:29 - error: Type "str" is not assignable to return type "P2"
+    "str" is not assignable to "P2" (reportReturnType)
+probe/p_mro2.py:21:29 - error: Type "str" is not assignable to return type "P3"
+    "str" is not assignable to "P3" (reportReturnType)
+probe/p_mro2.py:22:29 - error: Type "str" is not assignable to return type "P4"
+    "str" is not assignable to "P4" (reportReturnType)
+probe/p_mro2.py:23:29 - error: Type "str" is not assignable to return type "P5"
+    "str" is not assignable to "P5" (reportReturnType)
+probe/p_mro2.py:24:29 - error: Type "str" is not assignable to return type "P6"
+    "str" is not assignable to "P6" (reportReturnType)
+probe/p_mro2.py:25:35 - error: Type "str" is not assignable to return type "Table"
+    "str" is not assignable to "Table" (reportReturnType)
+7 errors, 0 warnings, 5 informations

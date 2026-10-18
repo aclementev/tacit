@@ -1,0 +1,21 @@
+customer_id,name,email,country,signup_date
+1,Ann Doe,ann1@example.com,DE,2023-06-15
+2,Bob Doe,bob2@example.com,US,2023-07-22
+3,Cleo Doe,cleo3@example.com,GB,2023-02-07
+4,Dan Doe,dan4@example.com,FR,2023-02-18
+5,Eve Doe,eve5@example.com,US,2023-10-26
+6,Finn Doe,finn6@example.com,DE,2023-09-17
+7,Gus Doe,gus7@example.com,US,2023-01-20
+8,Hana Doe,hana8@example.com,ES,2023-08-11
+9,Ivy Doe,ivy9@example.com,DE,2023-02-05
+10,Jon Doe,jon10@example.com,GB,2023-02-16
+11,Kim Doe,kim11@example.com,US,2023-08-06
+12,Lee Doe,lee12@example.com,US,2023-10-17
+13,Mia Doe,mia13@example.com,GB,2023-04-25
+14,Ned Doe,ned14@example.com,GB,2023-02-01
+15,Oli Doe,oli15@example.com,ES,2023-10-27
+16,Pia Doe,pia16@example.com,DE,2023-01-26
+17,Quin Doe,quin17@example.com,GB,2023-01-24
+18,Rae Doe,rae18@example.com,FR,2023-03-10
+19,Sam Doe,sam19@example.com,DE,2023-08-03
+20,Tia Doe,tia20@example.com,US,2023-10-04

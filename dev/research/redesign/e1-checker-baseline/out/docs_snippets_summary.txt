@@ -1,0 +1,44 @@
+##### pyright  docs_snippets: 25 errors
+  docs_snippets/contracts_cast.py:30: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_cast.py:31: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_cast.py:32: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_contract.py:30: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  docs_snippets/contracts_contract.py:31: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_contract.py:32: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_contract.py:33: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_returns.py:31: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_returns.py:32: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_returns.py:33: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/contracts_validate.py:30: Argument of type "EllipsisType" cannot be assigned to parameter "exprs" of type "Value | Deferred" in function "mutate" |   Type "EllipsisType" is not assignable to type "Value | Deferred" |     "Ellips
+  docs_snippets/contracts_validate.py:30: Type "Table" is not assignable to return type "DataFrame[Iris]" |   "Table" is not assignable to "DataFrame[Iris]" (reportReturnType)
+  docs_snippets/dataframes_mutate.py:29: Operator "*" not supported for types "Column" and "Literal[2]" (reportOperatorIssue)
+  docs_snippets/dataframes_wrongschema.py:32: Argument of type "DataFrame[Iris]" cannot be assigned to parameter "df" of type "DataFrame[IrisFeatures]" in function "needs_features" |   "DataFrame[Iris]" is not assignable to "DataFrame[IrisFeatures]
+  docs_snippets/gs_cast.py:30: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_cast.py:31: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_cast.py:32: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_contract.py:30: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  docs_snippets/gs_contract.py:31: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_contract.py:32: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_contract.py:33: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_full.py:23: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  docs_snippets/gs_full.py:24: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_full.py:25: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  docs_snippets/gs_full.py:26: Operator "*" not supported for types "Column" and "Column" (reportOperatorIssue)
+##### pyright-repo  docs_snippets: 6 errors
+  docs_snippets/contracts_contract.py:30: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  docs_snippets/contracts_validate.py:30: Argument of type "EllipsisType" cannot be assigned to parameter "exprs" of type "Value | Deferred" in function "mutate" |   Type "EllipsisType" is not assignable to type "Value | Deferred" |     "Ellips
+  docs_snippets/contracts_validate.py:30: Type "Table" is not assignable to return type "DataFrame[Iris]" |   "Table" is not assignable to "DataFrame[Iris]" (reportReturnType)
+  docs_snippets/dataframes_wrongschema.py:32: Argument of type "DataFrame[Iris]" cannot be assigned to parameter "df" of type "DataFrame[IrisFeatures]" in function "needs_features" |   "DataFrame[Iris]" is not assignable to "DataFrame[IrisFeatures]
+  docs_snippets/gs_contract.py:30: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+  docs_snippets/gs_full.py:23: Type "Table" is not assignable to return type "DataFrame[IrisFeatures]" |   "Table" is not assignable to "DataFrame[IrisFeatures]" (reportReturnType)
+##### mypy-tacit-typed  docs_snippets: 1 errors
+  docs_snippets/gs_validate.py:29: Missing return statement  [empty-body]
+##### mypy-follow  docs_snippets: 1 errors
+  docs_snippets/gs_validate.py:29: Missing return statement  [empty-body]
+##### ty  docs_snippets: 3 errors
+  docs_snippets/contracts_validate.py:30: Argument to bound method `Table.mutate` is incorrect: Expected `Value | Deferred`, found `EllipsisType` (invalid-argument-type)
+  docs_snippets/dataframes_wrongschema.py:32: Argument to function `needs_features` is incorrect: Expected `DataFrame[IrisFeatures]`, found `DataFrame[Iris]` (invalid-argument-type)
+  docs_snippets/gs_validate.py:29: Function always implicitly returns `None`, which is not assignable to return type `DataFrame[IrisFeatures]` (empty-body)
+##### pyrefly  docs_snippets: 2 errors
+  docs_snippets/contracts_validate.py:30: Argument `EllipsisType` is not assignable to parameter `*exprs` with type `Deferred | Value` in function `ibis.expr.types.relations.Table.mutate` [bad-argument-type]
+  docs_snippets/dataframes_wrongschema.py:32: Argument `DataFrame[Iris]` is not assignable to parameter `df` with type `DataFrame[IrisFeatures]` in function `needs_features` [bad-argument-type]

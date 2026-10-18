@@ -1,0 +1,9 @@
+probe/p_repro_mixin.py
+probe/p_repro_mixin.py:11:11 - error: Class declaration "M" is obscured by a declaration of the same name (reportRedeclaration)
+probe/p_repro_mixin.py:15:12 - error: Argument to class must be a base class (reportGeneralTypeIssues)
+probe/p_repro_mixin.py:23:17 - information: Type of "d.x" is "Unknown"
+probe/p_repro_mixin.py:24:17 - information: Type of "b.x" is "Unknown"
+probe/p_repro_mixin.py:43:17 - information: Type of "d.x" is "int"
+probe/p_repro_mixin.py:47:12 - error: Type "Base2" is not assignable to return type "D2"
+    "Base2" is not assignable to "D2" (reportReturnType)
+3 errors, 0 warnings, 3 informations

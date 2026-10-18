@@ -1,0 +1,6 @@
+probe/p_mypy_var.py:12:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[Parent]`, found `DataFrame[Child]`
+probe/p_mypy_var.py:15:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[Child]`, found `DataFrame[Parent]`
+probe/p_mypy_var.py:25:52: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `S@Plain`
+probe/p_mypy_var.py:31:12: error[invalid-return-type] Return type does not match returned value: expected `Plain[Parent]`, found `Plain[Child]`
+probe/p_mypy_var.py:34:12: error[invalid-return-type] Return type does not match returned value: expected `Plain[Child]`, found `Plain[Parent]`
+Found 5 diagnostics

@@ -1,0 +1,6 @@
+ERROR probe/p_repro_mixin.py:15:12-13: Invalid base class: `probe.p_repro_mixin.M@7:11-12 | probe.p_repro_mixin.M@11:11-12` [invalid-inheritance]
+ INFO probe/p_repro_mixin.py:23:16-21: revealed type: Unknown [reveal-type]
+ INFO probe/p_repro_mixin.py:24:16-21: revealed type: Unknown [reveal-type]
+ INFO probe/p_repro_mixin.py:43:16-21: revealed type: int [reveal-type]
+ERROR probe/p_repro_mixin.py:47:12-13: Returned type `Base2` is not assignable to declared return type `D2` [bad-return]
+ INFO 2 errors

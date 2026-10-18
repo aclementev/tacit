@@ -1,0 +1,9 @@
+probe/p_repro_mixin.py:11:5: error: Name "M" already defined on line 7  [no-redef]
+probe/p_repro_mixin.py:16:5: error: Missing return statement  [empty-body]
+probe/p_repro_mixin.py:23:17: note: Revealed type is "int"
+probe/p_repro_mixin.py:24:17: note: Revealed type is "int"
+probe/p_repro_mixin.py:28:12: error: Incompatible return value type (got "Base", expected "D")  [return-value]
+probe/p_repro_mixin.py:36:5: error: Missing return statement  [empty-body]
+probe/p_repro_mixin.py:43:17: note: Revealed type is "int"
+probe/p_repro_mixin.py:47:12: error: Incompatible return value type (got "Base2", expected "D2")  [return-value]
+Found 5 errors in 1 file (checked 1 source file)

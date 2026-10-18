@@ -1,0 +1,4 @@
+probe/p_mypy_var.py:25:5: error: Missing return statement  [empty-body]
+probe/p_mypy_var.py:31:12: error: Incompatible return value type (got "Plain[Child]", expected "Plain[Parent]")  [return-value]
+probe/p_mypy_var.py:34:12: error: Incompatible return value type (got "Plain[Parent]", expected "Plain[Child]")  [return-value]
+Found 3 errors in 1 file (checked 1 source file)

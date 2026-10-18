@@ -1,0 +1,33 @@
+probe/p_reveal.py:20:17: note: Revealed type is "tacit.schema.DataFrame[p_reveal.Iris]"
+probe/p_reveal.py:21:17: note: Revealed type is "Any"
+probe/p_reveal.py:22:17: note: Revealed type is "Any"
+probe/p_reveal.py:23:17: note: Revealed type is "Any"
+probe/p_reveal.py:24:17: note: Revealed type is "Any"
+probe/p_reveal.py:25:17: note: Revealed type is "Any"
+probe/p_reveal.py:26:17: note: Revealed type is "Any"
+probe/p_reveal.py:27:17: note: Revealed type is "Any"
+probe/p_reveal.py:28:17: note: Revealed type is "Any"
+probe/p_reveal.py:29:17: note: Revealed type is "Any"
+probe/p_reveal.py:30:17: note: Revealed type is "Any"
+probe/p_reveal.py:31:17: note: Revealed type is "Any"
+probe/p_reveal.py:32:17: note: Revealed type is "tacit.schema.DataFrame[p_reveal.Iris]"
+probe/p_reveal.py:33:17: note: Revealed type is "tacit.schema.DataFrame[p_reveal.Iris]"
+probe/p_reveal.py:34:17: note: Revealed type is "tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:35:17: note: Revealed type is "Any"
+probe/p_reveal.py:36:17: note: Revealed type is "Any"
+probe/p_reveal.py:59:13: note: Revealed type is "def (df: tacit.schema.DataFrame[p_reveal.Iris], n: int =) -> tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:60:13: note: Revealed type is "def (df: tacit.schema.DataFrame[p_reveal.Iris]) -> tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:61:13: note: Revealed type is "def (df: tacit.schema.DataFrame[p_reveal.Iris], n: int =) -> tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:62:13: note: Revealed type is "def (df: tacit.schema.DataFrame[p_reveal.Iris]) -> tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:63:13: note: Revealed type is "Overload(def [P, R] (def (*P.args, **P.kwargs) -> R) -> def (*P.args, **P.kwargs) -> R, def [S <: tacit.schema.Schema] (*, returns: type[S], validate: bool =) -> def [P] (def (*P.args, **P.kwargs) -> Any) -> def (*P.args, **P.kwargs) -> tacit.schema.DataFrame[S], def (*, validate: bool =) -> def [P, R] (def (*P.args, **P.kwargs) -> R) -> def (*P.args, **P.kwargs) -> R)"
+probe/p_reveal.py:64:13: note: Revealed type is "def () -> p_reveal.Iris"
+probe/p_reveal.py:65:13: note: Revealed type is "def [S <: tacit.schema.Schema] (*_args: Any, **_kwds: Any) -> tacit.schema.DataFrame[S]"
+probe/p_reveal.py:66:13: note: Revealed type is "Any"
+probe/p_reveal.py:70:17: note: Revealed type is "tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:71:17: note: Revealed type is "tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:72:17: note: Revealed type is "tacit.schema.DataFrame[p_reveal.IrisFeatures]"
+probe/p_reveal.py:73:10: error: Argument 1 to "bare" has incompatible type "str"; expected "DataFrame[Iris]"  [arg-type]
+probe/p_reveal.py:74:16: error: Argument "n" to "bare" has incompatible type "str"; expected "int"  [arg-type]
+probe/p_reveal.py:75:24: error: Argument "n" to "with_returns" has incompatible type "str"; expected "int"  [arg-type]
+probe/p_reveal.py:76:18: error: Argument 1 to "with_returns" has incompatible type "int"; expected "DataFrame[Iris]"  [arg-type]
+Found 4 errors in 1 file (checked 1 source file)

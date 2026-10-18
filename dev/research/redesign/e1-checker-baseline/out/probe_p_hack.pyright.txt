@@ -1,0 +1,14 @@
+probe/p_hack.py
+probe/p_hack.py:46:44 - error: Type "V2[Child]" is not assignable to return type "V2[Parent]"
+    "V2[Child]" is not assignable to "V2[Parent]"
+      Type parameter "S@V2" is invariant, but "Child" is not the same as "Parent" (reportReturnType)
+probe/p_hack.py:47:44 - error: Type "V3[Child]" is not assignable to return type "V3[Parent]"
+    "V3[Child]" is not assignable to "V3[Parent]"
+      Type parameter "T@V3" is invariant, but "Child" is not the same as "Parent" (reportReturnType)
+probe/p_hack.py:48:44 - error: Type "V4[Child]" is not assignable to return type "V4[Parent]"
+    "V4[Child]" is not assignable to "V4[Parent]"
+      Type parameter "S@V4" is invariant, but "Child" is not the same as "Parent" (reportReturnType)
+probe/p_hack.py:49:44 - error: Type "V5[Child]" is not assignable to return type "V5[Parent]"
+    "V5[Child]" is not assignable to "V5[Parent]"
+      Type parameter "T@V5" is invariant, but "Child" is not the same as "Parent" (reportReturnType)
+4 errors, 0 warnings, 0 informations

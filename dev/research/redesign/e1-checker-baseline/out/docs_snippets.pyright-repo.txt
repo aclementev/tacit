@@ -1,0 +1,110 @@
+{
+    "version": "1.1.414",
+    "time": "1792361703442",
+    "generalDiagnostics": [
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/docs_snippets/contracts_contract.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[IrisFeatures]\"\n  \"Table\" is not assignable to \"DataFrame[IrisFeatures]\"",
+            "range": {
+                "start": {
+                    "line": 29,
+                    "character": 11
+                },
+                "end": {
+                    "line": 33,
+                    "character": 5
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/docs_snippets/contracts_validate.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[Iris]\"\n  \"Table\" is not assignable to \"DataFrame[Iris]\"",
+            "range": {
+                "start": {
+                    "line": 29,
+                    "character": 11
+                },
+                "end": {
+                    "line": 29,
+                    "character": 26
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/docs_snippets/contracts_validate.py",
+            "severity": "error",
+            "message": "Argument of type \"EllipsisType\" cannot be assigned to parameter \"exprs\" of type \"Value | Deferred\" in function \"mutate\"\n  Type \"EllipsisType\" is not assignable to type \"Value | Deferred\"\n    \"EllipsisType\" is not assignable to \"Value\"\n    \"EllipsisType\" is not assignable to \"Deferred\"",
+            "range": {
+                "start": {
+                    "line": 29,
+                    "character": 22
+                },
+                "end": {
+                    "line": 29,
+                    "character": 25
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/docs_snippets/dataframes_wrongschema.py",
+            "severity": "error",
+            "message": "Argument of type \"DataFrame[Iris]\" cannot be assigned to parameter \"df\" of type \"DataFrame[IrisFeatures]\" in function \"needs_features\"\n  \"DataFrame[Iris]\" is not assignable to \"DataFrame[IrisFeatures]\"\n    Type parameter \"S@DataFrame\" is invariant, but \"Iris\" is not the same as \"IrisFeatures\"",
+            "range": {
+                "start": {
+                    "line": 31,
+                    "character": 15
+                },
+                "end": {
+                    "line": 31,
+                    "character": 19
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/docs_snippets/gs_contract.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[IrisFeatures]\"\n  \"Table\" is not assignable to \"DataFrame[IrisFeatures]\"",
+            "range": {
+                "start": {
+                    "line": 29,
+                    "character": 11
+                },
+                "end": {
+                    "line": 33,
+                    "character": 5
+                }
+            },
+            "rule": "reportReturnType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e1-checker-baseline/docs_snippets/gs_full.py",
+            "severity": "error",
+            "message": "Type \"Table\" is not assignable to return type \"DataFrame[IrisFeatures]\"\n  \"Table\" is not assignable to \"DataFrame[IrisFeatures]\"",
+            "range": {
+                "start": {
+                    "line": 22,
+                    "character": 11
+                },
+                "end": {
+                    "line": 26,
+                    "character": 5
+                }
+            },
+            "rule": "reportReturnType"
+        }
+    ],
+    "summary": {
+        "filesAnalyzed": 23,
+        "errorCount": 6,
+        "warningCount": 0,
+        "informationCount": 0,
+        "timeInSec": 3.587
+    }
+}
+
