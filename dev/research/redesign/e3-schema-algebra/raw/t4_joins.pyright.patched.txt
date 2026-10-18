@@ -1,0 +1,33 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:44:17 - information: Type of "r" is "DataFrame[OrdersWithCustomer]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:46:13 - error: Argument of type "DataFrame[Customers]" cannot be assigned to parameter "right" of type "Into[O@join]" in function "join"
+    "DataFrame[Customers]" is incompatible with protocol "Into[OrdersOnly]"
+      "__tacit_type_is_invariant__" is an incompatible type
+        Type "(x: Customers) -> Customers" is not assignable to type "(x: S@Into, /) -> object"
+          Parameter 1: type "S@Into" is incompatible with type "Customers"
+            "OrdersOnly" is not assignable to "Customers" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:47:13 - error: Argument of type "DataFrame[Products]" cannot be assigned to parameter "right" of type "Into[O@join]" in function "join"
+    "DataFrame[Products]" is incompatible with protocol "Into[OrdersWithCustomer]"
+      "__tacit_type_is_invariant__" is an incompatible type
+        Type "(x: Products) -> Products" is not assignable to type "(x: S@Into, /) -> object"
+          Parameter 1: type "S@Into" is incompatible with type "Products"
+            "OrdersWithCustomer" is not assignable to "Products" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:52:17 - information: Type of "OrdersWithCustomer.from_join(o, c, "customer_id")" is "DataFrame[OrdersWithCustomer]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:53:29 - error: Argument of type "DataFrame[Customers]" cannot be assigned to parameter "right" of type "Into[OrdersOnly]" in function "from_join"
+    "DataFrame[Customers]" is incompatible with protocol "Into[OrdersOnly]"
+      "__tacit_type_is_invariant__" is an incompatible type
+        Type "(x: Customers) -> Customers" is not assignable to type "(x: S@Into, /) -> object"
+          Parameter 1: type "S@Into" is incompatible with type "Customers"
+            "OrdersOnly" is not assignable to "Customers" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:54:37 - error: Argument of type "DataFrame[Products]" cannot be assigned to parameter "right" of type "Into[OrdersWithCustomer]" in function "from_join"
+    "DataFrame[Products]" is incompatible with protocol "Into[OrdersWithCustomer]"
+      "__tacit_type_is_invariant__" is an incompatible type
+        Type "(x: Products) -> Products" is not assignable to type "(x: S@Into, /) -> object"
+          Parameter 1: type "S@Into" is incompatible with type "Products"
+            "OrdersWithCustomer" is not assignable to "Products" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:58:7 - error: Base classes for class "BadJoin" define variable "customer_id" in incompatible way (reportIncompatibleVariableOverride)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:73:17 - information: Type of "r" is "Joined[Orders, Customers]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t4_joins.py:74:16 - error: Argument of type "Joined[Orders, Customers]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_name]" in function "needs_name"
+    "Joined[Orders, Customers]" is not assignable to "DataFrame[S@needs_name]"
+      Type parameter "S@DataFrame" is invariant, but "Orders" is not the same as "S@needs_name" (reportArgumentType)
+6 errors, 0 warnings, 3 informations

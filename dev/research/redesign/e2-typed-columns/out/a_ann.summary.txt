@@ -1,0 +1,160 @@
+  37| reveal_type(iris.sepal_length)  # want: FloatingColumn
+      pyright  R:FloatingColumn
+      mypy     R:FloatingColumn
+      ty       R:FloatingColumn
+      pyrefly  R:FloatingColumn
+  38| reveal_type(iris.species)  # want: StringColumn
+      pyright  R:StringColumn
+      mypy     R:StringColumn
+      ty       R:StringColumn
+      pyrefly  R:StringColumn
+  39| reveal_type(Iris.sepal_length)  # class access
+      pyright  R:FloatingColumn
+      mypy     R:FloatingColumn
+      ty       R:FloatingColumn
+      pyrefly  R:FloatingColumn
+  40| reveal_type(iris.sepal_length / iris.sepal_width)
+      pyright  R:NumericValue
+      mypy     R:NumericValue
+      ty       R:NumericValue & Unknown
+      pyrefly  R:NumericValue
+  41| reveal_type(iris.species.upper())
+      pyright  R:StringColumn
+      mypy     R:StringColumn
+      ty       R:StringColumn & Unknown
+      pyrefly  R:StringColumn
+  42| reveal_type(iris.sepal_length.mean())
+      pyright  R:NumericScalar
+      mypy     R:NumericScalar
+      ty       R:NumericScalar
+      pyrefly  R:NumericScalar
+  43| reveal_type(iris.sepal_length > 5.0)  # literal comparison (ibis: Value.__gt__(Value))
+      pyright  E:reportOperatorIssue ; R:Unknown
+      mypy     R:Any ; E:operator
+      ty       R:Unknown
+      pyrefly  R:bool
+  44| reveal_type(iris.species == "setosa")  # ibis: __eq__(Value) -> falls back to bool
+      pyright  R:bool
+      mypy     R:bool
+      ty       R:Unknown
+      pyrefly  R:bool
+  45| reveal_type((iris.sepal_length / iris.sepal_width).mean())  # ibis: NumericValue.mean missing
+      pyright  R:Unknown ; E:Cannot access attribute "mean" for class
+      mypy     E:attr-defined ; R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown ; E:missing-attribute
+  52| sepal_ratio=iris.sepal_length / iris.sepal_width,
+      pyright  E:Argument of type "NumericValue" cannot b
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+  53| petal_area=iris.petal_length * iris.petal_width,
+      pyright  E:Argument of type "NumericValue" cannot b
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+  58| expect_err("instance typo", lambda: iris.sepal_lenght)  # want: error
+      pyright  E:Cannot access attribute "sepal_lenght" f
+      mypy     E:attr-defined
+      ty       E:unresolved-attribute
+      pyrefly  E:missing-attribute
+  59| expect_err("class typo", lambda: Iris.sepal_lenght)  # want: error
+      pyright  E:Cannot access attribute "sepal_lenght" f
+      mypy     E:attr-defined
+      ty       E:unresolved-attribute
+      pyrefly  E:missing-attribute
+  60| expect_err("str.mean()", lambda: iris.species.mean())  # want: error
+      pyright  E:Cannot access attribute "mean" for class
+      mypy     E:attr-defined
+      ty       -
+      pyrefly  -
+  61| expect_err("float.upper()", lambda: iris.sepal_length.upper())  # want: error
+      pyright  E:Cannot access attribute "upper" for clas
+      mypy     E:attr-defined
+      ty       -
+      pyrefly  -
+  66| return IrisFeatures(  # want: error
+      pyright  E:reportCallIssue
+      mypy     E:call-arg
+      ty       E:missing-argument
+      pyrefly  E:missing-argument
+  72| sepal_ratio=iris.sepal_length / iris.sepal_width,
+      pyright  -
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+  77| return IrisFeatures(  # want: error
+      pyright  -
+      mypy     E:call-arg
+      ty       -
+      pyrefly  -
+  83| sepal_ratio=iris.sepal_length / iris.sepal_width,
+      pyright  -
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+  84| petal_area=iris.petal_length * iris.petal_width,
+      pyright  -
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+  85| bogus=iris.species,
+      pyright  E:reportCallIssue
+      mypy     -
+      ty       E:unknown-argument
+      pyrefly  E:unexpected-keyword
+  96| sepal_ratio=iris.species.upper(),
+      pyright  E:Argument of type "String" cannot be assi
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+  97| petal_area=iris.petal_length * iris.petal_width,
+      pyright  E:Argument of type "NumericValue" cannot b
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+ 107| species=iris.petal_width,
+      pyright  E:Argument of type "Float64" cannot be ass
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+ 108| sepal_ratio=iris.sepal_length / iris.sepal_width,
+      pyright  E:Argument of type "NumericValue" cannot b
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+ 109| petal_area=iris.petal_length * iris.petal_width,
+      pyright  E:Argument of type "NumericValue" cannot b
+      mypy     E:arg-type
+      ty       -
+      pyrefly  -
+ 126| reveal_type(iris.filter(iris.sepal_length > iris.petal_length))  # want: Iris
+      pyright  R:Iris
+      mypy     R:Iris
+      ty       R:Iris
+      pyrefly  R:Iris
+ 127| reveal_type(iris.filter(Iris.sepal_length > 5.0))  # class-access predicate
+      pyright  R:Iris ; E:reportOperatorIssue
+      mypy     R:Iris ; E:operator
+      ty       R:Iris
+      pyrefly  R:Iris ; E:bad-argument-type
+ 128| reveal_type(iris.t.mutate(x=iris.sepal_length * 2))  # ir.Table
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+ 129| reveal_type(iris.mutate(x=iris.sepal_length * 2))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+ 130| expect_err("typo via .t", lambda: reveal_type(iris.t.zzz))  # back to ibis: no detection
+      pyright  R:Column
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown
+ 144| print("filter via class access:", iris.filter(Iris.sepal_length > 5.0).t.count().execute())
+      pyright  E:reportOperatorIssue
+      mypy     E:operator
+      ty       -
+      pyrefly  E:bad-argument-type

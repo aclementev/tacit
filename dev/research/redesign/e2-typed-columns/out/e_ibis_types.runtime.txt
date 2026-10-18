@@ -1,0 +1,5 @@
+Runtime type is 'FloatingColumn'
+Runtime type is 'FloatingColumn'
+runtime: 'Table' object has no attribute 'not_a_column'
+FloatingColumn BooleanColumn BooleanColumn
+FloatingScalar FloatingScalar

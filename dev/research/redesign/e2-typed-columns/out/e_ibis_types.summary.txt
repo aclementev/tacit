@@ -1,0 +1,195 @@
+  20| reveal_type(t.x)  # ir.Column (base)
+      pyright  R:Column
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown
+  21| reveal_type(t["x"])
+      pyright  R:Column
+      mypy     R:Any
+      ty       R:Column
+      pyrefly  R:Column
+  22| reveal_type(t.not_a_column)  # typo: does anything complain? (runtime: AttributeError)
+      pyright  R:Column
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown
+  25| reveal_type(x / y)  # NumericValue (loses Column-ness and Floating-ness)
+      pyright  R:NumericValue
+      mypy     R:NumericValue
+      ty       R:NumericValue & Unknown
+      pyrefly  R:NumericValue
+  26| reveal_type(x * 2)
+      pyright  R:NumericValue
+      mypy     R:NumericValue
+      ty       R:NumericValue & Unknown
+      pyrefly  R:NumericValue
+  27| reveal_type(1 - x)  # __rsub__
+      pyright  R:NumericValue
+      mypy     R:NumericValue
+      ty       R:int
+      pyrefly  R:int
+  28| reveal_type(x > 5)  # Value.__gt__(other: Value) -> 5 is not a Value!
+      pyright  E:reportOperatorIssue ; R:Unknown
+      mypy     R:Any ; E:operator
+      ty       R:Unknown
+      pyrefly  R:bool
+  29| reveal_type(x > y)
+      pyright  R:BooleanValue
+      mypy     R:BooleanValue
+      ty       R:BooleanValue & Unknown
+      pyrefly  R:BooleanValue
+  30| reveal_type(x == 1.0)  # Value.__eq__(other: Value)
+      pyright  R:bool
+      mypy     R:bool
+      ty       R:Unknown
+      pyrefly  R:bool
+  31| reveal_type(s == "a")
+      pyright  R:bool
+      mypy     R:bool
+      ty       R:Unknown
+      pyrefly  R:bool
+  32| reveal_type(s <= "1998-09-02")
+      pyright  E:reportOperatorIssue ; R:Unknown
+      mypy     R:Any ; E:operator
+      ty       R:Unknown
+      pyrefly  R:bool
+  33| reveal_type((x > y) & (x < y))
+      pyright  R:BooleanValue
+      mypy     R:BooleanValue
+      ty       R:BooleanValue & Unknown
+      pyrefly  R:BooleanValue
+  35| reveal_type(x.mean())
+      pyright  R:NumericScalar
+      mypy     R:NumericScalar
+      ty       R:NumericScalar
+      pyrefly  R:NumericScalar
+  36| reveal_type(x.sum())
+      pyright  R:NumericScalar
+      mypy     R:NumericScalar
+      ty       R:NumericScalar
+      pyrefly  R:NumericScalar
+  37| reveal_type(n.sum())
+      pyright  R:NumericScalar
+      mypy     R:NumericScalar
+      ty       R:NumericScalar
+      pyrefly  R:NumericScalar
+  38| reveal_type(x.count())
+      pyright  R:IntegerScalar
+      mypy     R:IntegerScalar
+      ty       R:IntegerScalar
+      pyrefly  R:IntegerScalar
+  39| reveal_type(s.upper())
+      pyright  R:StringColumn
+      mypy     R:StringColumn
+      ty       R:StringColumn & Unknown
+      pyrefly  R:StringColumn
+  40| reveal_type(s.length())
+      pyright  R:IntegerValue
+      mypy     R:IntegerValue
+      ty       R:IntegerValue & Unknown
+      pyrefly  R:IntegerValue
+  41| reveal_type((x / y).mean())  # NumericValue has no .mean (only NumericColumn)
+      pyright  R:Unknown ; E:Cannot access attribute "mean" for class
+      mypy     E:attr-defined ; R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown ; E:missing-attribute
+  42| reveal_type(x.isnull())
+      pyright  R:BooleanValue
+      mypy     R:BooleanValue
+      ty       R:BooleanValue & Unknown
+      pyrefly  R:BooleanValue
+  43| reveal_type(x.cast("int64"))
+      pyright  R:IntegerValue
+      mypy     R:StringValue
+      ty       R:StringValue & Unknown
+      pyrefly  R:StringValue
+  44| reveal_type(x.round(2))
+      pyright  R:NumericValue
+      mypy     R:NumericValue
+      ty       R:NumericValue & Unknown
+      pyrefly  R:NumericValue
+  47| _ = s / x  # string / float
+      pyright  E:reportOperatorIssue
+      mypy     E:operator
+      ty       -
+      pyrefly  -
+  48| _ = s.mean()  # no .mean on strings
+      pyright  E:Cannot access attribute "mean" for class
+      mypy     E:attr-defined
+      ty       -
+      pyrefly  -
+  49| _ = x.upper()  # no .upper on floats
+      pyright  E:Cannot access attribute "upper" for clas
+      mypy     E:attr-defined
+      ty       -
+      pyrefly  -
+  52| reveal_type(t.mutate(z=x / y))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  53| reveal_type(t.mutate(one=1))  # Python literal kwarg
+      pyright  R:Table ; E:Argument of type "Literal[1]" cannot be 
+      mypy     R:Any
+      ty       R:Table ; E:invalid-argument-type
+      pyrefly  R:Table ; E:bad-argument-type
+  54| reveal_type(t.filter(x > y))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  55| reveal_type(t.filter(s == "a"))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  56| reveal_type(t.select("x", "s"))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  58| reveal_type(g)
+      pyright  R:GroupedTable
+      mypy     R:Any
+      ty       R:GroupedTable
+      pyrefly  R:GroupedTable
+  59| reveal_type(g.agg(m=x.mean()))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  60| reveal_type(t.join(t, "s"))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  61| reveal_type(ibis.cases((x > y, "a"), else_="b"))
+      pyright  R:Value
+      mypy     R:Value
+      ty       R:Value
+      pyrefly  R:Value
+  62| reveal_type(ibis._.x)
+      pyright  R:Deferred
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Deferred
+  63| reveal_type(ibis._.x > 1)
+      pyright  R:Deferred
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Deferred
+  64| reveal_type(t.schema())
+      pyright  R:Schema
+      mypy     R:Any
+      ty       R:Schema
+      pyrefly  R:Schema
+  72| print(type(t.x / t.y).__name__, type(t.x > 5).__name__, type(t.s == "a").__name__)
+      pyright  E:reportOperatorIssue ; E:reportOperatorIssue
+      mypy     -
+      ty       -
+      pyrefly  -
+  73| print(type((t.x / t.y).mean()).__name__, type(t.x.mean()).__name__)
+      pyright  E:reportOperatorIssue ; E:Cannot access attribute "mean" for class
+      mypy     -
+      ty       -
+      pyrefly  -

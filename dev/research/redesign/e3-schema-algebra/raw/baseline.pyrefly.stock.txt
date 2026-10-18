@@ -1,0 +1,8 @@
+ INFO baseline.py:22:16-20: revealed type: DataFrame[Orders] [reveal-type]
+ INFO baseline.py:23:16-23: revealed type: Unknown [reveal-type]
+ INFO baseline.py:24:16-32: revealed type: Unknown [reveal-type]
+ INFO baseline.py:25:16-44: revealed type: Table [reveal-type]
+ INFO baseline.py:26:16-33: revealed type: DataFrame[Orders] [reveal-type]
+ERROR baseline.py:34:12-14: Returned type `DataFrame[Customers]` is not assignable to declared return type `DataFrame[Orders]` [bad-return]
+ERROR baseline.py:38:12-14: Returned type `DataFrame[BigOrders]` is not assignable to declared return type `DataFrame[Orders]` [bad-return]
+ INFO 2 errors

@@ -1,0 +1,45 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:37:17 - information: Type of "iris.sepal_length" is "FloatingColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:38:17 - information: Type of "iris.species" is "StringColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:39:17 - information: Type of "Iris.sepal_length" is "FloatingColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:40:17 - information: Type of "iris.sepal_length / iris.sepal_width" is "NumericValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:41:17 - information: Type of "iris.species.upper()" is "StringColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:42:17 - information: Type of "iris.sepal_length.mean()" is "NumericScalar"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:43:17 - error: Operator ">" not supported for types "Float64" and "float" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:43:17 - information: Type of "iris.sepal_length > 5" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:44:17 - information: Type of "iris.species == "setosa"" is "bool"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:45:17 - information: Type of "(iris.sepal_length / iris.sepal_width).mean()" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:45:56 - error: Cannot access attribute "mean" for class "NumericValue"
+    Attribute "mean" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:52:21 - error: Argument of type "NumericValue" cannot be assigned to parameter "sepal_ratio" of type "Float64" in function "__init__"
+    "NumericValue" is not assignable to "FloatingColumn" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:53:20 - error: Argument of type "NumericValue" cannot be assigned to parameter "petal_area" of type "Float64" in function "__init__"
+    "NumericValue" is not assignable to "FloatingColumn" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:58:46 - error: Cannot access attribute "sepal_lenght" for class "Iris"
+    Attribute "sepal_lenght" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:59:43 - error: Cannot access attribute "sepal_lenght" for class "type[Iris]"
+    Attribute "sepal_lenght" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:60:51 - error: Cannot access attribute "mean" for class "String"
+    Attribute "mean" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:61:59 - error: Cannot access attribute "upper" for class "Float64"
+    Attribute "upper" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:66:12 - error: Argument missing for parameter "petal_area" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:85:9 - error: No parameter named "bogus" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:96:21 - error: Argument of type "String" cannot be assigned to parameter "sepal_ratio" of type "Float64" in function "__init__"
+    "StringColumn" is not assignable to "FloatingColumn" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:97:20 - error: Argument of type "NumericValue" cannot be assigned to parameter "petal_area" of type "Float64" in function "__init__"
+    "NumericValue" is not assignable to "FloatingColumn" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:107:17 - error: Argument of type "Float64" cannot be assigned to parameter "species" of type "String" in function "__init__"
+    "FloatingColumn" is not assignable to "StringColumn" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:108:21 - error: Argument of type "NumericValue" cannot be assigned to parameter "sepal_ratio" of type "Float64" in function "__init__"
+    "NumericValue" is not assignable to "FloatingColumn" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:109:20 - error: Argument of type "NumericValue" cannot be assigned to parameter "petal_area" of type "Float64" in function "__init__"
+    "NumericValue" is not assignable to "FloatingColumn" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:126:17 - information: Type of "iris.filter(iris.sepal_length > iris.petal_length)" is "Iris"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:127:17 - information: Type of "iris.filter(Iris.sepal_length > 5)" is "Iris"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:127:29 - error: Operator ">" not supported for types "Float64" and "float" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:128:17 - information: Type of "iris.t.mutate(x=iris.sepal_length * 2)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:129:17 - information: Type of "iris.mutate(x=iris.sepal_length * 2)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:130:51 - information: Type of "iris.t.zzz" is "Column"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_ann.py:144:51 - error: Operator ">" not supported for types "Float64" and "float" (reportOperatorIssue)
+17 errors, 0 warnings, 14 informations

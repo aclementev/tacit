@@ -1,0 +1,4 @@
+L:22:27 - error: Type "dict[str, int]" is not assignable to declared type "Closed"
+L:24:35 - error: Argument of type "Literal[1]" cannot be assigned to parameter "whatever" of type "Value" in function "mutate_some"
+L:25:5 - error: Argument missing for parameter "id" (reportCallIssue)
+3 errors, 0 warnings, 0 informations

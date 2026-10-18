@@ -1,0 +1,9 @@
+t4_joins.py:43: error: Cannot infer value of type parameter "O" of "join"  [misc]
+t4_joins.py:44: note: Revealed type is "tx.DataFrame[Any]"
+t4_joins.py:46: error: Cannot infer value of type parameter "O" of "join"  [misc]
+t4_joins.py:47: error: Cannot infer value of type parameter "O" of "join"  [misc]
+t4_joins.py:48: error: Cannot infer value of type parameter "O" of "join"  [misc]
+t4_joins.py:52: note: Revealed type is "tx.DataFrame[t4_joins.OrdersWithCustomer]"
+t4_joins.py:58: error: Definition of "customer_id" in base class "Orders" is incompatible with definition in base class "Clash"  [misc]
+t4_joins.py:73: note: Revealed type is "t4_joins.Joined[t4_joins.Orders, t4_joins.Customers]"
+t4_joins.py:74: error: Value of type variable "S" of "needs_name" cannot be "Orders"  [type-var]

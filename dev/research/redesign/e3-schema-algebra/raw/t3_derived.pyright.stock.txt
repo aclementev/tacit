@@ -1,0 +1,15 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3_derived.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3_derived.py:49:17 - error: Argument of type "DataFrame[Sepal]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_petal]" in function "needs_petal"
+    "DataFrame[Sepal]" is not assignable to "DataFrame[S@needs_petal]"
+      Type parameter "S@DataFrame" is invariant, but "Sepal" is not the same as "S@needs_petal" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3_derived.py:81:17 - error: Argument of type "DataFrame[SepalOnly2]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_petal]" in function "needs_petal"
+    "DataFrame[SepalOnly2]" is not assignable to "DataFrame[S@needs_petal]"
+      Type parameter "S@DataFrame" is invariant, but "SepalOnly2" is not the same as "S@needs_petal" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3_derived.py:82:17 - information: Type of "SepalOnly2.sepal_length" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3_derived.py:82:28 - error: Cannot access attribute "sepal_length" for class "type[SepalOnly2]"
+    Attribute "sepal_length" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3_derived.py:88:28 - error: Variable not allowed in type expression (reportInvalidTypeForm)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3_derived.py:108:17 - error: Argument of type "DataFrame[SepalV]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_petal]" in function "needs_petal"
+    "DataFrame[SepalV]" is not assignable to "DataFrame[S@needs_petal]"
+      Type parameter "S@DataFrame" is invariant, but "SepalV" is not the same as "S@needs_petal" (reportArgumentType)
+5 errors, 0 warnings, 1 information

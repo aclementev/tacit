@@ -1,0 +1,9 @@
+baseline.py:22: note: Revealed type is "tacit.schema.DataFrame[baseline.Orders]"
+baseline.py:23: note: Revealed type is "ibis.expr.types.generic.Column"
+baseline.py:24: note: Revealed type is "ibis.expr.types.generic.Column"
+baseline.py:25: note: Revealed type is "ibis.expr.types.relations.Table"
+baseline.py:26: note: Revealed type is "tacit.schema.DataFrame[baseline.Orders]"
+baseline.py:30: error: Incompatible return value type (got "Table", expected "DataFrame[Orders]")  [return-value]
+baseline.py:34: error: Incompatible return value type (got "DataFrame[Customers]", expected "DataFrame[Orders]")  [return-value]
+baseline.py:38: error: Incompatible return value type (got "DataFrame[BigOrders]", expected "DataFrame[Orders]")  [return-value]
+baseline.py:42: error: Incompatible return value type (got "DataFrame[Orders]", expected "int")  [return-value]

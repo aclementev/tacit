@@ -1,0 +1,32 @@
+== ty
+repro.py:11:11'>`
+repro.py:17:17: info[revealed-type] Revealed type: `float`
+repro.py:18:17: info[revealed-type] Revealed type: `Unknown`
+repro.py:34:17: error[unresolved-attribute] Object of type `Col2` has no attribute `upperr`
+repro.py:34:17: info[revealed-type] Revealed type: `Unknown`
+Found 5 diagnostics
+== pyrefly
+repro.py:13:11-16: Invalid base class: `__unknown__.Mixin@9:11-16 | __unknown__.Mixin@11:11-16` [invalid-inheritance]
+repro.py:17:16-26: revealed type: float [reveal-type]
+repro.py:18:16-28: revealed type: Unknown [reveal-type]
+repro.py:34:16-28: revealed type: Unknown [reveal-type]
+repro.py:34:17-25: Object of class `Col2` has no attribute `upperr` [missing-attribute]
+ INFO 2 errors
+== pyright
+repro.py
+repro.py:11:11 - error: Class declaration "Mixin" is obscured by a declaration of the same name (reportRedeclaration)
+repro.py:13:11 - error: Argument to class must be a base class (reportGeneralTypeIssues)
+repro.py:17:17 - information: Type of "c.mean()" is "float"
+repro.py:18:17 - information: Type of "c.upperr()" is "Unknown"
+repro.py:34:17 - information: Type of "c.upperr()" is "Unknown"
+repro.py:34:19 - error: Cannot access attribute "upperr" for class "Col2"
+    Attribute "upperr" is unknown (reportAttributeAccessIssue)
+3 errors, 0 warnings, 3 informations
+== mypy
+repro.py:11: error: Name "Mixin" already defined on line 9  [no-redef]
+repro.py:17: note: Revealed type is "float"
+repro.py:18: error: "Col" has no attribute "upperr"  [attr-defined]
+repro.py:18: note: Revealed type is "Any"
+repro.py:34: error: "Col2" has no attribute "upperr"  [attr-defined]
+repro.py:34: note: Revealed type is "Any"
+Found 3 errors in 1 file (checked 1 source file)

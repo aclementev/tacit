@@ -1,0 +1,6 @@
+{
+  "pythonVersion": "3.13",
+  "reportOperatorIssue": false,
+  "reportPrivateImportUsage": false,
+  "extraPaths": ["_patched"]
+}

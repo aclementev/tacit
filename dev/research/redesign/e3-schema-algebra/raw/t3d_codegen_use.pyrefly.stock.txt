@@ -1,0 +1,5 @@
+ERROR t3d_codegen_use.py:31:16-19: `IrisSepal` is not assignable to upper bound `HasPetalP` of type variable `S` [bad-specialization]
+ERROR t3d_codegen_use.py:34:16-19: `Iris` is not assignable to upper bound `HasLabelP` of type variable `S` [bad-specialization]
+ INFO t3d_codegen_use.py:35:16-42: revealed type: DataFrame[IrisScored] [reveal-type]
+ERROR t3d_codegen_use.py:37:16-35: Missing argument `sepal_width` in function `build_sepal` [missing-argument]
+ INFO 3 errors

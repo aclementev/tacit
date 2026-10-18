@@ -1,0 +1,50 @@
+  39| reveal_type(sub.sepal_length)
+      pyright  R:FloatingColumn
+      mypy     R:FloatingColumn
+      ty       R:FloatingColumn
+      pyrefly  R:FloatingColumn
+  40| reveal_type(sub.sepal_lenght)  # typo
+      pyright  R:Column
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown
+  41| reveal_type(sub.mutate(x=sub.sepal_length * 2))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  42| reveal_type(g.sepal_length)
+      pyright  R:FloatingColumn
+      mypy     R:FloatingColumn
+      ty       R:FloatingColumn
+      pyrefly  R:FloatingColumn
+  43| reveal_type(g.sepal_lenght)  # typo
+      pyright  R:Any
+      mypy     R:Any
+      ty       R:Any
+      pyrefly  R:Any
+  44| reveal_type(g.mutate)  # ibis API: Any
+      pyright  R:Any
+      mypy     R:Any
+      ty       R:Any
+      pyrefly  R:Any
+  45| reveal_type(h.sepal_length)
+      pyright  R:FloatingColumn
+      mypy     R:FloatingColumn
+      ty       R:FloatingColumn
+      pyrefly  R:FloatingColumn
+  46| reveal_type(h.sepal_lenght)  # typo
+      pyright  R:Unknown ; E:Cannot access attribute "sepal_lenght" f
+      mypy     E:attr-defined ; R:Any
+      ty       E:unresolved-attribute ; R:Unknown
+      pyrefly  R:Unknown ; E:missing-attribute
+  47| reveal_type(h.mutate)  # ibis API: not visible statically
+      pyright  R:Unknown ; E:Cannot access attribute "mutate" for cla
+      mypy     E:attr-defined ; R:Any
+      ty       E:unresolved-attribute ; R:Unknown
+      pyrefly  R:Unknown ; E:missing-attribute
+  54| print(type(g.sepal_length).__name__, type(h.mutate(x=1)).__name__)
+      pyright  E:Cannot access attribute "mutate" for cla
+      mypy     E:attr-defined
+      ty       E:unresolved-attribute
+      pyrefly  E:missing-attribute

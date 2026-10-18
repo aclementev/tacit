@@ -1,0 +1,3 @@
+e2-typed-columns/probes/rec_tpch.py:45:17: info[revealed-type] Revealed type: `NumCol`
+e2-typed-columns/probes/rec_tpch.py:67:17: info[revealed-type] Revealed type: `PricingSummary`
+Found 2 diagnostics

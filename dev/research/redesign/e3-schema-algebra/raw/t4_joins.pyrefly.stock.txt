@@ -1,0 +1,5 @@
+ INFO t4_joins.py:44:16-19: revealed type: DataFrame[OrdersWithCustomer] [reveal-type]
+ INFO t4_joins.py:52:16-67: revealed type: DataFrame[OrdersWithCustomer] [reveal-type]
+ERROR t4_joins.py:58:7-14: Field `customer_id` has inconsistent types inherited from multiple base classes [inconsistent-inheritance]
+ INFO t4_joins.py:73:16-19: revealed type: Joined[Orders, Customers] [reveal-type]
+ INFO 1 error

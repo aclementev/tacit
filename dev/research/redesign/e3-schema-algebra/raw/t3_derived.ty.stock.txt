@@ -1,0 +1,8 @@
+t3_derived.py:49:17: error[invalid-argument-type] Argument to function `needs_petal` is incorrect: Argument type `Sepal` does not satisfy upper bound `HasPetalP` of type variable `S`
+t3_derived.py:58:16: error[invalid-return-type] Return type does not match returned value: expected `type[Self@pick]`, found `type[Schema]`
+t3_derived.py:71:17: warning[unsupported-base] Unsupported class base with type `type[IrisP]`
+t3_derived.py:75:18: warning[unsupported-base] Unsupported class base with type `type[Schema]`
+t3_derived.py:82:17: info[revealed-type] Revealed type: `Unknown`
+t3_derived.py:88:28: error[invalid-type-form] Variable of type `type[IrisP]` is not allowed in a parameter annotation
+t3_derived.py:108:17: error[invalid-argument-type] Argument to function `needs_petal` is incorrect: Argument type `SepalV` does not satisfy upper bound `HasPetalP` of type variable `S`
+Found 7 diagnostics

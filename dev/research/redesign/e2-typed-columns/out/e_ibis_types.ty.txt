@@ -1,0 +1,36 @@
+e2-typed-columns/probes/e_ibis_types.py:20:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:21:17: info[revealed-type] Revealed type: `Column`
+e2-typed-columns/probes/e_ibis_types.py:22:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:25:17: info[revealed-type] Revealed type: `NumericValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:26:17: info[revealed-type] Revealed type: `NumericValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:27:17: info[revealed-type] Revealed type: `int`
+e2-typed-columns/probes/e_ibis_types.py:28:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:29:17: info[revealed-type] Revealed type: `BooleanValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:30:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:31:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:32:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:33:17: info[revealed-type] Revealed type: `BooleanValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:35:17: info[revealed-type] Revealed type: `NumericScalar`
+e2-typed-columns/probes/e_ibis_types.py:36:17: info[revealed-type] Revealed type: `NumericScalar`
+e2-typed-columns/probes/e_ibis_types.py:37:17: info[revealed-type] Revealed type: `NumericScalar`
+e2-typed-columns/probes/e_ibis_types.py:38:17: info[revealed-type] Revealed type: `IntegerScalar`
+e2-typed-columns/probes/e_ibis_types.py:39:17: info[revealed-type] Revealed type: `StringColumn & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:40:17: info[revealed-type] Revealed type: `IntegerValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:41:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:42:17: info[revealed-type] Revealed type: `BooleanValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:43:17: info[revealed-type] Revealed type: `StringValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:44:17: info[revealed-type] Revealed type: `NumericValue & Unknown`
+e2-typed-columns/probes/e_ibis_types.py:52:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/e_ibis_types.py:53:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/e_ibis_types.py:53:26: error[invalid-argument-type] Argument to bound method `Table.mutate` is incorrect: Expected `Value | Deferred | str`, found `Literal[1]`
+e2-typed-columns/probes/e_ibis_types.py:54:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/e_ibis_types.py:55:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/e_ibis_types.py:56:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/e_ibis_types.py:58:17: info[revealed-type] Revealed type: `GroupedTable`
+e2-typed-columns/probes/e_ibis_types.py:59:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/e_ibis_types.py:60:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/e_ibis_types.py:61:17: info[revealed-type] Revealed type: `Value`
+e2-typed-columns/probes/e_ibis_types.py:62:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:63:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/e_ibis_types.py:64:17: info[revealed-type] Revealed type: `Schema`
+Found 35 diagnostics

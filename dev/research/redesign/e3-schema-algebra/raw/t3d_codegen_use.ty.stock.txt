@@ -1,0 +1,7 @@
+t3d_codegen_use.py:23:54: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `DataFrame[O@to_scored]`
+t3d_codegen_use.py:27:36: error[invalid-argument-type] Argument to bound method `Table.select` is incorrect: Possible extra items in unpacked open `TypedDict` have type `object`, expected `Value | str | Deferred`
+t3d_codegen_use.py:31:17: error[invalid-argument-type] Argument to function `needs_petal` is incorrect: Argument type `IrisSepal` does not satisfy upper bound `HasPetalP` of type variable `S`
+t3d_codegen_use.py:34:17: error[invalid-argument-type] Argument to function `needs_label` is incorrect: Argument type `Iris` does not satisfy upper bound `HasLabelP` of type variable `S`
+t3d_codegen_use.py:35:17: info[revealed-type] Revealed type: `DataFrame[IrisScored]`
+t3d_codegen_use.py:37:5: error[missing-argument] No argument provided for required parameter `sepal_width` of function `build_sepal`
+Found 6 diagnostics

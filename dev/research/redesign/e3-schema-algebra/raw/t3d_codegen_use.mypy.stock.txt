@@ -1,0 +1,5 @@
+t3d_codegen_use.py:23: error: Missing return statement  [empty-body]
+t3d_codegen_use.py:31: error: Value of type variable "S" of "needs_petal" cannot be "IrisSepal"  [type-var]
+t3d_codegen_use.py:34: error: Value of type variable "S" of "needs_label" cannot be "Iris"  [type-var]
+t3d_codegen_use.py:35: note: Revealed type is "tx.DataFrame[cg_generated.IrisScored]"
+t3d_codegen_use.py:37: error: Missing named argument "sepal_width" for "build_sepal"  [call-arg]

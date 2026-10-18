@@ -1,0 +1,10 @@
+e2-typed-columns/probes/c_dt_isolated.py:53:17: info[revealed-type] Revealed type: `GetT`
+e2-typed-columns/probes/c_dt_isolated.py:54:17: info[revealed-type] Revealed type: `str`
+e2-typed-columns/probes/c_dt_isolated.py:56:5: error[missing-argument] No argument provided for required parameter `y`
+e2-typed-columns/probes/c_dt_isolated.py:57:27: error[unknown-argument] Argument `w` does not match any known parameter
+e2-typed-columns/probes/c_dt_isolated.py:58:7: error[invalid-argument-type] Argument is incorrect: Expected `SetT`, found `GetT`
+e2-typed-columns/probes/c_dt_isolated.py:59:7: error[invalid-argument-type] Argument is incorrect: Expected `SetT`, found `Other`
+e2-typed-columns/probes/c_dt_isolated.py:60:5: error[missing-argument] No argument provided for required parameter `y`
+e2-typed-columns/probes/c_dt_isolated.py:61:7: error[invalid-argument-type] Argument is incorrect: Expected `SetT`, found `Other`
+e2-typed-columns/probes/c_dt_isolated.py:62:5: error[missing-argument] No arguments provided for required parameters `x`, `y`
+Found 9 diagnostics

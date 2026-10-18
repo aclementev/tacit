@@ -1,0 +1,9 @@
+t3e_plugin_use.py:25:54: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `DataFrame[O@to_scored]`
+t3e_plugin_use.py:28:22: error[invalid-type-form] Variable of type `type[Schema]` is not allowed in a parameter annotation
+t3e_plugin_use.py:28:47: error[invalid-type-form] Variable of type `type[Schema]` is not allowed in a parameter annotation
+t3e_plugin_use.py:28:76: error[invalid-type-form] Variable of type `type[Schema]` is not allowed in a parameter annotation
+t3e_plugin_use.py:29:17: error[unresolved-attribute] Object of type `type[Schema]` has no attribute `sepal_length`
+t3e_plugin_use.py:29:17: info[revealed-type] Revealed type: `Unknown`
+t3e_plugin_use.py:33:17: info[revealed-type] Revealed type: `DataFrame[Iris]`
+t3e_plugin_use.py:33:30: error[invalid-argument-type] Argument to function `to_scored` is incorrect: Argument type `Schema` does not satisfy upper bound `Iris` of type variable `O`
+Found 8 diagnostics

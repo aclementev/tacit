@@ -1,0 +1,6 @@
+e2-typed-columns/probes/c_extend.py:47:38: error[missing-argument] No argument provided for required parameter `petal_area`
+e2-typed-columns/probes/c_extend.py:51:45: error[invalid-argument-type] Argument is incorrect: Expected `NumericValue`, found `StrCol`
+e2-typed-columns/probes/c_extend.py:60:17: info[revealed-type] Revealed type: `(self: IrisFeatures, *, sepal_ratio: NumericValue, petal_area: NumericValue, sepal_length: NumericValue, sepal_width: NumericValue, petal_length: NumericValue, petal_width: NumericValue, species: StringValue) -> None`
+e2-typed-columns/probes/c_extend.py:61:17: info[revealed-type] Revealed type: `NumCol`
+e2-typed-columns/probes/c_extend.py:62:17: info[revealed-type] Revealed type: `StrCol`
+Found 5 diagnostics

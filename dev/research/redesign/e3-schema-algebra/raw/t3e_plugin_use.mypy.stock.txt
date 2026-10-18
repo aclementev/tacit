@@ -1,0 +1,5 @@
+t3e_plugin_use.py:12: error: "Iris" has no column "sepal_lenght"  [misc]
+t3e_plugin_use.py:25: error: Missing return statement  [empty-body]
+t3e_plugin_use.py:29: note: Revealed type is "float"
+t3e_plugin_use.py:30: error: Value of type variable "S" of "needs_petal" cannot be "IrisSepal"  [type-var]
+t3e_plugin_use.py:33: note: Revealed type is "tx.DataFrame[t3e_plugin_use.IrisScored]"

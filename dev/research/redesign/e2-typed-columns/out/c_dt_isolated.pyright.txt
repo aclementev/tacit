@@ -1,0 +1,14 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:53:17 - information: Type of "a.x" is "GetT"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:54:17 - information: Type of "A.x" is "str"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:56:5 - error: Argument missing for parameter "y" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:57:27 - error: No parameter named "w" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:58:9 - error: Argument of type "GetT" cannot be assigned to parameter "x" of type "SetT" in function "__init__"
+    "GetT" is not assignable to "SetT" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:59:9 - error: Argument of type "Other" cannot be assigned to parameter "x" of type "SetT" in function "__init__"
+    "Other" is not assignable to "SetT" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:60:5 - error: Argument missing for parameter "y" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:61:9 - error: Argument of type "Other" cannot be assigned to parameter "x" of type "SetT" in function "__init__"
+    "Other" is not assignable to "SetT" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_dt_isolated.py:62:5 - error: Arguments missing for parameters "x", "y" (reportCallIssue)
+7 errors, 0 warnings, 2 informations

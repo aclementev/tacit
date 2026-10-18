@@ -1,0 +1,28 @@
+e2-typed-columns/proto/aliases_facade.py:31: error: Argument 1 of "__radd__" is incompatible with supertype "ibis.expr.types.numeric.NumericValue"; supertype defines the argument type as "int | float | Decimal | NumericValue | Deferred"  [override]
+e2-typed-columns/proto/aliases_facade.py:31: note: This violates the Liskov substitution principle
+e2-typed-columns/proto/aliases_facade.py:31: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+e2-typed-columns/proto/aliases_facade.py:42: error: Return type "BoolCol" of "__eq__" incompatible with return type "bool" in supertype "builtins.object"  [override]
+e2-typed-columns/proto/aliases_facade.py:54: error: Return type "BoolCol" of "__eq__" incompatible with return type "bool" in supertype "builtins.object"  [override]
+e2-typed-columns/probes/a_facade.py:37: note: Revealed type is "proto.aliases_facade.NumCol"
+e2-typed-columns/probes/a_facade.py:38: note: Revealed type is "proto.aliases_facade.StrCol"
+e2-typed-columns/probes/a_facade.py:39: note: Revealed type is "ibis.common.deferred.Deferred"
+e2-typed-columns/probes/a_facade.py:40: note: Revealed type is "proto.aliases_facade.NumCol"
+e2-typed-columns/probes/a_facade.py:41: note: Revealed type is "proto.aliases_facade.StrCol"
+e2-typed-columns/probes/a_facade.py:42: note: Revealed type is "ibis.expr.types.numeric.FloatingScalar"
+e2-typed-columns/probes/a_facade.py:43: note: Revealed type is "proto.aliases_facade.BoolCol"
+e2-typed-columns/probes/a_facade.py:44: note: Revealed type is "proto.aliases_facade.BoolCol"
+e2-typed-columns/probes/a_facade.py:45: note: Revealed type is "ibis.expr.types.numeric.FloatingScalar"
+e2-typed-columns/probes/a_facade.py:58: error: "Iris" has no attribute "sepal_lenght"; maybe "sepal_length"?  [attr-defined]
+e2-typed-columns/probes/a_facade.py:59: error: "type[Iris]" has no attribute "sepal_lenght"  [attr-defined]
+e2-typed-columns/probes/a_facade.py:60: error: "StrCol" has no attribute "mean"  [attr-defined]
+e2-typed-columns/probes/a_facade.py:61: error: "NumCol" has no attribute "upper"  [attr-defined]
+e2-typed-columns/probes/a_facade.py:66: error: Missing named argument "petal_area" for "IrisFeatures"  [call-arg]
+e2-typed-columns/probes/a_facade.py:77: error: Unexpected keyword argument "bogus" for "IrisFeatures"  [call-arg]
+e2-typed-columns/probes/a_facade.py:96: error: Argument "sepal_ratio" to "IrisFeatures" has incompatible type "StrCol"; expected "NumericValue"  [arg-type]
+e2-typed-columns/probes/a_facade.py:107: error: Argument "species" to "IrisFeatures" has incompatible type "NumCol"; expected "StringValue"  [arg-type]
+e2-typed-columns/probes/a_facade.py:126: note: Revealed type is "a_facade.Iris"
+e2-typed-columns/probes/a_facade.py:127: note: Revealed type is "a_facade.Iris"
+e2-typed-columns/probes/a_facade.py:128: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade.py:129: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade.py:130: note: Revealed type is "Any"
+Found 11 errors in 2 files (checked 1 source file)

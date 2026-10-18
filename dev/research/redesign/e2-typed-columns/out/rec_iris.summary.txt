@@ -1,0 +1,15 @@
+  53| reveal_type(species)  # ibis: Value (no dtype info)
+      pyright  R:Value
+      mypy     R:Value
+      ty       R:Value
+      pyrefly  R:Value
+  54| return IrisPrediction.extend(df, Prediction(predicted_species=species))
+      pyright  E:Argument of type "Value" cannot be assig
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+  65| reveal_type(out)
+      pyright  R:IrisPrediction
+      mypy     R:IrisPrediction
+      ty       R:IrisPrediction
+      pyrefly  R:IrisPrediction

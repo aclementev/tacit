@@ -1,0 +1,34 @@
+--- a/ibis/expr/types/rich.py	2026-10-19 00:05:10.332437168 +0200
++++ b/ibis/expr/types/rich.py	2026-10-19 00:13:28.427743778 +0200
+@@ -17,13 +17,16 @@
+     from rich.console import RenderableType
+ 
+ 
+-try:
++if TYPE_CHECKING:
+     from rich.jupyter import JupyterMixin
+-except ImportError:
+-
+-    class FixedTextJupyterMixin:
+-        """No-op when rich is not installed."""
+ else:
++    try:
++        from rich.jupyter import JupyterMixin
++    except ImportError:
++        JupyterMixin = object
++
++
++if True:  # keep indentation of the original block
+ 
+     class FixedTextJupyterMixin(JupyterMixin):
+         """JupyterMixin adds a spurious newline to text, this fixes the issue."""
+--- a/ibis/expr/types/relations.py	2026-10-19 00:05:10.324436874 +0200
++++ b/ibis/expr/types/relations.py	2026-10-19 00:13:28.428743815 +0200
+@@ -38,7 +38,6 @@
+     from ibis.expr.datatypes import IntoDtype
+     from ibis.expr.operations.relations import JoinKind, Set
+     from ibis.expr.schema import IntoSchema
+-    from ibis.expr.types import Table
+     from ibis.expr.types.groupby import GroupedTable
+     from ibis.expr.types.temporal_windows import WindowedTable
+     from ibis.formats.pandas import PandasData

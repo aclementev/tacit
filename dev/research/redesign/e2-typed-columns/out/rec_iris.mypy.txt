@@ -1,0 +1,9 @@
+e2-typed-columns/proto/aliases_facade.py:31: error: Argument 1 of "__radd__" is incompatible with supertype "ibis.expr.types.numeric.NumericValue"; supertype defines the argument type as "int | float | Decimal | NumericValue | Deferred"  [override]
+e2-typed-columns/proto/aliases_facade.py:31: note: This violates the Liskov substitution principle
+e2-typed-columns/proto/aliases_facade.py:31: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+e2-typed-columns/proto/aliases_facade.py:42: error: Return type "BoolCol" of "__eq__" incompatible with return type "bool" in supertype "builtins.object"  [override]
+e2-typed-columns/proto/aliases_facade.py:54: error: Return type "BoolCol" of "__eq__" incompatible with return type "bool" in supertype "builtins.object"  [override]
+e2-typed-columns/probes/rec_iris.py:53: note: Revealed type is "ibis.expr.types.generic.Value"
+e2-typed-columns/probes/rec_iris.py:54: error: Argument "predicted_species" to "Prediction" has incompatible type "Value"; expected "StringValue"  [arg-type]
+e2-typed-columns/probes/rec_iris.py:65: note: Revealed type is "rec_iris.IrisPrediction"
+Found 4 errors in 2 files (checked 1 source file)

@@ -1,0 +1,4 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/rec_tpch.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/rec_tpch.py:45:17 - information: Type of "disc_price" is "NumCol"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/rec_tpch.py:67:17 - information: Type of "out" is "PricingSummary"
+0 errors, 0 warnings, 2 informations

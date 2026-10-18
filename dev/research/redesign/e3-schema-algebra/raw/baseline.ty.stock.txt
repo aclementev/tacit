@@ -1,0 +1,8 @@
+baseline.py:22:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+baseline.py:23:17: info[revealed-type] Revealed type: `Unknown`
+baseline.py:24:17: info[revealed-type] Revealed type: `Unknown`
+baseline.py:25:17: info[revealed-type] Revealed type: `Table`
+baseline.py:26:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+baseline.py:34:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[Orders]`, found `DataFrame[Customers]`
+baseline.py:38:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[Orders]`, found `DataFrame[BigOrders]`
+Found 7 diagnostics

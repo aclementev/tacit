@@ -1,0 +1,35 @@
+e2-typed-columns/probes/a_ann.py:37: note: Revealed type is "ibis.expr.types.numeric.FloatingColumn"
+e2-typed-columns/probes/a_ann.py:38: note: Revealed type is "ibis.expr.types.strings.StringColumn"
+e2-typed-columns/probes/a_ann.py:39: note: Revealed type is "ibis.expr.types.numeric.FloatingColumn"
+e2-typed-columns/probes/a_ann.py:40: note: Revealed type is "ibis.expr.types.numeric.NumericValue"
+e2-typed-columns/probes/a_ann.py:41: note: Revealed type is "ibis.expr.types.strings.StringColumn"
+e2-typed-columns/probes/a_ann.py:42: note: Revealed type is "ibis.expr.types.numeric.NumericScalar"
+e2-typed-columns/probes/a_ann.py:43: note: Revealed type is "Any"
+e2-typed-columns/probes/a_ann.py:43: error: Unsupported operand types for > ("FloatingColumn" and "float")  [operator]
+e2-typed-columns/probes/a_ann.py:44: note: Revealed type is "bool"
+e2-typed-columns/probes/a_ann.py:45: error: "NumericValue" has no attribute "mean"  [attr-defined]
+e2-typed-columns/probes/a_ann.py:45: note: Revealed type is "Any"
+e2-typed-columns/probes/a_ann.py:52: error: Argument "sepal_ratio" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:53: error: Argument "petal_area" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:58: error: "Iris" has no attribute "sepal_lenght"; maybe "sepal_length"?  [attr-defined]
+e2-typed-columns/probes/a_ann.py:59: error: "type[Iris]" has no attribute "sepal_lenght"  [attr-defined]
+e2-typed-columns/probes/a_ann.py:60: error: "StringColumn" has no attribute "mean"  [attr-defined]
+e2-typed-columns/probes/a_ann.py:61: error: "FloatingColumn" has no attribute "upper"  [attr-defined]
+e2-typed-columns/probes/a_ann.py:66: error: Missing named argument "petal_area" for "IrisFeatures"  [call-arg]
+e2-typed-columns/probes/a_ann.py:72: error: Argument "sepal_ratio" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:77: error: Unexpected keyword argument "bogus" for "IrisFeatures"  [call-arg]
+e2-typed-columns/probes/a_ann.py:83: error: Argument "sepal_ratio" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:84: error: Argument "petal_area" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:96: error: Argument "sepal_ratio" to "IrisFeatures" has incompatible type "StringColumn"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:97: error: Argument "petal_area" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:107: error: Argument "species" to "IrisFeatures" has incompatible type "FloatingColumn"; expected "StringColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:108: error: Argument "sepal_ratio" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:109: error: Argument "petal_area" to "IrisFeatures" has incompatible type "NumericValue"; expected "FloatingColumn"  [arg-type]
+e2-typed-columns/probes/a_ann.py:126: note: Revealed type is "a_ann.Iris"
+e2-typed-columns/probes/a_ann.py:127: note: Revealed type is "a_ann.Iris"
+e2-typed-columns/probes/a_ann.py:127: error: Unsupported operand types for > ("FloatingColumn" and "float")  [operator]
+e2-typed-columns/probes/a_ann.py:128: note: Revealed type is "Any"
+e2-typed-columns/probes/a_ann.py:129: note: Revealed type is "Any"
+e2-typed-columns/probes/a_ann.py:130: note: Revealed type is "Any"
+e2-typed-columns/probes/a_ann.py:144: error: Unsupported operand types for > ("FloatingColumn" and "float")  [operator]
+Found 20 errors in 1 file (checked 1 source file)

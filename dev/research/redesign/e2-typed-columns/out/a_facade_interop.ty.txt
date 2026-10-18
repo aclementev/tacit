@@ -1,0 +1,13 @@
+e2-typed-columns/probes/a_facade_interop.py:17:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_facade_interop.py:17:28: error[invalid-argument-type] Argument to bound method `Table.order_by` is incorrect: Expected `Sequence[str | Column | Selector | Deferred] | Column | Selector | Deferred`, found `NumCol`
+e2-typed-columns/probes/a_facade_interop.py:18:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_facade_interop.py:18:28: error[invalid-argument-type] Argument to bound method `Table.order_by` is incorrect: Expected `Sequence[str | Column | Selector | Deferred] | Column | Selector | Deferred`, found `NumCol`
+e2-typed-columns/probes/a_facade_interop.py:19:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_facade_interop.py:20:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_facade_interop.py:21:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_facade_interop.py:22:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/a_facade_interop.py:23:17: info[revealed-type] Revealed type: `Series | Any`
+e2-typed-columns/probes/a_facade_interop.py:24:17: info[revealed-type] Revealed type: `BooleanValue`
+e2-typed-columns/probes/a_facade_interop.py:24:35: error[invalid-argument-type] Argument to bound method `Value.isin` is incorrect: Expected `Iterable[Value] | Column`, found `list[str]`
+e2-typed-columns/probes/a_facade_interop.py:25:17: info[revealed-type] Revealed type: `Value`
+Found 12 diagnostics

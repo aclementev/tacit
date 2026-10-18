@@ -1,0 +1,11 @@
+e2-typed-columns/proto/aliases_facade.py:31: error: Argument 1 of "__radd__" is incompatible with supertype "ibis.expr.types.numeric.NumericValue"; supertype defines the argument type as "int | float | Decimal | NumericValue | Deferred"  [override]
+e2-typed-columns/proto/aliases_facade.py:31: note: This violates the Liskov substitution principle
+e2-typed-columns/proto/aliases_facade.py:31: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+e2-typed-columns/proto/aliases_facade.py:42: error: Return type "BoolCol" of "__eq__" incompatible with return type "bool" in supertype "builtins.object"  [override]
+e2-typed-columns/proto/aliases_facade.py:54: error: Return type "BoolCol" of "__eq__" incompatible with return type "bool" in supertype "builtins.object"  [override]
+e2-typed-columns/probes/c_extend.py:47: error: Missing named argument "petal_area" for "Ratios"  [call-arg]
+e2-typed-columns/probes/c_extend.py:51: error: Argument "sepal_ratio" to "Ratios" has incompatible type "StrCol"; expected "NumericValue"  [arg-type]
+e2-typed-columns/probes/c_extend.py:60: note: Revealed type is "def (self: c_extend.IrisFeatures, *, sepal_ratio: ibis.expr.types.numeric.NumericValue, petal_area: ibis.expr.types.numeric.NumericValue, sepal_length: ibis.expr.types.numeric.NumericValue, sepal_width: ibis.expr.types.numeric.NumericValue, petal_length: ibis.expr.types.numeric.NumericValue, petal_width: ibis.expr.types.numeric.NumericValue, species: ibis.expr.types.strings.StringValue)"
+e2-typed-columns/probes/c_extend.py:61: note: Revealed type is "proto.aliases_facade.NumCol"
+e2-typed-columns/probes/c_extend.py:62: note: Revealed type is "proto.aliases_facade.StrCol"
+Found 5 errors in 2 files (checked 1 source file)

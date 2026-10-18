@@ -1,0 +1,30 @@
+  56| reveal_type(df.sepal_length)
+      pyright  R:NumCol
+      mypy     R:proto.NumCol
+      ty       R:NumCol
+      pyrefly  R:NumCol
+  62| takes_iris2(f2)  # shape 2: error wanted (siblings)
+      pyright  E:Argument of type "Features2" cannot be a
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+  64| takes_iris(i2)  # error wanted (unrelated)
+      pyright  E:Argument of type "Iris2" cannot be assig
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+  65| reveal_type(long_sepals_proto(f))  # IrisFeatures via protocol
+      pyright  R:Unknown ; E:Argument of type "IrisFeatures" cannot b
+      mypy     R:IrisFeatures
+      ty       R:IrisFeatures
+      pyrefly  R:IrisFeatures
+  66| reveal_type(long_sepals_proto(f2))
+      pyright  R:Unknown ; E:Argument of type "Features2" cannot be a
+      mypy     R:Features2
+      ty       R:Features2
+      pyrefly  R:Features2
+  67| reveal_type(long_sepals(f, f.sepal_length))
+      pyright  R:IrisFeatures
+      mypy     R:IrisFeatures
+      ty       R:IrisFeatures
+      pyrefly  R:IrisFeatures

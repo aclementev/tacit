@@ -1,0 +1,66 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:69:17 - information: Type of "r" is "DataFrame[WithScore[Orders]]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:71:14 - error: Argument of type "DataFrame[WithScore[Orders]]" cannot be assigned to parameter "df" of type "DataFrame[S@dedupe_p]" in function "dedupe_p"
+    "DataFrame[WithScore[Orders]]" is not assignable to "DataFrame[S@dedupe_p]"
+      Type parameter "S@DataFrame" is invariant, but "WithScore[Orders]" is not the same as "S@dedupe_p" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:72:28 - error: Type "DataFrame[WithScore[Orders]]" is not assignable to declared type "DataFrame[Orders]"
+    "DataFrame[WithScore[Orders]]" is not assignable to "DataFrame[Orders]"
+      Type parameter "S@DataFrame" is invariant, but "WithScore[Orders]" is not the same as "Orders" (reportAssignmentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:83:17 - information: Type of "add_score_b1(o, ScoredOrders)" is "DataFrame[ScoredOrders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:85:21 - error: Argument of type "type[Orders]" cannot be assigned to parameter "out" of type "type[O@add_score_b1]" in function "add_score_b1"
+    Type "Orders" is not assignable to type "Scored"
+      "Orders" is not assignable to "Scored" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:97:17 - information: Type of "add_score_b2(o, ScoredOrders)" is "DataFrame[ScoredOrders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:98:18 - error: Argument of type "DataFrame[Orders]" cannot be assigned to parameter "df" of type "Into[O@add_score_b2]" in function "add_score_b2"
+    "DataFrame[Orders]" is incompatible with protocol "Into[ScoredCustomers]"
+      "__tacit_type_is_invariant__" is an incompatible type
+        Type "(x: Orders) -> Orders" is not assignable to type "(x: S@Into, /) -> object"
+          Parameter 1: type "S@Into" is incompatible with type "Orders"
+            "ScoredCustomers" is not assignable to "Orders" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:99:18 - error: Argument of type "DataFrame[Orders]" cannot be assigned to parameter "df" of type "Into[O@add_score_b2]" in function "add_score_b2"
+    "DataFrame[Orders]" is incompatible with protocol "Into[O@add_score_b2]"
+      Type parameter "S@Into" is contravariant, but "Orders" is not a supertype of "O@add_score_b2"
+        Type "Scored" is not assignable to type "Orders"
+          "Orders" is not assignable to "Scored"
+          "Scored" is not assignable to "Orders" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:99:21 - error: Argument of type "type[Orders]" cannot be assigned to parameter "out" of type "type[O@add_score_b2]" in function "add_score_b2"
+    Type "Orders" is not assignable to type "Scored"
+      "Orders" is not assignable to "Scored" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:100:18 - error: Argument of type "DataFrame[Orders]" cannot be assigned to parameter "df" of type "Into[O@add_score_b2]" in function "add_score_b2"
+    "DataFrame[Orders]" is incompatible with protocol "Into[O@add_score_b2]"
+      Type parameter "S@Into" is contravariant, but "Orders" is not a supertype of "O@add_score_b2"
+        Type "Scored" is not assignable to type "Orders"
+          "Orders" is not assignable to "Scored"
+          "Scored" is not assignable to "Orders" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:100:21 - error: Argument of type "type[OrdersPlusScoreNoMixin]" cannot be assigned to parameter "out" of type "type[O@add_score_b2]" in function "add_score_b2"
+    Type "OrdersPlusScoreNoMixin" is not assignable to type "Scored"
+      "OrdersPlusScoreNoMixin" is not assignable to "Scored" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:105:28 - error: Type "DataFrame[ScoredOrders]" is not assignable to declared type "DataFrame[Orders]"
+    "DataFrame[ScoredOrders]" is not assignable to "DataFrame[Orders]"
+      Type parameter "S@DataFrame" is invariant, but "ScoredOrders" is not the same as "Orders" (reportAssignmentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:114:17 - information: Type of "add_score_b2p(o, OrdersPlusScoreNoMixin)" is "DataFrame[OrdersPlusScoreNoMixin]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:121:17 - information: Type of "o.extend_to(ScoredOrders, score=ibis.literal(1))" is "DataFrame[Orders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:122:17 - error: Argument of type "type[ScoredCustomers]" cannot be assigned to parameter "out" of type "type[Orders]" in function "extend_to"
+    "type[ScoredCustomers]" is not assignable to "type[Orders]"
+    Type "type[ScoredCustomers]" is not assignable to type "type[Orders]" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:126:17 - information: Type of "ScoredOrders.from_mutate(o, score=ibis.literal(1))" is "DataFrame[ScoredOrders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:127:33 - error: Argument of type "DataFrame[Orders]" cannot be assigned to parameter "df" of type "Into[ScoredCustomers]" in function "from_mutate"
+    "DataFrame[Orders]" is incompatible with protocol "Into[ScoredCustomers]"
+      "__tacit_type_is_invariant__" is an incompatible type
+        Type "(x: Orders) -> Orders" is not assignable to type "(x: S@Into, /) -> object"
+          Parameter 1: type "S@Into" is incompatible with type "Orders"
+            "ScoredCustomers" is not assignable to "Orders" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:131:18 - error: Argument of type "DataFrame[S@generic_caller]" cannot be assigned to parameter "df" of type "Into[O@add_score_b2]" in function "add_score_b2"
+    "DataFrame[S@generic_caller]" is incompatible with protocol "Into[ScoredOrders]"
+      "__tacit_type_is_invariant__" is an incompatible type
+        Type "(x: S@generic_caller) -> S@generic_caller" is not assignable to type "(x: S@Into, /) -> object"
+          Parameter 1: type "S@Into" is incompatible with type "S@generic_caller"
+            Type "ScoredOrders" is not assignable to type "S@generic_caller" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:150:17 - information: Type of "r" is "Ext[Orders, Scored]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:152:17 - information: Type of "dedupe_p(r)" is "DataFrame[Orders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:154:17 - information: Type of "add_score_c(add_score_c(o))" is "Ext[Orders, Scored]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:184:17 - information: Type of "r" is "Frame[Orders, Scored, Audited]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t2_additive.py:186:22 - error: Argument of type "Frame[Orders, Scored, Audited]" cannot be assigned to parameter "df" of type "Frame[*P@needs_score_last, Scored]" in function "needs_score_last"
+    "Frame[Orders, Scored, Audited]" is not assignable to "Frame[Orders, Scored, Scored]"
+      Type parameter "P@Frame" is invariant, but "*tuple[Orders, Scored, Audited]" is not the same as "*tuple[Orders, Scored, Scored]" (reportArgumentType)
+13 errors, 0 warnings, 10 informations

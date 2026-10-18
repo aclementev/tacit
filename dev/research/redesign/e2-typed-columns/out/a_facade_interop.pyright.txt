@@ -1,0 +1,27 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:17:17 - information: Type of "t.order_by(iris.sepal_length)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:17:28 - error: Argument of type "NumCol" cannot be assigned to parameter "by" of type "str | Column | Selector | Deferred | Sequence[str | Column | Selector | Deferred]" in function "order_by"
+    Type "NumCol" is not assignable to type "str | Column | Selector | Deferred | Sequence[str | Column | Selector | Deferred]"
+      "NumCol" is not assignable to "str"
+      "NumCol" is not assignable to "Column"
+      "NumCol" is not assignable to "Selector"
+      "NumCol" is not assignable to "Deferred"
+      "NumCol" is not assignable to "Sequence[str | Column | Selector | Deferred]" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:18:17 - information: Type of "t.order_by(iris.sepal_length.desc())" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:18:28 - error: Argument of type "NumCol" cannot be assigned to parameter "by" of type "str | Column | Selector | Deferred | Sequence[str | Column | Selector | Deferred]" in function "order_by"
+    Type "NumCol" is not assignable to type "str | Column | Selector | Deferred | Sequence[str | Column | Selector | Deferred]"
+      "NumCol" is not assignable to "str"
+      "NumCol" is not assignable to "Column"
+      "NumCol" is not assignable to "Selector"
+      "NumCol" is not assignable to "Deferred"
+      "NumCol" is not assignable to "Sequence[str | Column | Selector | Deferred]" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:19:17 - information: Type of "t.group_by(iris.species).agg(m=iris.sepal_length.mean())" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:20:17 - information: Type of "t.select(iris.species, x=iris.sepal_length * 2)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:21:17 - information: Type of "t.mutate(x=iris.sepal_length.round(1))" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:22:17 - information: Type of "iris.sepal_length.get_name()" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:23:17 - information: Type of "iris.sepal_length.to_pandas()" is "Series | Any"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:24:17 - information: Type of "iris.species.isin(["setosa"])" is "BooleanValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:24:36 - error: Argument of type "list[str]" cannot be assigned to parameter "values" of type "ArrayValue | Column | Iterable[Value]" in function "isin"
+    "Literal['setosa']" is not assignable to "Value" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/a_facade_interop.py:25:17 - information: Type of "ibis.cases((iris.sepal_length > 5, "big"), else_="small")" is "Value"
+3 errors, 0 warnings, 9 informations

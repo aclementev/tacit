@@ -1,0 +1,19 @@
+e2-typed-columns/probes/a_ann.py:37:17: info[revealed-type] Revealed type: `FloatingColumn`
+e2-typed-columns/probes/a_ann.py:38:17: info[revealed-type] Revealed type: `StringColumn`
+e2-typed-columns/probes/a_ann.py:39:17: info[revealed-type] Revealed type: `FloatingColumn`
+e2-typed-columns/probes/a_ann.py:40:17: info[revealed-type] Revealed type: `NumericValue & Unknown`
+e2-typed-columns/probes/a_ann.py:41:17: info[revealed-type] Revealed type: `StringColumn & Unknown`
+e2-typed-columns/probes/a_ann.py:42:17: info[revealed-type] Revealed type: `NumericScalar`
+e2-typed-columns/probes/a_ann.py:43:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/a_ann.py:44:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/a_ann.py:45:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/a_ann.py:58:41: error[unresolved-attribute] Object of type `Iris` has no attribute `sepal_lenght`
+e2-typed-columns/probes/a_ann.py:59:38: error[unresolved-attribute] Class `Iris` has no attribute `sepal_lenght`
+e2-typed-columns/probes/a_ann.py:66:12: error[missing-argument] No argument provided for required parameter `petal_area`
+e2-typed-columns/probes/a_ann.py:85:9: error[unknown-argument] Argument `bogus` does not match any known parameter
+e2-typed-columns/probes/a_ann.py:126:17: info[revealed-type] Revealed type: `Iris`
+e2-typed-columns/probes/a_ann.py:127:17: info[revealed-type] Revealed type: `Iris`
+e2-typed-columns/probes/a_ann.py:128:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_ann.py:129:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_ann.py:130:51: info[revealed-type] Revealed type: `Unknown`
+Found 18 diagnostics

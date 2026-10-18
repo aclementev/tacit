@@ -1,0 +1,82 @@
+[
+ {
+  "label": "n=10,000,000 bad=0.0 | reference: 1 full-scan aggregate",
+  "queries": 1,
+  "min_s": 0.32,
+  "med_s": 0.379,
+  "cpu_min_s": 0.333,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.0 | tacit Schema.parse (pandera)",
+  "queries": 16,
+  "min_s": 6.168,
+  "med_s": 6.502,
+  "cpu_min_s": 3.742,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.0 | pandera lazy=True",
+  "queries": 16,
+  "min_s": 6.981,
+  "med_s": 7.356,
+  "cpu_min_s": 3.241,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.0 | native 1-query validate",
+  "queries": 1,
+  "min_s": 3.707,
+  "med_s": 4.061,
+  "cpu_min_s": 2.072,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.0 | native 1-query validate + unique(id)",
+  "queries": 1,
+  "min_s": 3.26,
+  "med_s": 4.343,
+  "cpu_min_s": 4.136,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.001 | reference: 1 full-scan aggregate",
+  "queries": 1,
+  "min_s": 0.418,
+  "med_s": 0.434,
+  "cpu_min_s": 0.333,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.001 | tacit Schema.parse (pandera)",
+  "queries": 30,
+  "min_s": 12.207,
+  "med_s": 14.059,
+  "cpu_min_s": 9.795,
+  "outcome": "ConstraintError"
+ },
+ {
+  "label": "n=10,000,000 bad=0.001 | pandera lazy=True",
+  "queries": 30,
+  "min_s": 26.763,
+  "med_s": 27.979,
+  "cpu_min_s": 10.211,
+  "outcome": "SchemaErrors"
+ },
+ {
+  "label": "n=10,000,000 bad=0.001 | native 1-query validate",
+  "queries": 2,
+  "min_s": 4.251,
+  "med_s": 4.901,
+  "cpu_min_s": 2.401,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.001 | native 1-query validate + unique(id)",
+  "queries": 2,
+  "min_s": 7.482,
+  "med_s": 8.909,
+  "cpu_min_s": 4.944,
+  "outcome": "ok"
+ }
+]

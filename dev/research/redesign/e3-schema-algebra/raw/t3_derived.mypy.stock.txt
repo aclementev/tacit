@@ -1,0 +1,7 @@
+t3_derived.py:49: error: Value of type variable "S" of "needs_petal" cannot be "Sepal"  [type-var]
+t3_derived.py:71: error: Unsupported dynamic base class "IrisP.pick"  [misc]
+t3_derived.py:75: error: Unsupported dynamic base class "IrisP.pick_opaque"  [misc]
+t3_derived.py:82: note: Revealed type is "Any"
+t3_derived.py:88: error: Variable "t3_derived.SepalAlias" is not valid as a type  [valid-type]
+t3_derived.py:88: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#variables-vs-type-aliases
+t3_derived.py:108: error: Value of type variable "S" of "needs_petal" cannot be "SepalV"  [type-var]

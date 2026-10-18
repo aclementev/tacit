@@ -1,0 +1,13 @@
+e2-typed-columns/probes/b_access.py:39:17: info[revealed-type] Revealed type: `FloatingColumn`
+e2-typed-columns/probes/b_access.py:40:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/b_access.py:41:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/b_access.py:42:17: info[revealed-type] Revealed type: `FloatingColumn`
+e2-typed-columns/probes/b_access.py:43:17: info[revealed-type] Revealed type: `Any`
+e2-typed-columns/probes/b_access.py:44:17: info[revealed-type] Revealed type: `Any`
+e2-typed-columns/probes/b_access.py:45:17: info[revealed-type] Revealed type: `FloatingColumn`
+e2-typed-columns/probes/b_access.py:46:17: error[unresolved-attribute] Object of type `IrisGetattrHidden` has no attribute `sepal_lenght`
+e2-typed-columns/probes/b_access.py:46:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/b_access.py:47:17: error[unresolved-attribute] Object of type `IrisGetattrHidden` has no attribute `mutate`
+e2-typed-columns/probes/b_access.py:47:17: info[revealed-type] Revealed type: `Unknown`
+e2-typed-columns/probes/b_access.py:54:47: error[unresolved-attribute] Object of type `IrisGetattrHidden` has no attribute `mutate`
+Found 12 diagnostics

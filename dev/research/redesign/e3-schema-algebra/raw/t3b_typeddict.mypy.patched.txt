@@ -1,0 +1,19 @@
+t3b_typeddict.py:48: error: Missing named argument "amount" for "build_orders"  [call-arg]
+t3b_typeddict.py:49: error: Unexpected keyword argument "extra" for "build_orders"  [call-arg]
+t3b_typeddict.py:50: error: Unexpected keyword argument "amonut" for "build_orders"; did you mean "amount"?  [call-arg]
+t3b_typeddict.py:51: error: Argument "amount" to "build_orders" has incompatible type "StringValue"; expected "FloatingValue"  [arg-type]
+t3b_typeddict.py:53: error: Unexpected keyword argument "scroe" for "add_score"; did you mean "score"?  [call-arg]
+t3b_typeddict.py:57: error: Variable "typing.TypedDict" is not valid as a type  [valid-type]
+t3b_typeddict.py:57: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#variables-vs-type-aliases
+t3b_typeddict.py:57: error: Unpack item in ** parameter must be a TypedDict  [misc]
+t3b_typeddict.py:61: error: All bases of a new TypedDict must be TypedDict types  [misc]
+t3b_typeddict.py:72: error: Extra key "x" for TypedDict "Closed"  [typeddict-unknown-key]
+t3b_typeddict.py:75: error: Unexpected keyword argument "extra_items" for "__init_subclass__" of "TypedDict"  [call-arg]
+t3b_typeddict.py:83: error: Unexpected keyword argument "whatever" for "mutate_some"  [call-arg]
+t3b_typeddict.py:84: error: Unexpected keyword argument "whatever" for "mutate_some"  [call-arg]
+t3b_typeddict.py:88: error: Variable "typing.TypedDict" is not valid as a type  [valid-type]
+t3b_typeddict.py:88: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#variables-vs-type-aliases
+t3b_typeddict.py:88: error: Inline TypedDict is experimental, must be enabled with --enable-incomplete-feature=InlineTypedDict  [misc]
+t3b_typeddict.py:93: error: ReadOnly[] can be only used in a TypedDict definition  [valid-type]
+t3b_typeddict.py:121: error: Value of type variable "S" of "needs_amount_mut" cannot be "IntAmount"  [type-var]
+t3b_typeddict.py:122: note: Revealed type is "tx.DataFrame[t3b_typeddict.IntAmount]"

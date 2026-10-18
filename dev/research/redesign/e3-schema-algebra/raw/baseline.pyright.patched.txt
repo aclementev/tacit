@@ -1,0 +1,17 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:22:17 - information: Type of "df" is "DataFrame[Orders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:23:17 - information: Type of "df.id" is "Column"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:24:17 - information: Type of "df.nonexistent" is "Column"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:25:17 - information: Type of "df.filter(df.id.notnull())" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:26:17 - information: Type of "Orders.cast(df)" is "DataFrame[Orders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:30:12 - error: Type "Table" is not assignable to return type "DataFrame[Orders]"
+    "Table" is not assignable to "DataFrame[Orders]" (reportReturnType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:34:12 - error: Type "DataFrame[Customers]" is not assignable to return type "DataFrame[Orders]"
+    "DataFrame[Customers]" is not assignable to "DataFrame[Orders]"
+      Type parameter "S@DataFrame" is invariant, but "Customers" is not the same as "Orders" (reportReturnType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:38:12 - error: Type "DataFrame[BigOrders]" is not assignable to return type "DataFrame[Orders]"
+    "DataFrame[BigOrders]" is not assignable to "DataFrame[Orders]"
+      Type parameter "S@DataFrame" is invariant, but "BigOrders" is not the same as "Orders" (reportReturnType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/baseline.py:42:12 - error: Type "DataFrame[Orders]" is not assignable to return type "int"
+    "DataFrame[Orders]" is not assignable to "int" (reportReturnType)
+4 errors, 0 warnings, 5 informations

@@ -1,0 +1,16 @@
+t1_structural.py:59: note: Revealed type is "tx.DataFrame[t1_structural.Orders]"
+t1_structural.py:60: error: Value of type variable "S" of "dedupe" cannot be "Products"  [type-var]
+t1_structural.py:61: error: Value of type variable "S" of "dedupe" cannot be "Payments"  [type-var]
+t1_structural.py:69: note: Revealed type is "int"
+t1_structural.py:70: error: "type[S]" has no attribute "idd"  [attr-defined]
+t1_structural.py:82: note: Revealed type is "tx.DataFrame[t1_structural.Orders]"
+t1_structural.py:83: note: Revealed type is "tx.DataFrame[t1_structural.Payments]"
+t1_structural.py:84: error: Value of type variable "S" of "dedupe_p" cannot be "Products"  [type-var]
+t1_structural.py:85: error: Value of type variable "S" of "dedupe_p" cannot be "BadId"  [type-var]
+t1_structural.py:87: error: Value of type variable "S" of "needs_both" cannot be "Payments"  [type-var]
+t1_structural.py:98: error: Incompatible return value type (got "Table", expected "DataFrame[S]")  [return-value]
+t1_structural.py:110: error: "type[S]" has no attribute "cast"  [attr-defined]
+t1_structural.py:117: note: Revealed type is "tx.DataFrame[t1_structural.HasIdP]"
+t1_structural.py:117: error: Only concrete class can be given where "type[HasIdP]" is expected  [type-abstract]
+t1_structural.py:127: error: Type argument "S" of "DataFrame" must be a subtype of "Schema"  [type-var]
+t1_structural.py:132: error: Incompatible return value type (got "Table", expected "DataFrame[S]")  [return-value]

@@ -1,0 +1,41 @@
+e2-typed-columns/probes/e_ibis_types.py:20: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:21: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:22: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:25: note: Revealed type is "ibis.expr.types.numeric.NumericValue"
+e2-typed-columns/probes/e_ibis_types.py:26: note: Revealed type is "ibis.expr.types.numeric.NumericValue"
+e2-typed-columns/probes/e_ibis_types.py:27: note: Revealed type is "ibis.expr.types.numeric.NumericValue"
+e2-typed-columns/probes/e_ibis_types.py:28: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:28: error: Unsupported operand types for > ("FloatingColumn" and "int")  [operator]
+e2-typed-columns/probes/e_ibis_types.py:29: note: Revealed type is "ibis.expr.types.logical.BooleanValue"
+e2-typed-columns/probes/e_ibis_types.py:30: note: Revealed type is "bool"
+e2-typed-columns/probes/e_ibis_types.py:31: note: Revealed type is "bool"
+e2-typed-columns/probes/e_ibis_types.py:32: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:32: error: Unsupported operand types for <= ("StringColumn" and "str")  [operator]
+e2-typed-columns/probes/e_ibis_types.py:33: note: Revealed type is "ibis.expr.types.logical.BooleanValue"
+e2-typed-columns/probes/e_ibis_types.py:35: note: Revealed type is "ibis.expr.types.numeric.NumericScalar"
+e2-typed-columns/probes/e_ibis_types.py:36: note: Revealed type is "ibis.expr.types.numeric.NumericScalar"
+e2-typed-columns/probes/e_ibis_types.py:37: note: Revealed type is "ibis.expr.types.numeric.NumericScalar"
+e2-typed-columns/probes/e_ibis_types.py:38: note: Revealed type is "ibis.expr.types.numeric.IntegerScalar"
+e2-typed-columns/probes/e_ibis_types.py:39: note: Revealed type is "ibis.expr.types.strings.StringColumn"
+e2-typed-columns/probes/e_ibis_types.py:40: note: Revealed type is "ibis.expr.types.numeric.IntegerValue"
+e2-typed-columns/probes/e_ibis_types.py:41: error: "NumericValue" has no attribute "mean"  [attr-defined]
+e2-typed-columns/probes/e_ibis_types.py:41: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:42: note: Revealed type is "ibis.expr.types.logical.BooleanValue"
+e2-typed-columns/probes/e_ibis_types.py:43: note: Revealed type is "ibis.expr.types.strings.StringValue"
+e2-typed-columns/probes/e_ibis_types.py:44: note: Revealed type is "ibis.expr.types.numeric.NumericValue"
+e2-typed-columns/probes/e_ibis_types.py:47: error: Unsupported operand types for / ("StringColumn" and "FloatingColumn")  [operator]
+e2-typed-columns/probes/e_ibis_types.py:48: error: "StringColumn" has no attribute "mean"  [attr-defined]
+e2-typed-columns/probes/e_ibis_types.py:49: error: "FloatingColumn" has no attribute "upper"  [attr-defined]
+e2-typed-columns/probes/e_ibis_types.py:52: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:53: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:54: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:55: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:56: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:58: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:59: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:60: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:61: note: Revealed type is "ibis.expr.types.generic.Value"
+e2-typed-columns/probes/e_ibis_types.py:62: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:63: note: Revealed type is "Any"
+e2-typed-columns/probes/e_ibis_types.py:64: note: Revealed type is "Any"
+Found 6 errors in 1 file (checked 1 source file)

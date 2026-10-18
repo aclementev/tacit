@@ -1,0 +1,13 @@
+e2-typed-columns/probes/b_access.py:39: note: Revealed type is "ibis.expr.types.numeric.FloatingColumn"
+e2-typed-columns/probes/b_access.py:40: note: Revealed type is "Any"
+e2-typed-columns/probes/b_access.py:41: note: Revealed type is "Any"
+e2-typed-columns/probes/b_access.py:42: note: Revealed type is "ibis.expr.types.numeric.FloatingColumn"
+e2-typed-columns/probes/b_access.py:43: note: Revealed type is "Any"
+e2-typed-columns/probes/b_access.py:44: note: Revealed type is "Any"
+e2-typed-columns/probes/b_access.py:45: note: Revealed type is "ibis.expr.types.numeric.FloatingColumn"
+e2-typed-columns/probes/b_access.py:46: error: "IrisGetattrHidden" has no attribute "sepal_lenght"; maybe "sepal_length"?  [attr-defined]
+e2-typed-columns/probes/b_access.py:46: note: Revealed type is "Any"
+e2-typed-columns/probes/b_access.py:47: error: "IrisGetattrHidden" has no attribute "mutate"  [attr-defined]
+e2-typed-columns/probes/b_access.py:47: note: Revealed type is "Any"
+e2-typed-columns/probes/b_access.py:54: error: "IrisGetattrHidden" has no attribute "mutate"  [attr-defined]
+Found 3 errors in 1 file (checked 1 source file)

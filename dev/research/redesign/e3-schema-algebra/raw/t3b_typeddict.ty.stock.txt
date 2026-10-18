@@ -1,0 +1,19 @@
+t3b_typeddict.py:39:33: error[invalid-argument-type] Argument to bound method `Table.select` is incorrect: Possible extra items in unpacked open `TypedDict` have type `object`, expected `Value | str | Deferred`
+t3b_typeddict.py:43:40: error[invalid-argument-type] Argument to bound method `Table.mutate` is incorrect: Possible extra items in unpacked open `TypedDict` have type `object`, expected `Value | Deferred | str`
+t3b_typeddict.py:48:5: error[missing-argument] No argument provided for required parameter `amount` of function `build_orders`
+t3b_typeddict.py:50:5: error[missing-argument] No argument provided for required parameter `amount` of function `build_orders`
+t3b_typeddict.py:51:27: error[invalid-argument-type] Argument to function `build_orders` is incorrect: Expected `FloatingValue`, found `StringValue`
+t3b_typeddict.py:53:5: error[missing-argument] No argument provided for required parameter `score` of function `add_score`
+t3b_typeddict.py:57:15: error[invalid-type-form] The special form `typing.TypedDict` is not allowed in type expressions
+t3b_typeddict.py:57:67: error[invalid-type-form] Unpacked value for `**kwargs` must be a TypedDict, not `TD@build`
+t3b_typeddict.py:61:16: error[invalid-typed-dict-header] TypedDict class `OrdersTD` can only inherit from TypedDict classes: `Schema` is not a `TypedDict` class
+t3b_typeddict.py:66:25: error[unknown-argument] The `closed` parameter of `typing.TypedDict` was added in Python 3.15
+t3b_typeddict.py:72:27: error[invalid-key] Unknown key "x" for TypedDict `Closed`
+t3b_typeddict.py:75:24: error[unknown-argument] The `extra_items` parameter of `typing.TypedDict` was added in Python 3.15
+t3b_typeddict.py:84:26: error[invalid-argument-type] Argument to function `mutate_some` is incorrect: Expected `Value`, found `Literal[1]`
+t3b_typeddict.py:88:15: error[invalid-type-form] Special form `typing.TypedDict` expected no type parameter
+t3b_typeddict.py:93:13: error[invalid-type-form] `ReadOnly` is only allowed in TypedDict fields
+t3b_typeddict.py:119:21: error[invalid-argument-type] Argument to function `needs_amount_ro` is incorrect: Argument type `IntAmount` does not satisfy upper bound `HasAmountRO` of type variable `S`
+t3b_typeddict.py:121:22: error[invalid-argument-type] Argument to function `needs_amount_mut` is incorrect: Argument type `IntAmount` does not satisfy upper bound `HasAmountMut` of type variable `S`
+t3b_typeddict.py:122:17: info[revealed-type] Revealed type: `DataFrame[IntAmount]`
+Found 18 diagnostics

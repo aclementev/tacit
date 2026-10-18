@@ -1,0 +1,5 @@
+t3c_pep_probes.py:22:27: error[invalid-key] Unknown key "x" for TypedDict `Closed`
+t3c_pep_probes.py:24:26: error[invalid-argument-type] Argument to function `mutate_some` is incorrect: Expected `Value`, found `Literal[1]`
+t3c_pep_probes.py:25:5: error[missing-argument] No argument provided for required parameter `id` of function `mutate_some`
+t3c_pep_probes.py:28:15: error[invalid-type-form] Special form `typing_extensions.TypedDict` expected no type parameter
+Found 4 diagnostics

@@ -1,0 +1,7 @@
+ INFO e2-typed-columns/probes/rec_iris.py:53:16-25: revealed type: Value [reveal-type]
+ERROR e2-typed-columns/probes/rec_iris.py:54:67-74: Argument `Value` is not assignable to parameter `predicted_species` with type `StringValue` in function `Prediction.__init__` [bad-argument-type]
+ INFO e2-typed-columns/probes/rec_iris.py:65:16-21: revealed type: IrisPrediction [reveal-type]
+ INFO 1 error
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

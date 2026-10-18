@@ -1,0 +1,34 @@
+== pyright -
+d_protocol_assigned.py
+d_protocol_assigned.py:22:17 - information: Type of "f(a)" is "Unknown"
+d_protocol_assigned.py:22:19 - error: Argument of type "IrisA" cannot be assigned to parameter "df" of type "F@f" in function "f"
+    Type "IrisA" is not assignable to type "HasSepal"
+      "IrisA" is incompatible with protocol "HasSepal"
+        "sepal_length" is an incompatible type
+          "Col[NumCol, NumericValue]" is not assignable to "NumCol" (reportArgumentType)
+d_protocol_assigned.py:23:17 - information: Type of "a.sepal_length" is "NumCol"
+d_protocol_assigned.py:24:5 - error: Argument missing for parameter "sepal_length" (reportCallIssue)
+d_protocol_assigned.py:33:17 - information: Type of "df.sepal_length" is "Unknown"
+d_protocol_assigned.py:33:20 - error: Cannot access attribute "sepal_length" for class "HasSepal2*"
+    No overloads for "__get__" match the provided arguments
+    Argument of type "F@g" cannot be assigned to parameter "obj" of type "Frame" in function "__get__"
+      "HasSepal2*" is not assignable to "Frame" (reportAttributeAccessIssue)
+d_protocol_assigned.py:38:17 - information: Type of "g(a)" is "IrisA"
+== mypy --co
+d_protocol_assigned.py:24: error: Missing named argument "sepal_length" for "IrisA"  [call-arg]
+d_protocol_assigned.py:38: error: Value of type variable "F" of "g" cannot be "IrisA"  [type-var]
+== ty check 
+d_protocol_assigned.py:22:17: info[revealed-type] Revealed type: `IrisA`
+d_protocol_assigned.py:23:17: info[revealed-type] Revealed type: `NumCol`
+d_protocol_assigned.py:24:5: error[missing-argument] No argument provided for required parameter `sepal_length`
+d_protocol_assigned.py:33:17: error[invalid-attribute-access] Invalid access to descriptor attribute `sepal_length` on type `F@g`: No overload of function `Col.
+d_protocol_assigned.py:33:17: info[revealed-type] Revealed type: `Unknown`
+d_protocol_assigned.py:38:17: info[revealed-type] Revealed type: `Unknown`
+d_protocol_assigned.py:38:19: error[invalid-argument-type] Argument to function `g` is incorrect: Argument type `IrisA` does not satisfy upper bound `HasSepal2`
+== pyrefly c
+d_protocol_assigned.py:22:16-22: revealed type: IrisA [reveal-type]
+d_protocol_assigned.py:23:16-32: revealed type: NumCol [reveal-type]
+d_protocol_assigned.py:24:10-12: Missing argument `sepal_length` in function `IrisA.__init__` [missing-argument]
+d_protocol_assigned.py:33:16-33: revealed type: Unknown [reveal-type]
+d_protocol_assigned.py:33:17-32: No matching overload found for function `proto.frame.Col.__get__` called with arguments: (HasSepal2, type[HasSepal2]) [no-match
+d_protocol_assigned.py:38:16-22: revealed type: IrisA [reveal-type]

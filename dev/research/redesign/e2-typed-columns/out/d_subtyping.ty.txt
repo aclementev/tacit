@@ -1,0 +1,7 @@
+e2-typed-columns/probes/d_subtyping.py:56:17: info[revealed-type] Revealed type: `NumCol`
+e2-typed-columns/probes/d_subtyping.py:62:17: error[invalid-argument-type] Argument to function `takes_iris2` is incorrect: Expected `Iris2`, found `Features2`
+e2-typed-columns/probes/d_subtyping.py:64:16: error[invalid-argument-type] Argument to function `takes_iris` is incorrect: Expected `Iris`, found `Iris2`
+e2-typed-columns/probes/d_subtyping.py:65:17: info[revealed-type] Revealed type: `IrisFeatures`
+e2-typed-columns/probes/d_subtyping.py:66:17: info[revealed-type] Revealed type: `Features2`
+e2-typed-columns/probes/d_subtyping.py:67:17: info[revealed-type] Revealed type: `IrisFeatures`
+Found 6 diagnostics

@@ -1,0 +1,15 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3d_codegen_use.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3d_codegen_use.py:27:38 - error: Argument of type "object" cannot be assigned to parameter "named_exprs" of type "Value | str | Deferred" in function "select"
+    Type "object" is not assignable to type "Value | str | Deferred"
+      "object" is not assignable to "Value"
+      "object" is not assignable to "str"
+      "object" is not assignable to "Deferred" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3d_codegen_use.py:31:17 - error: Argument of type "DataFrame[IrisSepal]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_petal]" in function "needs_petal"
+    "DataFrame[IrisSepal]" is not assignable to "DataFrame[S@needs_petal]"
+      Type parameter "S@DataFrame" is invariant, but "IrisSepal" is not the same as "S@needs_petal" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3d_codegen_use.py:34:17 - error: Argument of type "DataFrame[Iris]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_label]" in function "needs_label"
+    "DataFrame[Iris]" is not assignable to "DataFrame[S@needs_label]"
+      Type parameter "S@DataFrame" is invariant, but "Iris" is not the same as "S@needs_label" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3d_codegen_use.py:35:17 - information: Type of "to_scored(i, IrisScored)" is "DataFrame[IrisScored]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3d_codegen_use.py:37:5 - error: Argument missing for parameter "sepal_width" (reportCallIssue)
+4 errors, 0 warnings, 1 information

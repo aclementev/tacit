@@ -1,0 +1,41 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:39:35 - error: Argument of type "object" cannot be assigned to parameter "named_exprs" of type "Value | str | Deferred" in function "select"
+    Type "object" is not assignable to type "Value | str | Deferred"
+      "object" is not assignable to "Value"
+      "object" is not assignable to "str"
+      "object" is not assignable to "Deferred" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:43:42 - error: Argument of type "object" cannot be assigned to parameter "mutations" of type "Value | Deferred | str" in function "mutate"
+    Type "object" is not assignable to type "Value | Deferred | str"
+      "object" is not assignable to "Value"
+      "object" is not assignable to "Deferred"
+      "object" is not assignable to "str" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:48:5 - error: Argument missing for parameter "amount" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:49:37 - error: No parameter named "extra" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:50:5 - error: Argument missing for parameter "amount" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:50:27 - error: No parameter named "amonut" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:51:34 - error: Argument of type "StringValue" cannot be assigned to parameter "amount" of type "FloatingValue" in function "build_orders"
+    "StringValue" is not assignable to "FloatingValue" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:53:5 - error: Argument missing for parameter "score" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:53:18 - error: No parameter named "scroe" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:57:15 - error: "TypedDict" cannot be used in this context (reportInvalidTypeForm)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:57:67 - error: Expected TypedDict type argument for Unpack (reportGeneralTypeIssues)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:61:7 - error: All base classes for TypedDict classes must also be TypedDict classes
+    Class "Schema" is not a TypedDict (reportGeneralTypeIssues)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:72:27 - error: Type "dict[str, int]" is not assignable to declared type "Closed"
+    Type "Literal[2]" is not assignable to item "extra_items"
+      Type "Literal[2]" is not assignable to type "Never" (reportAssignmentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:84:35 - error: Argument of type "Literal[1]" cannot be assigned to parameter "whatever" of type "Value" in function "mutate_some"
+    "Literal[1]" is not assignable to "Value" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:88:15 - error: "TypedDict" cannot be used in this context (reportInvalidTypeForm)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:88:25 - error: Expected class but received "dict[str, type[float]]" (reportGeneralTypeIssues)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:88:25 - error: Dictionary expression not allowed in type expression (reportInvalidTypeForm)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:88:25 - error: Expected no type arguments for class "TypedDict" (reportInvalidTypeArguments)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:93:13 - error: "ReadOnly" is not allowed in this context (reportInvalidTypeForm)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:119:21 - error: Argument of type "DataFrame[IntAmount]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_amount_ro]" in function "needs_amount_ro"
+    "DataFrame[IntAmount]" is not assignable to "DataFrame[S@needs_amount_ro]"
+      Type parameter "S@DataFrame" is invariant, but "IntAmount" is not the same as "S@needs_amount_ro" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:121:22 - error: Argument of type "DataFrame[IntAmount]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_amount_mut]" in function "needs_amount_mut"
+    "DataFrame[IntAmount]" is not assignable to "DataFrame[S@needs_amount_mut]"
+      Type parameter "S@DataFrame" is invariant, but "IntAmount" is not the same as "S@needs_amount_mut" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3b_typeddict.py:122:17 - information: Type of "df" is "DataFrame[IntAmount]"
+21 errors, 0 warnings, 1 information

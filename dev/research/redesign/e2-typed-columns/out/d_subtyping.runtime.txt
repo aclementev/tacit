@@ -1,0 +1,2 @@
+IrisFeatures 118
+[runtime] strict Iris.cast(features): Iris: missing=[] extra=['sepal_ratio'] wrong={}

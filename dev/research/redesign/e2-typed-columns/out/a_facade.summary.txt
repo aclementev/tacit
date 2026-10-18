@@ -1,0 +1,115 @@
+  37| reveal_type(iris.sepal_length)  # want: FloatingColumn
+      pyright  R:NumCol
+      mypy     R:proto.NumCol
+      ty       R:NumCol
+      pyrefly  R:NumCol
+  38| reveal_type(iris.species)  # want: StringColumn
+      pyright  R:StrCol
+      mypy     R:proto.StrCol
+      ty       R:StrCol
+      pyrefly  R:StrCol
+  39| reveal_type(Iris.sepal_length)  # class access
+      pyright  R:Deferred
+      mypy     R:ibis.common.Deferred
+      ty       R:Deferred
+      pyrefly  R:Deferred
+  40| reveal_type(iris.sepal_length / iris.sepal_width)
+      pyright  R:NumCol
+      mypy     R:proto.NumCol
+      ty       R:NumCol
+      pyrefly  R:NumCol
+  41| reveal_type(iris.species.upper())
+      pyright  R:StrCol
+      mypy     R:proto.StrCol
+      ty       R:StrCol
+      pyrefly  R:StrCol
+  42| reveal_type(iris.sepal_length.mean())
+      pyright  R:FloatingScalar
+      mypy     R:FloatingScalar
+      ty       R:FloatingScalar
+      pyrefly  R:FloatingScalar
+  43| reveal_type(iris.sepal_length > 5.0)  # literal comparison (ibis: Value.__gt__(Value))
+      pyright  R:BoolCol
+      mypy     R:proto.BoolCol
+      ty       R:BoolCol
+      pyrefly  R:BoolCol
+  44| reveal_type(iris.species == "setosa")  # ibis: __eq__(Value) -> falls back to bool
+      pyright  R:BoolCol
+      mypy     R:proto.BoolCol
+      ty       R:BoolCol
+      pyrefly  R:BoolCol
+  45| reveal_type((iris.sepal_length / iris.sepal_width).mean())  # ibis: NumericValue.mean missing
+      pyright  R:FloatingScalar
+      mypy     R:FloatingScalar
+      ty       R:FloatingScalar
+      pyrefly  R:FloatingScalar
+  58| expect_err("instance typo", lambda: iris.sepal_lenght)  # want: error
+      pyright  E:Cannot access attribute "sepal_lenght" f
+      mypy     E:attr-defined
+      ty       E:unresolved-attribute
+      pyrefly  E:missing-attribute
+  59| expect_err("class typo", lambda: Iris.sepal_lenght)  # want: error
+      pyright  E:Cannot access attribute "sepal_lenght" f
+      mypy     E:attr-defined
+      ty       E:unresolved-attribute
+      pyrefly  E:missing-attribute
+  60| expect_err("str.mean()", lambda: iris.species.mean())  # want: error
+      pyright  E:Cannot access attribute "mean" for class
+      mypy     E:attr-defined
+      ty       E:unresolved-attribute
+      pyrefly  E:missing-attribute
+  61| expect_err("float.upper()", lambda: iris.sepal_length.upper())  # want: error
+      pyright  E:Cannot access attribute "upper" for clas
+      mypy     E:attr-defined
+      ty       E:unresolved-attribute
+      pyrefly  E:missing-attribute
+  66| return IrisFeatures(  # want: error
+      pyright  E:reportCallIssue
+      mypy     E:call-arg
+      ty       E:missing-argument
+      pyrefly  E:missing-argument
+  77| return IrisFeatures(  # want: error
+      pyright  -
+      mypy     E:call-arg
+      ty       -
+      pyrefly  -
+  85| bogus=iris.species,
+      pyright  E:reportCallIssue
+      mypy     -
+      ty       E:unknown-argument
+      pyrefly  E:unexpected-keyword
+  96| sepal_ratio=iris.species.upper(),
+      pyright  E:Argument of type "StrCol" cannot be assi
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+ 107| species=iris.petal_width,
+      pyright  E:Argument of type "NumCol" cannot be assi
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+ 126| reveal_type(iris.filter(iris.sepal_length > iris.petal_length))  # want: Iris
+      pyright  R:Iris
+      mypy     R:Iris
+      ty       R:Iris
+      pyrefly  R:Iris
+ 127| reveal_type(iris.filter(Iris.sepal_length > 5.0))  # class-access predicate
+      pyright  R:Iris
+      mypy     R:Iris
+      ty       R:Iris
+      pyrefly  R:Iris
+ 128| reveal_type(iris.t.mutate(x=iris.sepal_length * 2))  # ir.Table
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+ 129| reveal_type(iris.mutate(x=iris.sepal_length * 2))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+ 130| expect_err("typo via .t", lambda: reveal_type(iris.t.zzz))  # back to ibis: no detection
+      pyright  R:Column
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown

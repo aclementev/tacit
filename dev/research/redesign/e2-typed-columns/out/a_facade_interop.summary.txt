@@ -1,0 +1,45 @@
+  17| reveal_type(t.order_by(iris.sepal_length))  # order_by wants str | Column | Deferred
+      pyright  R:Table ; E:Argument of type "NumCol" cannot be assi
+      mypy     R:Any
+      ty       R:Table ; E:invalid-argument-type
+      pyrefly  R:Table
+  18| reveal_type(t.order_by(iris.sepal_length.desc()))
+      pyright  R:Table ; E:Argument of type "NumCol" cannot be assi
+      mypy     R:Any
+      ty       R:Table ; E:invalid-argument-type
+      pyrefly  R:Table
+  19| reveal_type(t.group_by(iris.species).agg(m=iris.sepal_length.mean()))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  20| reveal_type(t.select(iris.species, x=iris.sepal_length * 2))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  21| reveal_type(t.mutate(x=iris.sepal_length.round(1)))
+      pyright  R:Table
+      mypy     R:Any
+      ty       R:Table
+      pyrefly  R:Table
+  22| reveal_type(iris.sepal_length.get_name())
+      pyright  R:Unknown
+      mypy     R:Any
+      ty       R:Unknown
+      pyrefly  R:Unknown
+  23| reveal_type(iris.sepal_length.to_pandas())  # Column-only method, not on the facade
+      pyright  R:Series | Any
+      mypy     R:pandas.core.Series | Any
+      ty       R:Series | Any
+      pyrefly  R:Series | Any
+  24| reveal_type(iris.species.isin(["setosa"]))
+      pyright  R:BooleanValue ; E:Argument of type "list[str]" cannot be a
+      mypy     R:BooleanValue ; E:list-item
+      ty       R:BooleanValue ; E:invalid-argument-type
+      pyrefly  R:BooleanValue
+  25| reveal_type(ibis.cases((iris.sepal_length > 5.0, "big"), else_="small"))
+      pyright  R:Value
+      mypy     R:Value
+      ty       R:Value
+      pyrefly  R:Value

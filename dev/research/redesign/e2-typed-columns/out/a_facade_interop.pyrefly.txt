@@ -1,0 +1,13 @@
+ INFO e2-typed-columns/probes/a_facade_interop.py:17:16-47: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:18:16-54: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:19:16-74: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:20:16-65: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:21:16-56: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:22:16-46: revealed type: Unknown [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:23:16-47: revealed type: Series | Any [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:24:16-47: revealed type: BooleanValue [reveal-type]
+ INFO e2-typed-columns/probes/a_facade_interop.py:25:16-77: revealed type: Value [reveal-type]
+ INFO 0 errors
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

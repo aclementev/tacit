@@ -1,0 +1,11 @@
+e2-typed-columns/probes/c_dt_isolated.py:53: note: Revealed type is "c_dt_isolated.GetT"
+e2-typed-columns/probes/c_dt_isolated.py:54: note: Revealed type is "str"
+e2-typed-columns/probes/c_dt_isolated.py:56: error: Missing named argument "y" for "A"  [call-arg]
+e2-typed-columns/probes/c_dt_isolated.py:57: error: Unexpected keyword argument "w" for "A"  [call-arg]
+e2-typed-columns/probes/c_dt_isolated.py:58: error: Argument "x" to "A" has incompatible type "GetT"; expected "SetT"  [arg-type]
+e2-typed-columns/probes/c_dt_isolated.py:59: error: Argument "x" to "A" has incompatible type "Other"; expected "SetT"  [arg-type]
+e2-typed-columns/probes/c_dt_isolated.py:60: error: Missing named argument "y" for "B"  [call-arg]
+e2-typed-columns/probes/c_dt_isolated.py:61: error: Argument "x" to "B" has incompatible type "Other"; expected "SetT"  [arg-type]
+e2-typed-columns/probes/c_dt_isolated.py:62: error: Missing named argument "x" for "A2"  [call-arg]
+e2-typed-columns/probes/c_dt_isolated.py:62: error: Missing named argument "y" for "A2"  [call-arg]
+Found 8 errors in 1 file (checked 1 source file)

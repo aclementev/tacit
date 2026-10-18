@@ -1,0 +1,19 @@
+a_facade.py:37: note: Revealed type is "proto.aliases_facade.NumCol"
+a_facade.py:38: note: Revealed type is "proto.aliases_facade.StrCol"
+a_facade.py:39: note: Revealed type is "Any"
+a_facade.py:40: note: Revealed type is "proto.aliases_facade.NumCol"
+a_facade.py:41: note: Revealed type is "proto.aliases_facade.StrCol"
+a_facade.py:42: note: Revealed type is "Any"
+a_facade.py:43: note: Revealed type is "proto.aliases_facade.BoolCol"
+a_facade.py:44: note: Revealed type is "proto.aliases_facade.BoolCol"
+a_facade.py:45: note: Revealed type is "Any"
+a_facade.py:58: error: "Iris" has no attribute "sepal_lenght"; maybe "sepal_length"?  [attr-defined]
+a_facade.py:59: error: "type[Iris]" has no attribute "sepal_lenght"  [attr-defined]
+a_facade.py:66: error: Missing named argument "petal_area" for "IrisFeatures"  [call-arg]
+a_facade.py:77: error: Unexpected keyword argument "bogus" for "IrisFeatures"  [call-arg]
+a_facade.py:126: note: Revealed type is "a_facade.Iris"
+a_facade.py:127: note: Revealed type is "a_facade.Iris"
+a_facade.py:128: note: Revealed type is "Any"
+a_facade.py:129: note: Revealed type is "Any"
+a_facade.py:130: note: Revealed type is "Any"
+Found 4 errors in 1 file (checked 1 source file)

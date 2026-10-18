@@ -1,0 +1,5 @@
+baseline.py:22: note: Revealed type is "tacit.schema.DataFrame[baseline.Orders]"
+baseline.py:23: note: Revealed type is "Any"
+baseline.py:24: note: Revealed type is "Any"
+baseline.py:25: note: Revealed type is "Any"
+baseline.py:26: note: Revealed type is "tacit.schema.DataFrame[baseline.Orders]"

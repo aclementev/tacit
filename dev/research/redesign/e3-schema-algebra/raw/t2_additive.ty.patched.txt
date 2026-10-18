@@ -1,0 +1,22 @@
+t2_additive.py:69:17: info[revealed-type] Revealed type: `DataFrame[WithScore[Orders]]`
+t2_additive.py:71:14: error[invalid-argument-type] Argument to function `dedupe_p` is incorrect: Argument type `WithScore[Orders]` does not satisfy upper bound `HasIdP` of type variable `S`
+t2_additive.py:72:28: error[invalid-assignment] Object of type `DataFrame[WithScore[Orders]]` is not assignable to `DataFrame[Orders]`
+t2_additive.py:83:17: info[revealed-type] Revealed type: `DataFrame[ScoredOrders]`
+t2_additive.py:85:21: error[invalid-argument-type] Argument to function `add_score_b1` is incorrect: Argument type `Orders` does not satisfy upper bound `Scored` of type variable `O`
+t2_additive.py:97:17: info[revealed-type] Revealed type: `DataFrame[ScoredOrders]`
+t2_additive.py:98:18: error[invalid-argument-type] Argument to function `add_score_b2` is incorrect: Expected `Into[(Orders & Scored) | ScoredCustomers]`, found `DataFrame[Orders]`
+t2_additive.py:99:21: error[invalid-argument-type] Argument to function `add_score_b2` is incorrect: Argument type `Orders` does not satisfy upper bound `Scored` of type variable `O`
+t2_additive.py:100:21: error[invalid-argument-type] Argument to function `add_score_b2` is incorrect: Argument type `OrdersPlusScoreNoMixin` does not satisfy upper bound `Scored` of type variable `O`
+t2_additive.py:105:28: error[invalid-assignment] Object of type `DataFrame[ScoredOrders]` is not assignable to `DataFrame[Orders]`
+t2_additive.py:114:17: info[revealed-type] Revealed type: `DataFrame[OrdersPlusScoreNoMixin]`
+t2_additive.py:121:17: info[revealed-type] Revealed type: `DataFrame[ScoredOrders]`
+t2_additive.py:122:5: error[invalid-argument-type] Argument to bound method `DataFrame.extend_to` is incorrect: Expected `Into[Orders | ScoredCustomers]`, found `DataFrame[Orders]`
+t2_additive.py:126:17: info[revealed-type] Revealed type: `DataFrame[ScoredOrders]`
+t2_additive.py:127:33: error[invalid-argument-type] Argument to bound method `Schema.from_mutate` is incorrect: Expected `Into[ScoredCustomers | Orders]`, found `DataFrame[Orders]`
+t2_additive.py:131:18: error[invalid-argument-type] Argument to function `add_score_b2` is incorrect: Expected `Into[ScoredOrders]`, found `DataFrame[S@generic_caller]`
+t2_additive.py:150:17: info[revealed-type] Revealed type: `Ext[Orders, Scored]`
+t2_additive.py:152:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+t2_additive.py:154:17: info[revealed-type] Revealed type: `Ext[Orders, Scored]`
+t2_additive.py:184:17: info[revealed-type] Revealed type: `Frame[Orders, Scored, Audited]`
+t2_additive.py:186:22: error[invalid-argument-type] Argument to function `needs_score_last` is incorrect: Expected `Frame[Orders, Scored, Scored]`, found `Frame[Orders, Scored, Audited]`
+Found 21 diagnostics

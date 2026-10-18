@@ -1,0 +1,25 @@
+  47| return IrisFeatures.extend(iris, Ratios(sepal_ratio=iris.sepal_length / iris.sepal_width))
+      pyright  E:reportCallIssue
+      mypy     E:call-arg
+      ty       E:missing-argument
+      pyrefly  E:missing-argument
+  51| return IrisFeatures.extend(iris, Ratios(sepal_ratio=iris.species, petal_area=iris.petal_width))
+      pyright  E:Argument of type "StrCol" cannot be assi
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+  60| reveal_type(IrisFeatures.__init__)  # full projection constructor (7 fields)
+      pyright  R:(self: IrisFeatures, *, sepal_ratio: NumericValue, petal_area: NumericValue, sepal_length: NumericValue, sepal_width: NumericValue, petal_length: NumericValue, petal_width: NumericValue, species: StringValue) -> None
+      mypy     R:def (self: IrisFeatures, *, sepal_ratio: NumericValue, petal_area: NumericValue, sepal_length: NumericValue, sepal_width: NumericValue, petal_length: NumericValue, petal_width: NumericValue, species: StringValue)
+      ty       R:(self: IrisFeatures, *, sepal_ratio: NumericValue, petal_area: NumericValue, sepal_length: NumericValue, sepal_width: NumericValue, petal_length: NumericValue, petal_width: NumericValue, species: StringValue) -> None
+      pyrefly  R:(self: IrisFeatures, *, sepal_ratio: NumericValue, petal_area: NumericValue, sepal_length: NumericValue, sepal_width: NumericValue, petal_length: NumericValue, petal_width: NumericValue, species: StringValue) -> None
+  61| reveal_type(f.sepal_ratio)
+      pyright  R:NumCol
+      mypy     R:proto.NumCol
+      ty       R:NumCol
+      pyrefly  R:NumCol
+  62| reveal_type(f.species)
+      pyright  R:StrCol
+      mypy     R:proto.StrCol
+      ty       R:StrCol
+      pyrefly  R:StrCol

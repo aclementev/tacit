@@ -1,0 +1,9 @@
+ERROR e2-typed-columns/probes/c_extend.py:47:44-94: Missing argument `petal_area` in function `Ratios.__init__` [missing-argument]
+ERROR e2-typed-columns/probes/c_extend.py:51:57-69: Argument `StrCol` is not assignable to parameter `sepal_ratio` with type `NumericValue` in function `Ratios.__init__` [bad-argument-type]
+ INFO e2-typed-columns/probes/c_extend.py:60:16-39: revealed type: (self: IrisFeatures, *, sepal_ratio: NumericValue, petal_area: NumericValue, sepal_length: NumericValue, sepal_width: NumericValue, petal_length: NumericValue, petal_width: NumericValue, species: StringValue) -> None [reveal-type]
+ INFO e2-typed-columns/probes/c_extend.py:61:16-31: revealed type: NumCol [reveal-type]
+ INFO e2-typed-columns/probes/c_extend.py:62:16-27: revealed type: StrCol [reveal-type]
+ INFO 2 errors
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

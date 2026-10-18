@@ -1,0 +1,45 @@
+  53| reveal_type(a.x)  # GetT
+      pyright  R:GetT
+      mypy     R:GetT
+      ty       R:GetT
+      pyrefly  R:GetT
+  54| reveal_type(A.x)  # str
+      pyright  R:str
+      mypy     R:str
+      ty       R:str
+      pyrefly  R:str
+  56| A(x=SetT())  # missing y
+      pyright  E:reportCallIssue
+      mypy     E:call-arg
+      ty       E:missing-argument
+      pyrefly  E:missing-argument
+  57| A(x=SetT(), y=SetT(), w=SetT())  # unexpected w
+      pyright  E:reportCallIssue
+      mypy     E:call-arg
+      ty       E:unknown-argument
+      pyrefly  E:unexpected-keyword
+  58| A(x=GetT(), y=SetT())  # GetT is not SetT (does the checker use __set__?)
+      pyright  E:Argument of type "GetT" cannot be assign
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+  59| A(x=Other(), y=SetT())  # clearly wrong
+      pyright  E:Argument of type "Other" cannot be assig
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+  60| B(x=SetT())  # missing y, base __init__(**kw) defined
+      pyright  E:reportCallIssue
+      mypy     E:call-arg
+      ty       E:missing-argument
+      pyrefly  E:missing-argument
+  61| B(x=Other(), y=SetT())
+      pyright  E:Argument of type "Other" cannot be assig
+      mypy     E:arg-type
+      ty       E:invalid-argument-type
+      pyrefly  E:bad-argument-type
+  62| A2(z=SetT())  # inherited x, y missing
+      pyright  E:reportCallIssue
+      mypy     E:call-arg ; E:call-arg
+      ty       E:missing-argument
+      pyrefly  E:missing-argument ; E:missing-argument

@@ -1,0 +1,3 @@
+Runtime type is 'StringColumn'
+Runtime type is 'IrisPrediction'
+{'setosa': 50, 'versicolor': 45, 'virginica': 55}

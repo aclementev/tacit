@@ -1,0 +1,23 @@
+e2-typed-columns/probes/a_facade.py:37:17: info[revealed-type] Revealed type: `NumCol`
+e2-typed-columns/probes/a_facade.py:38:17: info[revealed-type] Revealed type: `StrCol`
+e2-typed-columns/probes/a_facade.py:39:17: info[revealed-type] Revealed type: `Deferred`
+e2-typed-columns/probes/a_facade.py:40:17: info[revealed-type] Revealed type: `NumCol`
+e2-typed-columns/probes/a_facade.py:41:17: info[revealed-type] Revealed type: `StrCol`
+e2-typed-columns/probes/a_facade.py:42:17: info[revealed-type] Revealed type: `FloatingScalar`
+e2-typed-columns/probes/a_facade.py:43:17: info[revealed-type] Revealed type: `BoolCol`
+e2-typed-columns/probes/a_facade.py:44:17: info[revealed-type] Revealed type: `BoolCol`
+e2-typed-columns/probes/a_facade.py:45:17: info[revealed-type] Revealed type: `FloatingScalar`
+e2-typed-columns/probes/a_facade.py:58:41: error[unresolved-attribute] Object of type `Iris` has no attribute `sepal_lenght`
+e2-typed-columns/probes/a_facade.py:59:38: error[unresolved-attribute] Class `Iris` has no attribute `sepal_lenght`
+e2-typed-columns/probes/a_facade.py:60:38: error[unresolved-attribute] Object of type `StrCol` has no attribute `mean`
+e2-typed-columns/probes/a_facade.py:61:41: error[unresolved-attribute] Object of type `NumCol` has no attribute `upper`
+e2-typed-columns/probes/a_facade.py:66:12: error[missing-argument] No argument provided for required parameter `petal_area`
+e2-typed-columns/probes/a_facade.py:85:9: error[unknown-argument] Argument `bogus` does not match any known parameter
+e2-typed-columns/probes/a_facade.py:96:9: error[invalid-argument-type] Argument is incorrect: Expected `NumericValue`, found `StrCol`
+e2-typed-columns/probes/a_facade.py:107:9: error[invalid-argument-type] Argument is incorrect: Expected `StringValue`, found `NumCol`
+e2-typed-columns/probes/a_facade.py:126:17: info[revealed-type] Revealed type: `Iris`
+e2-typed-columns/probes/a_facade.py:127:17: info[revealed-type] Revealed type: `Iris`
+e2-typed-columns/probes/a_facade.py:128:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_facade.py:129:17: info[revealed-type] Revealed type: `Table`
+e2-typed-columns/probes/a_facade.py:130:51: info[revealed-type] Revealed type: `Unknown`
+Found 22 diagnostics

@@ -1,0 +1,6 @@
+   sepal_ratio  petal_area  sepal_length  sepal_width  petal_length  petal_width species
+0     1.457143        0.28           5.1          3.5           1.4          0.2  setosa
+1     1.633333        0.28           4.9          3.0           1.4          0.2  setosa
+[runtime] missing: TypeError: Ratios: missing=['petal_area'] extra=[] wrong={}
+[runtime] wrong type: TypeError: Ratios: missing=[] extra=[] wrong={'sepal_ratio': (Float64(nullable=True), String(length=N
+[runtime] wrong delta: TypeError: IrisFeatures: missing=['petal_area', 'sepal_ratio'] extra=[] wrong={}

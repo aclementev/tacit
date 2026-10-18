@@ -1,0 +1,33 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:59:17 - information: Type of "dedupe(o)" is "DataFrame[Orders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:60:12 - error: Argument of type "DataFrame[Products]" cannot be assigned to parameter "df" of type "DataFrame[S@dedupe]" in function "dedupe"
+    "DataFrame[Products]" is not assignable to "DataFrame[S@dedupe]"
+      Type parameter "S@DataFrame" is invariant, but "Products" is not the same as "S@dedupe" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:61:12 - error: Argument of type "DataFrame[Payments]" cannot be assigned to parameter "df" of type "DataFrame[S@dedupe]" in function "dedupe"
+    "DataFrame[Payments]" is not assignable to "DataFrame[S@dedupe]"
+      Type parameter "S@DataFrame" is invariant, but "Payments" is not the same as "S@dedupe" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:69:21 - information: Type of "df.tacit_schema.id" is "int"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:70:25 - error: Cannot access attribute "idd" for class "type[HasIdP]*"
+    Attribute "idd" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:82:17 - information: Type of "dedupe_p(o)" is "DataFrame[Orders]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:83:17 - information: Type of "dedupe_p(pay)" is "DataFrame[Payments]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:84:14 - error: Argument of type "DataFrame[Products]" cannot be assigned to parameter "df" of type "DataFrame[S@dedupe_p]" in function "dedupe_p"
+    "DataFrame[Products]" is not assignable to "DataFrame[S@dedupe_p]"
+      Type parameter "S@DataFrame" is invariant, but "Products" is not the same as "S@dedupe_p" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:85:14 - error: Argument of type "DataFrame[BadId]" cannot be assigned to parameter "df" of type "DataFrame[S@dedupe_p]" in function "dedupe_p"
+    "DataFrame[BadId]" is not assignable to "DataFrame[S@dedupe_p]"
+      Type parameter "S@DataFrame" is invariant, but "BadId" is not the same as "S@dedupe_p" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:87:16 - error: Argument of type "DataFrame[Payments]" cannot be assigned to parameter "df" of type "DataFrame[S@needs_both]" in function "needs_both"
+    "DataFrame[Payments]" is not assignable to "DataFrame[S@needs_both]"
+      Type parameter "S@DataFrame" is invariant, but "Payments" is not the same as "S@needs_both" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:98:12 - error: Type "Table" is not assignable to return type "DataFrame[S@bump_ids]"
+    "Table" is not assignable to "DataFrame[S@bump_ids]" (reportReturnType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:110:28 - error: Cannot access attribute "cast" for class "type[HasIdP]*"
+    Attribute "cast" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:117:17 - information: Type of "conforms(Orders.cast(t), HasIdP)" is "DataFrame[HasIdP]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:127:47 - error: Type "S@t_dedupe_p" cannot be assigned to type variable "S@DataFrame"
+    Type "HasIdP*" is not assignable to upper bound "Schema" for type variable "S@DataFrame"
+      "HasIdP*" is not assignable to "Schema" (reportInvalidTypeArguments)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t1_structural.py:132:12 - error: Type "Table" is not assignable to return type "DataFrame[S@t_dedupe]"
+    "Table" is not assignable to "DataFrame[S@t_dedupe]" (reportReturnType)
+10 errors, 0 warnings, 5 informations

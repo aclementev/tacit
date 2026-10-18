@@ -5,3 +5,4 @@
 *.parquet
 *.duckdb
 data/
+e3-schema-algebra/_patched/

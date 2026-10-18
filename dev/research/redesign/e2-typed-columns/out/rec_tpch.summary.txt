@@ -1,0 +1,10 @@
+  45| reveal_type(disc_price)
+      pyright  R:NumCol
+      mypy     R:proto.NumCol
+      ty       R:NumCol
+      pyrefly  R:NumCol
+  67| reveal_type(out)
+      pyright  R:PricingSummary
+      mypy     R:PricingSummary
+      ty       R:PricingSummary
+      pyrefly  R:PricingSummary

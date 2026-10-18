@@ -1,0 +1,5 @@
+t4_joins.py:44:17: info[revealed-type] Revealed type: `DataFrame[OrdersWithCustomer]`
+t4_joins.py:52:17: info[revealed-type] Revealed type: `DataFrame[OrdersWithCustomer]`
+t4_joins.py:73:17: info[revealed-type] Revealed type: `Joined[Orders, Customers]`
+t4_joins.py:74:16: error[invalid-argument-type] Argument to function `needs_name` is incorrect: Argument type `Orders` does not satisfy upper bound `HasNameP` of type variable `S`
+Found 4 diagnostics

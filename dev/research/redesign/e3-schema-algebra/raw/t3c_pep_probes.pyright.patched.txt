@@ -1,0 +1,12 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py:22:27 - error: Type "dict[str, int]" is not assignable to declared type "Closed"
+    Type "Literal[2]" is not assignable to item "extra_items"
+      Type "Literal[2]" is not assignable to type "Never" (reportAssignmentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py:24:35 - error: Argument of type "Literal[1]" cannot be assigned to parameter "whatever" of type "Value" in function "mutate_some"
+    "Literal[1]" is not assignable to "Value" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py:25:5 - error: Argument missing for parameter "id" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py:28:15 - error: "TypedDict" cannot be used in this context (reportInvalidTypeForm)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py:28:25 - error: Expected class but received "dict[str, type[float]]" (reportGeneralTypeIssues)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py:28:25 - error: Dictionary expression not allowed in type expression (reportInvalidTypeForm)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e3-schema-algebra/t3c_pep_probes.py:28:25 - error: Expected no type arguments for class "TypedDict" (reportInvalidTypeArguments)
+7 errors, 0 warnings, 0 informations

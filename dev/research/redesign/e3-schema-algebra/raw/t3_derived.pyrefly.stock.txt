@@ -1,0 +1,6 @@
+ERROR t3_derived.py:49:16-19: `Sepal` is not assignable to upper bound `HasPetalP` of type variable `S` [bad-specialization]
+ERROR t3_derived.py:71:17-58: Invalid expression form for base class: `IrisP.pick("sepal_length", "sepal_width")` [invalid-inheritance]
+ERROR t3_derived.py:75:18-66: Invalid expression form for base class: `IrisP.pick_opaque("sepal_length", "sepal_width")` [invalid-inheritance]
+ INFO t3_derived.py:82:16-41: revealed type: Unknown [reveal-type]
+ERROR t3_derived.py:108:16-19: `SepalV` is not assignable to upper bound `HasPetalP` of type variable `S` [bad-specialization]
+ INFO 4 errors (1 suppressed)

@@ -1,0 +1,8 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_extend.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_extend.py:47:38 - error: Argument missing for parameter "petal_area" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_extend.py:51:57 - error: Argument of type "StrCol" cannot be assigned to parameter "sepal_ratio" of type "NumericValue" in function "__init__"
+    "StrCol" is not assignable to "NumericValue" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_extend.py:60:17 - information: Type of "IrisFeatures.__init__" is "(self: IrisFeatures, *, sepal_ratio: NumericValue, petal_area: NumericValue, sepal_length: NumericValue, sepal_width: NumericValue, petal_length: NumericValue, petal_width: NumericValue, species: StringValue) -> None"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_extend.py:61:17 - information: Type of "f.sepal_ratio" is "NumCol"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/c_extend.py:62:17 - information: Type of "f.species" is "StrCol"
+2 errors, 0 warnings, 3 informations

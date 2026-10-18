@@ -1,0 +1,11 @@
+e2-typed-columns/probes/a_facade_interop.py:17: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade_interop.py:18: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade_interop.py:19: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade_interop.py:20: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade_interop.py:21: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade_interop.py:22: note: Revealed type is "Any"
+e2-typed-columns/probes/a_facade_interop.py:23: note: Revealed type is "pandas.core.series.Series | Any"
+e2-typed-columns/probes/a_facade_interop.py:24: note: Revealed type is "ibis.expr.types.logical.BooleanValue"
+e2-typed-columns/probes/a_facade_interop.py:24: error: List item 0 has incompatible type "str"; expected "Value"  [list-item]
+e2-typed-columns/probes/a_facade_interop.py:25: note: Revealed type is "ibis.expr.types.generic.Value"
+Found 1 error in 1 file (checked 1 source file)

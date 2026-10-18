@@ -1,0 +1,8 @@
+ INFO t3e_plugin_use.py:29:16-40: revealed type: Unknown [reveal-type]
+ERROR t3e_plugin_use.py:29:17-39: Class `Schema` has no class attribute `sepal_length` [missing-attribute]
+ERROR t3e_plugin_use.py:30:16-19: `Schema` is not assignable to upper bound `HasPetalP` of type variable `S` [bad-specialization]
+ERROR t3e_plugin_use.py:31:16-19: `Schema` is not assignable to upper bound `HasPetalP` of type variable `S` [bad-specialization]
+ERROR t3e_plugin_use.py:32:16-19: `Schema` is not assignable to upper bound `HasLabelP` of type variable `S` [bad-specialization]
+ INFO t3e_plugin_use.py:33:16-42: revealed type: DataFrame[Schema] [reveal-type]
+ERROR t3e_plugin_use.py:33:26-41: `Schema` is not assignable to upper bound `Iris` of type variable `O` [bad-specialization]
+ INFO 5 errors

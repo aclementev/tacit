@@ -1,0 +1,17 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:39:17 - information: Type of "sub.sepal_length" is "FloatingColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:40:17 - information: Type of "sub.sepal_lenght" is "Column"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:41:17 - information: Type of "sub.mutate(x=sub.sepal_length * 2)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:42:17 - information: Type of "g.sepal_length" is "FloatingColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:43:17 - information: Type of "g.sepal_lenght" is "Any"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:44:17 - information: Type of "g.mutate" is "Any"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:45:17 - information: Type of "h.sepal_length" is "FloatingColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:46:17 - information: Type of "h.sepal_lenght" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:46:19 - error: Cannot access attribute "sepal_lenght" for class "IrisGetattrHidden"
+    Attribute "sepal_lenght" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:47:17 - information: Type of "h.mutate" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:47:19 - error: Cannot access attribute "mutate" for class "IrisGetattrHidden"
+    Attribute "mutate" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/b_access.py:54:49 - error: Cannot access attribute "mutate" for class "IrisGetattrHidden"
+    Attribute "mutate" is unknown (reportAttributeAccessIssue)
+3 errors, 0 warnings, 9 informations

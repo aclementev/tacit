@@ -1,0 +1,25 @@
+ INFO e2-typed-columns/probes/a_ann.py:37:16-35: revealed type: FloatingColumn [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:38:16-30: revealed type: StringColumn [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:39:16-35: revealed type: FloatingColumn [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:40:16-54: revealed type: NumericValue [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:41:16-38: revealed type: StringColumn [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:42:16-42: revealed type: NumericScalar [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:43:16-41: revealed type: bool [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:44:16-42: revealed type: bool [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:45:16-63: revealed type: Unknown [reveal-type]
+ERROR e2-typed-columns/probes/a_ann.py:45:17-60: Object of class `NumericValue` has no attribute `mean` [missing-attribute]
+ERROR e2-typed-columns/probes/a_ann.py:58:41-58: Object of class `Iris` has no attribute `sepal_lenght` [missing-attribute]
+ERROR e2-typed-columns/probes/a_ann.py:59:38-55: Class `Iris` has no class attribute `sepal_lenght` [missing-attribute]
+ERROR e2-typed-columns/probes/a_ann.py:66:24-73:6: Missing argument `petal_area` in function `IrisFeatures.__init__` [missing-argument]
+ERROR e2-typed-columns/probes/a_ann.py:85:9-14: Unexpected keyword argument `bogus` in function `IrisFeatures.__init__` [unexpected-keyword]
+ INFO e2-typed-columns/probes/a_ann.py:126:16-68: revealed type: Iris [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:127:16-54: revealed type: Iris [reveal-type]
+ERROR e2-typed-columns/probes/a_ann.py:127:29-52: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Deferred` in function `proto.frame.Frame.filter` [bad-argument-type]
+ INFO e2-typed-columns/probes/a_ann.py:128:16-56: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:129:16-54: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_ann.py:130:50-62: revealed type: Unknown [reveal-type]
+ERROR e2-typed-columns/probes/a_ann.py:144:51-74: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Deferred` in function `proto.frame.Frame.filter` [bad-argument-type]
+ INFO 7 errors
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

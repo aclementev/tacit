@@ -1,0 +1,20 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:56:17 - information: Type of "df.sepal_length" is "NumCol"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:62:17 - error: Argument of type "Features2" cannot be assigned to parameter "df" of type "Iris2" in function "takes_iris2"
+    "Features2" is not assignable to "Iris2" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:64:16 - error: Argument of type "Iris2" cannot be assigned to parameter "df" of type "Iris" in function "takes_iris"
+    "Iris2" is not assignable to "Iris" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:65:17 - information: Type of "long_sepals_proto(f)" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:65:35 - error: Argument of type "IrisFeatures" cannot be assigned to parameter "df" of type "F@long_sepals_proto" in function "long_sepals_proto"
+    Type "IrisFeatures" is not assignable to type "HasSepal"
+      "IrisFeatures" is incompatible with protocol "HasSepal"
+        "sepal_length" is an incompatible type
+          "Col[NumCol, NumericValue]" is not assignable to "NumCol" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:66:17 - information: Type of "long_sepals_proto(f2)" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:66:35 - error: Argument of type "Features2" cannot be assigned to parameter "df" of type "F@long_sepals_proto" in function "long_sepals_proto"
+    Type "Features2" is not assignable to type "HasSepal"
+      "Features2" is incompatible with protocol "HasSepal"
+        "sepal_length" is an incompatible type
+          "Col[NumCol, NumericValue]" is not assignable to "NumCol" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/d_subtyping.py:67:17 - information: Type of "long_sepals(f, f.sepal_length)" is "IrisFeatures"
+4 errors, 0 warnings, 4 informations

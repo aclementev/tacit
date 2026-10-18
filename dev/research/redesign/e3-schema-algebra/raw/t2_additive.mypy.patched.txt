@@ -1,0 +1,21 @@
+t2_additive.py:69: note: Revealed type is "tx.DataFrame[t2_additive.WithScore[t2_additive.Orders]]"
+t2_additive.py:71: error: Value of type variable "S" of "dedupe_p" cannot be "WithScore[Orders]"  [type-var]
+t2_additive.py:72: error: Incompatible types in assignment (expression has type "DataFrame[WithScore[Orders]]", variable has type "DataFrame[Orders]")  [assignment]
+t2_additive.py:83: note: Revealed type is "tx.DataFrame[t2_additive.ScoredOrders]"
+t2_additive.py:85: error: Value of type variable "O" of "add_score_b1" cannot be "Orders"  [type-var]
+t2_additive.py:97: note: Revealed type is "tx.DataFrame[t2_additive.ScoredOrders]"
+t2_additive.py:98: error: Cannot infer value of type parameter "O" of "add_score_b2"  [misc]
+t2_additive.py:99: error: Value of type variable "O" of "add_score_b2" cannot be "Orders"  [type-var]
+t2_additive.py:100: error: Value of type variable "O" of "add_score_b2" cannot be "OrdersPlusScoreNoMixin"  [type-var]
+t2_additive.py:105: error: Incompatible types in assignment (expression has type "DataFrame[ScoredOrders]", variable has type "DataFrame[Orders]")  [assignment]
+t2_additive.py:114: note: Revealed type is "tx.DataFrame[t2_additive.OrdersPlusScoreNoMixin]"
+t2_additive.py:121: note: Revealed type is "tx.DataFrame[t2_additive.Orders]"
+t2_additive.py:122: error: Argument 1 to "extend_to" of "DataFrame" has incompatible type "type[ScoredCustomers]"; expected "type[Orders]"  [arg-type]
+t2_additive.py:126: note: Revealed type is "tx.DataFrame[t2_additive.ScoredOrders]"
+t2_additive.py:127: error: Argument 1 to "from_mutate" of "Schema" has incompatible type "DataFrame[Orders]"; expected "Into[ScoredCustomers]"  [arg-type]
+t2_additive.py:131: error: Cannot infer value of type parameter "O" of "add_score_b2"  [misc]
+t2_additive.py:150: note: Revealed type is "t2_additive.Ext[t2_additive.Orders, t2_additive.Scored]"
+t2_additive.py:152: note: Revealed type is "tx.DataFrame[t2_additive.Orders]"
+t2_additive.py:154: note: Revealed type is "t2_additive.Ext[t2_additive.Orders, t2_additive.Scored]"
+t2_additive.py:184: note: Revealed type is "t2_additive.Frame[t2_additive.Orders, t2_additive.Scored, t2_additive.Audited]"
+t2_additive.py:186: error: Argument 1 to "needs_score_last" has incompatible type "Frame[Orders, Scored, Audited]"; expected "Frame[Orders, Scored, Scored]"  [arg-type]

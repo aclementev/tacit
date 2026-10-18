@@ -1,0 +1,26 @@
+ INFO e2-typed-columns/probes/a_facade.py:37:16-35: revealed type: NumCol [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:38:16-30: revealed type: StrCol [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:39:16-35: revealed type: Deferred [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:40:16-54: revealed type: NumCol [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:41:16-38: revealed type: StrCol [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:42:16-42: revealed type: FloatingScalar [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:43:16-41: revealed type: BoolCol [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:44:16-42: revealed type: BoolCol [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:45:16-63: revealed type: FloatingScalar [reveal-type]
+ERROR e2-typed-columns/probes/a_facade.py:58:41-58: Object of class `Iris` has no attribute `sepal_lenght` [missing-attribute]
+ERROR e2-typed-columns/probes/a_facade.py:59:38-55: Class `Iris` has no class attribute `sepal_lenght` [missing-attribute]
+ERROR e2-typed-columns/probes/a_facade.py:60:38-55: Object of class `StrCol` has no attribute `mean` [missing-attribute]
+ERROR e2-typed-columns/probes/a_facade.py:61:41-64: Object of class `NumCol` has no attribute `upper` [missing-attribute]
+ERROR e2-typed-columns/probes/a_facade.py:66:24-73:6: Missing argument `petal_area` in function `IrisFeatures.__init__` [missing-argument]
+ERROR e2-typed-columns/probes/a_facade.py:85:9-14: Unexpected keyword argument `bogus` in function `IrisFeatures.__init__` [unexpected-keyword]
+ERROR e2-typed-columns/probes/a_facade.py:96:21-41: Argument `StrCol` is not assignable to parameter `sepal_ratio` with type `NumericValue` in function `IrisFeatures.__init__` [bad-argument-type]
+ERROR e2-typed-columns/probes/a_facade.py:107:17-33: Argument `NumCol` is not assignable to parameter `species` with type `StringValue` in function `IrisFeatures.__init__` [bad-argument-type]
+ INFO e2-typed-columns/probes/a_facade.py:126:16-68: revealed type: Iris [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:127:16-54: revealed type: Iris [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:128:16-56: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:129:16-54: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/a_facade.py:130:50-62: revealed type: Unknown [reveal-type]
+ INFO 8 errors
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

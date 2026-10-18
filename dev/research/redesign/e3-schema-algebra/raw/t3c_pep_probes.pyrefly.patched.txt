@@ -1,0 +1,6 @@
+ERROR t3c_pep_probes.py:22:27-30: Key `x` is not defined in TypedDict `Closed` [bad-typed-dict-key]
+ERROR t3c_pep_probes.py:24:35-36: Keyword argument `whatever` with type `Literal[1]` is not assignable to parameter `**cols` with type `Value` in function `mutate_some` [bad-argument-type]
+ERROR t3c_pep_probes.py:25:16-31: Missing argument `id` in function `mutate_some` [missing-argument]
+ERROR t3c_pep_probes.py:28:15-42: `TypedDict` may not be subscripted [invalid-annotation]
+ERROR t3c_pep_probes.py:28:27-32: Could not find name `score` [unknown-name]
+ INFO 5 errors

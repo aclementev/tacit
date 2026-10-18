@@ -1,0 +1,10 @@
+ INFO e2-typed-columns/probes/d_subtyping.py:56:16-33: revealed type: NumCol [reveal-type]
+ERROR e2-typed-columns/probes/d_subtyping.py:62:17-19: Argument `Features2` is not assignable to parameter `df` with type `Iris2` in function `takes_iris2` [bad-argument-type]
+ERROR e2-typed-columns/probes/d_subtyping.py:64:16-18: Argument `Iris2` is not assignable to parameter `df` with type `Iris` in function `takes_iris` [bad-argument-type]
+ INFO e2-typed-columns/probes/d_subtyping.py:65:16-38: revealed type: IrisFeatures [reveal-type]
+ INFO e2-typed-columns/probes/d_subtyping.py:66:16-39: revealed type: Features2 [reveal-type]
+ INFO e2-typed-columns/probes/d_subtyping.py:67:16-48: revealed type: IrisFeatures [reveal-type]
+ INFO 2 errors
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

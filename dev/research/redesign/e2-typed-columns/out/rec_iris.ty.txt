@@ -1,0 +1,4 @@
+e2-typed-columns/probes/rec_iris.py:53:17: info[revealed-type] Revealed type: `Value`
+e2-typed-columns/probes/rec_iris.py:54:49: error[invalid-argument-type] Argument is incorrect: Expected `StringValue`, found `Value`
+e2-typed-columns/probes/rec_iris.py:65:17: info[revealed-type] Revealed type: `IrisPrediction`
+Found 3 diagnostics

@@ -1,0 +1,16 @@
+ INFO e2-typed-columns/probes/b_access.py:39:16-34: revealed type: FloatingColumn [reveal-type]
+ INFO e2-typed-columns/probes/b_access.py:40:16-34: revealed type: Unknown [reveal-type]
+ INFO e2-typed-columns/probes/b_access.py:41:16-52: revealed type: Table [reveal-type]
+ INFO e2-typed-columns/probes/b_access.py:42:16-32: revealed type: FloatingColumn [reveal-type]
+ INFO e2-typed-columns/probes/b_access.py:43:16-32: revealed type: Any [reveal-type]
+ INFO e2-typed-columns/probes/b_access.py:44:16-26: revealed type: Any [reveal-type]
+ INFO e2-typed-columns/probes/b_access.py:45:16-32: revealed type: FloatingColumn [reveal-type]
+ INFO e2-typed-columns/probes/b_access.py:46:16-32: revealed type: Unknown [reveal-type]
+ERROR e2-typed-columns/probes/b_access.py:46:17-31: Object of class `IrisGetattrHidden` has no attribute `sepal_lenght` [missing-attribute]
+ INFO e2-typed-columns/probes/b_access.py:47:16-26: revealed type: Unknown [reveal-type]
+ERROR e2-typed-columns/probes/b_access.py:47:17-25: Object of class `IrisGetattrHidden` has no attribute `mutate` [missing-attribute]
+ERROR e2-typed-columns/probes/b_access.py:54:47-55: Object of class `IrisGetattrHidden` has no attribute `mutate` [missing-attribute]
+ INFO 3 errors
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

@@ -1,0 +1,13 @@
+t4_joins.py:44:17: info[revealed-type] Revealed type: `DataFrame[OrdersWithCustomer]`
+t4_joins.py:46:10: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `Into[Orders | Customers]`, found `DataFrame[Orders]`
+t4_joins.py:46:13: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `Into[Orders | Customers]`, found `DataFrame[Customers]`
+t4_joins.py:47:10: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `Into[Orders | Products]`, found `DataFrame[Orders]`
+t4_joins.py:47:13: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `Into[Orders | Products]`, found `DataFrame[Products]`
+t4_joins.py:52:17: info[revealed-type] Revealed type: `DataFrame[OrdersWithCustomer]`
+t4_joins.py:53:26: error[invalid-argument-type] Argument to bound method `Schema.from_join` is incorrect: Expected `Into[Orders | Customers]`, found `DataFrame[Orders]`
+t4_joins.py:53:29: error[invalid-argument-type] Argument to bound method `Schema.from_join` is incorrect: Expected `Into[Orders | Customers]`, found `DataFrame[Customers]`
+t4_joins.py:54:34: error[invalid-argument-type] Argument to bound method `Schema.from_join` is incorrect: Expected `Into[Orders | Products]`, found `DataFrame[Orders]`
+t4_joins.py:54:37: error[invalid-argument-type] Argument to bound method `Schema.from_join` is incorrect: Expected `Into[Orders | Products]`, found `DataFrame[Products]`
+t4_joins.py:73:17: info[revealed-type] Revealed type: `Joined[Orders, Customers]`
+t4_joins.py:74:16: error[invalid-argument-type] Argument to function `needs_name` is incorrect: Argument type `Orders` does not satisfy upper bound `HasNameP` of type variable `S`
+Found 12 diagnostics

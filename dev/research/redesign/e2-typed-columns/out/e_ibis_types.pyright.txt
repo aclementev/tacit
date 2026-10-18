@@ -1,0 +1,55 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:20:17 - information: Type of "t.x" is "Column"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:21:17 - information: Type of "t["x"]" is "Column"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:22:17 - information: Type of "t.not_a_column" is "Column"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:25:17 - information: Type of "x / y" is "NumericValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:26:17 - information: Type of "x * 2" is "NumericValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:27:17 - information: Type of "1 - x" is "NumericValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:28:17 - error: Operator ">" not supported for types "FloatingColumn" and "Literal[5]" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:28:17 - information: Type of "x > 5" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:29:17 - information: Type of "x > y" is "BooleanValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:30:17 - information: Type of "x == 1" is "bool"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:31:17 - information: Type of "s == "a"" is "bool"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:32:17 - error: Operator "<=" not supported for types "StringColumn" and "Literal['1998-09-02']" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:32:17 - information: Type of "s <= "1998-09-02"" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:33:17 - information: Type of "(x > y) & (x < y)" is "BooleanValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:35:17 - information: Type of "x.mean()" is "NumericScalar"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:36:17 - information: Type of "x.sum()" is "NumericScalar"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:37:17 - information: Type of "n.sum()" is "NumericScalar"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:38:17 - information: Type of "x.count()" is "IntegerScalar"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:39:17 - information: Type of "s.upper()" is "StringColumn"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:40:17 - information: Type of "s.length()" is "IntegerValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:41:17 - information: Type of "(x / y).mean()" is "Unknown"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:41:25 - error: Cannot access attribute "mean" for class "NumericValue"
+    Attribute "mean" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:42:17 - information: Type of "x.isnull()" is "BooleanValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:43:17 - information: Type of "x.cast("int64")" is "IntegerValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:44:17 - information: Type of "x.round(2)" is "NumericValue"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:47:9 - error: Operator "/" not supported for types "StringColumn" and "FloatingColumn" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:48:11 - error: Cannot access attribute "mean" for class "StringColumn"
+    Attribute "mean" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:49:11 - error: Cannot access attribute "upper" for class "FloatingColumn"
+    Attribute "upper" is unknown (reportAttributeAccessIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:52:17 - information: Type of "t.mutate(z=x / y)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:53:17 - information: Type of "t.mutate(one=1)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:53:30 - error: Argument of type "Literal[1]" cannot be assigned to parameter "one" of type "Value | Deferred | str" in function "mutate"
+    Type "Literal[1]" is not assignable to type "Value | Deferred | str"
+      "Literal[1]" is not assignable to "Value"
+      "Literal[1]" is not assignable to "Deferred"
+      "Literal[1]" is not assignable to "str" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:54:17 - information: Type of "t.filter(x > y)" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:55:17 - information: Type of "t.filter(s == "a")" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:56:17 - information: Type of "t.select("x", "s")" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:58:17 - information: Type of "g" is "GroupedTable"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:59:17 - information: Type of "g.agg(m=x.mean())" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:60:17 - information: Type of "t.join(t, "s")" is "Table"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:61:17 - information: Type of "ibis.cases((x > y, "a"), else_="b")" is "Value"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:62:17 - information: Type of "ibis._.x" is "Deferred"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:63:17 - information: Type of "ibis._.x > 1" is "Deferred"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:64:17 - information: Type of "t.schema()" is "Schema"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:72:12 - error: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:72:38 - error: Operator ">" not supported for types "Column" and "Literal[5]" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:73:12 - error: Operator "/" not supported for types "Column" and "Column" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e2-typed-columns/probes/e_ibis_types.py:73:51 - error: Cannot access attribute "mean" for class "Column"
+    Attribute "mean" is unknown (reportAttributeAccessIssue)
+11 errors, 0 warnings, 34 informations

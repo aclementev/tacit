@@ -1,0 +1,19 @@
+## standalone single-aggregate cost per check (1M rows, min of 5, wall s)
+age      greater_than_or_equal_to(min_value=0)                       6.8 ms
+age      less_than_or_equal_to(max_value=120)                        8.2 ms
+score    greater_than_or_equal_to(min_value=0.0)                     5.6 ms
+score    less_than_or_equal_to(max_value=1.0)                        5.9 ms
+status   isin(allowed_values=['active', 'inactive', 'pending', '    35.9 ms
+email    str_matches(pattern='^[^@]+@[^@]+\\.[a-z]+$')             165.6 ms
+country  str_length(min_value=2, max_value=2, exact_value=None)     29.0 ms
+amount   greater_than_or_equal_to(min_value=0.0)                    10.8 ms
+qty      greater_than(min_value=0)                                   7.1 ms
+id       unique (count distinct)                                   207.8 ms
+sum of standalone check queries: 275 ms
+
+## fixed overhead on a 1,000-row table (min of 20, wall ms)
+tacit parse (pandera, 16 queries): 312.9 ms
+native validate (1 query)        : 34.9 ms
+native validate, plan rebuilt    : 37.8 ms
+Customer._pandera_schema() build : 0.6 ms
+pandera schema.validate only     : 235.6 ms

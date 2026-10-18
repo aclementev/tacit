@@ -1,0 +1,6 @@
+ INFO e2-typed-columns/probes/rec_tpch.py:45:16-28: revealed type: NumCol [reveal-type]
+ INFO e2-typed-columns/probes/rec_tpch.py:67:16-21: revealed type: PricingSummary [reveal-type]
+ INFO 0 errors
+No `pyrefly.toml` found — using settings imported from `[tool.pyright]` in your `pyproject.toml` (preset: default).
+Run `pyrefly init` to continue setting up Pyrefly.
+Docs: https://pyrefly.org/en/docs/installation/

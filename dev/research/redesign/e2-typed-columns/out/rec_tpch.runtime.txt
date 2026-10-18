@@ -1,0 +1,7 @@
+Runtime type is 'FloatingColumn'
+Runtime type is 'PricingSummary'
+  l_returnflag l_linestatus  sum_qty  sum_base_price  sum_disc_price     sum_charge  avg_qty     avg_price  avg_disc  count_order
+0            A            F    108.0       105402.30      98738.4850  103501.820900    27.00  26350.575000  0.067500            4
+1            N            F     80.0        77986.06      75624.8044   77926.324444    40.00  38993.030000  0.030000            2
+2            N            O    168.0       171908.92     161764.0222  169253.519538    24.00  24558.417143  0.057143            7
+3            R            F     97.0        91391.61      84496.2462   86277.475008    24.25  22847.902500  0.065000            4

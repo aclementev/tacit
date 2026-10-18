@@ -1,0 +1,16 @@
+t1_structural.py:59:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+t1_structural.py:60:12: error[invalid-argument-type] Argument to function `dedupe` is incorrect: Argument type `Products` does not satisfy upper bound `HasId` of type variable `S`
+t1_structural.py:61:12: error[invalid-argument-type] Argument to function `dedupe` is incorrect: Argument type `Payments` does not satisfy upper bound `HasId` of type variable `S`
+t1_structural.py:69:21: info[revealed-type] Revealed type: `int`
+t1_structural.py:70:9: error[unresolved-attribute] Object of type `type[S@dedupe_p]` has no attribute `idd`
+t1_structural.py:82:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+t1_structural.py:83:17: info[revealed-type] Revealed type: `DataFrame[Payments]`
+t1_structural.py:84:14: error[invalid-argument-type] Argument to function `dedupe_p` is incorrect: Argument type `Products` does not satisfy upper bound `HasIdP` of type variable `S`
+t1_structural.py:85:14: error[invalid-argument-type] Argument to function `dedupe_p` is incorrect: Argument type `BadId` does not satisfy upper bound `HasIdP` of type variable `S`
+t1_structural.py:87:16: error[invalid-argument-type] Argument to function `needs_both` is incorrect: Argument type `Payments` does not satisfy upper bound `HasIdAndTsP` of type variable `S`
+t1_structural.py:98:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[S@bump_ids]`, found `Table`
+t1_structural.py:110:12: error[unresolved-attribute] Object of type `type[S@bump_ids_cast_p]` has no attribute `cast`
+t1_structural.py:117:17: info[revealed-type] Revealed type: `DataFrame[HasIdP]`
+t1_structural.py:127:47: error[invalid-type-arguments] Type `S@t_dedupe_p` is not assignable to upper bound `Schema` of type variable `S@DataFrame`
+t1_structural.py:132:12: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[S@t_dedupe]`, found `Table`
+Found 15 diagnostics
