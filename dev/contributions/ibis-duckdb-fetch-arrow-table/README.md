@@ -1,6 +1,6 @@
 # ibis: DuckDB backend uses deprecated `fetch_arrow_table()`
 
-**Status:** Ready to contribute
+**Status:** Fixed on ibis main (PR #12001, 2026-05-12). Unreleased as of 2026-10-19; keep the pytest filter until ibis>=13 is the floor.
 **ibis version:** 12.0.0
 **duckdb version:** 1.5.1+
 **Severity:** Low — cosmetic (DeprecationWarning), no functional impact

@@ -1,6 +1,6 @@
 # ibis: Comparison operators reject Python scalars
 
-**Status:** Proposed
+**Status:** Draft fix upstream in ibis PR #11966 (open since 2026-03-06, stalled). Review or help it land; don't file a duplicate.
 **ibis version:** 12.0.0
 **Severity:** Medium — affects every `Column < scalar` expression
 

@@ -1,6 +1,6 @@
 # pandera: `pandera.ibis` missing `__all__`
 
-**Status:** Proposed
+**Status:** Resolved upstream in pandera 0.31.0 (commit edff92db). Nit: `__all__` lists `set_config`, which is never imported, so `from pandera.ibis import *` raises AttributeError (see dev/research/redesign/e7-changelogs).
 **pandera version:** 0.27.0
 **Severity:** Low — only affects type checkers, not runtime
 
