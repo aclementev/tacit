@@ -1,0 +1,44 @@
+### backend=polars  ibis=12.0.0
+| check | good data (+NULL row) | bad data | verdict | detail |
+|---|---|---|---|---|
+| ge(0) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: greater_than_or_equal_to(0) failure cases: {'x': -1} |
+| le(2) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: less_than_or_equal_to(2) failure cases: {'x': 3} |
+| gt(0) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: greater_than(0) failure cases: {'x': 0} |
+| lt(3) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: less_than(3) failure cases: {'x': 3} |
+| eq(1) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: equal_to(1) failure cases: {'x': 2} |
+| ne(1) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: not_equal_to(1) failure cases: {'x': 1} |
+| in_range(1,3) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: in_range(1, 3) failure cases: {'x': 4} |
+| in_range excl | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: in_range(1, 3) failure cases: {'x': 1} |
+| isin | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: isin(['a', 'b']) failure cases: {'x': 'z'} |
+| notin | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: notin(['x']) failure cases: {'x': 'x'} |
+| str_matches | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: str_matches('^a\d+$') failure cases: {'x': 'b2'} |
+| str_contains | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: str_contains('bc') failure cases: {'x': 'zzz'} |
+| str_startswith | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: str_startswith('ab') failure cases: {'x': 'xbc'} |
+| str_endswith | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: str_endswith('c') failure cases: {'x': 'ab'} |
+| str_length(2,3) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: str_length(2, 3) failure cases: {'x': 'abcd'} |
+| str_length(exact) | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: str_length(2) failure cases: {'x': 'abc'} |
+| unique_values_eq | FAIL | FAIL | FALSE FAIL on good data | DATAFRAME_CHECK / Column 'x' failed series or dataframe validator 0: <Check unique_values_eq: unique_values_eq([1, 2])> |
+| custom col expr | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: <Check <lambda>> failure cases: {'x': -1} |
+| custom tbl-of-bool | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: <Check <lambda>> failure cases: {'x': -1} |
+| custom scalar agg | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed series or dataframe validator 0: <Check <lambda>> |
+| custom python bool | pass | pass | SILENT PASS (bad data accepted) |  |
+| custom element_wise (py UDF) | FAIL | FAIL | FALSE FAIL on good data | CHECK_ERROR / MissingReturnAnnotationError("<function <lambda> at 0x748fb4cde480>") |
+| custom ignore_na=False | FAIL | FAIL | FALSE FAIL on good data | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: <Check <lambda>> failure cases: {'x': nan} |
+| custom groupby= | pass | FAIL | OK | DATAFRAME_CHECK / Column 'x' failed element-wise validator number 0: <Check <lambda>> failure cases: {'x': -1} |
+
+| feature | good | bad | detail (bad run) |
+|---|---|---|---|
+| Column(unique=True) | pass  | pass |  |
+| DataFrameSchema(unique=['x']) | EXC OperationNotDefinedError No translation rule for <class 'ibis.expr.operations.window. | EXC OperationNotDefinedError | No translation rule for <class 'ibis.expr.operations.window.WindowFunction'> |
+| df-level check a<b (col expr) | pass  | FAIL | DATAFRAME_CHECK / DataFrameSchema 'None' failed element-wise validator number 0: <Check <lambda>> failure cases: {'a': 5, 'b': 3 |
+| df-level check sum(a)<sum(b) (scalar) | pass  | FAIL | DATAFRAME_CHECK / DataFrameSchema 'None' failed series or dataframe validator 0: <Check <lambda>> |
+| df-level check -> bool Table | pass  | FAIL | DATAFRAME_CHECK / DataFrameSchema 'None' failed element-wise validator number 0: <Check <lambda>> failure cases: {'a': 5, 'b': 3 |
+| nullable=False | pass  | FAIL | SERIES_CONTAINS_NULLS / non-nullable column 'x' contains null values |
+| nullable=False float NaN | pass  | FAIL | SERIES_CONTAINS_NULLS / non-nullable column 'x' contains null values |
+| dtype mismatch (str vs int64) | pass  | FAIL | WRONG_DATATYPE / expected column 'x' to have type int64, got string |
+| dtype int32 vs int64 | pass  | FAIL | WRONG_DATATYPE / expected column 'x' to have type int64, got int32 |
+| strict: extra column | pass  | FAIL | COLUMN_NOT_IN_SCHEMA / column 'y' not in DataFrameSchema {'x': <Schema Column(name=x, type=DataType(int64))>} |
+| missing column | pass  | FAIL | COLUMN_NOT_IN_DATAFRAME,COLUMN_NOT_IN_SCHEMA / column 'y' not in DataFrameSchema {'x': <Schema Column(name=x, type=DataType(int64))>} |
+| Column(coerce=True) '1'->int64 | pass  | FAIL | WRONG_DATATYPE / expected column 'x' to have type int64, got string |
+| DataFrameSchema(coerce=True) | pass  | FAIL | WRONG_DATATYPE / expected column 'x' to have type int64, got string |
+| regex columns + ge(0) | pass  | FAIL | DATAFRAME_CHECK / Column 'v_b' failed element-wise validator number 0: greater_than_or_equal_to(0) failure cases: {'v_b': -2} |

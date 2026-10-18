@@ -1,12 +1,12 @@
 == n=1,000,000 bad=0.0
-{"label": "n=1,000,000 bad=0.0 | reference: 1 full-scan aggregate", "queries": 1, "min_s": 0.02, "med_s": 0.028, "cpu_min_s": 0.036, "outcome": "ok"}
-{"label": "n=1,000,000 bad=0.0 | tacit Schema.parse (pandera)", "queries": 16, "min_s": 0.558, "med_s": 0.7, "cpu_min_s": 0.472, "outcome": "ok"}
-{"label": "n=1,000,000 bad=0.0 | pandera lazy=True", "queries": 16, "min_s": 0.653, "med_s": 0.751, "cpu_min_s": 0.462, "outcome": "ok"}
-{"label": "n=1,000,000 bad=0.0 | native 1-query validate", "queries": 1, "min_s": 0.302, "med_s": 0.31, "cpu_min_s": 0.217, "outcome": "ok"}
-{"label": "n=1,000,000 bad=0.0 | native 1-query validate + unique(id)", "queries": 1, "min_s": 0.298, "med_s": 0.444, "cpu_min_s": 0.375, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 | reference: 1 full-scan aggregate", "queries": 1, "min_s": 0.02, "med_s": 0.02, "cpu_min_s": 0.036, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 | tacit Schema.parse (pandera)", "queries": 16, "min_s": 0.41, "med_s": 0.428, "cpu_min_s": 0.436, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 | pandera lazy=True", "queries": 16, "min_s": 0.397, "med_s": 0.401, "cpu_min_s": 0.418, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 | native 1-query validate", "queries": 1, "min_s": 0.109, "med_s": 0.114, "cpu_min_s": 0.202, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 | native 1-query validate + unique(id)", "queries": 1, "min_s": 0.174, "med_s": 0.182, "cpu_min_s": 0.326, "outcome": "ok"}
 == n=1,000,000 bad=0.001
-{"label": "n=1,000,000 bad=0.001 | reference: 1 full-scan aggregate", "queries": 1, "min_s": 0.032, "med_s": 0.036, "cpu_min_s": 0.037, "outcome": "ok"}
-{"label": "n=1,000,000 bad=0.001 | tacit Schema.parse (pandera)", "queries": 30, "min_s": 1.291, "med_s": 1.397, "cpu_min_s": 1.205, "outcome": "ConstraintError"}
-{"label": "n=1,000,000 bad=0.001 | pandera lazy=True", "queries": 30, "min_s": 1.804, "med_s": 2.529, "cpu_min_s": 1.286, "outcome": "SchemaErrors"}
-{"label": "n=1,000,000 bad=0.001 | native 1-query validate", "queries": 2, "min_s": 0.649, "med_s": 0.657, "cpu_min_s": 0.289, "outcome": "ok"}
-{"label": "n=1,000,000 bad=0.001 | native 1-query validate + unique(id)", "queries": 2, "min_s": 1.133, "med_s": 1.166, "cpu_min_s": 0.482, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.001 | reference: 1 full-scan aggregate", "queries": 1, "min_s": 0.021, "med_s": 0.021, "cpu_min_s": 0.037, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.001 | tacit Schema.parse (pandera)", "queries": 30, "min_s": 1.111, "med_s": 1.132, "cpu_min_s": 1.221, "outcome": "ConstraintError"}
+{"label": "n=1,000,000 bad=0.001 | pandera lazy=True", "queries": 30, "min_s": 1.16, "med_s": 1.2, "cpu_min_s": 1.271, "outcome": "SchemaErrors"}
+{"label": "n=1,000,000 bad=0.001 | native 1-query validate", "queries": 2, "min_s": 0.217, "med_s": 0.229, "cpu_min_s": 0.285, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.001 | native 1-query validate + unique(id)", "queries": 2, "min_s": 0.357, "med_s": 0.37, "cpu_min_s": 0.417, "outcome": "ok"}

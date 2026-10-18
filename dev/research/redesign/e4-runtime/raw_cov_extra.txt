@@ -1,0 +1,20 @@
+unique_values_eq no-NULL good/bad: pass FAIL(DATAFRAME_CHECK)
+element_wise annotated UDF good/bad: pass FAIL(DATAFRAME_CHECK)
+groupby= (bad row): FAIL(DATAFRAME_CHECK) <- accepted at definition; groupby has no effect
+float NaN vs ge(0): pass (NaN >= 0 is False in duckdb? -> see below)
+   duckdb NaN>=0: True
+str_matches('a') on 'ba' (pandera anchors with ^): FAIL(DATAFRAME_CHECK)
+timestamp ge(datetime): bad data -> FAIL(DATAFRAME_CHECK,WRONG_DATATYPE) | dtype timestamp vs duckdb timestamp(6) reported as mismatch?
+
+--- failure case shapes (non-lazy raise, then lazy) ---
+SchemaError.failure_cases type: DataFrame | check_output type: Table
+         column  index failure_case
+0  failure_case      1    {'x': -1}
+1  failure_case      2    {'x': -2}
+message: Column 'x' failed element-wise validator number 0: greater_than_or_equal_to(0) failure cases: {'x': -1}, {'x': -2}
+SchemaErrors.failure_cases type: DataFrame
+  schema_context        column                        check  check_number failure_case  index
+0         Column  failure_case  greater_than_or_equal_to(0)             0    {'x': -1}      1
+1         Column  failure_case  greater_than_or_equal_to(0)             0    {'x': -2}      2
+2         Column  failure_case                  isin(['a'])             0   {'y': 'b'}      1
+columns: ['schema_context', 'column', 'check', 'check_number', 'failure_case', 'index']

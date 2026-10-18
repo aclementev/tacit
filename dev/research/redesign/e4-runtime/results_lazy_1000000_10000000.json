@@ -1,0 +1,110 @@
+[
+ {
+  "label": "n=1,000,000 valid | baseline: Q(t) no validation",
+  "min_s": 0.019,
+  "cpu_min_s": 0.036,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 valid | eager native: validate(t) then Q(t)",
+  "min_s": 0.132,
+  "cpu_min_s": 0.244,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 valid | eager pandera: Customer.parse(t) then Q",
+  "min_s": 0.421,
+  "cpu_min_s": 0.458,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 valid | LAZY row-guard: Q(guard(t))",
+  "min_s": 0.141,
+  "cpu_min_s": 0.259,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 valid | LAZY row-guard + unique(id) scalar subquery",
+  "min_s": 0.256,
+  "cpu_min_s": 0.472,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 valid | 2 queries, eager native (validate once)",
+  "min_s": 0.166,
+  "cpu_min_s": 0.293,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 valid | 2 queries, lazy guard (validated per query)",
+  "min_s": 0.286,
+  "cpu_min_s": 0.522,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 bad=0.1% | eager native validate(t) (report)",
+  "min_s": 0.167,
+  "cpu_min_s": 0.276,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 bad=0.1% | LAZY Q(guard(t)) (fails at first bad row)",
+  "min_s": 0.021,
+  "cpu_min_s": 0.022,
+  "outcome": "InvalidInputException: Invalid Input Error: tacit: age failed greater_than_or_equal_to(min_value=0); first bad va"
+ },
+ {
+  "label": "n=10,000,000 valid | baseline: Q(t) no validation",
+  "min_s": 0.158,
+  "cpu_min_s": 0.31,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 valid | eager native: validate(t) then Q(t)",
+  "min_s": 1.179,
+  "cpu_min_s": 2.3,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 valid | eager pandera: Customer.parse(t) then Q",
+  "min_s": 2.897,
+  "cpu_min_s": 3.411,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 valid | LAZY row-guard: Q(guard(t))",
+  "min_s": 1.248,
+  "cpu_min_s": 2.446,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 valid | LAZY row-guard + unique(id) scalar subquery",
+  "min_s": 2.78,
+  "cpu_min_s": 5.415,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 valid | 2 queries, eager native (validate once)",
+  "min_s": 1.435,
+  "cpu_min_s": 2.794,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 valid | 2 queries, lazy guard (validated per query)",
+  "min_s": 2.519,
+  "cpu_min_s": 4.959,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.1% | eager native validate(t) (report)",
+  "min_s": 1.179,
+  "cpu_min_s": 2.244,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=10,000,000 bad=0.1% | LAZY Q(guard(t)) (fails at first bad row)",
+  "min_s": 0.022,
+  "cpu_min_s": 0.023,
+  "outcome": "InvalidInputException: Invalid Input Error: tacit: age failed greater_than_or_equal_to(min_value=0); first bad va"
+ }
+]

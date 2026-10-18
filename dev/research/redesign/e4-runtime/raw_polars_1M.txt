@@ -1,0 +1,10 @@
+polars table schema created= timestamp(6) | tacit target: timestamp
+n=1,000,000 bad=0.0 tacit Schema.parse (pandera)        queries= 16 min=  0.153s  ok
+n=1,000,000 bad=0.0 native 1-query validate             queries=  1 min=  0.083s  ok
+native report ok: True failures: 0
+native unique(id) on polars: ok True
+polars table schema created= timestamp(6) | tacit target: timestamp
+n=1,000,000 bad=0.001 tacit Schema.parse (pandera)      queries= 30 min=  0.412s  ConstraintError: Constraint validation failed for schema Customer during parse: column 'age' failed check greater_tha
+n=1,000,000 bad=0.001 native 1-query validate           queries=  2 min=  0.167s  ok
+native report ok: False failures: 7
+native unique(id) on polars: ok False

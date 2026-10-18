@@ -2,81 +2,81 @@
  {
   "label": "n=10,000,000 bad=0.0 | reference: 1 full-scan aggregate",
   "queries": 1,
-  "min_s": 0.32,
-  "med_s": 0.379,
-  "cpu_min_s": 0.333,
+  "min_s": 0.17,
+  "med_s": 0.172,
+  "cpu_min_s": 0.328,
   "outcome": "ok"
  },
  {
   "label": "n=10,000,000 bad=0.0 | tacit Schema.parse (pandera)",
   "queries": 16,
-  "min_s": 6.168,
-  "med_s": 6.502,
-  "cpu_min_s": 3.742,
+  "min_s": 2.734,
+  "med_s": 2.75,
+  "cpu_min_s": 2.98,
   "outcome": "ok"
  },
  {
   "label": "n=10,000,000 bad=0.0 | pandera lazy=True",
   "queries": 16,
-  "min_s": 6.981,
-  "med_s": 7.356,
-  "cpu_min_s": 3.241,
+  "min_s": 2.767,
+  "med_s": 2.811,
+  "cpu_min_s": 2.975,
   "outcome": "ok"
  },
  {
   "label": "n=10,000,000 bad=0.0 | native 1-query validate",
   "queries": 1,
-  "min_s": 3.707,
-  "med_s": 4.061,
-  "cpu_min_s": 2.072,
+  "min_s": 1.034,
+  "med_s": 1.038,
+  "cpu_min_s": 1.993,
   "outcome": "ok"
  },
  {
   "label": "n=10,000,000 bad=0.0 | native 1-query validate + unique(id)",
   "queries": 1,
-  "min_s": 3.26,
-  "med_s": 4.343,
-  "cpu_min_s": 4.136,
+  "min_s": 2.044,
+  "med_s": 2.089,
+  "cpu_min_s": 3.996,
   "outcome": "ok"
  },
  {
   "label": "n=10,000,000 bad=0.001 | reference: 1 full-scan aggregate",
   "queries": 1,
-  "min_s": 0.418,
-  "med_s": 0.434,
-  "cpu_min_s": 0.333,
+  "min_s": 0.166,
+  "med_s": 0.166,
+  "cpu_min_s": 0.324,
   "outcome": "ok"
  },
  {
   "label": "n=10,000,000 bad=0.001 | tacit Schema.parse (pandera)",
   "queries": 30,
-  "min_s": 12.207,
-  "med_s": 14.059,
-  "cpu_min_s": 9.795,
+  "min_s": 8.482,
+  "med_s": 8.497,
+  "cpu_min_s": 9.031,
   "outcome": "ConstraintError"
  },
  {
   "label": "n=10,000,000 bad=0.001 | pandera lazy=True",
   "queries": 30,
-  "min_s": 26.763,
-  "med_s": 27.979,
-  "cpu_min_s": 10.211,
+  "min_s": 8.539,
+  "med_s": 8.555,
+  "cpu_min_s": 9.29,
   "outcome": "SchemaErrors"
  },
  {
   "label": "n=10,000,000 bad=0.001 | native 1-query validate",
   "queries": 2,
-  "min_s": 4.251,
-  "med_s": 4.901,
-  "cpu_min_s": 2.401,
+  "min_s": 1.149,
+  "med_s": 1.169,
+  "cpu_min_s": 2.223,
   "outcome": "ok"
  },
  {
   "label": "n=10,000,000 bad=0.001 | native 1-query validate + unique(id)",
   "queries": 2,
-  "min_s": 7.482,
-  "med_s": 8.909,
-  "cpu_min_s": 4.944,
+  "min_s": 2.228,
+  "med_s": 2.237,
+  "cpu_min_s": 4.366,
   "outcome": "ok"
  }
 ]

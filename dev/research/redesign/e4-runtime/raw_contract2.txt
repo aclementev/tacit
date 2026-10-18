@@ -1,0 +1,13 @@
+S._ibis_schema() (rebuilt each call)      44.50 us
+tt.schema()                               0.05 us
+tgt == act (ibis Schema eq)               0.27 us
+set(tgt.names) (x2) + diff                0.34 us
+DataFrame._from_table(tt, S)              0.73 us
+S.cast(df)  current                       50.82 us
+cast_fast (cached target, eq fast path)   1.17 us
+100 cols: W.cast current                  725.92 us
+100 cols: cast_fast                       1.17 us
+contract(1 param+ret): current            0.10 us
+contract(1 param+ret): current            128.42 us
+contract: cached sig + cast_fast          3.89 us
+contract: no bind + cast_fast             2.37 us

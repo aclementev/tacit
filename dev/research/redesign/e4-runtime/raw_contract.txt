@@ -1,0 +1,26 @@
+### per-call cost (microseconds, min of 7 repeats)
+plain function call                                          0.05 us
+inspect.signature(fn) alone                                  5.47 us
+inspect.signature(fn).bind(df)                               6.96 us
+S.cast(df)  [3 cols, matching]                              51.19 us
+S.cast(df) of bound memtable (unbound -> .schema())         51.48 us
+@contract 1 param + return (cast x2)                       127.25 us
+@contract 2 params + return (cast x3)                      182.99 us
+@contract(returns=S) 1 param                               128.68 us
+same, signature cached (wrap_cached)                       109.56 us
+same, cached + no bind (wrap_fast)                         104.02 us
+
+### deep expression: 50 chained mutates on the SAME column, 3-col table
+ depth   build chain (ms)   .schema() (us)   W3.cast() (us)   ibis.to_sql (ms)
+     1               0.34             0.07            45.30               0.83
+    10               2.92             0.07            45.17               9.12
+    50              14.11             0.07            46.08              61.40
+   200              59.83             0.07            44.93             442.46
+  1000             294.63             0.07            45.65            7737.59
+
+### deep + wide: 50 chained mutates, 100 columns (each step mutates 1 col)
+depth   1: build     1.71 ms   .schema()    0.07 us   cast()   721.08 us
+depth  50: build    73.63 ms   .schema()    0.07 us   cast()   734.15 us
+
+### per-step mutate that adds a NEW column each time (50 columns at the end)
+build 50 add-column mutates: 32.9 ms; schema() 0.07 us

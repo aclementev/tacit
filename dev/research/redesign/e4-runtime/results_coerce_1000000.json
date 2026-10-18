@@ -2,96 +2,96 @@
  {
   "label": "n=1,000,000 src=varchar table coercion_errors=False | reference: strict cast + count(every col), 1 query",
   "queries": 1,
-  "min_s": 0.176,
-  "cpu_min_s": 0.244,
+  "min_s": 0.123,
+  "cpu_min_s": 0.236,
   "outcome": "ok",
   "msg": ""
  },
  {
   "label": "n=1,000,000 src=varchar table coercion_errors=False | tacit Schema.parse (cast + pandera)",
   "queries": 16,
-  "min_s": 1.374,
-  "cpu_min_s": 1.047,
+  "min_s": 0.738,
+  "cpu_min_s": 0.891,
   "outcome": "ok",
   "msg": ""
  },
  {
   "label": "n=1,000,000 src=varchar table coercion_errors=False | native validate(coerce=True) (try_cast, 1 query)",
   "queries": 1,
-  "min_s": 0.388,
-  "cpu_min_s": 0.471,
+  "min_s": 0.247,
+  "cpu_min_s": 0.462,
   "outcome": "ok",
   "msg": ""
  },
  {
   "label": "n=1,000,000 src=varchar table coercion_errors=True | reference: strict cast + count(every col), 1 query",
   "queries": 1,
-  "min_s": 0.008,
-  "cpu_min_s": 0.008,
+  "min_s": 0.007,
+  "cpu_min_s": 0.007,
   "outcome": "ConversionException",
   "msg": "Conversion Error: Could not convert string 'N/A' to INT64 when casting from source column qty"
  },
  {
   "label": "n=1,000,000 src=varchar table coercion_errors=True | tacit Schema.parse (cast + pandera)",
   "queries": 15,
-  "min_s": 1.155,
-  "cpu_min_s": 0.855,
+  "min_s": 0.67,
+  "cpu_min_s": 0.734,
   "outcome": "CoercionError",
   "msg": "Coercion failed for schema Customer during parse: failed to cast columns ['id', 'age', 'score', 'amount', 'qty', 'created'] to target schema types. Conversion E"
  },
  {
   "label": "n=1,000,000 src=varchar table coercion_errors=True | native validate(coerce=True) (try_cast, 1 query)",
   "queries": 2,
-  "min_s": 0.581,
-  "cpu_min_s": 0.493,
+  "min_s": 0.279,
+  "cpu_min_s": 0.5,
   "outcome": "ok",
   "msg": ""
  },
  {
   "label": "n=1,000,000 src=csv view coercion_errors=False | reference: strict cast + count(every col), 1 query",
   "queries": 1,
-  "min_s": 1.076,
-  "cpu_min_s": 0.921,
+  "min_s": 0.53,
+  "cpu_min_s": 0.89,
   "outcome": "ok",
   "msg": ""
  },
  {
   "label": "n=1,000,000 src=csv view coercion_errors=False | tacit Schema.parse (cast + pandera)",
   "queries": 16,
-  "min_s": 17.122,
-  "cpu_min_s": 13.323,
+  "min_s": 10.487,
+  "cpu_min_s": 12.746,
   "outcome": "ok",
   "msg": ""
  },
  {
   "label": "n=1,000,000 src=csv view coercion_errors=False | native validate(coerce=True) (try_cast, 1 query)",
   "queries": 1,
-  "min_s": 0.999,
-  "cpu_min_s": 1.187,
+  "min_s": 0.683,
+  "cpu_min_s": 1.183,
   "outcome": "ok",
   "msg": ""
  },
  {
   "label": "n=1,000,000 src=csv view coercion_errors=True | reference: strict cast + count(every col), 1 query",
   "queries": 1,
-  "min_s": 0.203,
-  "cpu_min_s": 0.144,
+  "min_s": 0.143,
+  "cpu_min_s": 0.145,
   "outcome": "ConversionException",
   "msg": "Conversion Error: Could not convert string 'N/A' to INT64 when casting from source column qty"
  },
  {
   "label": "n=1,000,000 src=csv view coercion_errors=True | tacit Schema.parse (cast + pandera)",
   "queries": 15,
-  "min_s": 17.072,
-  "cpu_min_s": 12.26,
+  "min_s": 9.405,
+  "cpu_min_s": 10.391,
   "outcome": "CoercionError",
   "msg": "Coercion failed for schema Customer during parse: failed to cast columns ['id', 'age', 'score', 'amount', 'qty', 'created'] to target schema types. Conversion E"
  },
  {
   "label": "n=1,000,000 src=csv view coercion_errors=True | native validate(coerce=True) (try_cast, 1 query)",
   "queries": 2,
-  "min_s": 1.189,
-  "cpu_min_s": 1.436,
+  "min_s": 0.962,
+  "cpu_min_s": 1.461,
   "outcome": "ok",
   "msg": ""
  }

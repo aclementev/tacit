@@ -1,0 +1,32 @@
+ConstraintError
+30 queries before the first SchemaError is raised (non-lazy)
+ 0 bool_and aggregate (null check)                    SELECT bool_and(CAST((NOT (t1.id IS NULL)) AS BOOLEAN)) AS "All(Not(IsNull(id)))" FROM (SELECT t0.id, t0.age, 
+ 1 bool_and aggregate (null check)                    SELECT bool_and(CAST((NOT (t1.age IS NULL)) AS BOOLEAN)) AS "All(Not(IsNull(age)))" FROM (SELECT t0.id, t0.age
+ 2 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.age, t5.age__check_ou
+ 3 full row fetch (check_output / failure_cases)      SELECT t6.age FROM (SELECT t5.age, t5.age__check_output__, ((CAST('t' AS BOOLEAN) AND t5.age__check_output__) 
+ 4 full row fetch (check_output / failure_cases)      SELECT ((CAST('t' AS BOOLEAN) AND t5.age__check_output__) OR (t5.age IS NULL)) AS check_output FROM (SELECT t2
+ 5 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.age, t5.age__check_ou
+ 6 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.score, t5.score__chec
+ 7 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.score, t5.score__chec
+ 8 full row fetch (check_output / failure_cases)      SELECT t6.score FROM (SELECT t5.score, t5.score__check_output__, ((CAST('t' AS BOOLEAN) AND t5.score__check_ou
+ 9 full row fetch (check_output / failure_cases)      SELECT ((CAST('t' AS BOOLEAN) AND t5.score__check_output__) OR (t5.score IS NULL)) AS check_output FROM (SELEC
+10 bool_and aggregate (null check)                    SELECT bool_and(CAST((NOT (t1.status IS NULL)) AS BOOLEAN)) AS "All(Not(IsNull(status)))" FROM (SELECT t0.id, 
+11 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.status, t5.status__ch
+12 full row fetch (check_output / failure_cases)      SELECT t6.status FROM (SELECT t5.status, t5.status__check_output__, ((CAST('t' AS BOOLEAN) AND t5.status__chec
+13 full row fetch (check_output / failure_cases)      SELECT ((CAST('t' AS BOOLEAN) AND t5.status__check_output__) OR (t5.status IS NULL)) AS check_output FROM (SEL
+14 bool_and aggregate (null check)                    SELECT bool_and(CAST((NOT (t1.email IS NULL)) AS BOOLEAN)) AS "All(Not(IsNull(email)))" FROM (SELECT t0.id, t0
+15 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.email, t5.email__chec
+16 full row fetch (check_output / failure_cases)      SELECT t6.email FROM (SELECT t5.email, t5.email__check_output__, ((CAST('t' AS BOOLEAN) AND t5.email__check_ou
+17 full row fetch (check_output / failure_cases)      SELECT ((CAST('t' AS BOOLEAN) AND t5.email__check_output__) OR (t5.email IS NULL)) AS check_output FROM (SELEC
+18 bool_and aggregate (null check)                    SELECT bool_and(CAST((NOT (t1.country IS NULL)) AS BOOLEAN)) AS "All(Not(IsNull(country)))" FROM (SELECT t0.id
+19 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.country, t5.country__
+20 full row fetch (check_output / failure_cases)      SELECT t6.country FROM (SELECT t5.country, t5.country__check_output__, ((CAST('t' AS BOOLEAN) AND t5.country__
+21 full row fetch (check_output / failure_cases)      SELECT ((CAST('t' AS BOOLEAN) AND t5.country__check_output__) OR (t5.country IS NULL)) AS check_output FROM (S
+22 bool_and aggregate (check_passed)                  SELECT bool_and(CAST((NOT ((t1.amount IS NULL) OR isnan(t1.amount))) AS BOOLEAN)) AS "All(Not(Or(IsNull(amount
+23 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.amount, t5.amount__ch
+24 full row fetch (check_output / failure_cases)      SELECT t6.amount FROM (SELECT t5.amount, t5.amount__check_output__, ((CAST('t' AS BOOLEAN) AND t5.amount__chec
+25 full row fetch (check_output / failure_cases)      SELECT ((CAST('t' AS BOOLEAN) AND t5.amount__check_output__) OR (t5.amount IS NULL)) AS check_output FROM (SEL
+26 bool_and aggregate (null check)                    SELECT bool_and(CAST((NOT (t1.qty IS NULL)) AS BOOLEAN)) AS "All(Not(IsNull(qty)))" FROM (SELECT t0.id, t0.age
+27 bool_and aggregate (check_passed)                  SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS "All(check_output)" FROM (SELECT t5.qty, t5.qty__check_ou
+28 full row fetch (check_output / failure_cases)      SELECT t6.qty FROM (SELECT t5.qty, t5.qty__check_output__, ((CAST('t' AS BOOLEAN) AND t5.qty__check_output__) 
+29 full row fetch (check_output / failure_cases)      SELECT ((CAST('t' AS BOOLEAN) AND t5.qty__check_output__) OR (t5.qty IS NULL)) AS check_output FROM (SELECT t2
