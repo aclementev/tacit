@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/b1_wrong_frame.py:79:28: error[invalid-argument-type] Argument to function `clean_orders` is incorrect: Expected `RawOrder`, found `RawCustomer`
+Found 1 diagnostic

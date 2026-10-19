@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/c2_extend_no_delta.py:55:24-30: Missing positional argument `delta` in function `tacit_next._frame.Frame.extend` [bad-argument-count]
+ INFO 1 error

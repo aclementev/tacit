@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/a4_typo_join_key.py:59:69-81: Object of class `RawCustomer` has no attribute `custmer_id` [missing-attribute]
+ INFO 1 error

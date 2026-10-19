@@ -1,0 +1,3 @@
+ERROR e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80:33-42: Argument `RawCustomer` is not assignable to parameter `orders` with type `Order` in function `country_month_stats` [bad-argument-type]
+ERROR e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80:44-51: Argument `Order` is not assignable to parameter `customers` with type `RawCustomer` in function `country_month_stats` [bad-argument-type]
+ INFO 2 errors

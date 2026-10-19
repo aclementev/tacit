@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/a3_typo_joined.py:64:21-30: Object of class `Order` has no attribute `ordr_id` [missing-attribute]
+ INFO 1 error

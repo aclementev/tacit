@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/n1_nullable_into_net.py:55:52-79: Argument `Column[float | None]` is not assignable to parameter `net_amount` with type `Column[float] | Scalar[float] | float` in function `NetAmount.__init__` [bad-argument-type]
+ INFO 1 error

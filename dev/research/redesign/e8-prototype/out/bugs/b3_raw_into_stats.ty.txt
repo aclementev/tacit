@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/b3_raw_into_stats.py:80:33: error[invalid-argument-type] Argument to function `country_month_stats` is incorrect: Expected `Order`, found `RawOrder`
+Found 1 diagnostic

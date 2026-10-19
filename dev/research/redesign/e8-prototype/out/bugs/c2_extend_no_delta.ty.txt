@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/c2_extend_no_delta.py:55:12: error[missing-argument] No argument provided for required parameter `delta` of bound method `Frame.extend`
+Found 1 diagnostic

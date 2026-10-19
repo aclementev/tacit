@@ -1,0 +1,3 @@
+e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80:33: error[invalid-argument-type] Argument to function `country_month_stats` is incorrect: Expected `Order`, found `RawCustomer`
+e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80:44: error[invalid-argument-type] Argument to function `country_month_stats` is incorrect: Expected `RawCustomer`, found `Order`
+Found 2 diagnostics

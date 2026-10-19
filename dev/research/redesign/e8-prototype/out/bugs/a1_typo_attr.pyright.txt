@@ -1,0 +1,4 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a1_typo_attr.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a1_typo_attr.py:55:71 - error: Cannot access attribute "discont" for class "RawOrder"
+    Attribute "discont" is unknown (reportAttributeAccessIssue)
+1 error, 0 warnings, 0 informations

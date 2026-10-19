@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/a1_typo_attr.py:55:66-78: Object of class `RawOrder` has no attribute `discont` [missing-attribute]
+ INFO 1 error

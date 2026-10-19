@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/c3_missing_output_col.py:61: error: Missing named argument "avg_net" for "CountryMonthStats"  [call-arg]

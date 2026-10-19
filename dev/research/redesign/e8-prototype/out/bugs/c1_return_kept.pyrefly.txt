@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/c1_return_kept.py:55:12-16: Returned type `RawOrder` is not assignable to declared return type `Order` [bad-return]
+ INFO 1 error

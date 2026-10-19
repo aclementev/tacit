@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/b3_raw_into_stats.py:80: error: Argument 1 to "country_month_stats" has incompatible type "RawOrder"; expected "Order"  [arg-type]

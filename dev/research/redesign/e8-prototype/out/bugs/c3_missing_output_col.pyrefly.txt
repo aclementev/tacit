@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/c3_missing_output_col.py:61:29-67:6: Missing argument `avg_net` in function `CountryMonthStats.__init__` [missing-argument]
+ INFO 1 error

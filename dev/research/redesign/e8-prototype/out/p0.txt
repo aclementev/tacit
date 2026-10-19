@@ -1,0 +1,163 @@
+### pyright
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:30:9 - error: Method "__gt__" overrides class "Value" in an incompatible manner
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:86:17 - information: Type of "o.amount" is "Column[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:87:17 - information: Type of "Orders.amount" is "Column[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:88:17 - information: Type of "o.discount" is "Column[float | None]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:89:17 - information: Type of "o.amount + 1" is "Column[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:90:17 - information: Type of "o.order_id + 1" is "Column[int]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:91:17 - information: Type of "o.order_id + 1.5" is "Column[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:92:17 - information: Type of "o.amount + o.discount" is "Column[float | None]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:93:17 - information: Type of "o.discount.fill_null(0)" is "Column[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:94:17 - information: Type of "o.amount.fill_null(0)" is "Column[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:95:17 - information: Type of "o.amount > 5" is "Column[bool]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:96:17 - information: Type of "o.amount.mean()" is "Scalar[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:97:17 - information: Type of "o.ts.year()" is "Column[int]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:98:17 - information: Type of "o.status.isin(["a", "b"])" is "Column[bool]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:99:14 - error: Cannot access attribute "upper" for class "Column[float]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:100:14 - error: Cannot access attribute "mean" for class "Column[str]"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:101:5 - error: Operator ">" not supported for types "Column[str]" and "Literal[5]" (reportOperatorIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:101:5 - warning: Expression value is unused (reportUnusedExpression)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:102:7 - error: Cannot access attribute "amout" for class "Orders"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:104:13 - error: Argument of type "Column[float | None]" cannot be assigned to parameter "net" of type "Column[float] | Scalar[float] | float" in function "__init__"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:106:13 - error: Argument of type "Column[str]" cannot be assigned to parameter "net" of type "Column[float] | Scalar[float] | float" in function "__init__"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:108:5 - error: Argument missing for parameter "net" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:109:23 - error: No parameter named "x" (reportCallIssue)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:113:18 - error: Argument of type "Orders" cannot be assigned to parameter "base" of type "Into[Stats]" in function "extend"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:113:21 - error: Argument of type "Net" cannot be assigned to parameter "deltas" of type "Into[Stats]" in function "extend"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:114:22 - error: Argument of type "Customers" cannot be assigned to parameter "base" of type "Into[NetOrders]" in function "extend"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:115:17 - information: Type of "NetOrders.extend(o, Net(net=o.amount))" is "NetOrders"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:117:17 - information: Type of "agg" is "(*, status: Column[str] | Scalar[str] | str, total: Column[float] | Scalar[float] | float) -> Stats"
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/probes/p0_core.py:119:5 - error: Argument missing for parameter "total" (reportCallIssue)
+### mypy
+e8-prototype/probes/p0_core.py:19: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:30: error: Signatures of "__gt__" of "Column" and "__lt__" of "float | Column[float | None]" are unsafely overlapping  [misc]
+e8-prototype/probes/p0_core.py:30: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:30: error: Return type "Column[bool]" of "__gt__" incompatible with return type "BooleanValue" in supertype "ibis.expr.types.generic.Value"  [override]
+e8-prototype/probes/p0_core.py:30: error: Argument 1 of "__gt__" is incompatible with supertype "ibis.expr.types.generic.Value"; supertype defines the argument type as "Value"  [override]
+e8-prototype/probes/p0_core.py:30: note: This violates the Liskov substitution principle
+e8-prototype/probes/p0_core.py:30: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+e8-prototype/probes/p0_core.py:31: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:32: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:33: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:34: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:34: note: Error code "empty-body" not covered by "type: ignore[override]" comment
+e8-prototype/probes/p0_core.py:35: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:35: note: Error code "empty-body" not covered by "type: ignore[override]" comment
+e8-prototype/probes/p0_core.py:50: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:53: error: Missing return statement  [empty-body]
+e8-prototype/probes/p0_core.py:86: note: Revealed type is "p0_core.Column[float]"
+e8-prototype/probes/p0_core.py:87: note: Revealed type is "p0_core.Column[float]"
+e8-prototype/probes/p0_core.py:88: note: Revealed type is "p0_core.Column[float | None]"
+e8-prototype/probes/p0_core.py:89: note: Revealed type is "p0_core.Column[float]"
+e8-prototype/probes/p0_core.py:90: note: Revealed type is "p0_core.Column[int]"
+e8-prototype/probes/p0_core.py:91: note: Revealed type is "p0_core.Column[float]"
+e8-prototype/probes/p0_core.py:92: note: Revealed type is "p0_core.Column[float | None]"
+e8-prototype/probes/p0_core.py:93: note: Revealed type is "p0_core.Column[float]"
+e8-prototype/probes/p0_core.py:94: note: Revealed type is "p0_core.Column[float]"
+e8-prototype/probes/p0_core.py:95: note: Revealed type is "p0_core.Column[bool]"
+e8-prototype/probes/p0_core.py:96: note: Revealed type is "p0_core.Scalar[float]"
+e8-prototype/probes/p0_core.py:97: note: Revealed type is "p0_core.Column[int]"
+e8-prototype/probes/p0_core.py:98: note: Revealed type is "p0_core.Column[bool]"
+e8-prototype/probes/p0_core.py:99: error: Invalid self argument "Column[float]" to attribute function "upper" with type "Callable[[Column[str | None]], Column[str]]"  [misc]
+e8-prototype/probes/p0_core.py:100: error: Invalid self argument "Column[str]" to attribute function "mean" with type "Callable[[Column[float | None]], Scalar[float]]"  [misc]
+e8-prototype/probes/p0_core.py:101: error: Unsupported operand types for < ("int" and "Column[str]")  [operator]
+e8-prototype/probes/p0_core.py:102: error: "Orders" has no attribute "amout"; maybe "amount"?  [attr-defined]
+e8-prototype/probes/p0_core.py:104: error: Argument "net" to "Net" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e8-prototype/probes/p0_core.py:106: error: Argument "net" to "Net" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e8-prototype/probes/p0_core.py:108: error: Missing named argument "net" for "Net"  [call-arg]
+e8-prototype/probes/p0_core.py:109: error: Unexpected keyword argument "x" for "Net"  [call-arg]
+e8-prototype/probes/p0_core.py:113: error: Argument 1 to "extend" of "Frame" has incompatible type "Orders"; expected "Into[Stats]"  [arg-type]
+e8-prototype/probes/p0_core.py:113: note: Following member(s) of "Orders" have conflicts:
+e8-prototype/probes/p0_core.py:113: note:     Expected:
+e8-prototype/probes/p0_core.py:113: note:         def __tacit_into__(self, Stats, /) -> object
+e8-prototype/probes/p0_core.py:113: note:     Got:
+e8-prototype/probes/p0_core.py:113: note:         def __tacit_into__(self, Orders, /) -> object
+e8-prototype/probes/p0_core.py:113: error: Argument 2 to "extend" of "Frame" has incompatible type "Net"; expected "Into[Stats]"  [arg-type]
+e8-prototype/probes/p0_core.py:113: note: Following member(s) of "Net" have conflicts:
+e8-prototype/probes/p0_core.py:113: note:     Expected:
+e8-prototype/probes/p0_core.py:113: note:         def __tacit_into__(self, Stats, /) -> object
+e8-prototype/probes/p0_core.py:113: note:     Got:
+e8-prototype/probes/p0_core.py:113: note:         def __tacit_into__(self, Net, /) -> object
+e8-prototype/probes/p0_core.py:114: error: Argument 1 to "extend" of "Frame" has incompatible type "Customers"; expected "Into[NetOrders]"  [arg-type]
+e8-prototype/probes/p0_core.py:114: note: Following member(s) of "Customers" have conflicts:
+e8-prototype/probes/p0_core.py:114: note:     Expected:
+e8-prototype/probes/p0_core.py:114: note:         def __tacit_into__(self, NetOrders, /) -> object
+e8-prototype/probes/p0_core.py:114: note:     Got:
+e8-prototype/probes/p0_core.py:114: note:         def __tacit_into__(self, Customers, /) -> object
+e8-prototype/probes/p0_core.py:115: note: Revealed type is "p0_core.NetOrders"
+e8-prototype/probes/p0_core.py:117: note: Revealed type is "def (*, status: p0_core.Column[str] | p0_core.Scalar[str] | str, total: p0_core.Column[float] | p0_core.Scalar[float] | float) -> p0_core.Stats"
+e8-prototype/probes/p0_core.py:119: error: Missing named argument "total"  [call-arg]
+Found 24 errors in 1 file (checked 1 source file)
+### ty
+e8-prototype/probes/p0_core.py:19:51: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Self@__get__`
+e8-prototype/probes/p0_core.py:20:43: error[invalid-generic-class] Variance of type variable `T_co` is incompatible with method `__set__`
+e8-prototype/probes/p0_core.py:30:9: error[invalid-method-override] Invalid override of method `__gt__`: Definition is incompatible with `Value.__gt__`
+e8-prototype/probes/p0_core.py:30:84: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Column[bool]`
+e8-prototype/probes/p0_core.py:31:45: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Scalar[float]`
+e8-prototype/probes/p0_core.py:32:44: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Column[str]`
+e8-prototype/probes/p0_core.py:33:44: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Column[int]`
+e8-prototype/probes/p0_core.py:34:9: error[invalid-method-override] Invalid override of method `fill_null`: Definition is incompatible with `Value.fill_null`
+e8-prototype/probes/p0_core.py:34:59: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Column[V@fill_null]`
+e8-prototype/probes/p0_core.py:35:9: error[invalid-method-override] Invalid override of method `isin`: Definition is incompatible with `Value.isin`
+e8-prototype/probes/p0_core.py:35:51: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Column[bool]`
+e8-prototype/probes/p0_core.py:50:63: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `Self@extend`
+e8-prototype/probes/p0_core.py:53:77: error[empty-body] Function always implicitly returns `None`, which is not assignable to return type `(**P@aggregate) -> R@aggregate`
+e8-prototype/probes/p0_core.py:86:17: info[revealed-type] Revealed type: `Column[float]`
+e8-prototype/probes/p0_core.py:87:17: info[revealed-type] Revealed type: `Column[float]`
+e8-prototype/probes/p0_core.py:88:17: info[revealed-type] Revealed type: `Column[float | None]`
+e8-prototype/probes/p0_core.py:89:17: info[revealed-type] Revealed type: `Column[float]`
+e8-prototype/probes/p0_core.py:90:17: info[revealed-type] Revealed type: `Column[int]`
+e8-prototype/probes/p0_core.py:91:17: info[revealed-type] Revealed type: `Column[float]`
+e8-prototype/probes/p0_core.py:92:17: info[revealed-type] Revealed type: `Column[float | None]`
+e8-prototype/probes/p0_core.py:93:17: info[revealed-type] Revealed type: `Column[float]`
+e8-prototype/probes/p0_core.py:94:17: info[revealed-type] Revealed type: `Column[float]`
+e8-prototype/probes/p0_core.py:95:17: info[revealed-type] Revealed type: `Column[bool]`
+e8-prototype/probes/p0_core.py:96:17: info[revealed-type] Revealed type: `Scalar[float]`
+e8-prototype/probes/p0_core.py:97:17: info[revealed-type] Revealed type: `Column[int]`
+e8-prototype/probes/p0_core.py:98:17: info[revealed-type] Revealed type: `Column[bool]`
+e8-prototype/probes/p0_core.py:99:5: error[invalid-argument-type] Argument to bound method `Column.upper` is incorrect: Expected `Column[str | None]`, found `Column[float]`
+e8-prototype/probes/p0_core.py:100:5: error[invalid-argument-type] Argument to bound method `Column.mean` is incorrect: Expected `Column[float | None]`, found `Column[str]`
+e8-prototype/probes/p0_core.py:101:5: error[unsupported-operator] Operator `>` is not supported between objects of type `Column[str]` and `Literal[5]`
+e8-prototype/probes/p0_core.py:102:5: error[unresolved-attribute] Object of type `Orders` has no attribute `amout`
+e8-prototype/probes/p0_core.py:104:9: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[float | None]`
+e8-prototype/probes/p0_core.py:106:9: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[str]`
+e8-prototype/probes/p0_core.py:108:5: error[missing-argument] No argument provided for required parameter `net`
+e8-prototype/probes/p0_core.py:109:23: error[unknown-argument] Argument `x` does not match any known parameter
+e8-prototype/probes/p0_core.py:113:18: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[Stats]`, found `Orders`
+e8-prototype/probes/p0_core.py:113:21: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[Stats]`, found `Net`
+e8-prototype/probes/p0_core.py:114:22: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[NetOrders]`, found `Customers`
+e8-prototype/probes/p0_core.py:115:17: info[revealed-type] Revealed type: `NetOrders`
+e8-prototype/probes/p0_core.py:117:17: info[revealed-type] Revealed type: `(*, status: Column[str] | Scalar[str] | str, total: Column[float] | Scalar[float] | float) -> Stats`
+e8-prototype/probes/p0_core.py:119:5: error[missing-argument] No argument provided for required parameter `total`
+Found 40 diagnostics
+### pyrefly
+ERROR e8-prototype/probes/p0_core.py:30:9-15: Class member `Column.__gt__` overrides parent class `Value` in an inconsistent manner [bad-override]
+ERROR e8-prototype/probes/p0_core.py:53:9-18: `aggregate` method cls type `(ParamSpec(P)) -> R` is not a valid `type[...]` annotation [invalid-annotation]
+ INFO e8-prototype/probes/p0_core.py:86:16-26: revealed type: Column[float] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:87:16-31: revealed type: Column[float] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:88:16-28: revealed type: Column[float | None] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:89:16-30: revealed type: Column[float] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:90:16-32: revealed type: Column[int] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:91:16-34: revealed type: Column[float] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:92:16-39: revealed type: Column[float | None] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:93:16-43: revealed type: Column[float] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:94:16-41: revealed type: Column[float] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:95:16-30: revealed type: Column[bool] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:96:16-33: revealed type: Scalar[float] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:97:16-29: revealed type: Column[int] [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:98:16-43: revealed type: Column[bool] [reveal-type]
+ERROR e8-prototype/probes/p0_core.py:99:19-21: Argument `Column[float]` is not assignable to parameter `self` with type `Column[str | None]` in function `Column.upper` [bad-argument-type]
+ERROR e8-prototype/probes/p0_core.py:100:18-20: Argument `Column[str]` is not assignable to parameter `self` with type `Column[float | None]` in function `Column.mean` [bad-argument-type]
+ERROR e8-prototype/probes/p0_core.py:101:5-17: `>` is not supported between `Column[str]` and `Literal[5]` [unsupported-operation]
+ERROR e8-prototype/probes/p0_core.py:102:5-12: Object of class `Orders` has no attribute `amout` [missing-attribute]
+ERROR e8-prototype/probes/p0_core.py:104:13-23: Argument `Column[float | None]` is not assignable to parameter `net` with type `Column[float] | Scalar[float] | float` in function `Net.__init__` [bad-argument-type]
+ERROR e8-prototype/probes/p0_core.py:106:13-21: Argument `Column[str]` is not assignable to parameter `net` with type `Column[float] | Scalar[float] | float` in function `Net.__init__` [bad-argument-type]
+ERROR e8-prototype/probes/p0_core.py:108:8-10: Missing argument `net` in function `Net.__init__` [missing-argument]
+ERROR e8-prototype/probes/p0_core.py:109:23-24: Unexpected keyword argument `x` in function `Net.__init__` [unexpected-keyword]
+ERROR e8-prototype/probes/p0_core.py:113:18-19: Argument `Orders` is not assignable to parameter `base` with type `Into[Stats]` in function `Frame.extend` [bad-argument-type]
+ERROR e8-prototype/probes/p0_core.py:113:21-38: Argument `Net` is not assignable to parameter `*deltas` with type `Into[Stats]` in function `Frame.extend` [bad-argument-type]
+ERROR e8-prototype/probes/p0_core.py:114:22-23: Argument `Customers` is not assignable to parameter `base` with type `Into[NetOrders]` in function `Frame.extend` [bad-argument-type]
+ INFO e8-prototype/probes/p0_core.py:115:16-56: revealed type: NetOrders [reveal-type]
+ INFO e8-prototype/probes/p0_core.py:117:16-21: revealed type: (*, status: Column[str] | Scalar[str] | str, total: Column[float] | Scalar[float] | float) -> Stats [reveal-type]
+ERROR e8-prototype/probes/p0_core.py:119:8-25: Missing argument `total` [missing-argument]
+ INFO 14 errors (8 suppressed)

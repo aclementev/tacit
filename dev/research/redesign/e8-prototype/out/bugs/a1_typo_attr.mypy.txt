@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/a1_typo_attr.py:55: error: "RawOrder" has no attribute "discont"; maybe "discount"?  [attr-defined]

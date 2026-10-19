@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/d2_times_float.py:64: error: Argument "order_count" to "CountryMonthStats" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]

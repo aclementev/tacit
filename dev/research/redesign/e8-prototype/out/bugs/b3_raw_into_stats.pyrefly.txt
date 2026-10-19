@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/b3_raw_into_stats.py:80:33-39: Argument `RawOrder` is not assignable to parameter `orders` with type `Order` in function `country_month_stats` [bad-argument-type]
+ INFO 1 error

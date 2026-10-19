@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/a4_typo_join_key.py:59: error: "RawCustomer" has no attribute "custmer_id"; maybe "customer_id"?  [attr-defined]

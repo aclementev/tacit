@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/a2_typo_filter.py:54:26-38: Object of class `RawOrder` has no attribute `statu` [missing-attribute]
+ INFO 1 error

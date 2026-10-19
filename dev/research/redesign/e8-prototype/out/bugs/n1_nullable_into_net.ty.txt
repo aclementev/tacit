@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/n1_nullable_into_net.py:55:41: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[float | None]`
+Found 1 diagnostic

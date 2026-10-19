@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/c1_return_kept.py:55:12: error[invalid-return-type] Return type does not match returned value: expected `Order`, found `RawOrder`
+Found 1 diagnostic

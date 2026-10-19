@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/d1b_cast_type.py:64: error: Argument 1 to "cast" of "Scalar" has incompatible type "type[float]"; expected "type[int]"  [arg-type]

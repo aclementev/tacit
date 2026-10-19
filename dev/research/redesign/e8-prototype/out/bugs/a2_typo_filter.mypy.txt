@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/a2_typo_filter.py:54: error: "RawOrder" has no attribute "statu"; maybe "status"?  [attr-defined]

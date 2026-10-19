@@ -1,0 +1,6 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80:33 - error: Argument of type "RawCustomer" cannot be assigned to parameter "orders" of type "Order" in function "country_month_stats"
+    "RawCustomer" is not assignable to "Order" (reportArgumentType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80:44 - error: Argument of type "Order" cannot be assigned to parameter "customers" of type "RawCustomer" in function "country_month_stats"
+    "Order" is not assignable to "RawCustomer" (reportArgumentType)
+2 errors, 0 warnings, 0 informations

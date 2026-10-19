@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/d1b_cast_type.py:64:21-51: Argument `Scalar[float]` is not assignable to parameter `order_count` with type `Column[int] | Scalar[int] | int` in function `CountryMonthStats.__init__` [bad-argument-type]
+ INFO 1 error

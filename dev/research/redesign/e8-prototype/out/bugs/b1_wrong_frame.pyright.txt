@@ -1,0 +1,4 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/b1_wrong_frame.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/b1_wrong_frame.py:79:28 - error: Argument of type "RawCustomer" cannot be assigned to parameter "orders" of type "RawOrder" in function "clean_orders"
+    "RawCustomer" is not assignable to "RawOrder" (reportArgumentType)
+1 error, 0 warnings, 0 informations

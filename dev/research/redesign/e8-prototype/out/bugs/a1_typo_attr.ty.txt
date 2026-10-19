@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/a1_typo_attr.py:55:66: error[unresolved-attribute] Object of type `RawOrder` has no attribute `discont`
+Found 1 diagnostic

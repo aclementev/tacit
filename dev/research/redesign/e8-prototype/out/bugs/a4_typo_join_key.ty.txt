@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/a4_typo_join_key.py:59:69: error[unresolved-attribute] Object of type `RawCustomer` has no attribute `custmer_id`
+Found 1 diagnostic

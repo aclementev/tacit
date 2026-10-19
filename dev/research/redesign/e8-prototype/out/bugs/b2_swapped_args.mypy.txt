@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80: error: Argument 1 to "country_month_stats" has incompatible type "RawCustomer"; expected "Order"  [arg-type]
+e8-prototype/examples/ecommerce/bugs/b2_swapped_args.py:80: error: Argument 2 to "country_month_stats" has incompatible type "Order"; expected "RawCustomer"  [arg-type]

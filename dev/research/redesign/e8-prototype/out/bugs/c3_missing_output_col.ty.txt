@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/c3_missing_output_col.py:61:12: error[missing-argument] No argument provided for required parameter `avg_net`
+Found 1 diagnostic

@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/n1_nullable_into_net.py:55: error: Argument "net_amount" to "NetAmount" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float"  [arg-type]

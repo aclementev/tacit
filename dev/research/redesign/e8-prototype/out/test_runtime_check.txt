@@ -1,0 +1,41 @@
+### pyright
+tests/test_runtime.py:176:10 - error: Import "ecommerce.pipeline" could not be resolved (reportMissingImports)
+tests/test_runtime.py:219:39 - error: Cannot access attribute "timezone" for class "DataType"
+tests/test_runtime.py:259:9 - warning: Expression value is unused (reportUnusedExpression)
+tests/test_runtime.py:343:10 - error: Import "ecommerce.pipeline" could not be resolved (reportMissingImports)
+tests/test_runtime.py:451:13 - error: "filter" overrides method of same name in class "Frame" with incompatible type "Column[str]" (reportIncompatibleMethodOverride)
+tests/test_runtime.py:472:13 - error: "x" overrides symbol of same name in class "B"
+tests/test_runtime.py:492:10 - error: Import "ecommerce" could not be resolved (reportMissingImports)
+### mypy
+e8-prototype/tests/test_runtime.py:176: error: Cannot find implementation or library stub for module named "ecommerce.pipeline"  [import-not-found]
+e8-prototype/tests/test_runtime.py:176: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+e8-prototype/tests/test_runtime.py:451: error: Incompatible types in assignment (expression has type "Column[str]", base class "Frame" defined the type as "def filter(self, *predicates: Column[bool]) -> Bad")  [assignment]
+e8-prototype/tests/test_runtime.py:472: error: Incompatible types in assignment (expression has type "Column[int]", base class "B" defined the type as "Column[str]")  [assignment]
+e8-prototype/tests/test_runtime.py:492: error: Cannot find implementation or library stub for module named "ecommerce"  [import-not-found]
+Found 4 errors in 1 file (checked 1 source file)
+### ty
+e8-prototype/tests/test_runtime.py:176:10: error[unresolved-import] Cannot resolve imported module `ecommerce.pipeline`
+e8-prototype/tests/test_runtime.py:219:12: error[unresolved-attribute] Object of type `DataType` has no attribute `timezone`
+e8-prototype/tests/test_runtime.py:243:9: error[missing-argument] No argument provided for required parameter `net_amount`
+e8-prototype/tests/test_runtime.py:258:24: warning[possibly-missing-submodule] Submodule `exceptions` might not have been imported
+e8-prototype/tests/test_runtime.py:295:34: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[NetOrders]`, found `Scored`
+e8-prototype/tests/test_runtime.py:343:10: error[unresolved-import] Cannot resolve imported module `ecommerce.pipeline`
+e8-prototype/tests/test_runtime.py:351:24: warning[possibly-missing-submodule] Submodule `exceptions` might not have been imported
+e8-prototype/tests/test_runtime.py:391:23: error[invalid-argument-type] Argument is incorrect: Expected `Customers | None`, found `Orders`
+e8-prototype/tests/test_runtime.py:397:36: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[NetOrders]`, found `Scored`
+e8-prototype/tests/test_runtime.py:433:32: error[invalid-argument-type] Argument is incorrect: Expected `Orders`, found `Customers`
+e8-prototype/tests/test_runtime.py:451:13: error[invalid-attribute-override] Invalid override of attribute `filter`: Type `Column[str]` is not assignable to inherited type `(*predicates: Column[bool]) -> Bad`
+e8-prototype/tests/test_runtime.py:472:13: error[invalid-attribute-override] Invalid override of attribute `x`: Type `Column[int]` is not assignable to inherited type `Column[str]`
+e8-prototype/tests/test_runtime.py:492:10: error[unresolved-import] Cannot resolve imported module `ecommerce`
+Found 13 diagnostics
+### pyrefly
+ERROR e8-prototype/tests/test_runtime.py:83:94-98: Argument `None` is not assignable to parameter `other` with type `((...) -> DataFrame | Timedelta | Timestamp | bool | bytes | complex | complexfloating | date | datetime | datetime64 | float | floating | int | integer | str | timedelta | timedelta64) | DataFrame | Timedelta | Timestamp | bool | bytes | complex | complexfloating | date | datetime | datetime64 | float | floating | int | integer | str | timedelta | timedelta64` in function `pandas.core.frame.DataFrame.where` [bad-argument-type]
+ERROR e8-prototype/tests/test_runtime.py:176:5-44: Cannot find module `ecommerce.pipeline` [missing-import]
+ERROR e8-prototype/tests/test_runtime.py:219:12-47: Object of class `DataType` has no attribute `timezone` [missing-attribute]
+ERROR e8-prototype/tests/test_runtime.py:265:12-37: Expected a callable, got `Series` [not-callable]
+ERROR e8-prototype/tests/test_runtime.py:343:5-50: Cannot find module `ecommerce.pipeline` [missing-import]
+ERROR e8-prototype/tests/test_runtime.py:429:12-22: Cannot find module `_late_step` [missing-import]
+ERROR e8-prototype/tests/test_runtime.py:451:13-19: Class member `Bad.filter` overrides parent class `Frame` in an inconsistent manner [bad-override]
+ERROR e8-prototype/tests/test_runtime.py:472:13-14: Class member `AB.x` overrides parent class `B` in an inconsistent manner [bad-override]
+ERROR e8-prototype/tests/test_runtime.py:492:5-35: Cannot find module `ecommerce` [missing-import]
+ INFO 9 errors (7 suppressed, 2 warnings not shown, use `--min-severity=warn` to see them)

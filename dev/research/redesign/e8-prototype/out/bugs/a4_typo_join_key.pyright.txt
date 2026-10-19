@@ -1,0 +1,4 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a4_typo_join_key.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a4_typo_join_key.py:59:71 - error: Cannot access attribute "custmer_id" for class "RawCustomer"
+    Attribute "custmer_id" is unknown (reportAttributeAccessIssue)
+1 error, 0 warnings, 0 informations

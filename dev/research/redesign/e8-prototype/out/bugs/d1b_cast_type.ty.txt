@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/d1b_cast_type.py:64:9: error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Scalar[float*]`
+Found 1 diagnostic

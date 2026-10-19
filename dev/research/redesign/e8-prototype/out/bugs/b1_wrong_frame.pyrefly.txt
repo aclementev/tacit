@@ -1,0 +1,2 @@
+ERROR e8-prototype/examples/ecommerce/bugs/b1_wrong_frame.py:79:28-37: Argument `RawCustomer` is not assignable to parameter `orders` with type `RawOrder` in function `clean_orders` [bad-argument-type]
+ INFO 1 error

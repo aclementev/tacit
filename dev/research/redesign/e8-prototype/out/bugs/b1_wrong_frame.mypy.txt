@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/b1_wrong_frame.py:79: error: Argument 1 to "clean_orders" has incompatible type "RawCustomer"; expected "RawOrder"  [arg-type]

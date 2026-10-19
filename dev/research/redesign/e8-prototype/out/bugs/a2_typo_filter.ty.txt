@@ -1,0 +1,2 @@
+e8-prototype/examples/ecommerce/bugs/a2_typo_filter.py:54:26: error[unresolved-attribute] Object of type `RawOrder` has no attribute `statu`
+Found 1 diagnostic

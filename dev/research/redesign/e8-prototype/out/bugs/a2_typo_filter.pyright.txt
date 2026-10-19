@@ -1,0 +1,4 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a2_typo_filter.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a2_typo_filter.py:54:33 - error: Cannot access attribute "statu" for class "RawOrder"
+    Attribute "statu" is unknown (reportAttributeAccessIssue)
+1 error, 0 warnings, 0 informations

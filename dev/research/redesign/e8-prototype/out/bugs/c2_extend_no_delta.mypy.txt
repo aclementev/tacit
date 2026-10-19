@@ -1,0 +1,1 @@
+e8-prototype/examples/ecommerce/bugs/c2_extend_no_delta.py:55: error: Too few arguments for "extend" of "Frame"  [call-arg]

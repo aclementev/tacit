@@ -1,0 +1,4 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a3_typo_joined.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/a3_typo_joined.py:64:23 - error: Cannot access attribute "ordr_id" for class "Order"
+    Attribute "ordr_id" is unknown (reportAttributeAccessIssue)
+1 error, 0 warnings, 0 informations

@@ -1,0 +1,150 @@
+## a1_typo_attr: typo kept.discont
+  pyright  L55 - error: Cannot access attribute "discont" for class "RawOrder"
+  mypy     L55 error: "RawOrder" has no attribute "discont"; maybe "discount"?  [attr-defined]
+  ty       L55 error[unresolved-attribute] Object of type `RawOrder` has no attribute `discont`
+  pyrefly  L55 Object of class `RawOrder` has no attribute `discont` [missing-attribute]
+  runtime  AttributeError: 'RawOrder' object has no attribute 'discont'. Did you mean: 'discount'?
+## a2_typo_filter: typo orders.statu
+  pyright  L54 - error: Cannot access attribute "statu" for class "RawOrder"
+  mypy     L54 error: "RawOrder" has no attribute "statu"; maybe "status"?  [attr-defined]
+  ty       L54 error[unresolved-attribute] Object of type `RawOrder` has no attribute `statu`
+  pyrefly  L54 Object of class `RawOrder` has no attribute `statu` [missing-attribute]
+  runtime  AttributeError: 'RawOrder' object has no attribute 'statu'. Did you mean: 'status'?
+## a3_typo_joined: typo o.ordr_id after join
+  pyright  L64 - error: Cannot access attribute "ordr_id" for class "Order"
+  mypy     L64 error: "Order" has no attribute "ordr_id"  [attr-defined]
+  ty       L64 error[unresolved-attribute] Object of type `Order` has no attribute `ordr_id`
+  pyrefly  L64 Object of class `Order` has no attribute `ordr_id` [missing-attribute]
+  runtime  AttributeError: 'Order' object has no attribute 'ordr_id'. Did you mean: 'order_id'?
+## a4_typo_join_key: typo c.custmer_id in join key
+  pyright  L59 - error: Cannot access attribute "custmer_id" for class "RawCustomer"
+  mypy     L59 error: "RawCustomer" has no attribute "custmer_id"; maybe "customer_id"?  [attr-defined]
+  ty       L59 error[unresolved-attribute] Object of type `RawCustomer` has no attribute `custmer_id`
+  pyrefly  L59 Object of class `RawCustomer` has no attribute `custmer_id` [missing-attribute]
+  runtime  AttributeError: 'RawCustomer' object has no attribute 'custmer_id'. Did you mean: 'customer_id'?
+## b1_wrong_frame: customers passed to clean_orders
+  pyright  L79 - error: Argument of type "RawCustomer" cannot be assigned to parameter "orders" of type "RawOrder" in fun
+  mypy     L79 error: Argument 1 to "clean_orders" has incompatible type "RawCustomer"; expected "RawOrder"  [arg-type]
+  ty       L79 error[invalid-argument-type] Argument to function `clean_orders` is incorrect: Expected `RawOrder`, found 
+  pyrefly  L79 Argument `RawCustomer` is not assignable to parameter `orders` with type `RawOrder` in function `clean_ord
+  runtime  AttributeError: 'RawCustomer' object has no attribute 'status'
+## b2_swapped_args: swapped stats args
+  pyright  L80 - error: Argument of type "RawCustomer" cannot be assigned to parameter "orders" of type "Order" in functi
+  mypy     L80 error: Argument 1 to "country_month_stats" has incompatible type "RawCustomer"; expected "Order"  [arg-typ
+  ty       L80 error[invalid-argument-type] Argument to function `country_month_stats` is incorrect: Expected `Order`, fo
+  pyrefly  L80 Argument `RawCustomer` is not assignable to parameter `orders` with type `Order` in function `country_mont
+  runtime  AttributeError: 'Order' object has no attribute 'country'
+## b3_raw_into_stats: raw orders into stats
+  pyright  L80 - error: Argument of type "RawOrder" cannot be assigned to parameter "orders" of type "Order" in function 
+  mypy     L80 error: Argument 1 to "country_month_stats" has incompatible type "RawOrder"; expected "Order"  [arg-type]
+  ty       L80 error[invalid-argument-type] Argument to function `country_month_stats` is incorrect: Expected `Order`, fo
+  pyrefly  L80 Argument `RawOrder` is not assignable to parameter `orders` with type `Order` in function `country_month_s
+  runtime  AttributeError: 'RawOrder' object has no attribute 'net_amount'
+## c1_return_kept: forgot net_amount: return kept
+  pyright  L55 - error: Type "RawOrder" is not assignable to return type "Order"
+  mypy     L55 error: Incompatible return value type (got "RawOrder", expected "Order")  [return-value]
+  ty       L55 error[invalid-return-type] Return type does not match returned value: expected `Order`, found `RawOrder`
+  pyrefly  L55 Returned type `RawOrder` is not assignable to declared return type `Order` [bad-return]
+  runtime  AttributeError: 'RawOrder' object has no attribute 'net_amount'
+## c2_extend_no_delta: forgot net_amount: extend without delta
+  pyright  L55 - error: Expected 1 more positional argument (reportCallIssue)
+  mypy     L55 error: Too few arguments for "extend" of "Frame"  [call-arg]
+  ty       L55 error[missing-argument] No argument provided for required parameter `delta` of bound method `Frame.extend`
+  pyrefly  L55 Missing positional argument `delta` in function `tacit_next._frame.Frame.extend` [bad-argument-count]
+  runtime  TypeError: Frame.extend() missing 1 required positional argument: 'delta'
+## c3_missing_output_col: forgot an output column
+  pyright  L61 - error: Argument missing for parameter "avg_net" (reportCallIssue)
+  mypy     L61 error: Missing named argument "avg_net" for "CountryMonthStats"  [call-arg]
+  ty       L61 error[missing-argument] No argument provided for required parameter `avg_net`
+  pyrefly  L61 Missing argument `avg_net` in function `CountryMonthStats.__init__` [missing-argument]
+  runtime  tacit_next._errors.ValidationError: CountryMonthStats(...): 1 issue for CountryMonthStats |   - avg_net: missing column
+## d1_cast_str_dtype: order_count .cast("float64")
+  pyright  L64 - error: Argument of type "Scalar[float]" cannot be assigned to parameter "order_count" of type "Column[in
+  mypy     L64 error: Argument "order_count" to "CountryMonthStats" has incompatible type "Scalar[float]"; expected "Colu
+  ty       L64 error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Sca
+  pyrefly  L64 Argument `Scalar[float]` is not assignable to parameter `order_count` with type `Column[int] | Scalar[int]
+  runtime  tacit_next._errors.ValidationError: CountryMonthStats(...): 1 issue for CountryMonthStats |   - order_count: expected dtype int64, got float64
+## d1b_cast_type: order_count .cast(float)
+  pyright  L64 - error: Argument of type "Scalar[float]" cannot be assigned to parameter "order_count" of type "Column[in
+  mypy     L64 error: Argument 1 to "cast" of "Scalar" has incompatible type "type[float]"; expected "type[int]"  [arg-ty
+  ty       L64 error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Sca
+  pyrefly  L64 Argument `Scalar[float]` is not assignable to parameter `order_count` with type `Column[int] | Scalar[int]
+  runtime  tacit_next._errors.ValidationError: CountryMonthStats(...): 1 issue for CountryMonthStats |   - order_count: expected dtype int64, got float64
+## d2_times_float: order_count count() * 1.0
+  pyright  L64 - error: Argument of type "Scalar[float]" cannot be assigned to parameter "order_count" of type "Column[in
+  mypy     L64 error: Argument "order_count" to "CountryMonthStats" has incompatible type "Scalar[float]"; expected "Colu
+  ty       L64 error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Sca
+  pyrefly  L64 Argument `Scalar[float]` is not assignable to parameter `order_count` with type `Column[int] | Scalar[int]
+  runtime  tacit_next._errors.ValidationError: CountryMonthStats(...): 1 issue for CountryMonthStats |   - order_count: expected dtype int64, got float64
+## d3_schema_float: schema says order_count: float
+  pyright  -
+  mypy     -
+  ty       -
+  pyrefly  -
+  runtime  -
+## n1_nullable_into_net: forgot fill_null (bonus: null safety)
+  pyright  L55 - error: Argument of type "Column[float | None]" cannot be assigned to parameter "net_amount" of type "Col
+  mypy     L55 error: Argument "net_amount" to "NetAmount" has incompatible type "Column[float | None]"; expected "Column
+  ty       L55 error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, foun
+  pyrefly  L55 Argument `Column[float | None]` is not assignable to parameter `net_amount` with type `Column[float] | Sca
+  runtime  -
+## e_cust_bad_date: bad CSV cust_bad_date.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawCustomer.parse: 1 issue for RawCustomer |   - signup_date: cannot convert string to date; 1 row; e.g. ['2023-13-45']
+## e_cust_bad_email: bad CSV cust_bad_email.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawCustomer.parse: 1 issue for RawCustomer |   - email: constraint pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$') failed; 1 row; e.g. ['not-an-email']
+## e_cust_country3: bad CSV cust_country3.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawCustomer.parse: 1 issue for RawCustomer |   - country: constraint length(2) failed; 1 row; e.g. ['DEU']
+## e_cust_null_name: bad CSV cust_null_name.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawCustomer.parse: 1 issue for RawCustomer |   - name: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 1 row; e.g. [None]
+## e_orders_bad_status: bad CSV orders_bad_status.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawOrder.parse: 1 issue for RawOrder |   - status: constraint isin(['pending', 'shipped', 'cancelled']) failed; 1 row; e.g. ['refunded']
+## e_orders_bad_ts: bad CSV orders_bad_ts.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawOrder.parse: 1 issue for RawOrder |   - order_ts: cannot convert string to timestamp; 1 row; e.g. ['not-a-time']
+## e_orders_neg_amount: bad CSV orders_neg_amount.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawOrder.parse: 1 issue for RawOrder |   - amount: constraint ge(0) failed; 1 row; e.g. ['-33.74']
+## e_orders_neg_discount: bad CSV orders_neg_discount.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawOrder.parse: 1 issue for RawOrder |   - discount: constraint ge(0) failed; 1 row; e.g. ['-1.0']
+## e_orders_null_amount: bad CSV orders_null_amount.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawOrder.parse: 1 issue for RawOrder |   - amount: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 1 row; e.g. [None]
+## e_orders_text_amount: bad CSV orders_text_amount.csv
+  pyright  n/a
+  mypy     n/a
+  ty       n/a
+  pyrefly  n/a
+  runtime  tacit_next._errors.ValidationError: RawOrder.parse: 1 issue for RawOrder |   - amount: cannot convert string to float64; 1 row; e.g. ['abc']

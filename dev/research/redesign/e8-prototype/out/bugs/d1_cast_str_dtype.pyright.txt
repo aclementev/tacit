@@ -1,0 +1,9 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/d1_cast_str_dtype.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/examples/ecommerce/bugs/d1_cast_str_dtype.py:64:21 - error: Argument of type "Scalar[float]" cannot be assigned to parameter "order_count" of type "Column[int] | Scalar[int] | int" in function "__init__"
+    Type "Scalar[float]" is not assignable to type "Column[int] | Scalar[int] | int"
+      "Scalar[float]" is not assignable to "Column[int]"
+      "Scalar[float]" is not assignable to "Scalar[int]"
+        Type parameter "T_co@Scalar" is covariant, but "float" is not a subtype of "int"
+          "float" is not assignable to "int"
+      "Scalar[float]" is not assignable to "int" (reportArgumentType)
+1 error, 0 warnings, 0 informations
