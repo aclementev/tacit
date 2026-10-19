@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--BODY-START-->
+<title>Tacit Redesign Proposal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (about 68ch) with a sticky contents rail on wide screens; tables and code may run wider in their own scroll boxes. */
+:root {
+  --paper: #f6f7f5;
+  --surface: #ffffff;
+  --ink: #18212b;
+  --ink-2: #44505c;
+  --ink-3: #6b7783;
+  --rule: #d9ded9;
+  --accent: #1c6b86;
+  --accent-soft: #e2eff3;
+  --code-bg: #eef1ee;
+  --ok: #1f7a4d;   --ok-bg: #e3f2e9;
+  --miss: #a15c00; --miss-bg: #fbefd9;
+  --fp: #b3261e;   --fp-bg: #fbe5e3;
+  --na: #6b7783;   --na-bg: #eceeec;
+  --font-display: "IBM Plex Sans Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --step--1: 0.84rem; --step-0: 1rem; --step-1: 1.2rem; --step-2: 1.5rem; --step-3: 2.1rem; --step-4: 2.9rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12171c; --surface: #182027; --ink: #e6ebef; --ink-2: #b4bec7; --ink-3: #8a96a1;
+    --rule: #2c3640; --accent: #6cc3de; --accent-soft: #19323c; --code-bg: #1d262e;
+    --ok: #71d19f; --ok-bg: #173527; --miss: #f0b660; --miss-bg: #3a2c14; --fp: #f2877e; --fp-bg: #3e1d1b;
+    --na: #8a96a1; --na-bg: #222b33; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12171c; --surface: #182027; --ink: #e6ebef; --ink-2: #b4bec7; --ink-3: #8a96a1;
+  --rule: #2c3640; --accent: #6cc3de; --accent-soft: #19323c; --code-bg: #1d262e;
+  --ok: #71d19f; --ok-bg: #173527; --miss: #f0b660; --miss-bg: #3a2c14; --fp: #f2877e; --fp-bg: #3e1d1b;
+  --na: #8a96a1; --na-bg: #222b33; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.shell { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; padding-block: 48px 96px; }
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-size: var(--step--1); }
+nav.toc p { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); margin: 0 0 8px; font-weight: 600; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; display: block; padding: 2px 0 2px 10px; border-left: 2px solid var(--rule); }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--accent); border-left-color: var(--accent); outline: none; }
+main { min-width: 0; }
+.prose { max-width: 70ch; }
+header.top { border-bottom: 1px solid var(--rule); padding-bottom: 28px; margin-bottom: 8px; }
+.eyebrow { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-3); margin: 0 0 12px; }
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; color: var(--ink); }
+h1 { font-size: var(--step-4); font-weight: 700; margin: 0 0 16px; letter-spacing: -0.01em; }
+h1 .tt { font-family: var(--font-mono); font-weight: 500; font-size: 0.82em; color: var(--accent); }
+h2 { font-size: var(--step-3); font-weight: 700; margin: 72px 0 16px; padding-top: 16px; border-top: 3px solid var(--ink); }
+h3 { font-size: var(--step-1); font-weight: 600; margin: 36px 0 8px; }
+h4 { font-size: var(--step-0); font-weight: 600; margin: 24px 0 6px; }
+p, li { color: var(--ink); }
+.lede { font-size: var(--step-1); color: var(--ink-2); max-width: 62ch; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: var(--step--1); color: var(--ink-3); font-family: var(--font-mono); }
+a { color: var(--accent); }
+code, kbd { font-family: var(--font-mono); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 3px; }
+pre { font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.55; background: var(--code-bg); color: var(--ink); padding: 16px 18px; border-radius: 4px; overflow-x: auto; margin: 16px 0; border: 1px solid var(--rule); }
+pre code { background: none; padding: 0; font-size: inherit; }
+pre .c { color: var(--ink-3); }
+pre .k { color: var(--accent); font-weight: 500; }
+pre .err { text-decoration: underline wavy var(--fp); text-underline-offset: 3px; }
+pre .diag { color: var(--fp); }
+pre .okd { color: var(--ok); }
+.wide { overflow-x: auto; margin: 18px 0; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font-family: var(--font-display); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); background: var(--code-bg); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; }
+.chip { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.4; padding: 1px 7px; border-radius: 999px; white-space: nowrap; }
+.chip.ok { color: var(--ok); background: var(--ok-bg); }
+.chip.miss { color: var(--miss); background: var(--miss-bg); }
+.chip.fp { color: var(--fp); background: var(--fp-bg); }
+.chip.na { color: var(--na); background: var(--na-bg); }
+.cat { display: inline-block; font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; padding: 1px 6px; border: 1px solid currentColor; border-radius: 3px; white-space: nowrap; }
+.cat.ours { color: var(--accent); }
+.cat.up { color: var(--miss); }
+.cat.chk { color: var(--ink-2); }
+.cat.lang { color: var(--fp); }
+.verdict { background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--accent); padding: 18px 22px; margin: 28px 0; border-radius: 0 4px 4px 0; }
+.verdict h3 { margin-top: 0; }
+.verdict ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin: 24px 0; }
+.fig { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px; }
+.fig .v { font-family: var(--font-display); font-size: var(--step-2); font-weight: 700; color: var(--ink); line-height: 1.1; }
+.fig .l { font-size: var(--step--1); color: var(--ink-2); margin-top: 4px; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pair > div { min-width: 0; }
+.pair .label { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .06em; font-size: 0.78rem; font-weight: 600; color: var(--ink-3); margin-bottom: -8px; }
+.note { font-size: var(--step--1); color: var(--ink-2); }
+.callout { background: var(--accent-soft); padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+.callout p { margin: 0; }
+ol.phases { list-style: none; padding: 0; margin: 18px 0; display: grid; gap: 14px; }
+ol.phases > li { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 16px 20px; }
+ol.phases h4 { margin: 0 0 6px; }
+ol.phases ul { margin: 6px 0 0; padding-left: 20px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: var(--step--1); color: var(--ink-2); margin: 8px 0; }
+footer { margin-top: 72px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: var(--step--1); }
+@media (max-width: 920px) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding-block: 28px 64px; }
+  nav.toc { display: none; }
+  .pair { grid-template-columns: minmax(0, 1fr); }
+  h1 { font-size: var(--step-3); }
+  h2 { font-size: var(--step-2); }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+
+<div class="shell">
+<nav class="toc" aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#method">How we evaluated</a></li>
+    <li><a href="#today">Where tacit stands</a></li>
+    <li><a href="#teams">The view from a team</a></li>
+    <li><a href="#ideal">The ideal API</a></li>
+    <li><a href="#gap">Why we are not there</a></li>
+    <li><a href="#design">Proposed design</a></li>
+    <li><a href="#evidence">Prototype evidence</a></li>
+    <li><a href="#runtime">Validation engine</a></li>
+    <li><a href="#agents">Agents and teams</a></li>
+    <li><a href="#upstream">Upstream work</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#risks">Risks and decisions</a></li>
+    <li><a href="#appendix">Appendix</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <p class="eyebrow">dev/research/redesign · 2026-10-19 · branch claude/pipeline-type-safety-redesign-a60149</p>
+  <h1>Typing the inside of the pipeline: a redesign of <span class="tt">tacit</span></h1>
+  <p class="lede">Tacit's runtime contracts work well. Its static promises mostly don't hold. This report measures both, describes what the ideal API would look like, and explains why Python can't express all of it yet. It then proposes a design, now prototyped, that gets every column reference checked by pyright, mypy and ty without plugins.</p>
+  <div class="meta"><span>pyright 1.1.414</span><span>mypy 2.4.0</span><span>ty 0.0.89</span><span>pyrefly 1.4.0</span><span>ibis 12.0.0</span><span>pandera 0.34.1</span><span>Python 3.13</span></div>
+</header>
+
+<section id="summary">
+<h2>Summary</h2>
+<div class="prose">
+<p>Tacit was designed when coding agents were weaker and the type-checker landscape was mostly pyright. Re-measured on today's tools, the runtime half holds up and the static half largely does not:</p>
+<ul>
+  <li><strong>Only pyright enforces tacit's types.</strong>
+    <ul>
+      <li><strong>mypy:</strong> neither tacit nor ibis ships <code>py.typed</code>, so mypy sees <code>Any</code> everywhere.</li>
+      <li><strong>ty and pyrefly:</strong> ibis defines a mixin conditionally, which gives ty and pyrefly an Unknown base for every Table. A forgotten <code>cast()</code> passes silently.</li>
+    </ul>
+  </li>
+  <li><strong>No checker catches a typo in a column name.</strong> <code>df.sepal_lenght</code> is accepted everywhere, because <code>DataFrame[S]</code> inherits ibis's catch-all <code>__getattr__</code>.</li>
+  <li><strong>The flagship examples fail pyright.</strong> The README's own quick example produces 4 errors. A docs-style pipeline written by an agent produced 7.</li>
+</ul>
+</div>
+
+<div class="verdict">
+<h3>Recommendation</h3>
+<ul>
+  <li><strong>Make the schema class the typed frame.</strong> <code>class Orders(tc.Frame)</code> wraps an ibis table; it does not subclass it. Columns are declared as <code>Column[float]</code>, <code>Column[str | None]</code> and so on. Every column access is then name-checked and type-checked, nullability included.</li>
+  <li><strong>Let construction carry the contract.</strong> An output frame's constructor is a statically checked projection, with helpers for the common shapes (<code>extend</code>, <code>aggregate</code>, <code>join</code>). A function that returns <code>NetOrders</code> can only return something that has the right columns. <code>@contract</code> shrinks to an optional <code>@tc.step</code> for data validation and error context.</li>
+  <li><strong>Own a small ibis-native validator instead of pandera.</strong> It runs one query on success and two on failure, instead of 16–30. It is 2.6–7.4× faster, cuts about 2 s from <code>import tacit</code>, and reports counts and sample values.</li>
+  <li><strong>Keep ibis</strong>, but stop exposing its typing to users. A generated, tacit-owned column facade absorbs ibis's annotation gaps. Two one-line fixes go upstream.</li>
+  <li><strong>Accept the language limits and work around them.</strong> Output schemas cannot be inferred (<code>S + {"score": float}</code>), so steps name their outputs, with small "delta" mixins and codegen for pick/drop/rename. If PEP 827 lands (3.16 at the earliest), these collapse into type aliases.</li>
+</ul>
+</div>
+
+<div class="figures">
+  <div class="fig"><div class="v">185 / 185</div><div class="l">expected-result type cases correct on pyright (mypy 182, ty 180, pyrefly 182)</div></div>
+  <div class="fig"><div class="v">0</div><div class="l">diagnostics on the three ported example pipelines, on all four checkers</div></div>
+  <div class="fig"><div class="v">4 of 4</div><div class="l">statically catchable bugs from the first agent trial, now caught by every checker (before: 1 of them, on three checkers)</div></div>
+  <div class="fig"><div class="v">1 query</div><div class="l">to coerce and validate a table, versus 16 (30 on failure) with pandera</div></div>
+</div>
+
+<p class="prose">A second agent trial in a new domain (E9) wrote its pipeline from the prototype's guide alone. All four checkers caught every statically catchable bug it planted, with zero false positives on the correct code. The trial also found the next gaps to close, all around nullability. They are listed in <a href="#e9">the E9 section</a>.</p>
+
+<h3>Before and after</h3>
+<p class="prose">This is one step from the e-commerce pipeline that the usability-trial agent wrote, shown in today's API and in the proposed one. The squiggles mark what the type checkers report.</p>
+<div class="pair">
+<div>
+<p class="label">tacit 0.2 (today)</p>
+<pre><code><span class="k">class</span> RawOrder(tacit.Schema):
+    status: Annotated[str, Check.isin([...])]
+    amount: Annotated[float, Check.ge(0)]
+    discount: Annotated[float, Nullable()]
+
+<span class="k">class</span> Order(RawOrder):
+    net_amount: float
+
+@tacit.contract
+<span class="k">def</span> clean(o: DataFrame[RawOrder]) -&gt; DataFrame[Order]:
+    kept = o.filter(o.statu != <span class="c">"cancelled"</span>)
+    <span class="c"># ^ typo: accepted by every checker</span>
+    <span class="k">return</span> <span class="err">kept.mutate(</span>
+        net_amount=<span class="err">kept.amount - kept.discount</span>)
+    <span class="c"># pyright: Table is not DataFrame[Order]</span>
+    <span class="c"># pyright: operator "-" not supported</span>
+    <span class="c"># mypy / ty / pyrefly: silent</span></code></pre>
+</div>
+<div>
+<p class="label">tacit-next (proposed, prototyped)</p>
+<pre><code><span class="k">class</span> RawOrder(tc.Frame):
+    status: Column[str] = tc.field(isin=[...])
+    amount: Column[float] = tc.field(ge=0)
+    discount: Column[float | None]
+
+<span class="k">class</span> NetAmount(tc.Frame): net_amount: Column[float]
+<span class="k">class</span> Order(RawOrder, NetAmount): <span class="k">pass</span>
+
+<span class="k">def</span> clean(o: RawOrder) -&gt; Order:
+    kept = o.filter(<span class="err">o.statu</span> != <span class="c">"cancelled"</span>)
+    <span class="diag"># all 4: RawOrder has no attribute "statu"</span>
+    <span class="k">return</span> Order.extend(kept, NetAmount(
+        net_amount=<span class="err">kept.amount - kept.discount</span>))
+    <span class="diag"># all 4: Column[float | None] is not Column[float]</span>
+    <span class="okd"># fix: kept.discount.fill_null(0)</span></code></pre>
+</div>
+</div>
+</section>
+
+<section id="method">
+<h2>How we evaluated</h2>
+<p class="prose">Every claim in this report comes from an experiment you can re-run. Each experiment lives in its own folder under <code>dev/research/redesign/</code>, with scripts, raw checker output and a <code>FINDINGS.md</code>. Subagents ran them in parallel: Opus for the design spikes, Sonnet for measurement, surveys and the usability trials.</p>
+<div class="wide"><table>
+<thead><tr><th>ID</th><th>Question</th><th>Folder</th><th>Model</th></tr></thead>
+<tbody>
+<tr><td>E0</td><td>Code review and runtime probes of the current implementation</td><td><code>e0-code-review</code></td><td>main session</td></tr>
+<tr><td>E1</td><td>What do pyright, mypy, ty and pyrefly actually report on today's tests, examples and docs?</td><td><code>e1-checker-baseline</code></td><td>Sonnet</td></tr>
+<tr><td>E2</td><td>Can the schema type the inside of a transformation (typed columns, typos, construction)?</td><td><code>e2-typed-columns</code></td><td>Opus</td></tr>
+<tr><td>E3</td><td>What can generic steps, derived schemas and joins express statically?</td><td><code>e3-schema-algebra</code></td><td>Opus</td></tr>
+<tr><td>E4</td><td>What do validation, import time and the decorator cost? Pandera or native?</td><td><code>e4-runtime</code></td><td>Sonnet</td></tr>
+<tr><td>E5</td><td>What do dataframely, typedspark, pandera, patito, narwhals and SQLAlchemy get right?</td><td><code>e5-prior-art</code></td><td>Sonnet</td></tr>
+<tr><td>E6</td><td>Usability trial: an agent builds a pipeline from tacit's docs alone and plants five bugs</td><td><code>e6-agent-trial</code></td><td>Sonnet</td></tr>
+<tr><td>E7</td><td>Which old assumptions did upstream releases (Jan–Oct 2026) invalidate?</td><td><code>e7-changelogs</code></td><td>Sonnet</td></tr>
+<tr><td>E8</td><td>Consolidated prototype (<code>tacit_next</code>) with a four-checker test matrix and E6's bugs re-planted</td><td><code>e8-prototype</code></td><td>Opus</td></tr>
+<tr><td>E9</td><td>Usability trial on the prototype, in a new domain (ride-hailing), from <code>GUIDE.md</code> alone</td><td><code>e9-agent-trial</code></td><td>Sonnet</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="today">
+<h2>Where tacit stands</h2>
+<h3>What to keep</h3>
+<ul class="prose">
+  <li><strong>Schemas are Python classes.</strong> Anyone can use go-to-definition, find-references, diffs and inheritance. This is the right foundation, and agents find schemas without extra context files.</li>
+  <li><strong>The <code>parse</code> / <code>cast</code> split.</strong> Untrusted data gets coerced and validated. Trusted data gets a check that costs nothing. Teams understand this immediately.</li>
+  <li><strong>Strict by default, non-nullable by default.</strong> These are the right defaults for production pipelines.</li>
+  <li><strong>Runtime structural errors are excellent.</strong> In the trial, every runtime-detectable bug was caught, with messages that named the schema and the boundary.</li>
+  <li><strong>Library, not framework, and backend-portable through ibis.</strong></li>
+</ul>
+
+<h3>What the type checkers actually see</h3>
+<p class="legend"><span class="chip ok">caught</span> works as documented <span class="chip miss">missed</span> silently accepted <span class="chip fp">false positive</span> error on valid code</p>
+<div class="wide"><table>
+<thead><tr><th>Check (tacit 0.2, stock ibis 12)</th><th>pyright</th><th>mypy</th><th>ty</th><th>pyrefly</th></tr></thead>
+<tbody>
+<tr><td>Expected errors in <code>tests/typechecking</code> caught</td><td><span class="chip ok">7 / 7</span></td><td><span class="chip miss">0 / 7</span></td><td><span class="chip miss">3 / 7</span></td><td><span class="chip miss">3 / 7</span></td></tr>
+<tr><td>Forgot <code>cast()</code>: plain Table returned as <code>DataFrame[S]</code></td><td><span class="chip ok">caught</span></td><td><span class="chip miss">missed</span></td><td><span class="chip miss">missed</span></td><td><span class="chip miss">missed</span></td></tr>
+<tr><td>Wrong schema passed (<code>DataFrame[Iris]</code> into <code>DataFrame[Features]</code>)</td><td><span class="chip ok">caught</span></td><td><span class="chip miss">missed</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td></tr>
+<tr><td>Typo in a column name (<code>df.sepal_lenght</code>)</td><td><span class="chip miss">missed</span></td><td><span class="chip miss">missed</span></td><td><span class="chip miss">missed</span></td><td><span class="chip miss">missed</span></td></tr>
+<tr><td>Column arithmetic and comparisons on valid code</td><td><span class="chip fp">false positive</span></td><td><span class="chip na">Any</span></td><td><span class="chip na">Unknown</span></td><td><span class="chip na">Unknown</span></td></tr>
+<tr><td><code>.sum()</code> / <code>.mean()</code> on a column</td><td><span class="chip fp">false positive</span></td><td><span class="chip na">Any</span></td><td><span class="chip na">Unknown</span></td><td><span class="chip na">Unknown</span></td></tr>
+<tr><td>Errors on the shipped examples (iris / TPC-H / README)</td><td><span class="chip fp">7 / 11 / 4</span></td><td><span class="chip na">all Any</span></td><td><span class="chip na">0</span></td><td><span class="chip na">0</span></td></tr>
+</tbody></table></div>
+<p class="note prose">Source: E1. The repo's typechecking suite runs pyright only, with <code>reportOperatorIssue</code> disabled, which is how these gaps went unnoticed. In the mypy, ty and pyrefly columns, a quiet result means the checker could not see the types, not that the code was correct.</p>
+
+<h3>Runtime defects found along the way</h3>
+<div class="wide"><table>
+<thead><tr><th>Defect</th><th>Effect</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td><code>cast()</code> rejects <code>NOT NULL</code> columns (<code>!float64</code> vs <code>float64</code>) and DuckDB's <code>timestamp(6)</code></td><td>The "free" check fails on ordinary warehouse tables</td><td>E0, E4</td></tr>
+<tr><td><code>x: float | None</code> and <code>Optional[float]</code> silently mean <em>non-nullable</em></td><td>The idiomatic spelling does the opposite of what it says</td><td>E0, E6</td></tr>
+<tr><td><code>@contract</code> silently skips <code>DataFrame[S] | None</code>, tuple and list returns, and raises on TypeVar-generic functions</td><td>Wrong tables flow through unchecked, and generic steps are impossible</td><td>E0</td></tr>
+<tr><td><code>@contract</code> resolves hints at decoration time</td><td><code>NameError</code> with <code>if TYPE_CHECKING:</code> imports, which large codebases use heavily</td><td>E0</td></tr>
+<tr><td>pandera's ibis backend ignores <code>Column(unique=True)</code>, <code>coerce</code> and <code>groupby</code></td><td>Uniqueness cannot be enforced through tacit</td><td>E4</td></tr>
+<tr><td>Constraint errors omit failing values; contract errors omit the function name</td><td>Every debug session starts with digging in <code>exc.failure_cases</code></td><td>E6</td></tr>
+<tr><td><code>_ibis_schema()</code> is rebuilt on every <code>cast()</code></td><td>128 µs per one-parameter contract call; memoised, it is about 4 µs</td><td>E4</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="teams">
+<h2>The view from a team</h2>
+<div class="prose">
+<p>Picture a company with forty engineers and a few hundred pipelines, more and more of them written or modified by coding agents. What they need from a contract library:</p>
+<ol>
+  <li><strong>Refactors that can't silently break someone else.</strong> Renaming or retyping a column in a shared schema should light up every downstream use, across repositories. Today that works only for whole-schema mismatches, and only in pyright. Column-level uses are invisible.</li>
+  <li><strong>Feedback in seconds, not after a warehouse job.</strong> Agents in particular iterate on whatever the type checker and tests tell them. A mistake that surfaces only at runtime, after a Spark job or a BigQuery bill, is the most expensive kind. The single most agent-friendly property a library can have is that wrong code fails the type check.</li>
+  <li><strong>The same answer in every checker.</strong> Teams standardise on mypy, editors run Pylance, and new projects pick ty. A guarantee that holds in only one of them isn't a guarantee.</li>
+  <li><strong>Cheap validation with useful reports.</strong> Validation should cost one scan, not one per check. Failures should name the step, the column, how many rows, and examples. Teams should be able to quarantine bad rows rather than fail the whole run.</li>
+  <li><strong>Contracts other teams and tools can read.</strong> Schemas should be exportable (JSON Schema, ODCS), diffable for breaking changes, and inferable from an existing table.</li>
+  <li><strong>One obvious way to do things.</strong> Today there are two styles of <code>@contract</code>. One of them is a type error, and it is the one in the README. Agents copy the README.</li>
+</ol>
+</div>
+</section>
+
+<section id="ideal">
+<h2>The ideal API</h2>
+<p class="prose">Set the language aside for a moment. The best library for this job, for humans and agents alike, would read like this:</p>
+<pre><code><span class="k">class</span> Orders(tacit.Table):
+    order_id: int = key()
+    status: Literal[<span class="c">"pending"</span>, <span class="c">"shipped"</span>, <span class="c">"cancelled"</span>]
+    amount: float = field(ge=0)
+    discount: float | None
+
+<span class="c"># output schema inferred from the body; nothing restated</span>
+<span class="k">def</span> net(o: Orders) -&gt; Orders &amp; {<span class="c">"net_amount"</span>: float}:
+    <span class="k">return</span> o.with_columns(net_amount=o.amount - o.discount.fill_null(0))
+
+<span class="c"># row-polymorphic: any table with an int id, same table out</span>
+<span class="k">def</span> dedupe[S: {<span class="c">"id"</span>: int}](df: Table[S]) -&gt; Table[S]: ...
+
+<span class="c"># join output inferred, collisions reported statically</span>
+enriched = orders.join(customers, on=Orders.customer_id == Customers.customer_id)</code></pre>
+<p class="prose">The properties that matter:</p>
+<div class="wide"><table>
+<thead><tr><th>#</th><th>Property</th><th>Today</th><th>Proposed</th></tr></thead>
+<tbody>
+<tr><td>P1</td><td>One declaration in plain Python types (<code>float</code>, <code>float | None</code>)</td><td><span class="chip miss">partial</span></td><td><span class="chip miss">one wrapper word: <code>Column[float]</code></span></td></tr>
+<tr><td>P2</td><td>Every column reference checked: name, type, nullability</td><td><span class="chip miss">no</span></td><td><span class="chip ok">yes, all four checkers</span></td></tr>
+<tr><td>P3</td><td>Output schemas inferred, never restated</td><td><span class="chip miss">no</span></td><td><span class="chip miss">named outputs + delta mixins</span></td></tr>
+<tr><td>P4</td><td>Row-polymorphic generic steps</td><td><span class="chip miss">no</span></td><td><span class="chip miss">schema-preserving: yes; additive: caller names output</span></td></tr>
+<tr><td>P5</td><td>Joins with inferred output and collision checks</td><td><span class="chip miss">no</span></td><td><span class="chip miss">typed join scope + explicit output</span></td></tr>
+<tr><td>P6</td><td>Identical guarantees on every checker, no plugins</td><td><span class="chip miss">pyright only</span></td><td><span class="chip ok">yes (raw-ibis edges excepted)</span></td></tr>
+<tr><td>P7</td><td>Zero cost when trusted, one scan when not</td><td><span class="chip miss">16–30 queries</span></td><td><span class="chip ok">1 query (+1 on failure)</span></td></tr>
+<tr><td>P8</td><td>Errors that say what, where, how many, which values</td><td><span class="chip miss">partial</span></td><td><span class="chip ok">yes</span></td></tr>
+<tr><td>P9</td><td>Schemas discoverable and exportable for other teams and agents</td><td><span class="chip miss">source only</span></td><td><span class="chip na">roadmap phase 3</span></td></tr>
+<tr><td>P10</td><td>A clean escape hatch to the full engine API</td><td><span class="chip ok">yes</span></td><td><span class="chip ok">yes (<code>.ibis</code>)</span></td></tr>
+</tbody></table></div>
+</section>
+
+<section id="gap">
+<h2>Why we are not there</h2>
+<p class="prose">Each gap between the ideal and what ships has a cause, and the cause decides the response. This is the decision rule from the project's <code>CLAUDE.md</code>: fix our own issues, upstream small fixes, and document the least invasive workaround for the rest.</p>
+<p class="legend"><span class="cat ours">ours</span> fix in tacit <span class="cat up">upstream</span> ibis or pandera <span class="cat chk">checker</span> type-checker policy or bug <span class="cat lang">language</span> Python's type system</p>
+<div class="wide"><table>
+<thead><tr><th>Ideal</th><th>Blocker</th><th>Cause</th><th>Next best (what we propose)</th></tr></thead>
+<tbody>
+<tr><td><code>amount: float</code> also types <code>df.amount</code> as a column</td><td>An annotation declares the attribute's type. It can't be both a value type and an expression type.</td><td><span class="cat lang">language</span></td><td><code>amount: Column[float]</code>. This is the same trade SQLAlchemy 2.0 made with <code>Mapped[float]</code>.</td></tr>
+<tr><td>Inferred output schemas (<code>Orders &amp; {...}</code>)</td><td>No mapped, record or intersection types. PEP 827 "Type Manipulation" is a Draft for 3.16, with only a mypy prototype.</td><td><span class="cat lang">language</span></td><td>Name the output: <code>class NetOrders(Orders, NetAmount)</code>. <code>NetOrders.extend(o, NetAmount(...))</code> checks only the new columns.</td></tr>
+<tr><td>Generic additive steps (<code>S → S + score</code>)</td><td>TypeVar bounds can't reference other TypeVars, and there are no intersections.</td><td><span class="cat lang">language</span></td><td><code>def add_score[O: Scored](df: tc.Into[O], ..., out: type[O]) -&gt; O</code>. The caller writes one line: <code>class ScoredOrders(Orders, Scored)</code>.</td></tr>
+<tr><td>Pick / drop / rename without restating columns</td><td>Dynamic classes are opaque to every checker. Plugins exist only for mypy.</td><td><span class="cat lang">language</span> <span class="cat chk">checker</span></td><td>Restate the columns and verify them at import against the derivation, or use <code>tacit gen --check</code> codegen in CI.</td></tr>
+<tr><td>Typed ibis column API</td><td><code>Table.__getattr__ → Column</code>, comparisons reject literals, arithmetic drops column-ness, untyped decorators. ibis typing PRs have stalled, and there has been no release since February.</td><td><span class="cat up">upstream</span></td><td>A generated, tacit-owned facade over ibis's <code>Value</code> classes (about 55 methods, overloaded per value family). Raw ibis objects are passed through unchanged at runtime.</td></tr>
+<tr><td>mypy sees ibis</td><td>ibis ships no <code>py.typed</code> (re-adding it was declined), and <code>relations.py</code> self-imports <code>Table</code>. tacit ships no <code>py.typed</code> either.</td><td><span class="cat up">upstream</span> <span class="cat ours">ours</span></td><td>Ship <code>py.typed</code>. Document <code>follow_untyped_imports = true</code>. Send the one-line fix upstream.</td></tr>
+<tr><td>ty and pyrefly see ibis Tables correctly</td><td><code>FixedTextJupyterMixin</code> is defined in both branches of a <code>try/except</code>, which gives every Table an Unknown base.</td><td><span class="cat up">upstream</span></td><td>The wrapper design sidesteps it for frames. Send the one-line fix upstream for raw tables.</td></tr>
+<tr><td>Name-checked columns via plugins</td><td>pyright refuses plugins, and ty "does not plan a plugin system". pyrefly 1.x tracks Polars and pandas schemas natively, but not ibis.</td><td><span class="cat chk">checker</span></td><td>Design for zero plugins. Everything above is plain typing.</td></tr>
+<tr><td>Structural column Protocols (<code>HasId</code> matched by shape)</td><td>pyright skips descriptor <code>__get__</code> when matching protocols.</td><td><span class="cat chk">checker</span></td><td>Nominal mixin column sets (<code>class HasEventTs(tc.Frame)</code>). File a pyright issue.</td></tr>
+<tr><td>Outer-join nullability in the types</td><td>The views would need separate nullable types per side.</td><td><span class="cat ours">ours</span></td><td>Future <code>tc.left_join</code> returning nullable views. For now the runtime catches it.</td></tr>
+<tr><td><code>Column[bool]</code> must not pass as <code>Column[int]</code></td><td><code>bool</code> is a subclass of <code>int</code>, and <code>datetime</code> of <code>date</code>.</td><td><span class="cat lang">language</span></td><td>The runtime dtype check catches it.</td></tr>
+</tbody></table></div>
+<div class="callout prose"><p><strong>Should we leave ibis?</strong> Narwhals is a typed, multi-backend API, but on DuckDB, PySpark and ibis it is lazy-only, it is a subset of the expression API, and it has no schema-typed frames. Polars-only libraries such as dataframely would cost us every SQL engine. Nothing found buys enough to justify a rewrite. The wrapper design also keeps the door open: because users no longer touch ibis types directly, a native Polars or PySpark backend could later sit behind the same <code>Frame</code> and <code>Column</code> API.</p></div>
+</section>
+
+<section id="design">
+<h2>Proposed design: tacit-next</h2>
+<p class="prose">This is what the E8 prototype implements (<code>e8-prototype/src/tacit_next</code>, about 1,300 lines plus a generated stub). The user guide written for the second usability trial is <code>e8-prototype/GUIDE.md</code>.</p>
+
+<h3>Frames and columns</h3>
+<pre><code><span class="k">import</span> tacit_next <span class="k">as</span> tc
+<span class="k">from</span> tacit_next <span class="k">import</span> Column
+
+<span class="k">class</span> Orders(tc.Frame):
+    <span class="c">"""Orders as delivered by the order service."""</span>
+    order_id: Column[int] = tc.field(unique=True)
+    order_ts: Column[datetime]
+    status: Column[str] = tc.field(isin=[<span class="c">"pending"</span>, <span class="c">"shipped"</span>, <span class="c">"cancelled"</span>])
+    amount: Column[float] = tc.field(ge=0, description=<span class="c">"gross, EUR"</span>)
+    discount: Column[float | None]                       <span class="c"># nullable is spelled | None</span>
+    price: Column[Decimal] = tc.field(dtype=<span class="c">"decimal(12, 2)"</span>)
+
+orders.amount                   <span class="c"># Column[float]   (hover shows exactly this)</span>
+orders.amount.mean()            <span class="c"># Scalar[float]</span>
+orders.status.mean()            <span class="c"># error on all 4: no mean() for Column[str]</span>
+orders.discount.fill_null(0)    <span class="c"># Column[float | None] → Column[float]</span>
+orders.order_id / 2             <span class="c"># Column[float]; int, float and Decimal are kept apart</span></code></pre>
+<ul class="prose">
+  <li><strong>Why a wrapper, not a subclass.</strong> Any <code>__getattr__</code> that a checker can see disables typo detection, and subclassing <code>ir.Table</code> inherits one. Wrapping is the only design where typos are caught (E2, section B). The raw table is one hop away at <code>orders.ibis</code>.</li>
+  <li><strong>Why <code>Column[T]</code> keyed by Python types.</strong> One generic type gives readable hovers, separates int from float, and puts nullability in the type, so <code>fill_null</code> narrows it and assigning a nullable expression into a non-null column is a static error on all four checkers. Statically it is a generated stub with self-type overloads per value family. At runtime it is the plain ibis expression, so nothing is wrapped.</li>
+  <li><strong>Why <code>tc.field(...)</code>.</strong> It works with <code>dataclass_transform</code> on every checker. It also carries the description, the physical name and the dtype. <code>Annotated[Column[float], tc.ge(0)]</code> still works for reusable aliases.</li>
+  <li><strong>Name collisions.</strong> A column named like a Frame member (<code>filter</code>, <code>ibis</code>, …) raises at class creation, with the fix in the message: <code>tc.field(name="filter")</code>.</li>
+</ul>
+
+<h3>Boundaries: parse and cast</h3>
+<pre><code>orders = Orders.parse(con.read_csv(<span class="c">"orders.csv"</span>))   <span class="c"># coerce + validate: 1 query, +1 only on failure</span>
+orders = Orders.cast(con.table(<span class="c">"orders"</span>))           <span class="c"># names + type families, no query, NOT NULL-aware</span></code></pre>
+<p class="prose">With nominal frames, a subclass is assignable to its parent, so <code>NetOrders</code> can go where <code>Orders</code> is expected. The rules follow from that. At an input boundary, the table must have <em>at least</em> the declared columns, and tacit projects it down to exactly those, so the body sees an exact schema. Construction and output are strict. <code>extra="forbid"</code> makes inputs strict too.</p>
+
+<h3>Construction is the contract</h3>
+<pre><code><span class="k">class</span> NetAmount(tc.Frame): net_amount: Column[float]     <span class="c"># the delta</span>
+<span class="k">class</span> NetOrders(Orders, NetAmount): <span class="k">pass</span>
+
+<span class="k">def</span> add_net(o: Orders) -&gt; NetOrders:
+    <span class="k">return</span> NetOrders.extend(o, NetAmount(net_amount=o.amount - o.discount.fill_null(0)))
+    <span class="c"># missing / extra / wrong-type delta column: error on all 4</span>
+    <span class="c"># Customers.extend(o, ...): error on all 4 (Into[Self]: NetOrders must subclass type(o))</span>
+
+<span class="k">def</span> daily(o: Orders) -&gt; DailyRevenue:
+    day = o.order_ts.date()
+    <span class="k">return</span> DailyRevenue.aggregate(by=[day, o.status])(
+        day=day, status=o.status, orders=o.order_id.count(), revenue=o.amount.sum())
+
+<span class="k">def</span> with_country(o: Orders, c: Customers) -&gt; OrderCountry:
+    j = tc.join(o, c, on=<span class="k">lambda</span> o, c: o.customer_id == c.customer_id)
+    <span class="k">return</span> OrderCountry(order_id=j.left.order_id, country=j.right.country, amount=j.left.amount)</code></pre>
+<ul class="prose">
+  <li><strong>The constructor is a checked projection.</strong> <code>dataclass_transform</code> takes parameter types from the column descriptor's <code>__set__</code>, so every checker flags missing, unexpected and wrongly typed columns. A function annotated <code>-&gt; NetOrders</code> can only return something built this way, so the "forgot the column" class of bug becomes a type error.</li>
+  <li><strong>Why <code>aggregate(by=...)</code> is explicit.</strong> The prototype also accepts reductions directly in the constructor, as an implicit GROUP BY. But forgetting a <code>.sum()</code> then quietly turns that column into a grouping key. With <code>by=</code>, the same mistake raises <code>not_a_reduction</code>. Document the explicit form.</li>
+  <li><strong>Joins</strong> expose typed <code>left</code> and <code>right</code> views over prefixed columns, and the output constructor names every column, so collisions cannot happen by construction.</li>
+</ul>
+
+<h3>Reusable steps</h3>
+<pre><code><span class="c"># same frame in and out; columns passed as typed handles</span>
+<span class="k">def</span> latest_per_key[F: tc.Frame](df: F, key: Column[Any], ts: Column[datetime]) -&gt; F:
+    <span class="k">return</span> df.filter(tc.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+
+latest = latest_per_key(orders, key=orders.customer_id, ts=orders.order_ts)   <span class="c"># -&gt; Orders</span>
+
+<span class="c"># "any frame with an event_ts": a mixin column set as the bound</span>
+<span class="k">class</span> HasEventTs(tc.Frame): event_ts: Column[datetime]
+<span class="k">def</span> recent[F: HasEventTs](df: F, since: datetime) -&gt; F:
+    <span class="k">return</span> df.filter(df.event_ts &gt;= since)</code></pre>
+
+<h3>Validation and errors</h3>
+<pre><code>Orders.parse: 2 issues for Orders
+  - amount: constraint ge(0) failed; 3 rows; e.g. ['-33.74', '-1.0', '-5.5']
+  - status: constraint isin(['pending', 'shipped', 'cancelled']) failed; 1 row; e.g. ['refunded']
+step clean_orders(), argument 'orders': 1 issue for RawOrder
+  - wrong frame; expected RawOrder; got RawCustomer</code></pre>
+<p class="prose">There is a single <code>tc.ValidationError</code>, with <code>.issues</code>: a list of structured records (code, column, expected, actual, count, samples). The optional <code>@tc.step</code> adds the step name, runs data checks with <code>validate=True</code>, catches raw tables passed by untyped callers, and supports TypeVar bounds and <code>F | None</code>. Annotations it can't enforce raise instead of being skipped. It resolves hints lazily, with a frame registry for names imported under <code>if TYPE_CHECKING:</code>.</p>
+</section>
+
+<section id="evidence">
+<h2>Prototype evidence</h2>
+<h3>Four-checker matrix (E8, stock ibis 12)</h3>
+<p class="note prose">Each cell counts expected-result cases that came out correct, from files with per-line expected-error markers (<code>e8-prototype/tests/typecheck</code>, run by <code>run_matrix.py</code>).</p>
+<div class="wide"><table>
+<thead><tr><th>Feature (cases)</th><th class="num">pyright</th><th class="num">mypy</th><th class="num">ty</th><th class="num">pyrefly</th></tr></thead>
+<tbody>
+<tr><td>Column access, readable hovers, typos on frame and class (9)</td><td class="num">9</td><td class="num">9</td><td class="num">9</td><td class="num">9</td></tr>
+<tr><td>Wrong method for the column type (9)</td><td class="num">9</td><td class="num">9</td><td class="num">9</td><td class="num">9</td></tr>
+<tr><td>Arithmetic across int, float, Decimal and str (16)</td><td class="num">16</td><td class="num">16</td><td class="num">16</td><td class="num">16</td></tr>
+<tr><td>Comparisons with literals, boolean logic (13)</td><td class="num">13</td><td class="num">13</td><td class="num">13</td><td class="num">13</td></tr>
+<tr><td>Typed methods: string, temporal, round, ifelse, isin (16)</td><td class="num">16</td><td class="num">16</td><td class="num">15</td><td class="num">16</td></tr>
+<tr><td>Reductions, <code>cast</code> and <code>try_cast</code> (19)</td><td class="num">19</td><td class="num">19</td><td class="num">19</td><td class="num">19</td></tr>
+<tr><td>Nullability: <code>fill_null</code> narrowing, null-safety, propagation (18)</td><td class="num">18</td><td class="num">18</td><td class="num">18</td><td class="num">18</td></tr>
+<tr><td>Field specifiers and <code>Annotated</code> metadata, custom checks (13)</td><td class="num">13</td><td class="num">13</td><td class="num">13</td><td class="num">13</td></tr>
+<tr><td>Frame methods return <code>Self</code>; parse, cast, escape hatch (13)</td><td class="num">13</td><td class="num">12</td><td class="num">13</td><td class="num">13</td></tr>
+<tr><td>Nominal subtyping; raw <code>ir.Table</code> rejected (4)</td><td class="num">4</td><td class="num">3</td><td class="num">3</td><td class="num">3</td></tr>
+<tr><td>Constructor, aggregate, extend with <code>Into[Self]</code>, additive generics (25)</td><td class="num">25</td><td class="num">25</td><td class="num">25</td><td class="num">25</td></tr>
+<tr><td>Generic steps, join scope, <code>@step</code> signatures (23)</td><td class="num">23</td><td class="num">23</td><td class="num">23</td><td class="num">23</td></tr>
+<tr><td>Interop with raw ibis (<code>as_ibis</code>, <code>cases</code>, <code>lit</code>) (7)</td><td class="num">7 + 3 FP</td><td class="num">6</td><td class="num">4 + 3 FP</td><td class="num">5 + 1 FP</td></tr>
+<tr><td><strong>Total (185)</strong></td><td class="num"><strong>185</strong></td><td class="num"><strong>182</strong></td><td class="num"><strong>180</strong></td><td class="num"><strong>182</strong></td></tr>
+</tbody></table></div>
+<p class="note prose">Every miss traces to ibis annotations (E1/E2: raw Tables are <code>Any</code> or have an Unknown base), or is cosmetic in ty. All three ported examples produce zero diagnostics on all four checkers, and their results match tacit 0.2 exactly.</p>
+
+<h3>Planted bugs, before and after</h3>
+<div class="wide"><table>
+<thead><tr><th>Bug</th><th>tacit 0.2, static</th><th>tacit 0.2, runtime</th><th>tacit-next, static</th><th>tacit-next, runtime</th></tr></thead>
+<tbody>
+<tr><td>(a) Typo in a column name (4 variants, incl. join key)</td><td><span class="chip miss">none</span></td><td>raw ibis <code>AttributeError</code></td><td><span class="chip ok">all 4</span></td><td><code>AttributeError</code> with a "Did you mean" suggestion</td></tr>
+<tr><td>(b) Wrong frame passed / swapped arguments</td><td><span class="chip miss">pyright, ty, pyrefly</span></td><td><code>StructuralError</code></td><td><span class="chip ok">all 4</span></td><td>caught; with <code>@step</code> the error names the step</td></tr>
+<tr><td>(c) Forgot to add <code>net_amount</code></td><td><span class="chip miss">none</span></td><td>caught</td><td><span class="chip ok">all 4</span></td><td>caught</td></tr>
+<tr><td>(d) <code>order_count</code> produced as float</td><td><span class="chip miss">none</span></td><td>caught</td><td><span class="chip ok">all 4</span></td><td>caught</td></tr>
+<tr><td>(e) CSV row violates a constraint (10 files)</td><td><span class="chip na">n/a</span></td><td>caught, no values shown</td><td><span class="chip na">n/a</span></td><td>10/10 caught, with counts and samples</td></tr>
+<tr><td>(f) Nullable column used where non-null is required</td><td><span class="chip miss">none</span></td><td>only if the data has nulls</td><td><span class="chip ok">all 4</span></td><td>n/a</td></tr>
+</tbody></table></div>
+<p class="note prose">tacit 0.2 results are from E6 (mypy run with <code>--follow-untyped-imports</code>). tacit-next results are from E8's re-injection of the same bugs (<code>e8-prototype/out/bugs/matrix.txt</code>), verified by the main session.</p>
+
+<h3 id="e9">Second usability trial (E9)</h3>
+<div id="e9-body" class="prose">
+<p>A fresh agent wrote a ride-hailing pipeline (parse, derive, join and aggregate, plus a generic top-n step) using only <code>GUIDE.md</code>. It never opened the library source. It then planted six bugs.</p>
+</div>
+<div class="wide"><table>
+<thead><tr><th>Bug</th><th>pyright</th><th>mypy</th><th>ty</th><th>pyrefly</th><th>Runtime</th></tr></thead>
+<tbody>
+<tr><td>(a) Typo <code>done.tipp</code></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><code>AttributeError</code>, "Did you mean: 'tip'?"</td></tr>
+<tr><td>(b) Drivers frame passed to the trips step</td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td>with <code>@tc.step</code>: "step completed_trips(), argument 't': wrong frame"</td></tr>
+<tr><td>(c) Forgot the <code>total</code> column</td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td>"Derived(...): total: missing column"</td></tr>
+<tr><td>(d) <code>trip_count</code> as float</td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td>dtype int64 vs float64</td></tr>
+<tr><td>(e) Bad CSV rows</td><td><span class="chip na">n/a</span></td><td><span class="chip na">n/a</span></td><td><span class="chip na">n/a</span></td><td><span class="chip na">n/a</span></td><td>5 issues in one report, with counts and samples</td></tr>
+<tr><td>(f) Nullable <code>tip</code> used in a non-null total</td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip ok">caught</span></td><td><span class="chip miss">not checked</span> (NaN totals)</td></tr>
+</tbody></table></div>
+<div class="prose">
+<p><strong>Results.</strong> Every checker reported zero diagnostics on the correct pipeline. The agent rated its confidence that "the type checker had my back" at <strong>7/10</strong>: 9/10 for names, types and frames. The points it lost show where the design has to go next. Each friction point below has a proposed fix (details in <code>e9-agent-trial/FINDINGS.md</code>):</p>
+<ul>
+  <li><strong>Nullability can't be narrowed after a filter.</strong> After <code>filter(status == "completed")</code>, <code>completed_at</code> is still nullable. Proposed fix: <code>col.assume_not_null()</code>, recorded on the frame and verified when the output is validated, so it is a checked assertion rather than a cast.</li>
+  <li><strong>Reductions over nullable columns claim to be non-null.</strong> A group where every value is null yields NaN. Proposed fix: make these reductions return <code>Scalar[T | None]</code>. E8 had dropped <code>None</code> to avoid noise; E9 shows the sound version is needed.</li>
+  <li><strong>No duration arithmetic.</strong> <code>datetime - datetime</code> is untyped. Proposed fix: add <code>Column[timedelta]</code> with <code>total_seconds()</code> to the facade.</li>
+  <li><strong>Column handles passed to generic steps aren't tied to the frame.</strong> The language can't express that a handle must come from the frame being passed. Proposed fix: catch ibis's relation error and re-raise it as a <code>ValidationError</code> that names the step and parameter.</li>
+  <li><strong>The guide overstated which errors are <code>ValidationError</code>.</strong> Fixed in <code>GUIDE.md</code>.</li>
+</ul>
+</div>
+
+<h3>Known limits of the prototype</h3>
+<ul class="prose">
+  <li><strong>Interop false positives.</strong> Passing a typed column into raw ibis APIs (<code>orders.ibis.filter(col)</code>, <code>ibis.desc(col)</code>) is flagged by pyright and ty. The facade derives from <code>ir.Value</code>, because deriving from <code>ir.Column</code> would bring back the Unknown base. Workaround: use the Frame's own methods, or <code>tc.as_ibis(col)</code>.</li>
+  <li><strong>The facade is owned surface.</strong> About 55 methods are typed per value family, generated by <code>tools/gen_facade.py</code> into a 1,073-line stub. Methods outside it fall back to ibis's own annotations.</li>
+  <li><strong>Class-level references are unsound.</strong> <code>Orders.amount</code> is <code>Column[float]</code> statically but a <code>Deferred</code> at runtime. Either give them a distinct <code>Ref[T]</code> type or drop class access.</li>
+  <li><strong>Joins are basic.</strong> There is no join-of-join scope, and outer joins don't make <code>right</code> nullable in the types.</li>
+  <li><strong>Raw tables slip past three checkers.</strong> A raw <code>ir.Table</code> passed where a Frame is expected is still missed by mypy, ty and pyrefly until the two upstream fixes land. The runtime catches it.</li>
+</ul>
+</section>
+
+<section id="runtime">
+<h2>Validation engine</h2>
+<p class="prose">E4 benchmarked pandera's ibis backend against a 150-line native validator. The test schema had 10 columns, 9 checks and 7 non-nullable columns, run on DuckDB with 2 vCPUs. The native validator computes nulls, every check, uniqueness and <code>try_cast</code> failures in one <code>aggregate()</code> query. It fetches samples with a second, bounded query only when something failed.</p>
+<div class="wide"><table>
+<thead><tr><th>Rows</th><th>Data</th><th class="num">pandera queries</th><th class="num">pandera time</th><th class="num">native queries</th><th class="num">native time</th><th class="num">speedup</th></tr></thead>
+<tbody>
+<tr><td>1k</td><td>valid (fixed overhead)</td><td class="num">16</td><td class="num">132 ms</td><td class="num">1</td><td class="num">15.6 ms</td><td class="num">8.5×</td></tr>
+<tr><td>1M</td><td>valid</td><td class="num">16</td><td class="num">0.41 s</td><td class="num">1</td><td class="num">0.11 s</td><td class="num">3.8×</td></tr>
+<tr><td>1M</td><td>0.1% bad</td><td class="num">30</td><td class="num">1.11 s</td><td class="num">2</td><td class="num">0.22 s</td><td class="num">5.1×</td></tr>
+<tr><td>10M</td><td>valid</td><td class="num">16</td><td class="num">2.73 s</td><td class="num">1</td><td class="num">1.03 s</td><td class="num">2.6×</td></tr>
+<tr><td>10M</td><td>0.1% bad</td><td class="num">30</td><td class="num">8.48 s</td><td class="num">2</td><td class="num">1.15 s</td><td class="num">7.4×</td></tr>
+<tr><td>1M</td><td>CSV view, with coercion</td><td class="num">16</td><td class="num">10.5 s</td><td class="num">1</td><td class="num">0.68 s</td><td class="num">15×</td></tr>
+</tbody></table></div>
+<ul class="prose">
+  <li><strong>Failures get expensive with pandera.</strong> It fetches every failing row, plus one boolean per row of the table, into pandas, so failure cost is O(N) in data movement. Every query also recompiles the expression and, over a CSV view, re-reads the file.</li>
+  <li><strong>Import time.</strong> <code>import tacit</code> takes 3.2 s, of which 2.7 s is <code>pandera.ibis</code> (pandas alone is 1.2 s). Without pandera it is about the cost of <code>import ibis</code>: 1.1–1.3 s.</li>
+  <li><strong>Lazy validation.</strong> Checks can also be fused into the user's eventual query, as a filter that calls the engine's <code>error()</code> function. It avoids the extra pass and fails fast, but it validates only the rows a query reads. Offer it as an opt-in mode, not the default.</li>
+  <li><strong>Remote engines widen the gap.</strong> These are single-machine DuckDB numbers. On a remote warehouse, going from 16 round trips to 1 matters more, not less.</li>
+</ul>
+</section>
+
+<section id="agents">
+<h2>Agents and teams</h2>
+<div class="prose">
+<p>The largest agent-friendliness gain is already in the design: <strong>wrong code fails the type check</strong>, on whichever checker the agent's harness runs, with messages like <code>"RawOrder" has no attribute "statu"; maybe "status"?</code>. Agents act on that well. The features below build on it. They are proposed, not yet prototyped:</p>
+</div>
+<div class="wide"><table>
+<thead><tr><th>Feature</th><th>What it does</th><th>Who benefits</th></tr></thead>
+<tbody>
+<tr><td><code>tacit describe Orders</code> / <code>tc.describe()</code></td><td>Markdown or JSON for one frame: columns, types, nullability, constraints, descriptions, lineage of mixins</td><td>Agents gathering context; reviewers</td></tr>
+<tr><td><code>tacit infer &lt;table&gt;</code></td><td>Generates a Frame class from an existing table or file, with inferred constraints as suggestions</td><td>Onboarding legacy pipelines</td></tr>
+<tr><td><code>tacit gen --check</code></td><td>Codegen for derived frames (pick, drop, rename, join outputs) from a spec module; <code>--check</code> fails CI when generated code is stale (prototyped in E3)</td><td>Wide schemas, no copy-paste</td></tr>
+<tr><td><code>tacit diff old new</code></td><td>Classifies schema changes as breaking or non-breaking, using dbt's rules (removed or retyped column, tightened constraint)</td><td>Cross-team contracts, release notes</td></tr>
+<tr><td>Export to JSON Schema / ODCS</td><td>Publishes contracts to catalogs and to datacontract-cli</td><td>Platform and governance teams</td></tr>
+<tr><td><code>Orders.filter_valid(t)</code></td><td>Soft validation: returns valid rows plus a report of failures per check, for quarantine flows (dataframely's best idea)</td><td>Production pipelines that must not stop</td></tr>
+<tr><td><code>Orders.sample(n)</code></td><td>Generates rows that satisfy the schema, for tests</td><td>Agents writing tests</td></tr>
+<tr><td>Error codes with docs links</td><td>Every <code>Issue.code</code> maps to a docs anchor with the fix</td><td>Agents and humans debugging</td></tr>
+<tr><td>Shipped agent guide</td><td>An <code>AGENTS.md</code> snippet and <code>llms.txt</code> with the one obvious way to write a step, plus the escape hatches</td><td>Every coding agent</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="upstream">
+<h2>Upstream work</h2>
+<p class="prose">These items fall under rule 2 of <code>CLAUDE.md</code> (contributable upstream fixes). The entries are drafted in <code>dev/contributions/</code>.</p>
+<div class="wide"><table>
+<thead><tr><th>Item</th><th>Status</th><th>Impact</th></tr></thead>
+<tbody>
+<tr><td><code>ibis-conditional-mixin-unknown-base</code>: define <code>FixedTextJupyterMixin</code> once for type checkers</td><td>new, patch ready (<code>e3-schema-algebra/ibis-typing.patch</code>)</td><td>Restores Table and Column typing on ty and pyrefly</td></tr>
+<tr><td><code>ibis-table-self-import-mypy-any</code>: drop the <code>TYPE_CHECKING</code> self-import of <code>Table</code></td><td>new, patch ready</td><td>mypy stops treating <code>ir.Table</code> as <code>Any</code></td></tr>
+<tr><td><code>ibis-comparison-operator-types</code></td><td>draft fix exists upstream (ibis #11966, stalled)</td><td>Literal comparisons on raw ibis</td></tr>
+<tr><td><code>ibis-duckdb-fetch-arrow-table</code></td><td>fixed on ibis main (#12001), unreleased</td><td>Keep the warning filter until ibis 13</td></tr>
+<tr><td><code>pandera-ibis-missing-all</code></td><td>resolved in pandera 0.31.0</td><td>Drop <code>reportPrivateImportUsage = false</code></td></tr>
+<tr><td>pyright: descriptor <code>__get__</code> ignored in protocol matching</td><td>to file</td><td>Would enable structural column protocols</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="roadmap">
+<h2>Roadmap</h2>
+<ol class="phases">
+<li>
+  <h4>Phase 0: fix what ships (0.2.x, no API break)</h4>
+  <ul>
+    <li>Ship <code>py.typed</code>. Document <code>follow_untyped_imports</code> for mypy.</li>
+    <li>Make <code>cast()</code> ignore nullability and timestamp precision. Make <code>X | None</code> mean nullable.</li>
+    <li><code>@contract</code>: cache the signature and the target schema (128 → 4 µs); resolve hints lazily; raise on annotations it can't enforce; support TypeVar bounds.</li>
+    <li>Include counts, sample values and the step name in error messages. Enforce or reject <code>unique</code>.</li>
+    <li>Fix the README and docs: show the <code>returns=</code> form, and state honestly which checker supports what.</li>
+    <li>CI: run <code>tests/typechecking</code> on pyright, mypy, ty and pyrefly.</li>
+    <li>Housekeeping: cap <code>polars&lt;2</code> until ibis 13; require <code>pandera&gt;=0.31</code>; do a trial docs build on Zensical before Material reaches end of life (2026-11-05).</li>
+    <li>File the two ibis fixes.</li>
+  </ul>
+</li>
+<li>
+  <h4>Phase 1: validation engine (0.3)</h4>
+  <ul>
+    <li>Native one-query validator with tacit's own <code>Check</code> constructors.</li>
+    <li>Structured <code>ValidationError.issues</code>.</li>
+    <li><code>filter_valid</code> soft validation.</li>
+    <li>Opt-in lazy guard mode.</li>
+    <li>Pandera becomes optional or is removed. Import time falls by about 2 s.</li>
+  </ul>
+</li>
+<li>
+  <h4>Phase 2: typed frames (0.4, then 1.0)</h4>
+  <ul>
+    <li><code>Frame</code>, <code>Column[T]</code> (generated facade), <code>field</code>, construction, <code>extend</code>, <code>aggregate</code>, <code>join</code>, <code>@step</code>.</li>
+    <li>Close the E9 gaps:
+      <ul>
+        <li>sound nullable reductions;</li>
+        <li><code>assume_not_null()</code>, as a checked assertion;</li>
+        <li><code>Column[timedelta]</code>;</li>
+        <li>a distinct <code>Ref[T]</code> type for class-level references;</li>
+        <li><code>tc.left_join</code> with nullable views;</li>
+        <li>relation errors wrapped with the step name.</li>
+      </ul>
+    </li>
+    <li>Keep <code>Schema</code> and <code>DataFrame[S]</code> for one minor release as a deprecated shim.</li>
+    <li>Provide a codemod. The mapping is mechanical: <code>x: float</code> → <code>x: Column[float]</code>; <code>Annotated[T, Nullable()]</code> → <code>Column[T | None]</code>; <code>DataFrame[S]</code> → <code>S</code>.</li>
+  </ul>
+</li>
+<li>
+  <h4>Phase 3: tools for teams and agents</h4>
+  <ul>
+    <li><code>describe</code>, <code>infer</code>, <code>gen --check</code>, <code>diff</code>.</li>
+    <li>ODCS and JSON Schema export.</li>
+    <li><code>sample()</code>.</li>
+    <li>Multi-table collections with cross-table rules.</li>
+    <li>Agent guide and <code>llms.txt</code>.</li>
+  </ul>
+</li>
+</ol>
+</section>
+
+<section id="risks">
+<h2>Risks and decisions</h2>
+<h3>Risks</h3>
+<ul class="prose">
+  <li><strong>ibis health.</strong> There has been no release since 12.0.0 (2026-02-07). Human commits fell from 512 in the prior year to 87 since. A 13.0 is planned, with Polars 2 and DuckDB 2, and Polars 2.0 already breaks one ibis 12 code path. Mitigation: the facade isolates users from ibis typing, and CI should run against ibis <code>main</code> before 13.0 ships.</li>
+  <li><strong>Facade maintenance.</strong> The stub is generated, but someone owns the list of typed methods. Users hit false positives on methods outside it until they are added.</li>
+  <li><strong>A breaking change in the schema syntax.</strong> This is the most visible cost. It is mitigated by the codemod and a one-release shim.</li>
+  <li><strong>Checker churn.</strong> ty is still in beta, so type-check snapshot tests will move.</li>
+</ul>
+<h3>Decisions for the owner</h3>
+<ol class="prose">
+  <li>Accept the breaking schema syntax: <code>Column[float]</code> instead of <code>float</code>.</li>
+  <li>Replace pandera with the native validator. Keep pandera <code>Check</code> objects only as an optional input format, if at all.</li>
+  <li>Revisit the "no type checking on examples" rule in <code>CLAUDE.md</code>. With tacit-next, the examples type-check cleanly on all four checkers. Running the checkers on them becomes the regression test for the library's core promise.</li>
+  <li>Choose how to handle class-level column references: a distinct <code>Ref[T]</code> type, or drop them.</li>
+  <li>Decide whether to add pyrefly to the supported set. It worked as well as mypy in every experiment.</li>
+</ol>
+</section>
+
+<section id="appendix">
+<h2>Appendix</h2>
+<h3>Reproduce</h3>
+<pre><code>cd dev/research/redesign
+uv sync                                                    <span class="c"># Python 3.13 env with all checkers</span>
+uv run --frozen pytest e8-prototype/tests/test_runtime.py  <span class="c"># 35 runtime tests</span>
+uv run --frozen python e8-prototype/tests/typecheck/run_matrix.py   <span class="c"># four-checker matrix</span>
+./e8-prototype/chk.sh e8-prototype/examples/tpch_q1.py     <span class="c"># all four checkers on one file</span>
+PYTHONPATH=e8-prototype/src uv run --frozen python e8-prototype/examples/ecommerce/pipeline.py</code></pre>
+<h3>Versions</h3>
+<p class="prose">Python 3.13.16 · ibis-framework 12.0.0 · pandera 0.34.1 · duckdb 1.5.6 · polars 2.0.0 · pyright 1.1.414 · mypy 2.4.0 · ty 0.0.89 · pyrefly 1.4.0. Upstream status was checked on 2026-10-19. PEP 747 (TypeForm) and PEP 728 are final in Python 3.15. PEP 827 (Type Manipulation) and PEP 764 are drafts. No intersection-type PEP exists.</p>
+</section>
+
+<footer>Prepared on branch <code>claude/pipeline-type-safety-redesign-a60149</code>. Raw data, scripts and per-experiment findings live next to this file in <code>dev/research/redesign/</code>.</footer>
+</main>
+</div>
+<!--BODY-END-->
+</html>

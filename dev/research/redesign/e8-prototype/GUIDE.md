@@ -217,7 +217,7 @@ Steps don't need `@tc.step` for type safety, because construction already guaran
 
 ## Errors
 
-Every failure raises `tc.ValidationError`. Its `.issues` attribute is a list of issues, each with a code, column, expected value, actual value, count and samples.
+Validation failures from `parse`, `cast`, frame constructors and `@tc.step` raise `tc.ValidationError`. Its `.issues` attribute is a list of issues, each with a code, column, expected value, actual value, count and samples. Other mistakes raise Python's usual errors. For example, a typo in a column name raises `AttributeError` (the type checker flags it first), and mixing columns from two frames inside a step body raises ibis's own error.
 
 ```
 Orders.parse: 2 issues for Orders

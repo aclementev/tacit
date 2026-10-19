@@ -1,0 +1,7 @@
+[2026-10-19T08:07:08Z] START. Read GUIDE.md (only doc). Source reads so far: 0.
+[2026-10-19T08:07:26Z] FRICTION: guide has no section on timestamp/interval arithmetic. datetime - datetime gives IntervalColumn with no total_seconds. Using runtime dir() introspection (not source read).
+[2026-10-19T08:07:55Z] FRICTION: datetime - datetime is a static error in all 4 checkers (and runtime IntervalColumn has no total_seconds). No .delta. Discovered Column.epoch_seconds() by guessing (not in guide). Workaround: epoch_seconds diff / 60.
+[2026-10-19T08:08:24Z] pipeline.py v1 runs and is clean on all 4 checkers (without @tc.step). Trying @tc.step next. Source reads: 0.
+[2026-10-19T08:09:50Z] bugs a-f created under bugs/. Static: a,b,c,d,f caught by all 4; e not static (runtime ValidationError, good msg). f at runtime silently yields NaN totals (no runtime error). Now extra probes.
+[2026-10-19T08:10:48Z] Extra probes: nullable->non-null param caught by all 4; wrong frame w/o @tc.step caught statically, runtime AttributeError (raw). mean() of nullable column typed Scalar[float] -> declaring Column[float] output passes all checkers+runtime though groups can be NaN (soundness gap). Generic top_n: group column from another frame NOT caught statically (Column[Any]); runtime raw ibis IbisInputError, not ValidationError. 
+[2026-10-19T08:10:48Z] FINAL: pipeline.py runs, 0 diagnostics on all 4 checkers. Library source reads: 0 (used runtime dir() + guess of epoch_seconds). 
