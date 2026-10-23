@@ -1,0 +1,7 @@
+ValidationError Unit(...): 2 issues for Unit
+  - unit_price: expected dtype decimal, got float64
+  - rounded: expected dtype int64, got float64
+# p5_family_lie.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/src
+L1 type-checks clean under E8                                | -                              | -                              | -                              | -                             
+# p5_family_lie.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e11-facade-soundness/derived/out_ibis
+L1 type-checks clean under E8                                | E -                            | E -                            | E -                            | E -                           

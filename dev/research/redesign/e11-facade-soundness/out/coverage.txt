@@ -1,0 +1,109 @@
+ibis 12.0.0; facade ../e8-prototype/src/tacit_next/_column.pyi
+
+family     kind   ibis pub infra  ops typed via Value unreach
+Integer    Column      107    27   35    48        13      81
+Integer    Scalar       66    25   34    25        19      56
+Floating   Column      103    27   24    48        13      66
+Floating   Scalar       65    25   23    25        19      44
+Decimal    Column      101    27   24    46        13      66
+Decimal    Scalar       63    25   23    25        19      42
+String     Column       96    27   14    38        13      59
+String     Scalar       70    25   14    14        19      51
+Boolean    Column      108    27   31    58        13      68
+Boolean    Scalar       64    25   30    32        19      43
+Timestamp  Column       73    27   13    33        13      40
+Timestamp  Scalar       47    25   12    12        19      28
+Date       Column       66    27   13    30        13      36
+Date       Scalar       40    25   12    12        19      21
+Time       Column       62    27   13    24        14      37
+Time       Scalar       36    25   12    12        19      17
+Interval   Column       70    27   17     0        31      56
+Interval   Scalar       44    25   16     0        31      29
+Array      Column       72    27   13     0        31      54
+Array      Scalar       46    25   13     0        31      28
+Struct     Column       53    27   10     0        31      32
+Struct     Scalar       27    25   10     0        31       6
+Map        Column       54    27   11     0        31      34
+Map        Scalar       28    25   11     0        31       8
+JSON       Column       56    27    9     0        31      34
+JSON       Scalar       30    25    9     0        31       8
+
+== IntegerColumn: typed 48; via ir.Value 13; unreachable 81
+   unreachable: acos add approx_median approx_nunique approx_quantile arbitrary argmax argmin as_interval as_timestamp asin atan atan2 bit_and bit_or bit_xor bucket convert_base corr cos cot cov cume_dist cummax cummean cummin cumsum deg2rad degrees dense_rank div exp floordiv histogram kurtosis lag last lead ln log log10 log2 mod mode mul negate nth ntile percent_rank point pow quantile rad2deg radd radians rank rdiv rfloordiv rmod rmul rpow rsub sign sin sqrt sub tan __and__ __getitem__ __invert__ __lshift__ __or__ __pow__ __rand__ __rlshift__ __ror__ __rpow__ __rrshift__ __rshift__ __rxor__ __xor__
+   via Value:   case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== IntegerScalar: typed 25; via ir.Value 19; unreachable 56
+   unreachable: abs acos add as_interval as_timestamp asin atan atan2 ceil clip convert_base cos cot deg2rad degrees div exp floor floordiv ln log log10 log2 mod mul negate point pow rad2deg radd radians rdiv rfloordiv rmod rmul round rpow rsub sign sin sqrt sub tan __and__ __invert__ __lshift__ __or__ __pow__ __rand__ __rlshift__ __ror__ __rpow__ __rrshift__ __rshift__ __rxor__ __xor__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== FloatingColumn: typed 48; via ir.Value 13; unreachable 66
+   unreachable: acos add approx_median approx_nunique approx_quantile arbitrary argmax argmin asin atan atan2 bucket corr cos cot cov cume_dist cummax cummean cummin cumsum deg2rad degrees dense_rank div exp floordiv histogram isinf isnan kurtosis lag last lead ln log log10 log2 mod mode mul negate nth ntile percent_rank point pow quantile rad2deg radd radians rank rdiv rfloordiv rmod rmul rpow rsub sign sin sqrt sub tan __getitem__ __pow__ __rpow__
+   via Value:   case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== FloatingScalar: typed 25; via ir.Value 19; unreachable 44
+   unreachable: abs acos add asin atan atan2 ceil clip cos cot deg2rad degrees div exp floor floordiv isinf isnan ln log log10 log2 mod mul negate point pow rad2deg radd radians rdiv rfloordiv rmod rmul round rpow rsub sign sin sqrt sub tan __pow__ __rpow__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== DecimalColumn: typed 46; via ir.Value 13; unreachable 66
+   unreachable: acos add approx_median approx_nunique approx_quantile arbitrary argmax argmin asin atan atan2 bucket ceil corr cos cot cov cume_dist cummax cummean cummin cumsum deg2rad degrees dense_rank div exp floor floordiv histogram kurtosis lag last lead ln log log10 log2 mod mode mul negate nth ntile percent_rank point pow quantile rad2deg radd radians rank rdiv rfloordiv rmod rmul rpow rsub sign sin sqrt sub tan __getitem__ __pow__ __rpow__
+   via Value:   case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== DecimalScalar: typed 25; via ir.Value 19; unreachable 42
+   unreachable: abs acos add asin atan atan2 ceil clip cos cot deg2rad degrees div exp floor floordiv ln log log10 log2 mod mul negate point pow rad2deg radd radians rdiv rfloordiv rmod rmul round rpow rsub sign sin sqrt sub tan __pow__ __rpow__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== StringColumn: typed 38; via ir.Value 13; unreachable 59
+   unreachable: approx_median approx_nunique arbitrary argmax argmin as_date as_time as_timestamp ascii_str authority capitalize concat convert_base cume_dist cummax cummin dense_rank file find find_in_set fragment hashbytes hexdigest host ilike join lag last lead left levenshtein like lpad lstrip median mode nth ntile path percent_rank protocol quantile query rank re_replace re_split repeat reverse right rlike rpad rstrip split translate userinfo __contains__ __getitem__ __mul__ __rmul__
+   via Value:   case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== StringScalar: typed 14; via ir.Value 19; unreachable 51
+   unreachable: as_date as_time as_timestamp ascii_str authority capitalize concat contains convert_base endswith file find find_in_set fragment hashbytes hexdigest host ilike join left length levenshtein like lower lpad lstrip path protocol query re_extract re_replace re_search re_split repeat replace reverse right rlike rpad rstrip split startswith strip substr translate upper userinfo __contains__ __getitem__ __mul__ __rmul__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== BooleanColumn: typed 58; via ir.Value 13; unreachable 68
+   unreachable: acos add approx_median approx_nunique approx_quantile arbitrary argmax argmin asin atan atan2 bucket corr cos cot cov cumall cumany cume_dist cummax cummean cummin cumsum deg2rad degrees dense_rank div exp floordiv histogram kurtosis lag last lead ln log log10 log2 mod mode mul negate notall notany nth ntile percent_rank point pow quantile rad2deg radd radians rank rdiv rfloordiv rmod rmul rpow rsub sign sin sqrt sub tan __getitem__ __pow__ __rpow__
+   via Value:   case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== BooleanScalar: typed 32; via ir.Value 19; unreachable 43
+   unreachable: abs acos add asin atan atan2 ceil clip cos cot deg2rad degrees div exp floor floordiv ifelse ln log log10 log2 mod mul negate point pow rad2deg radd radians rdiv rfloordiv rmod rmul round rpow rsub sign sin sqrt sub tan __pow__ __rpow__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== TimestampColumn: typed 33; via ir.Value 13; unreachable 40
+   unreachable: add approx_median approx_nunique arbitrary argmax argmin bucket cume_dist cummax cummin day_of_week day_of_year delta dense_rank iso_year lag last lead median microsecond millisecond minute mode nth ntile percent_rank quantile quarter radd rank rsub second sub time week_of_year __add__ __getitem__ __radd__ __rsub__ __sub__
+   via Value:   case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== TimestampScalar: typed 12; via ir.Value 19; unreachable 28
+   unreachable: add bucket date day day_of_week day_of_year delta epoch_seconds hour iso_year microsecond millisecond minute month quarter radd rsub second strftime sub time truncate week_of_year year __add__ __radd__ __rsub__ __sub__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== DateColumn: typed 30; via ir.Value 13; unreachable 36
+   unreachable: add approx_median approx_nunique arbitrary argmax argmin cume_dist cummax cummin day_of_week day_of_year delta dense_rank epoch_days epoch_seconds iso_year lag last lead median mode nth ntile percent_rank quantile quarter radd rank rsub sub week_of_year __add__ __getitem__ __radd__ __rsub__ __sub__
+   via Value:   case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== DateScalar: typed 12; via ir.Value 19; unreachable 21
+   unreachable: add day day_of_week day_of_year delta epoch_days epoch_seconds iso_year month quarter radd rsub strftime sub truncate week_of_year year __add__ __radd__ __rsub__ __sub__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== TimeColumn: typed 24; via ir.Value 14; unreachable 37
+   unreachable: add approx_median approx_nunique arbitrary argmax argmin cume_dist cummax cummin delta dense_rank hour lag last lead median microsecond millisecond minute mode nth ntile percent_rank quantile radd rank rsub second strftime sub time truncate __add__ __getitem__ __radd__ __rsub__ __sub__
+   via Value:   between case cases coalesce collect fillna group_concat hash identical_to nullif substitute typeof __bool__ __iter__
+== TimeScalar: typed 12; via ir.Value 19; unreachable 17
+   unreachable: add delta hour microsecond millisecond minute radd rsub second strftime sub time truncate __add__ __radd__ __rsub__ __sub__
+   via Value:   asc between case cases coalesce collect desc fillna group_concat hash identical_to isin notin nullif substitute try_cast typeof __bool__ __iter__
+== IntervalColumn: typed 0; via ir.Value 31; unreachable 56
+   unreachable: add approx_median approx_nunique arbitrary argmax argmin as_unit count cume_dist cummax cummin days dense_rank first floordiv hours lag last lead max median microseconds milliseconds min minutes mode months mul nanoseconds negate nth ntile nunique percent_rank quantile quarters radd rank rmul rsub seconds sub to_unit topk value_counts weeks years __add__ __floordiv__ __getitem__ __mul__ __neg__ __radd__ __rmul__ __rsub__ __sub__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== IntervalScalar: typed 0; via ir.Value 31; unreachable 29
+   unreachable: add as_unit days floordiv hours microseconds milliseconds minutes months mul nanoseconds negate quarters radd rmul rsub seconds sub to_unit weeks years __add__ __floordiv__ __mul__ __neg__ __radd__ __rmul__ __rsub__ __sub__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== ArrayColumn: typed 0; via ir.Value 31; unreachable 54
+   unreachable: alls anys approx_median approx_nunique arbitrary argmax argmin concat contains count cume_dist cummax cummin dense_rank filter first flatten index intersect join lag last lead length map max maxs means median min mins mode modes nth ntile nunique percent_rank quantile rank remove repeat sort sums topk union unique unnest value_counts zip __add__ __getitem__ __mul__ __radd__ __rmul__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== ArrayScalar: typed 0; via ir.Value 31; unreachable 28
+   unreachable: alls anys concat contains filter flatten index intersect join length map maxs means mins modes remove repeat sort sums union unique unnest zip __add__ __getitem__ __mul__ __radd__ __rmul__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== StructColumn: typed 0; via ir.Value 31; unreachable 32
+   unreachable: approx_median approx_nunique arbitrary argmax argmin count cume_dist cummax cummin dense_rank fields first lag last lead lift max median min mode names nth ntile nunique percent_rank quantile rank topk types value_counts __getattr__ __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== StructScalar: typed 0; via ir.Value 31; unreachable 6
+   unreachable: fields lift names types __getattr__ __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== MapColumn: typed 0; via ir.Value 31; unreachable 34
+   unreachable: approx_median approx_nunique arbitrary argmax argmin contains count cume_dist cummax cummin dense_rank first get keys lag last lead length max median min mode nth ntile nunique percent_rank quantile rank topk value_counts values __add__ __getitem__ __radd__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== MapScalar: typed 0; via ir.Value 31; unreachable 8
+   unreachable: contains get keys length values __add__ __getitem__ __radd__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== JSONColumn: typed 0; via ir.Value 31; unreachable 34
+   unreachable: approx_median approx_nunique arbitrary argmax argmin array bool count cume_dist cummax cummin dense_rank first float int lag last lead map max median min mode nth ntile nunique percent_rank quantile rank str topk unwrap_as value_counts __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== JSONScalar: typed 0; via ir.Value 31; unreachable 8
+   unreachable: array bool float int map str unwrap_as __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+

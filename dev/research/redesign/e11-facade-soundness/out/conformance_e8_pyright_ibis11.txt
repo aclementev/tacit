@@ -1,0 +1,429 @@
+checker=pyright ibis=11.0.0 cases=5408
+
+category counts: ACCEPT_BACKEND=334, ACCEPT_ERROR=288, EMPTY_NULL=36, FALSE_POS=268, FAMILY_LIE=62, NULL_LIE=617, WIDER=120, ok=3683
+
+declared-nullable vs ibis dtype.nullable on agreeing cases (declared, ibis): (False, False)=102, (False, True)=826, (True, True)=365
+
+===== NULL_LIE: 617 cases in 123 groups
+  x != "2024-01-01"            [C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x != "2024-01-01"            [S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x != 1                       [C:bool? C:int? C:float? C:Decimal?]  declared Column[bool], N NULL(s) at runtime
+  x != 1                       [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[bool], N NULL(s) at runtime
+  x != y                       [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x != yn                      [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Column[bool], N NULL(s) at runtime
+  x != {L}                     [C:bool? C:int? C:float? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x != {L}                     [S:bool? S:int? S:float? S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x & True                     [C:bool?]  declared Column[bool], N NULL(s) at runtime
+  x & True                     [S:bool?]  declared Scalar[bool], N NULL(s) at runtime
+  x & y                        [C:bool?]  declared Column[bool], N NULL(s) at runtime
+  x & yn                       [C:bool? S:bool S:bool?]  declared Column[bool], N NULL(s) at runtime
+  x < "2024-01-01"             [C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x < "2024-01-01"             [S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x < 1                        [C:bool? C:int? C:float? C:Decimal?]  declared Column[bool], N NULL(s) at runtime
+  x < 1                        [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[bool], N NULL(s) at runtime
+  x < y                        [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x < yn                       [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Column[bool], N NULL(s) at runtime
+  x < {L}                      [C:bool? C:int? C:float? C:str? C:datetime? C:date?]  declared Column[bool], N NULL(s) at runtime
+  x < {L}                      [S:bool? S:int? S:float? S:str? S:datetime? S:date?]  declared Scalar[bool], N NULL(s) at runtime
+  x <= "2024-01-01"            [C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x <= "2024-01-01"            [S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x <= 1                       [C:bool? C:int? C:float? C:Decimal?]  declared Column[bool], N NULL(s) at runtime
+  x <= 1                       [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[bool], N NULL(s) at runtime
+  x <= y                       [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x <= yn                      [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Column[bool], N NULL(s) at runtime
+  x <= {L}                     [C:bool? C:int? C:float? C:str? C:datetime? C:date?]  declared Column[bool], N NULL(s) at runtime
+  x <= {L}                     [S:bool? S:int? S:float? S:str? S:datetime? S:date?]  declared Scalar[bool], N NULL(s) at runtime
+  x == "2024-01-01"            [C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x == "2024-01-01"            [S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x == 1                       [C:bool? C:int? C:float? C:Decimal?]  declared Column[bool], N NULL(s) at runtime
+  x == 1                       [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[bool], N NULL(s) at runtime
+  x == y                       [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x == yn                      [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Column[bool], N NULL(s) at runtime
+  x == {L}                     [C:bool? C:int? C:float? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x == {L}                     [S:bool? S:int? S:float? S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x > "2024-01-01"             [C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x > "2024-01-01"             [S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x > 1                        [C:bool? C:int? C:float? C:Decimal?]  declared Column[bool], N NULL(s) at runtime
+  x > 1                        [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[bool], N NULL(s) at runtime
+  x > y                        [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x > yn                       [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Column[bool], N NULL(s) at runtime
+  x > {L}                      [C:bool? C:int? C:float? C:str? C:datetime? C:date?]  declared Column[bool], N NULL(s) at runtime
+  x > {L}                      [S:bool? S:int? S:float? S:str? S:datetime? S:date?]  declared Scalar[bool], N NULL(s) at runtime
+  x >= "2024-01-01"            [C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x >= "2024-01-01"            [S:str? S:datetime? S:date? S:time?]  declared Scalar[bool], N NULL(s) at runtime
+  x >= 1                       [C:bool? C:int? C:float? C:Decimal?]  declared Column[bool], N NULL(s) at runtime
+  x >= 1                       [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[bool], N NULL(s) at runtime
+  x >= y                       [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x >= yn                      [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Column[bool], N NULL(s) at runtime
+  x >= {L}                     [C:bool? C:int? C:float? C:str? C:datetime? C:date?]  declared Column[bool], N NULL(s) at runtime
+  x >= {L}                     [S:bool? S:int? S:float? S:str? S:datetime? S:date?]  declared Scalar[bool], N NULL(s) at runtime
+  x ^ True                     [C:bool?]  declared Column[bool], N NULL(s) at runtime
+  x ^ True                     [S:bool?]  declared Scalar[bool], N NULL(s) at runtime
+  x ^ y                        [C:bool?]  declared Column[bool], N NULL(s) at runtime
+  x ^ yn                       [C:bool C:bool? S:bool S:bool?]  declared Column[bool], N NULL(s) at runtime
+  x | yn                       [C:bool C:bool?]  declared Column[bool], N NULL(s) at runtime
+  x.all()                      [C:bool?]  declared Scalar[bool], N NULL(s) at runtime
+  x.any()                      [C:bool?]  declared Scalar[bool], N NULL(s) at runtime
+  x.between({L}, {L2})         [C:bool? C:int? C:float? C:str? C:datetime? C:date?]  declared Column[bool], N NULL(s) at runtime
+  x.cast("date")               [C:datetime? C:date?]  declared Column[date], N NULL(s) at runtime
+  x.cast("date")               [S:datetime? S:date?]  declared Scalar[date], N NULL(s) at runtime
+  x.cast("float64")            [C:bool? C:int? C:float? C:Decimal?]  declared Column[float], N NULL(s) at runtime
+  x.cast("float64")            [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[float], N NULL(s) at runtime
+  x.cast("int64")              [C:bool? C:int? C:float? C:Decimal?]  declared Column[int], N NULL(s) at runtime
+  x.cast("int64")              [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[int], N NULL(s) at runtime
+  x.cast("string")             [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[str], N NULL(s) at runtime
+  x.cast("string")             [S:bool? S:int? S:float? S:Decimal? S:str? S:datetime? S:date? S:time?]  declared Scalar[str], N NULL(s) at runtime
+  x.cast("timestamp")          [C:int? C:float? C:Decimal? C:datetime? C:date?]  declared Column[datetime], N NULL(s) at runtime
+  x.cast("timestamp")          [S:int? S:float? S:Decimal? S:datetime? S:date?]  declared Scalar[datetime], N NULL(s) at runtime
+  x.cast(Decimal)              [C:bool? C:int? C:float? C:Decimal?]  declared Column[Decimal], N NULL(s) at runtime
+  x.cast(Decimal)              [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[Decimal], N NULL(s) at runtime
+  x.cast(bool)                 [C:bool? C:int? C:float? C:Decimal?]  declared Column[bool], N NULL(s) at runtime
+  x.cast(bool)                 [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[bool], N NULL(s) at runtime
+  x.cast(date)                 [C:datetime? C:date?]  declared Column[date], N NULL(s) at runtime
+  x.cast(date)                 [S:datetime? S:date?]  declared Scalar[date], N NULL(s) at runtime
+  x.cast(datetime)             [C:int? C:float? C:Decimal? C:datetime? C:date?]  declared Column[datetime], N NULL(s) at runtime
+  x.cast(datetime)             [S:int? S:float? S:Decimal? S:datetime? S:date?]  declared Scalar[datetime], N NULL(s) at runtime
+  x.cast(float)                [C:bool? C:int? C:float? C:Decimal?]  declared Column[float], N NULL(s) at runtime
+  x.cast(float)                [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[float], N NULL(s) at runtime
+  x.cast(int)                  [C:bool? C:int? C:float? C:Decimal?]  declared Column[int], N NULL(s) at runtime
+  x.cast(int)                  [S:bool? S:int? S:float? S:Decimal?]  declared Scalar[int], N NULL(s) at runtime
+  x.cast(str)                  [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[str], N NULL(s) at runtime
+  x.cast(str)                  [S:bool? S:int? S:float? S:Decimal? S:str? S:datetime? S:date? S:time?]  declared Scalar[str], N NULL(s) at runtime
+  x.contains("a")              [C:str?]  declared Column[bool], N NULL(s) at runtime
+  x.endswith("a")              [C:str?]  declared Column[bool], N NULL(s) at runtime
+  x.first()                    [C:bool?]  declared Scalar[bool], N NULL(s) at runtime
+  x.first()                    [C:int?]  declared Scalar[int], N NULL(s) at runtime
+  x.first()                    [C:float?]  declared Scalar[float], N NULL(s) at runtime
+  x.first()                    [C:Decimal?]  declared Scalar[Decimal], N NULL(s) at runtime
+  x.first()                    [C:str?]  declared Scalar[str], N NULL(s) at runtime
+  x.first()                    [C:datetime?]  declared Scalar[datetime], N NULL(s) at runtime
+  x.first()                    [C:date?]  declared Scalar[date], N NULL(s) at runtime
+  x.first()                    [C:time?]  declared Scalar[time], N NULL(s) at runtime
+  x.isin([{L}])                [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x.isin(y)                    [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x.max()                      [C:bool?]  declared Scalar[bool], N NULL(s) at runtime
+  x.max()                      [C:int?]  declared Scalar[int], N NULL(s) at runtime
+  x.max()                      [C:float?]  declared Scalar[float], N NULL(s) at runtime
+  x.max()                      [C:Decimal?]  declared Scalar[Decimal], N NULL(s) at runtime
+  x.max()                      [C:str?]  declared Scalar[str], N NULL(s) at runtime
+  x.max()                      [C:datetime?]  declared Scalar[datetime], N NULL(s) at runtime
+  x.max()                      [C:date?]  declared Scalar[date], N NULL(s) at runtime
+  x.max()                      [C:time?]  declared Scalar[time], N NULL(s) at runtime
+  x.mean()                     [C:bool? C:int? C:float?]  declared Scalar[float], N NULL(s) at runtime
+  x.mean()                     [C:Decimal?]  declared Scalar[Decimal], N NULL(s) at runtime
+  x.median()                   [C:int? C:float?]  declared Scalar[float], N NULL(s) at runtime
+  x.min()                      [C:bool?]  declared Scalar[bool], N NULL(s) at runtime
+  x.min()                      [C:int?]  declared Scalar[int], N NULL(s) at runtime
+  x.min()                      [C:float?]  declared Scalar[float], N NULL(s) at runtime
+  x.min()                      [C:Decimal?]  declared Scalar[Decimal], N NULL(s) at runtime
+  x.min()                      [C:str?]  declared Scalar[str], N NULL(s) at runtime
+  x.min()                      [C:datetime?]  declared Scalar[datetime], N NULL(s) at runtime
+  x.min()                      [C:date?]  declared Scalar[date], N NULL(s) at runtime
+  x.min()                      [C:time?]  declared Scalar[time], N NULL(s) at runtime
+  x.notin([{L}])               [C:bool? C:int? C:float? C:Decimal? C:str? C:datetime? C:date? C:time?]  declared Column[bool], N NULL(s) at runtime
+  x.re_search("a")             [C:str?]  declared Column[bool], N NULL(s) at runtime
+  x.startswith("a")            [C:str?]  declared Column[bool], N NULL(s) at runtime
+  x.std()                      [C:bool C:bool? C:int C:int? C:float C:float?]  declared Scalar[float], N NULL(s) at runtime
+  x.sum()                      [C:bool? C:int?]  declared Scalar[int], N NULL(s) at runtime
+  x.sum()                      [C:float?]  declared Scalar[float], N NULL(s) at runtime
+  x.sum()                      [C:Decimal?]  declared Scalar[Decimal], N NULL(s) at runtime
+  x.var()                      [C:bool C:bool? C:int C:int? C:float C:float?]  declared Scalar[float], N NULL(s) at runtime
+
+===== KIND_LIE: 0 cases in 0 groups
+
+===== FAMILY_LIE: 62 cases in 51 groups
+  -x                           [C:bool]  declared Column[int], runtime boolean
+  -x                           [C:bool?]  declared Column[int | None], runtime boolean
+  -x                           [S:bool]  declared Scalar[int], runtime boolean
+  -x                           [S:bool?]  declared Scalar[int | None], runtime boolean
+  x / 1                        [C:Decimal]  declared Column[Decimal], runtime float64
+  x / 1                        [C:Decimal?]  declared Column[Decimal | None], runtime float64
+  x / 1                        [S:Decimal]  declared Scalar[Decimal], runtime float64
+  x / 1                        [S:Decimal?]  declared Scalar[Decimal | None], runtime float64
+  x / x                        [C:Decimal]  declared Column[Decimal], runtime float64
+  x / x                        [C:Decimal?]  declared Column[Decimal | None], runtime float64
+  x / x                        [S:Decimal]  declared Scalar[Decimal], runtime float64
+  x / x                        [S:Decimal?]  declared Scalar[Decimal | None], runtime float64
+  x / y                        [C:Decimal S:Decimal]  declared Column[Decimal], runtime float64
+  x / y                        [C:Decimal? S:Decimal?]  declared Column[Decimal | None], runtime float64
+  x / yn                       [C:Decimal C:Decimal? S:Decimal S:Decimal?]  declared Column[Decimal | None], runtime float64
+  x / {L}                      [C:Decimal]  declared Column[Decimal], runtime float64
+  x / {L}                      [C:Decimal?]  declared Column[Decimal | None], runtime float64
+  x / {L}                      [S:Decimal]  declared Scalar[Decimal], runtime float64
+  x / {L}                      [S:Decimal?]  declared Scalar[Decimal | None], runtime float64
+  x // 1                       [C:Decimal]  declared Column[Decimal], runtime int64
+  x // 1                       [C:Decimal?]  declared Column[Decimal | None], runtime int64
+  x // 1                       [S:Decimal]  declared Scalar[Decimal], runtime int64
+  x // 1                       [S:Decimal?]  declared Scalar[Decimal | None], runtime int64
+  x // x                       [C:Decimal]  declared Column[Decimal], runtime int64
+  x // x                       [C:Decimal?]  declared Column[Decimal | None], runtime int64
+  x // x                       [S:Decimal]  declared Scalar[Decimal], runtime int64
+  x // x                       [S:Decimal?]  declared Scalar[Decimal | None], runtime int64
+  x // y                       [C:Decimal S:Decimal]  declared Column[Decimal], runtime int64
+  x // y                       [C:Decimal? S:Decimal?]  declared Column[Decimal | None], runtime int64
+  x // yn                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  declared Column[Decimal | None], runtime int64
+  x // {L}                     [C:Decimal]  declared Column[Decimal], runtime int64
+  x // {L}                     [C:Decimal?]  declared Column[Decimal | None], runtime int64
+  x // {L}                     [S:Decimal]  declared Scalar[Decimal], runtime int64
+  x // {L}                     [S:Decimal?]  declared Scalar[Decimal | None], runtime int64
+  x.median()                   [C:bool]  declared Scalar[float], runtime !boolean
+  x.median()                   [C:bool?]  declared Scalar[float], runtime boolean
+  x.median()                   [C:Decimal C:Decimal?]  declared Scalar[float], runtime decimal(12, 2)
+  x.round(1)                   [C:int]  declared Column[int], runtime !float64
+  x.round(1)                   [C:int?]  declared Column[int | None], runtime float64
+  x.std()                      [C:Decimal]  declared Scalar[float], runtime !decimal(12, 2)
+  x.std()                      [C:Decimal?]  declared Scalar[float], runtime decimal(12, 2)
+  x.var()                      [C:Decimal]  declared Scalar[float], runtime !decimal(12, 2)
+  x.var()                      [C:Decimal?]  declared Scalar[float], runtime decimal(12, 2)
+  {L} / x                      [C:Decimal]  declared Column[Decimal], runtime float64
+  {L} / x                      [C:Decimal?]  declared Column[Decimal | None], runtime float64
+  {L} / x                      [S:Decimal]  declared Scalar[Decimal], runtime float64
+  {L} / x                      [S:Decimal?]  declared Scalar[Decimal | None], runtime float64
+  {L} // x                     [C:Decimal]  declared Column[Decimal], runtime int64
+  {L} // x                     [C:Decimal?]  declared Column[Decimal | None], runtime int64
+  {L} // x                     [S:Decimal]  declared Scalar[Decimal], runtime int64
+  {L} // x                     [S:Decimal?]  declared Scalar[Decimal | None], runtime int64
+
+===== ACCEPT_ERROR: 288 cases in 48 groups
+  x != "2024-01-01"            [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x != 1                       [C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x != {L}                     [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x % 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x % 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x % None                     [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal?]  TypeError: unsupported operand type(s) for %: <F>Column and 'NoneType'
+  x % None                     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  TypeError: unsupported operand type(s) for %: <F>Scalar and 'NoneType'
+  x % {L}                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x * 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x * 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x * None                     [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal?]  TypeError: unsupported operand type(s) for *: <F>Column and 'NoneType'
+  x * None                     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  TypeError: unsupported operand type(s) for *: <F>Scalar and 'NoneType'
+  x * {L}                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x + 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x + 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x + None                     [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal?]  TypeError: unsupported operand type(s) for +: <F>Column and 'NoneType'
+  x + None                     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  TypeError: unsupported operand type(s) for +: <F>Scalar and 'NoneType'
+  x + {L}                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x - 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x - 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x - None                     [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal?]  TypeError: unsupported operand type(s) for -: <F>Column and 'NoneType'
+  x - None                     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  TypeError: unsupported operand type(s) for -: <F>Scalar and 'NoneType'
+  x - {L}                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x / None                     [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal?]  TypeError: unsupported operand type(s) for /: <F>Column and 'NoneType'
+  x / None                     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  TypeError: unsupported operand type(s) for /: <F>Scalar and 'NoneType'
+  x // None                    [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal?]  TypeError: unsupported operand type(s) for //: <F>Column and 'NoneType'
+  x // None                    [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  TypeError: unsupported operand type(s) for //: <F>Scalar and 'NoneType'
+  x < {L}                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x <= {L}                     [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x == "2024-01-01"            [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x == 1                       [C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x == {L}                     [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x > {L}                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x >= {L}                     [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x.between({L}, {L2})         [C:Decimal C:Decimal?]  ValidationError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x.clip(lower=0.5)            [C:bool C:bool?]  SignatureValidationError: Clip(r0 := InMemoryTable
+  x.clip(lower={L}, upper={L2}) [C:bool C:bool?]  SignatureValidationError: Clip(r0 := InMemoryTable
+  x.fill_null(0)               [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x.fill_null(1.5)             [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x.fill_null({L})             [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x.over(group_by=y)           [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time?]  IbisTypeError: No reduction or analytic function found to construct a window exp
+  x.round()                    [C:bool C:bool?]  SignatureValidationError: Round(r0 := InMemoryTable
+  x.round(1)                   [C:bool C:bool?]  SignatureValidationError: Round(r0 := InMemoryTable
+  x.truncate("h")              [C:date C:date?]  SignatureValidationError: DateTruncate(r0 := InMemoryTable
+  {L} % x                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  {L} * x                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  {L} + x                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  {L} - x                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+
+===== ACCEPT_BACKEND: 334 cases in 57 groups
+  x % x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x % y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x % yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x % {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / 1                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / 1.5                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // 1                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // 1.5                     [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // x                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // y                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // yn                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // {L}                     [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x < {L}                      [C:time C:time? S:time S:time?]  BinderException: Binder Error: Cannot compare values of type <T> and type <T> - 
+  x <= {L}                     [C:time C:time? S:time S:time?]  BinderException: Binder Error: Cannot compare values of type <T> and type <T> - 
+  x > {L}                      [C:time C:time? S:time S:time?]  BinderException: Binder Error: Cannot compare values of type <T> and type <T> - 
+  x >= {L}                     [C:time C:time? S:time S:time?]  BinderException: Binder Error: Cannot compare values of type <T> and type <T> - 
+  x.abs()                      [C:bool C:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x.asc()                      [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  ParserException: Parser Error: syntax error at or near "ASC"
+  x.cast("date")               [C:bool C:bool? C:int C:int? C:float C:float? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast("date")               [C:Decimal C:Decimal? S:Decimal S:Decimal?]  ConversionException: Conversion Error: Unimplemented type for cast (DECIMAL(12,2
+  x.cast("decimal(10, 2)")     [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> DECIM
+  x.cast("float64")            [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast("int64")              [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast("timestamp")          [C:bool C:bool? C:time C:time? S:bool S:bool? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast(Decimal)              [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> DECIM
+  x.cast(bool)                 [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast(date)                 [C:bool C:bool? C:int C:int? C:float C:float? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast(date)                 [C:Decimal C:Decimal? S:Decimal S:Decimal?]  ConversionException: Conversion Error: Unimplemented type for cast (DECIMAL(12,2
+  x.cast(datetime)             [C:bool C:bool? C:time C:time? S:bool S:bool? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast(float)                [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast(int)                  [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.ceil()                     [C:bool C:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x.desc()                     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  ParserException: Parser Error: syntax error at or near "DESC"
+  x.fill_null({L})             [C:time C:time? S:time S:time?]  BinderException: Binder Error: Cannot mix values of type <T> and <T> in COALESCE
+  x.floor()                    [C:bool C:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} % x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} * x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} + x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} - x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} / x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} // x                     [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+
+===== EMPTY_NULL: 36 cases in 32 groups
+  x.all()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.any()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.first()                    [C:bool]  declared Scalar[bool], NULL on empty input
+  x.first()                    [C:int]  declared Scalar[int], NULL on empty input
+  x.first()                    [C:float]  declared Scalar[float], NULL on empty input
+  x.first()                    [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.first()                    [C:str]  declared Scalar[str], NULL on empty input
+  x.first()                    [C:datetime]  declared Scalar[datetime], NULL on empty input
+  x.first()                    [C:date]  declared Scalar[date], NULL on empty input
+  x.first()                    [C:time]  declared Scalar[time], NULL on empty input
+  x.max()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.max()                      [C:int]  declared Scalar[int], NULL on empty input
+  x.max()                      [C:float]  declared Scalar[float], NULL on empty input
+  x.max()                      [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.max()                      [C:str]  declared Scalar[str], NULL on empty input
+  x.max()                      [C:datetime]  declared Scalar[datetime], NULL on empty input
+  x.max()                      [C:date]  declared Scalar[date], NULL on empty input
+  x.max()                      [C:time]  declared Scalar[time], NULL on empty input
+  x.mean()                     [C:bool C:int C:float]  declared Scalar[float], NULL on empty input
+  x.mean()                     [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.median()                   [C:int C:float]  declared Scalar[float], NULL on empty input
+  x.min()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.min()                      [C:int]  declared Scalar[int], NULL on empty input
+  x.min()                      [C:float]  declared Scalar[float], NULL on empty input
+  x.min()                      [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.min()                      [C:str]  declared Scalar[str], NULL on empty input
+  x.min()                      [C:datetime]  declared Scalar[datetime], NULL on empty input
+  x.min()                      [C:date]  declared Scalar[date], NULL on empty input
+  x.min()                      [C:time]  declared Scalar[time], NULL on empty input
+  x.sum()                      [C:bool C:int]  declared Scalar[int], NULL on empty input
+  x.sum()                      [C:float]  declared Scalar[float], NULL on empty input
+  x.sum()                      [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+
+===== WIDER: 120 cases in 30 groups
+  x // 1                       [C:float]  declared Column[float], runtime int64
+  x // 1                       [C:float?]  declared Column[float | None], runtime int64
+  x // 1                       [S:float]  declared Scalar[float], runtime int64
+  x // 1                       [S:float?]  declared Scalar[float | None], runtime int64
+  x // 1.5                     [C:int C:float]  declared Column[float], runtime int64
+  x // 1.5                     [C:int? C:float?]  declared Column[float | None], runtime int64
+  x // 1.5                     [S:int S:float]  declared Scalar[float], runtime int64
+  x // 1.5                     [S:int? S:float?]  declared Scalar[float | None], runtime int64
+  x // x                       [C:float]  declared Column[float], runtime int64
+  x // x                       [C:float?]  declared Column[float | None], runtime int64
+  x // x                       [S:float]  declared Scalar[float], runtime int64
+  x // x                       [S:float?]  declared Scalar[float | None], runtime int64
+  x // y                       [C:float S:float]  declared Column[float], runtime int64
+  x // y                       [C:float? S:float?]  declared Column[float | None], runtime int64
+  x // yn                      [C:float C:float? S:float S:float?]  declared Column[float | None], runtime int64
+  x // {L}                     [C:float]  declared Column[float], runtime int64
+  x // {L}                     [C:float?]  declared Column[float | None], runtime int64
+  x // {L}                     [S:float]  declared Scalar[float], runtime int64
+  x // {L}                     [S:float?]  declared Scalar[float | None], runtime int64
+  x.cast("decimal(10, 2)")     [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str?]  declared Column[Any], runtime decimal(10, 2)
+  x.cast("decimal(10, 2)")     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str?]  declared Scalar[Any], runtime decimal(10, 2)
+  x.isin(y)                    [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared BooleanValue (fallback), runtime Scalar[bool]
+  x.try_cast("float64")        [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Value (fallback), runtime Scalar[float]
+  x.try_cast(int)              [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Value (fallback), runtime Scalar[int]
+  x.try_cast(str)              [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  declared Value (fallback), runtime Scalar[str]
+  {L} % x                      [C:str C:str? S:str S:str?]  declared str (fallback), runtime str[None]
+  {L} // x                     [C:float]  declared Column[float], runtime int64
+  {L} // x                     [C:float?]  declared Column[float | None], runtime int64
+  {L} // x                     [S:float]  declared Scalar[float], runtime int64
+  {L} // x                     [S:float?]  declared Scalar[float | None], runtime int64
+
+===== FALSE_POS: 268 cases in 67 groups
+  x % 1.5                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  Operator "%" not supported for types "<F>" and "float"
+  x & True                     [C:int C:int? S:int S:int?]  Operator "&" not supported for types "<F>" and "<F>"
+  x & y                        [C:int C:int? S:int S:int?]  Operator "&" not supported for types "<F>" and "<F>"
+  x & yn                       [C:int C:int? S:int S:int?]  Operator "&" not supported for types "<F>" and "<F>"
+  x * 1                        [C:str C:str? S:str S:str?]  Operator "*" not supported for types "<F>" and "<F>"
+  x * 1.5                      [C:Decimal C:Decimal? C:str C:str? S:Decimal S:Decimal? S:str S:str?]  Operator "*" not supported for types "<F>" and "float"
+  x + 1                        [C:str C:str? S:str S:str?]  Operator "+" not supported for types "<F>" and "<F>"
+  x + 1.5                      [C:Decimal C:Decimal? C:str C:str? S:Decimal S:Decimal? S:str S:str?]  Operator "+" not supported for types "<F>" and "float"
+  x - 1.5                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  Operator "-" not supported for types "<F>" and "float"
+  x / 1.5                      [C:Decimal C:Decimal? S:Decimal S:Decimal?]  Operator "/" not supported for types "<F>" and "float"
+  x // 1.5                     [C:Decimal C:Decimal? S:Decimal S:Decimal?]  Operator "//" not supported for types "<F>" and "float"
+  x ^ True                     [C:int C:int? S:int S:int?]  Operator "^" not supported for types "<F>" and "<F>"
+  x ^ y                        [C:int C:int? S:int S:int?]  Operator "^" not supported for types "<F>" and "<F>"
+  x ^ yn                       [C:int C:int? S:int S:int?]  Operator "^" not supported for types "<F>" and "<F>"
+  x | True                     [C:int C:int? S:int S:int?]  Operator "|" not supported for types "<F>" and "<F>"
+  x | y                        [C:int C:int? S:int S:int?]  Operator "|" not supported for types "<F>" and "<F>"
+  x | yn                       [C:int C:int? S:int S:int?]  Operator "|" not supported for types "<F>" and "<F>"
+  x.abs()                      [S:int S:int? S:float S:float? S:Decimal S:Decimal?]  Cannot access attribute "abs" for class "<F>"
+  x.between({L}, {L2})         [S:bool S:bool? S:int S:int? S:str S:str?]  Argument of type "<F>" cannot be assigned to parameter "lower" of type "Value" i
+  x.between({L}, {L2})         [S:float S:float?]  Argument of type "float" cannot be assigned to parameter "lower" of type "Value"
+  x.between({L}, {L2})         [S:datetime S:datetime?]  Argument of type "datetime" cannot be assigned to parameter "lower" of type "Val
+  x.between({L}, {L2})         [S:date S:date?]  Argument of type "<T>" cannot be assigned to parameter "lower" of type "Value" i
+  x.ceil()                     [C:Decimal C:Decimal? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  Cannot access attribute "ceil" for class "<F>"
+  x.clip(lower=0.5)            [S:int S:int? S:float S:float? S:Decimal S:Decimal?]  Cannot access attribute "clip" for class "<F>"
+  x.clip(lower={L}, upper={L2}) [C:Decimal]  No overloads for "clip" match the provided arguments
+  x.clip(lower={L}, upper={L2}) [C:Decimal?]  Argument of type "Decimal" cannot be assigned to parameter "lower" of type "floa
+  x.clip(lower={L}, upper={L2}) [S:int S:int? S:float S:float? S:Decimal S:Decimal?]  Cannot access attribute "clip" for class "<F>"
+  x.contains("a")              [S:str S:str?]  Cannot access attribute "contains" for class "<F>"
+  x.date()                     [S:datetime S:datetime?]  Cannot access attribute "<T>" for class "<F>"
+  x.day()                      [S:datetime S:datetime? S:date S:date?]  Cannot access attribute "day" for class "<F>"
+  x.endswith("a")              [S:str S:str?]  Cannot access attribute "endswith" for class "<F>"
+  x.epoch_seconds()            [C:date C:date? S:datetime S:datetime? S:date S:date?]  Cannot access attribute "epoch_seconds" for class "<F>"
+  x.fill_null(0)               [C:Decimal C:Decimal? S:Decimal S:Decimal?]  Argument of type "<F>" cannot be assigned to parameter "value" of type "Decimal 
+  x.fill_null(1.5)             [C:Decimal C:Decimal? S:Decimal S:Decimal?]  Argument of type "float" cannot be assigned to parameter "value" of type "Decima
+  x.fill_null(y)               [S:bool S:bool? S:int S:int? S:datetime S:datetime?]  No overloads for "fill_null" match the provided arguments
+  x.fill_null(y)               [S:float S:float?]  Argument of type "<F>" cannot be assigned to parameter "value" of type "float | 
+  x.fill_null(y)               [S:Decimal S:Decimal?]  Argument of type "<F>" cannot be assigned to parameter "value" of type "Decima
+  x.fill_null(y)               [S:str S:str?]  Argument of type "<F>" cannot be assigned to parameter "value" of type "str | Sc
+  x.fill_null(y)               [S:date S:date? S:time S:time?]  Argument of type "<F>" cannot be assigned to parameter "value" of type "<T> | Sc
+  x.floor()                    [C:Decimal C:Decimal? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  Cannot access attribute "floor" for class "<F>"
+  x.hour()                     [C:time C:time? S:datetime S:datetime? S:time S:time?]  Cannot access attribute "hour" for class "<F>"
+  x.ifelse("a", "b")           [S:bool S:bool?]  Cannot access attribute "ifelse" for class "<F>"
+  x.ifelse(1, 2)               [S:bool S:bool?]  Cannot access attribute "ifelse" for class "<F>"
+  x.isin([{L}])                [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:date S:date? S:time S:time?]  Argument of type "<F>" cannot be assigned to parameter "values" of type "ArrayVa
+  x.isin([{L}])                [S:datetime S:datetime?]  Argument of type "<F>" cannot be assigned to parameter "values" of type "ArrayV
+  x.length()                   [S:str S:str?]  Cannot access attribute "length" for class "<F>"
+  x.lower()                    [S:str S:str?]  Cannot access attribute "lower" for class "<F>"
+  x.median()                   [C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time?]  Cannot access attribute "median" for class "<F>"
+  x.month()                    [S:datetime S:datetime? S:date S:date?]  Cannot access attribute "month" for class "<F>"
+  x.notin([{L}])               [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:date S:date? S:time S:time?]  Argument of type "<F>" cannot be assigned to parameter "values" of type "ArrayVa
+  x.notin([{L}])               [S:datetime S:datetime?]  Argument of type "<F>" cannot be assigned to parameter "values" of type "ArrayV
+  x.re_extract("(a)", 1)       [S:str S:str?]  Cannot access attribute "re_extract" for class "<F>"
+  x.re_search("a")             [S:str S:str?]  Cannot access attribute "re_search" for class "<F>"
+  x.replace("a", "b")          [S:str S:str?]  Cannot access attribute "replace" for class "<F>"
+  x.round()                    [C:Decimal]  No overloads for "round" match the provided arguments
+  x.round()                    [C:Decimal?]  Argument missing for parameter "digits"
+  x.round()                    [S:int S:int? S:float S:float? S:Decimal S:Decimal?]  Cannot access attribute "round" for class "<F>"
+  x.round(1)                   [S:int S:int? S:float S:float? S:Decimal S:Decimal?]  Cannot access attribute "round" for class "<F>"
+  x.startswith("a")            [S:str S:str?]  Cannot access attribute "startswith" for class "<F>"
+  x.strftime("%Y")             [S:datetime S:datetime? S:date S:date?]  Cannot access attribute "strftime" for class "<F>"
+  x.strip()                    [S:str S:str?]  Cannot access attribute "strip" for class "<F>"
+  x.substr(0, 2)               [S:str S:str?]  Cannot access attribute "substr" for class "<F>"
+  x.truncate("D")              [S:datetime S:datetime? S:date S:date?]  Cannot access attribute "truncate" for class "<F>"
+  x.truncate("h")              [S:datetime S:datetime?]  Cannot access attribute "truncate" for class "<F>"
+  x.upper()                    [S:str S:str?]  Cannot access attribute "upper" for class "<F>"
+  x.year()                     [S:datetime S:datetime? S:date S:date?]  Cannot access attribute "year" for class "<F>"
+  ~x                           [C:int C:int? S:int S:int?]  Operator "~" not supported for type "<F>"

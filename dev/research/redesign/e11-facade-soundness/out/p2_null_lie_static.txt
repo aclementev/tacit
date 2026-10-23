@@ -1,0 +1,6 @@
+# p2_null_lie.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/src
+L1 nullable comparison + cast into NOT NULL                  | -                              | -                              | -                              | -                             
+L2 all-NULL group max + 1-row std into NOT NULL              | -                              | -                              | -                              | -                             
+# p2_null_lie.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e11-facade-soundness/derived/out_ibis
+L1 nullable comparison + cast into NOT NULL                  | E -                            | E -                            | E -                            | E -                           
+L2 all-NULL group max + 1-row std into NOT NULL              | E -                            | E -                            | E -                            | E -                           

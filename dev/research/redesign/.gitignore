@@ -6,3 +6,6 @@
 *.duckdb
 data/
 e3-schema-algebra/_patched/
+e11-facade-soundness/out/*.json
+e11-facade-soundness/conformance/gen_*/
+e11-facade-soundness/conformance/cfg_*/

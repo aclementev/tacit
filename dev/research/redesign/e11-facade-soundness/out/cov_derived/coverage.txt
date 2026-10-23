@@ -1,0 +1,115 @@
+ibis 12.0.0; facade derived/out_ibis/tacit_next/_column.pyi
+
+family     kind   ibis pub infra  ops typed via Value unreach
+Integer    Column      107    27   35   135         5       2
+Integer    Scalar       66    25   34    92         7       1
+Floating   Column      103    27   24   119         5       3
+Floating   Scalar       65    25   23    79         7       2
+Decimal    Column      101    27   24   117         5       3
+Decimal    Scalar       63    25   23    77         7       2
+String     Column       96    27   14   102         5       3
+String     Scalar       70    25   14    75         7       2
+Boolean    Column      108    27   31   133         5       1
+Boolean    Scalar       64    25   30    87         7       0
+Timestamp  Column       73    27   13    78         5       3
+Timestamp  Scalar       47    25   12    51         7       1
+Date       Column       66    27   13    72         5       2
+Date       Scalar       40    25   12    44         7       1
+Time       Column       62    27   13    57         5      13
+Time       Scalar       36    25   12    30         7      11
+Interval   Column       70    27   17     0        31      56
+Interval   Scalar       44    25   16     0        31      29
+Array      Column       72    27   13     0        31      54
+Array      Scalar       46    25   13     0        31      28
+Struct     Column       53    27   10     0        31      32
+Struct     Scalar       27    25   10     0        31       6
+Map        Column       54    27   11     0        31      34
+Map        Scalar       28    25   11     0        31       8
+JSON       Column       56    27    9     0        31      34
+JSON       Scalar       30    25    9     0        31       8
+
+== IntegerColumn: typed 135; via ir.Value 5; unreachable 2
+   unreachable: as_timestamp __getitem__
+   via Value:   case fillna identical_to __bool__ __iter__
+== IntegerScalar: typed 92; via ir.Value 7; unreachable 1
+   unreachable: as_timestamp
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== FloatingColumn: typed 119; via ir.Value 5; unreachable 3
+   unreachable: acos asin __getitem__
+   via Value:   case fillna identical_to __bool__ __iter__
+== FloatingScalar: typed 79; via ir.Value 7; unreachable 2
+   unreachable: acos asin
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== DecimalColumn: typed 117; via ir.Value 5; unreachable 3
+   unreachable: acos asin __getitem__
+   via Value:   case fillna identical_to __bool__ __iter__
+== DecimalScalar: typed 77; via ir.Value 7; unreachable 2
+   unreachable: acos asin
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== StringColumn: typed 102; via ir.Value 5; unreachable 3
+   unreachable: approx_median __contains__ __getitem__
+   via Value:   case fillna identical_to __bool__ __iter__
+== StringScalar: typed 75; via ir.Value 7; unreachable 2
+   unreachable: __contains__ __getitem__
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== BooleanColumn: typed 133; via ir.Value 5; unreachable 1
+   unreachable: __getitem__
+   via Value:   case fillna identical_to __bool__ __iter__
+== BooleanScalar: typed 87; via ir.Value 7; unreachable 0
+   unreachable: 
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== TimestampColumn: typed 78; via ir.Value 5; unreachable 3
+   unreachable: bucket day_of_week __getitem__
+   via Value:   case fillna identical_to __bool__ __iter__
+== TimestampScalar: typed 51; via ir.Value 7; unreachable 1
+   unreachable: day_of_week
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== DateColumn: typed 72; via ir.Value 5; unreachable 2
+   unreachable: day_of_week __getitem__
+   via Value:   case fillna identical_to __bool__ __iter__
+== DateScalar: typed 44; via ir.Value 7; unreachable 1
+   unreachable: day_of_week
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== TimeColumn: typed 57; via ir.Value 5; unreachable 13
+   unreachable: add approx_median delta radd rsub strftime sub truncate __add__ __getitem__ __radd__ __rsub__ __sub__
+   via Value:   case fillna identical_to __bool__ __iter__
+== TimeScalar: typed 30; via ir.Value 7; unreachable 11
+   unreachable: add delta radd rsub strftime sub truncate __add__ __radd__ __rsub__ __sub__
+   via Value:   asc case desc fillna identical_to __bool__ __iter__
+== IntervalColumn: typed 0; via ir.Value 31; unreachable 56
+   unreachable: add approx_median approx_nunique arbitrary argmax argmin as_unit count cume_dist cummax cummin days dense_rank first floordiv hours lag last lead max median microseconds milliseconds min minutes mode months mul nanoseconds negate nth ntile nunique percent_rank quantile quarters radd rank rmul rsub seconds sub to_unit topk value_counts weeks years __add__ __floordiv__ __getitem__ __mul__ __neg__ __radd__ __rmul__ __rsub__ __sub__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== IntervalScalar: typed 0; via ir.Value 31; unreachable 29
+   unreachable: add as_unit days floordiv hours microseconds milliseconds minutes months mul nanoseconds negate quarters radd rmul rsub seconds sub to_unit weeks years __add__ __floordiv__ __mul__ __neg__ __radd__ __rmul__ __rsub__ __sub__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== ArrayColumn: typed 0; via ir.Value 31; unreachable 54
+   unreachable: alls anys approx_median approx_nunique arbitrary argmax argmin concat contains count cume_dist cummax cummin dense_rank filter first flatten index intersect join lag last lead length map max maxs means median min mins mode modes nth ntile nunique percent_rank quantile rank remove repeat sort sums topk union unique unnest value_counts zip __add__ __getitem__ __mul__ __radd__ __rmul__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== ArrayScalar: typed 0; via ir.Value 31; unreachable 28
+   unreachable: alls anys concat contains filter flatten index intersect join length map maxs means mins modes remove repeat sort sums union unique unnest zip __add__ __getitem__ __mul__ __radd__ __rmul__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== StructColumn: typed 0; via ir.Value 31; unreachable 32
+   unreachable: approx_median approx_nunique arbitrary argmax argmin count cume_dist cummax cummin dense_rank fields first lag last lead lift max median min mode names nth ntile nunique percent_rank quantile rank topk types value_counts __getattr__ __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== StructScalar: typed 0; via ir.Value 31; unreachable 6
+   unreachable: fields lift names types __getattr__ __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== MapColumn: typed 0; via ir.Value 31; unreachable 34
+   unreachable: approx_median approx_nunique arbitrary argmax argmin contains count cume_dist cummax cummin dense_rank first get keys lag last lead length max median min mode nth ntile nunique percent_rank quantile rank topk value_counts values __add__ __getitem__ __radd__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== MapScalar: typed 0; via ir.Value 31; unreachable 8
+   unreachable: contains get keys length values __add__ __getitem__ __radd__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== JSONColumn: typed 0; via ir.Value 31; unreachable 34
+   unreachable: approx_median approx_nunique arbitrary argmax argmin array bool count cume_dist cummax cummin dense_rank first float int lag last lead map max median min mode nth ntile nunique percent_rank quantile rank str topk unwrap_as value_counts __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+== JSONScalar: typed 0; via ir.Value 31; unreachable 8
+   unreachable: array bool float int map str unwrap_as __getitem__
+   via Value:   asc between case cases cast coalesce collect desc fill_null fillna group_concat hash identical_to isin isnull name notin notnull nullif over substitute try_cast typeof __bool__ __eq__ __ge__ __gt__ __iter__ __le__ __lt__ __ne__
+
+declared on facade for Column[int] but absent on ibis IntegerColumn: ['isinf', 'isnan']
+declared on facade for Scalar[int] but absent on ibis IntegerScalar: ['isinf', 'isnan']
+declared on facade for Column[bool] but absent on ibis BooleanColumn: ['__lshift__', '__rlshift__', '__rrshift__', '__rshift__', 'as_interval', 'bit_and', 'bit_or', 'bit_xor', 'convert_base', 'isinf', 'isnan']
+declared on facade for Scalar[bool] but absent on ibis BooleanScalar: ['__lshift__', '__rlshift__', '__rrshift__', '__rshift__', 'as_interval', 'convert_base', 'isinf', 'isnan']
+declared on facade for Column[datetime] but absent on ibis TimestampColumn: ['epoch_days']
+declared on facade for Scalar[datetime] but absent on ibis TimestampScalar: ['epoch_days']

@@ -1,0 +1,19 @@
+pyarrow.Table
+k: string not null
+has_discount: bool
+disc_f: double
+----
+k: [["a","a","b"]]
+has_discount: [[true,null,null]]
+disc_f: [[0.5,null,null]]
+pyarrow.Table
+k: string not null
+max_disc: double
+sd_amount: double
+----
+k: [["a"],["b"]]
+max_disc: [[0.5],[null]]
+sd_amount: [[0.7071067811865476],[null]]
+Flags.parse caught it: Flags.parse: 2 issues for Flags
+  - has_discount: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 2 rows; e.g. [None, None]
+  - disc_f: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 2 rows; e.g. [None, None]

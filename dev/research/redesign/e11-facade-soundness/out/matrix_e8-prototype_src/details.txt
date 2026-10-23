@@ -1,0 +1,25 @@
+TYPE    ty       t01_columns.py:87  expected Column[str], got Column[Literal["y", "n"]]
+TYPE    mypy     t04_frame.py:26  expected Table, got Any
+MISSED  mypy     t04_frame.py:37  takes_orders(t)  # E: raw ibis table is not a frame
+MISSED  ty       t04_frame.py:37  takes_orders(t)  # E: raw ibis table is not a frame
+MISSED  pyrefly  t04_frame.py:37  takes_orders(t)  # E: raw ibis table is not a frame
+FP      pyright  t10_interop.py:17  o.ibis.order_by(ibis.desc(o.amount))
+          -> Argument of type "Column[float] | Deferred" cannot be assigned to parameter "by" of type "str | Column | Selector | Deferred | Sequence[str | Column | Selector | Deferred]" in function "order_by" (rep
+FP      ty       t10_interop.py:17  o.ibis.order_by(ibis.desc(o.amount))
+          -> invalid-argument-type: Argument to bound method `Table.order_by` is incorrect: Expected `Sequence[str | ibis.expr.types.generic.Column | Selector | Deferred] | ibis.expr.types.generic.Column | Selecto
+FP      pyright  t10_interop.py:18  o.ibis.order_by(o.amount.desc())
+          -> Argument of type "Column[float]" cannot be assigned to parameter "by" of type "str | Column | Selector | Deferred | Sequence[str | Column | Selector | Deferred]" in function "order_by" (reportArgument
+FP      ty       t10_interop.py:18  o.ibis.order_by(o.amount.desc())
+          -> invalid-argument-type: Argument to bound method `Table.order_by` is incorrect: Expected `Sequence[str | ibis.expr.types.generic.Column | Selector | Deferred] | ibis.expr.types.generic.Column | Selecto
+FP      pyright  t10_interop.py:19  o.ibis.filter(o.amount > 0)
+          -> Argument of type "Column[bool]" cannot be assigned to parameter "predicates" of type "BooleanValue | bool | Sequence[BooleanValue | bool] | IfAnyAll | Deferred" in function "filter" (reportArgumentTyp
+FP      ty       t10_interop.py:19  o.ibis.filter(o.amount > 0)
+          -> invalid-argument-type: Argument to bound method `Table.filter` is incorrect: Expected `BooleanValue | bool | Sequence[BooleanValue | bool] | IfAnyAll | Deferred`, found `Column[bool]`
+FP      pyrefly  t10_interop.py:19  o.ibis.filter(o.amount > 0)
+          -> bad-argument-type: Argument `Column[bool]` is not assignable to parameter `*predicates` with type `BooleanValue | Deferred | IfAnyAll | Sequence[BooleanValue | bool] | bool` in function `ibis.expr.typ
+TYPE    mypy     t10_interop.py:27  expected Column[str], got Column[Any]
+TYPE    ty       t10_interop.py:27  expected Column[str], got Column[Unknown]
+TYPE    pyrefly  t10_interop.py:27  expected Column[str], got Column[Any]
+TYPE    ty       t10_interop.py:28  expected Column[str], got Column[Literal["small", "mid", "big"]]
+MISSED  ty       t10_interop.py:34  Proj2(label=o.status, amount=raw)  # E: untyped ibis expr needs tc.as_column
+MISSED  pyrefly  t10_interop.py:34  Proj2(label=o.status, amount=raw)  # E: untyped ibis expr needs tc.as_column

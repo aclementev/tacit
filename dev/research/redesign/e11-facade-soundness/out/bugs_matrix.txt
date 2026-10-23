@@ -1,0 +1,8 @@
+../e8-prototype/src pyright 14 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'c3_', 'd1_', 'd1b', 'd2_', 'n1_']
+../e8-prototype/src mypy 14 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'c3_', 'd1_', 'd1b', 'd2_', 'n1_']
+../e8-prototype/src ty 14 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'c3_', 'd1_', 'd1b', 'd2_', 'n1_']
+../e8-prototype/src pyrefly 13 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'd1_', 'd1b', 'd2_', 'n1_']
+derived/out_ibis pyright 14 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'c3_', 'd1_', 'd1b', 'd2_', 'n1_']
+derived/out_ibis mypy 14 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'c3_', 'd1_', 'd1b', 'd2_', 'n1_']
+derived/out_ibis ty 14 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'c3_', 'd1_', 'd1b', 'd2_', 'n1_']
+derived/out_ibis pyrefly 13 ['a1_', 'a2_', 'a3_', 'a4_', 'b1_', 'b2_', 'b3_', 'c1_', 'c2_', 'd1_', 'd1b', 'd2_', 'n1_']

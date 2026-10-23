@@ -1,0 +1,27 @@
+class            meth  ops | E8 typed m/o  viaValue unreach | derived typed m/o viaValue unreach
+IntegerColumn     107   35 |  29/19        13      81 | 103/32         5       2
+IntegerScalar      66   34 |   6/19        19      56 |  60/32         7       1
+FloatingColumn    103   24 |  29/19        13      66 |  98/21         5       3
+FloatingScalar     65   23 |   6/19        19      44 |  58/21         7       2
+DecimalColumn     101   24 |  27/19        13      66 |  96/21         5       3
+DecimalScalar      63   23 |   6/19        19      42 |  56/21         7       2
+StringColumn       96   14 |  30/8         13      59 |  92/10         5       3
+StringScalar       70   14 |   6/8         19      51 |  65/10         7       2
+BooleanColumn     108   31 |  32/26        13      68 | 105/28         5       1
+BooleanScalar      64   30 |   6/26        19      43 |  59/28         7       0
+TimestampColumn    73   13 |  27/6         13      40 |  68/10         5       3
+TimestampScalar    47   12 |   6/6         19      28 |  41/10         7       1
+DateColumn         66   13 |  24/6         13      36 |  62/10         5       2
+DateScalar         40   12 |   6/6         19      21 |  34/10         7       1
+TimeColumn         62   13 |  18/6         14      37 |  51/6          5      13
+TimeScalar         36   12 |   6/6         19      17 |  24/6          7      11
+IntervalColumn     70   17 |   0/0         31      56 |   0/0         31      56
+IntervalScalar     44   16 |   0/0         31      29 |   0/0         31      29
+ArrayColumn        72   13 |   0/0         31      54 |   0/0         31      54
+ArrayScalar        46   13 |   0/0         31      28 |   0/0         31      28
+StructColumn       53   10 |   0/0         31      32 |   0/0         31      32
+StructScalar       27   10 |   0/0         31       6 |   0/0         31       6
+MapColumn          54   11 |   0/0         31      34 |   0/0         31      34
+MapScalar          28   11 |   0/0         31       8 |   0/0         31       8
+JSONColumn         56    9 |   0/0         31      34 |   0/0         31      34
+JSONScalar         30    9 |   0/0         31       8 |   0/0         31       8

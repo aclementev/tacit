@@ -1,0 +1,267 @@
+e11-facade-soundness/e8matrix/t10_interop.py:25: note: Revealed type is "ibis.expr.types.strings.StringColumn"
+e11-facade-soundness/e8matrix/t10_interop.py:26: note: Revealed type is "ibis.expr.types.numeric.FloatingColumn"
+e11-facade-soundness/e8matrix/t10_interop.py:27: note: Revealed type is "tacit_next._column.Column[Any]"
+e11-facade-soundness/e8matrix/t10_interop.py:28: note: Revealed type is "tacit_next._column.Column[str]"
+e11-facade-soundness/e8matrix/t10_interop.py:29: note: Revealed type is "tacit_next._column.Scalar[float]"
+e11-facade-soundness/e8matrix/t10_interop.py:31: error: Argument 1 to "cases" has incompatible type "tuple[Column[bool], int]"; expected "tuple[Column[bool] | Scalar[bool], str | Column[str] | Scalar[str]]"  [arg-type]
+e11-facade-soundness/e8matrix/t10_interop.py:31: error: Argument "else_" to "cases" has incompatible type "int"; expected "str | Column[str] | Scalar[str]"  [arg-type]
+e11-facade-soundness/e8matrix/t10_interop.py:34: error: Argument "amount" to "Proj2" has incompatible type "FloatingColumn"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t09_step.py:28: note: Revealed type is "_schemas.NetOrders"
+e11-facade-soundness/e8matrix/t09_step.py:29: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t09_step.py:30: error: Argument 1 to "clean" has incompatible type "Customers"; expected "Orders"  [arg-type]
+e11-facade-soundness/e8matrix/t09_step.py:31: error: Argument 2 to "checked" has incompatible type "Orders"; expected "Customers | None"  [arg-type]
+e11-facade-soundness/e8matrix/t09_step.py:32: error: Value of type variable "R" of "generic" cannot be "Orders"  [type-var]
+e11-facade-soundness/e8matrix/t08_join.py:14: note: Revealed type is "tacit_next._join.Join[_schemas.Orders, _schemas.Customers]"
+e11-facade-soundness/e8matrix/t08_join.py:15: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t08_join.py:16: note: Revealed type is "tacit_next._column.Column[str]"
+e11-facade-soundness/e8matrix/t08_join.py:17: error: "Customers" has no attribute "custmer_id"; maybe "customer_id"?  [attr-defined]
+e11-facade-soundness/e8matrix/t08_join.py:18: error: Argument "on" to "join" has incompatible type "Callable[[Orders, Customers], Column[int]]"; expected "Callable[[Orders, Customers], Column[bool | None]] | Sequence[tuple[Column[Any], Column[Any]]]"  [arg-type]
+e11-facade-soundness/e8matrix/t08_join.py:18: error: Incompatible return value type (got "Column[int]", expected "Column[bool | None]")  [return-value]
+e11-facade-soundness/e8matrix/t08_join.py:21: note: Revealed type is "_schemas.OrderWithCountry"
+e11-facade-soundness/e8matrix/t08_join.py:22: error: "Orders" has no attribute "country"  [attr-defined]
+e11-facade-soundness/e8matrix/t08_join.py:24: error: Argument "country" to "OrderWithCountry" has incompatible type "Column[int]"; expected "Column[str] | Scalar[str] | str"  [arg-type]
+e11-facade-soundness/e8matrix/t07_generic.py:23: note: Revealed type is "tacit_next._column.Column[datetime.datetime]"
+e11-facade-soundness/e8matrix/t07_generic.py:24: error: "F" has no attribute "event_tss"  [attr-defined]
+e11-facade-soundness/e8matrix/t07_generic.py:34: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t07_generic.py:35: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t07_generic.py:36: note: Revealed type is "_schemas.NetOrders"
+e11-facade-soundness/e8matrix/t07_generic.py:37: error: Argument "ts" to "latest_per_key" has incompatible type "Column[float]"; expected "Column[datetime]"  [arg-type]
+e11-facade-soundness/e8matrix/t07_generic.py:38: error: Argument "ts" to "latest_per_key" has incompatible type "Column[float | None]"; expected "Column[datetime]"  [arg-type]
+e11-facade-soundness/e8matrix/t07_generic.py:40: note: Revealed type is "_schemas.Clicks"
+e11-facade-soundness/e8matrix/t07_generic.py:41: error: Value of type variable "F" of "recent" cannot be "Orders"  [type-var]
+e11-facade-soundness/e8matrix/t07_generic.py:45: error: Argument 1 to "maybe" has incompatible type "Customers"; expected "Orders | None"  [arg-type]
+e11-facade-soundness/e8matrix/t06_extend.py:14: note: Revealed type is "_schemas.NetOrders"
+e11-facade-soundness/e8matrix/t06_extend.py:15: error: Argument 1 to "extend" of "Frame" has incompatible type "Customers"; expected "Into[NetOrders]"  [arg-type]
+e11-facade-soundness/e8matrix/t06_extend.py:15: note: Following member(s) of "Customers" have conflicts:
+e11-facade-soundness/e8matrix/t06_extend.py:15: note:     Expected:
+e11-facade-soundness/e8matrix/t06_extend.py:15: note:         def __tacit_into__(self, NetOrders, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:15: note:     Got:
+e11-facade-soundness/e8matrix/t06_extend.py:15: note:         def __tacit_into__(self, Customers, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:16: error: Argument 1 to "extend" of "Frame" has incompatible type "Orders"; expected "Into[Stats]"  [arg-type]
+e11-facade-soundness/e8matrix/t06_extend.py:16: note: Following member(s) of "Orders" have conflicts:
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:     Expected:
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:         def __tacit_into__(self, Stats, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:     Got:
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:         def __tacit_into__(self, Orders, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:16: error: Argument 2 to "extend" of "Frame" has incompatible type "NetAmount"; expected "Into[Stats]"  [arg-type]
+e11-facade-soundness/e8matrix/t06_extend.py:16: note: Following member(s) of "NetAmount" have conflicts:
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:     Expected:
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:         def __tacit_into__(self, Stats, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:     Got:
+e11-facade-soundness/e8matrix/t06_extend.py:16: note:         def __tacit_into__(self, NetAmount, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:17: error: Argument 2 to "extend" of "Frame" has incompatible type "Scored"; expected "Into[NetOrders]"  [arg-type]
+e11-facade-soundness/e8matrix/t06_extend.py:17: note: Following member(s) of "Scored" have conflicts:
+e11-facade-soundness/e8matrix/t06_extend.py:17: note:     Expected:
+e11-facade-soundness/e8matrix/t06_extend.py:17: note:         def __tacit_into__(self, NetOrders, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:17: note:     Got:
+e11-facade-soundness/e8matrix/t06_extend.py:17: note:         def __tacit_into__(self, Scored, /) -> object
+e11-facade-soundness/e8matrix/t06_extend.py:18: error: Argument "net_amount" to "NetAmount" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t06_extend.py:19: error: Missing named argument "net_amount" for "NetAmount"  [call-arg]
+e11-facade-soundness/e8matrix/t06_extend.py:20: error: Too few arguments for "extend" of "Frame"  [call-arg]
+e11-facade-soundness/e8matrix/t06_extend.py:30: note: Revealed type is "_schemas.ScoredOrders"
+e11-facade-soundness/e8matrix/t06_extend.py:31: error: Cannot infer value of type parameter "O" of "add_score"  [misc]
+e11-facade-soundness/e8matrix/t06_extend.py:32: error: Value of type variable "O" of "add_score" cannot be "NetOrders"  [type-var]
+e11-facade-soundness/e8matrix/t06_extend.py:33: error: Argument 2 to "add_score" has incompatible type "Column[str]"; expected "Column[float]"  [arg-type]
+e11-facade-soundness/e8matrix/t05_construct.py:20: note: Revealed type is "t05_construct.Proj"
+e11-facade-soundness/e8matrix/t05_construct.py:21: error: Missing named argument "label" for "Proj"  [call-arg]
+e11-facade-soundness/e8matrix/t05_construct.py:22: error: Unexpected keyword argument "bogus" for "Proj"  [call-arg]
+e11-facade-soundness/e8matrix/t05_construct.py:23: error: Argument "amount" to "Proj" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t05_construct.py:24: error: Argument "order_id" to "Proj" has incompatible type "Column[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e11-facade-soundness/e8matrix/t05_construct.py:27: error: Argument "label" to "Proj" has incompatible type "int"; expected "Column[str] | Scalar[str] | str"  [arg-type]
+e11-facade-soundness/e8matrix/t05_construct.py:29: error: Too many positional arguments for "Proj"  [call-arg]
+e11-facade-soundness/e8matrix/t05_construct.py:35: note: Revealed type is "_schemas.Stats"
+e11-facade-soundness/e8matrix/t05_construct.py:36: error: Argument "n" to "Stats" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e11-facade-soundness/e8matrix/t05_construct.py:37: error: Argument "total" to "Stats" has incompatible type "Scalar[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t05_construct.py:41: note: Revealed type is "_schemas.Stats"
+e11-facade-soundness/e8matrix/t05_construct.py:42: error: Missing named argument "total"  [call-arg]
+e11-facade-soundness/e8matrix/t05_construct.py:43: error: Argument "n" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e11-facade-soundness/e8matrix/t05_construct.py:44: error: Argument "by" to "aggregate" of "Frame" has incompatible type "Column[str]"; expected "Sequence[Column[Any]]"  [arg-type]
+e11-facade-soundness/e8matrix/t04_frame.py:16: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:17: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:18: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:19: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:20: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:21: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:22: error: Argument 1 to "filter" of "Frame" has incompatible type "Column[float]"; expected "Column[bool | None]"  [arg-type]
+e11-facade-soundness/e8matrix/t04_frame.py:23: error: Argument 1 to "filter" of "Frame" has incompatible type "str"; expected "Column[bool | None]"  [arg-type]
+e11-facade-soundness/e8matrix/t04_frame.py:24: error: "Orders" has no attribute "mutate"  [attr-defined]
+e11-facade-soundness/e8matrix/t04_frame.py:26: note: Revealed type is "Any"
+e11-facade-soundness/e8matrix/t04_frame.py:28: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:29: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:30: note: Revealed type is "_schemas.Orders"
+e11-facade-soundness/e8matrix/t04_frame.py:36: error: Argument 1 to "takes_orders" has incompatible type "Customers"; expected "Orders"  [arg-type]
+e11-facade-soundness/e8matrix/t04_frame.py:38: error: Incompatible types in assignment (expression has type "Orders", variable has type "NetOrders")  [assignment]
+e11-facade-soundness/e8matrix/t04_frame.py:39: error: Argument 1 to "takes_orders" has incompatible type "int"; expected "Orders"  [arg-type]
+e11-facade-soundness/e8matrix/t03_fields.py:26: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t03_fields.py:27: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t03_fields.py:28: note: Revealed type is "tacit_next._column.Column[str | None]"
+e11-facade-soundness/e8matrix/t03_fields.py:31: error: Missing named argument "a" for "F1"  [call-arg]
+e11-facade-soundness/e8matrix/t03_fields.py:32: error: Argument "a" to "F1" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t03_fields.py:33: error: Missing named argument "b" for "F1"  [call-arg]
+e11-facade-soundness/e8matrix/t03_fields.py:38: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t03_fields.py:39: note: Revealed type is "tacit_next._column.Column[float | None]"
+e11-facade-soundness/e8matrix/t03_fields.py:40: note: Revealed type is "tacit_next._column.Column[str | None]"
+e11-facade-soundness/e8matrix/t03_fields.py:43: error: Missing named argument "a" for "F2"  [call-arg]
+e11-facade-soundness/e8matrix/t03_fields.py:44: error: Argument "a" to "F2" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t03_fields.py:59: error: Argument 1 to "check" has incompatible type "Callable[[Column[str]], Column[str]]"; expected "Callable[[Column[Any]], Column[bool | None]]"  [arg-type]
+e11-facade-soundness/e8matrix/t03_fields.py:60: error: List item 0 has incompatible type "Callable[[Column[float]], Column[bool]]"; expected "Constraint"  [list-item]
+e11-facade-soundness/e8matrix/t02_nullability.py:16: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t02_nullability.py:17: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t02_nullability.py:18: note: Revealed type is "tacit_next._column.Column[str]"
+e11-facade-soundness/e8matrix/t02_nullability.py:19: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t02_nullability.py:20: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t02_nullability.py:21: error: No overload variant of "fill_null" of "Column" matches argument type "int"  [call-overload]
+e11-facade-soundness/e8matrix/t02_nullability.py:21: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t02_nullability.py:21: note:     def fill_null(self, str | Column[str] | Scalar[str], /) -> Column[str]
+e11-facade-soundness/e8matrix/t02_nullability.py:21: note:     def fill_null(self, Column[str | None] | Scalar[str | None], /) -> Column[str | None]
+e11-facade-soundness/e8matrix/t02_nullability.py:26: error: Argument "net_amount" to "NetAmount" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t02_nullability.py:27: error: Argument "net_amount" to "NetAmount" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e11-facade-soundness/e8matrix/t02_nullability.py:29: error: Argument 1 to "takes_float" has incompatible type "Column[float | None]"; expected "Column[float]"  [arg-type]
+e11-facade-soundness/e8matrix/t02_nullability.py:35: note: Revealed type is "tacit_next._column.Column[float | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:36: note: Revealed type is "tacit_next._column.Column[float | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:37: note: Revealed type is "tacit_next._column.Column[float | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:38: note: Revealed type is "tacit_next._column.Column[str | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:39: note: Revealed type is "tacit_next._column.Column[int | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:40: note: Revealed type is "tacit_next._column.Column[float | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:41: note: Revealed type is "tacit_next._column.Scalar[float | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:42: note: Revealed type is "tacit_next._column.Column[bool | None]"
+e11-facade-soundness/e8matrix/t02_nullability.py:43: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:13: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:14: note: Revealed type is "tacit_next._column.Column[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:15: note: Revealed type is "tacit_next._column.Column[str]"
+e11-facade-soundness/e8matrix/t01_columns.py:16: note: Revealed type is "tacit_next._column.Column[datetime.datetime]"
+e11-facade-soundness/e8matrix/t01_columns.py:17: note: Revealed type is "tacit_next._column.Column[decimal.Decimal]"
+e11-facade-soundness/e8matrix/t01_columns.py:18: note: Revealed type is "tacit_next._column.Column[float | None]"
+e11-facade-soundness/e8matrix/t01_columns.py:19: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:21: error: "Orders" has no attribute "amout"; maybe "amount"?  [attr-defined]
+e11-facade-soundness/e8matrix/t01_columns.py:22: error: "type[Orders]" has no attribute "amout"  [attr-defined]
+e11-facade-soundness/e8matrix/t01_columns.py:27: error: Invalid self argument "Column[float]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:28: error: Invalid self argument "Column[str]" to attribute function "mean" with type "def mean(self: Column[bool], *, where: bool | Column[bool] | Scalar[bool] | None = ...) -> Scalar[float]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:29: error: Invalid self argument "Column[str]" to attribute function "sum" with type "def sum(self: Column[bool], *, where: bool | Column[bool] | Scalar[bool] | None = ...) -> Scalar[int]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:30: error: Invalid self argument "Column[datetime]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:31: error: Invalid self argument "Column[float]" to attribute function "year" with type "Callable[[Column[datetime]], Column[int]]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:32: error: Invalid self argument "Column[date]" to attribute function "hour" with type "Callable[[Column[datetime]], Column[int]]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:33: error: Invalid self argument "Column[str]" to attribute function "abs" with type "Callable[[Column[int]], Column[int]]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:34: error: Invalid self argument "Column[datetime]" to attribute function "mean" with type "def mean(self: Column[bool], *, where: bool | Column[bool] | Scalar[bool] | None = ...) -> Scalar[float]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:35: error: Invalid self argument "Column[bool]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:40: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:41: note: Revealed type is "tacit_next._column.Column[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:42: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:43: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:44: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:45: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:46: note: Revealed type is "tacit_next._column.Column[decimal.Decimal]"
+e11-facade-soundness/e8matrix/t01_columns.py:47: note: Revealed type is "tacit_next._column.Column[decimal.Decimal]"
+e11-facade-soundness/e8matrix/t01_columns.py:48: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:49: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:50: note: Revealed type is "tacit_next._column.Column[str]"
+e11-facade-soundness/e8matrix/t01_columns.py:51: error: No overload variant of "__rtruediv__" of "Column" matches argument type "Column[str]"  [operator]
+e11-facade-soundness/e8matrix/t01_columns.py:51: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t01_columns.py:51: note:     def __rtruediv__(self, int, /) -> Column[float]
+e11-facade-soundness/e8matrix/t01_columns.py:51: note:     def __rtruediv__(self, int, /) -> Column[float | None]
+e11-facade-soundness/e8matrix/t01_columns.py:51: note:     def __rtruediv__(self, float, /) -> Column[float]
+e11-facade-soundness/e8matrix/t01_columns.py:51: note:     def __rtruediv__(self, float, /) -> Column[float | None]
+e11-facade-soundness/e8matrix/t01_columns.py:51: note:     def __rtruediv__(self, Decimal, /) -> Column[float]
+e11-facade-soundness/e8matrix/t01_columns.py:51: note:     def __rtruediv__(self, Decimal, /) -> Column[float | None]
+e11-facade-soundness/e8matrix/t01_columns.py:52: error: No overload variant of "__add__" of "Column" matches argument type "str"  [operator]
+e11-facade-soundness/e8matrix/t01_columns.py:52: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t01_columns.py:52: note:     def __add__(self, int | Column[int] | Scalar[int], /) -> Column[float]
+e11-facade-soundness/e8matrix/t01_columns.py:52: note:     def __add__(self, int | Column[int | None] | Scalar[int | None], /) -> Column[float | None]
+e11-facade-soundness/e8matrix/t01_columns.py:52: note:     def __add__(self, float | Column[float] | Scalar[float], /) -> Column[float]
+e11-facade-soundness/e8matrix/t01_columns.py:52: note:     def __add__(self, float | Column[float | None] | Scalar[float | None], /) -> Column[float | None]
+e11-facade-soundness/e8matrix/t01_columns.py:52: note:     def __add__(self, Decimal | Column[Decimal] | Scalar[Decimal], /) -> Column[Decimal]
+e11-facade-soundness/e8matrix/t01_columns.py:52: note:     def __add__(self, Decimal | Column[Decimal | None] | Scalar[Decimal | None], /) -> Column[Decimal | None]
+e11-facade-soundness/e8matrix/t01_columns.py:54: error: No overload variant of "__add__" of "Column" matches argument type "int"  [operator]
+e11-facade-soundness/e8matrix/t01_columns.py:54: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t01_columns.py:54: note:     def __add__(self, timedelta | IntervalValue, /) -> Column[datetime]
+e11-facade-soundness/e8matrix/t01_columns.py:54: note:     def __add__(self, timedelta | IntervalValue, /) -> Column[datetime | None]
+e11-facade-soundness/e8matrix/t01_columns.py:54: note:     def __add__(self, timedelta | IntervalValue, /) -> Column[date]
+e11-facade-soundness/e8matrix/t01_columns.py:54: note:     def __add__(self, timedelta | IntervalValue, /) -> Column[date | None]
+e11-facade-soundness/e8matrix/t01_columns.py:60: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:61: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:62: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:63: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:64: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:65: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:66: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:67: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:68: error: No overload variant of "__gt__" of "Column" matches argument type "int"  [operator]
+e11-facade-soundness/e8matrix/t01_columns.py:68: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t01_columns.py:68: note:     def __gt__(self, str | Column[str] | Scalar[str], /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:68: note:     def __gt__(self, str | Column[str | None] | Scalar[str | None], /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:69: error: No overload variant of "__gt__" of "Column" matches argument type "str"  [operator]
+e11-facade-soundness/e8matrix/t01_columns.py:69: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t01_columns.py:69: note:     def __gt__(self, int | Column[int] | Scalar[int], /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:69: note:     def __gt__(self, int | Column[int | None] | Scalar[int | None], /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:69: note:     def __gt__(self, float | Column[float] | Scalar[float], /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:69: note:     def __gt__(self, float | Column[float | None] | Scalar[float | None], /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:69: note:     def __gt__(self, Decimal | Column[Decimal] | Scalar[Decimal], /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:69: note:     def __gt__(self, Decimal | Column[Decimal | None] | Scalar[Decimal | None], /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:70: note: Revealed type is "bool"
+e11-facade-soundness/e8matrix/t01_columns.py:71: error: Argument 1 to "filter" of "Frame" has incompatible type "bool"; expected "Column[bool | None]"  [arg-type]
+e11-facade-soundness/e8matrix/t01_columns.py:72: error: No overload variant of "__rand__" of "Column" matches argument type "Column[float]"  [operator]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, bool, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, bool, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, int, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, int, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, float, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, float, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, Decimal, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, Decimal, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, str, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, str, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, datetime, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, datetime, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, date, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, date, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, time, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, time, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, timedelta | IntervalValue, /) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, timedelta | IntervalValue, /) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, bool, /) -> Column[int]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, bool, /) -> Column[int | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, int, /) -> Column[int]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, int, /) -> Column[int | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, float, /) -> Column[int]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, float, /) -> Column[int | None]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, Decimal, /) -> Column[int]
+e11-facade-soundness/e8matrix/t01_columns.py:72: note:     def __rand__(self, Decimal, /) -> Column[int | None]
+e11-facade-soundness/e8matrix/t01_columns.py:77: note: Revealed type is "tacit_next._column.Column[str]"
+e11-facade-soundness/e8matrix/t01_columns.py:78: note: Revealed type is "tacit_next._column.Column[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:79: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:80: note: Revealed type is "tacit_next._column.Column[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:81: note: Revealed type is "tacit_next._column.Column[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:82: note: Revealed type is "tacit_next._column.Column[datetime.date]"
+e11-facade-soundness/e8matrix/t01_columns.py:83: note: Revealed type is "tacit_next._column.Column[datetime.datetime]"
+e11-facade-soundness/e8matrix/t01_columns.py:84: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:85: note: Revealed type is "tacit_next._column.Column[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:86: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:87: note: Revealed type is "tacit_next._column.Column[str]"
+e11-facade-soundness/e8matrix/t01_columns.py:88: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:89: error: List item 0 has incompatible type "str"; expected "float | Column[float] | Scalar[float]"  [list-item]
+e11-facade-soundness/e8matrix/t01_columns.py:90: note: Revealed type is "tacit_next._column.Column[bool]"
+e11-facade-soundness/e8matrix/t01_columns.py:91: error: No overload variant of "between" of "Column" matches argument types "int", "int"  [call-overload]
+e11-facade-soundness/e8matrix/t01_columns.py:91: note: Possible overload variants:
+e11-facade-soundness/e8matrix/t01_columns.py:91: note:     def between(self, lower: str | Column[str] | Scalar[str], upper: str | Column[str] | Scalar[str]) -> Column[bool]
+e11-facade-soundness/e8matrix/t01_columns.py:91: note:     def between(self, lower: str | Column[str | None] | Scalar[str | None], upper: str | Column[str | None] | Scalar[str | None]) -> Column[bool | None]
+e11-facade-soundness/e8matrix/t01_columns.py:92: error: Invalid self argument "Column[datetime]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e11-facade-soundness/e8matrix/t01_columns.py:97: note: Revealed type is "tacit_next._column.Scalar[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:98: note: Revealed type is "tacit_next._column.Scalar[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:99: note: Revealed type is "tacit_next._column.Scalar[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:100: note: Revealed type is "tacit_next._column.Scalar[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:101: note: Revealed type is "tacit_next._column.Scalar[decimal.Decimal]"
+e11-facade-soundness/e8matrix/t01_columns.py:102: note: Revealed type is "tacit_next._column.Scalar[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:103: note: Revealed type is "tacit_next._column.Scalar[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:104: note: Revealed type is "tacit_next._column.Scalar[str]"
+e11-facade-soundness/e8matrix/t01_columns.py:105: note: Revealed type is "tacit_next._column.Scalar[datetime.datetime]"
+e11-facade-soundness/e8matrix/t01_columns.py:106: note: Revealed type is "tacit_next._column.Scalar[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:107: note: Revealed type is "tacit_next._column.Scalar[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:108: note: Revealed type is "tacit_next._column.Scalar[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:109: error: "Scalar[float]" has no attribute "mean"  [attr-defined]
+e11-facade-soundness/e8matrix/t01_columns.py:114: note: Revealed type is "tacit_next._column.Column[int]"
+e11-facade-soundness/e8matrix/t01_columns.py:115: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:116: note: Revealed type is "tacit_next._column.Column[datetime.datetime | None]"
+e11-facade-soundness/e8matrix/t01_columns.py:117: note: Revealed type is "tacit_next._column.Column[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:118: note: Revealed type is "tacit_next._column.Scalar[float]"
+e11-facade-soundness/e8matrix/t01_columns.py:119: note: Revealed type is "tacit_next._column.Column[Any]"

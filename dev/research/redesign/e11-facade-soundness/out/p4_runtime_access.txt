@@ -1,0 +1,4 @@
+type(o.amount) = FloatingColumn | is ir.FloatingColumn: True
+same object as the table column: True
+ibis public attributes not reachable at runtime: []
+[{'log': 0.4054651081081644, 'parts': ['a', 'b'], 'minute': 30, 'cs': 1.5, 'p': 2.25}, {'log': 1.3862943611198906, 'parts': ['c'], 'minute': 0, 'cs': 5.5, 'p': 16.0}]

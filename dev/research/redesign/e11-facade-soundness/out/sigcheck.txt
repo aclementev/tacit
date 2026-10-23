@@ -1,0 +1,112 @@
+Column.all            [bool] ibis(self, *, where: 'bool | BooleanValue | ibis.Deferred | None' = None) -> 'BooleanScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.any            [bool] ibis(self, *, where: 'bool | BooleanValue | ibis.Deferred | None' = None) -> 'BooleanScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.between        [Decimal] ibis(self, lower: 'Value', upper: 'Value') -> 'ir.BooleanValue'
+      missing-in-facade=[] renamed/extra=[] positional-only-but-ibis-allows-keyword=['lower', 'upper']
+Column.between        [_date] ibis(self, lower: 'Value', upper: 'Value') -> 'ir.BooleanValue'
+      missing-in-facade=[] renamed/extra=[] positional-only-but-ibis-allows-keyword=['lower', 'upper']
+Column.between        [_datetime] ibis(self, lower: 'str | datetime.time | TimeValue', upper: 'str | datetime.time | TimeValue', *, timezone: 'str | None' = None) -> 'ir.BooleanValue'
+      missing-in-facade=['timezone'] renamed/extra=[] positional-only-but-ibis-allows-keyword=['lower', 'upper']
+Column.between        [float] ibis(self, lower: 'Value', upper: 'Value') -> 'ir.BooleanValue'
+      missing-in-facade=[] renamed/extra=[] positional-only-but-ibis-allows-keyword=['lower', 'upper']
+Column.between        [int] ibis(self, lower: 'Value', upper: 'Value') -> 'ir.BooleanValue'
+      missing-in-facade=[] renamed/extra=[] positional-only-but-ibis-allows-keyword=['lower', 'upper']
+Column.between        [str] ibis(self, lower: 'Value', upper: 'Value') -> 'ir.BooleanValue'
+      missing-in-facade=[] renamed/extra=[] positional-only-but-ibis-allows-keyword=['lower', 'upper']
+Column.cast           [int] ibis(self, target_type: 'Any', /) -> 'Value'
+      missing-in-facade=['target_type'] renamed/extra=['target'] positional-only-but-ibis-allows-keyword=[]
+Column.cast           [str] ibis(self, target_type: 'Any', /) -> 'Value'
+      missing-in-facade=['target_type'] renamed/extra=['target'] positional-only-but-ibis-allows-keyword=[]
+Column.count          [int] ibis(self, *, where: 'ir.BooleanValue | None' = None) -> 'ir.IntegerScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.count          [str] ibis(self, *, where: 'ir.BooleanValue | None' = None) -> 'ir.IntegerScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.endswith       [str] ibis(self, end: 'str | StringValue | Deferred', /) -> 'ir.BooleanValue'
+      missing-in-facade=['end'] renamed/extra=['suffix'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [Decimal] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [_date] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [_datetime] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [_time] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [bool] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [float] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [int] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.fill_null      [str] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Column.first          [int] ibis(self, *, where: 'ir.BooleanValue | None' = None, order_by: 'Any' = None, include_null: 'bool' = False) -> 'Scalar'
+      missing-in-facade=['where', 'order_by', 'include_null'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.max            [int] ibis(self, *, where: 'ir.BooleanValue | None' = None) -> 'Scalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.mean           [Decimal] ibis(self, *, where: 'bool | ir.BooleanValue | ibis.Deferred | None' = None) -> 'NumericScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.mean           [float] ibis(self, *, where: 'bool | ir.BooleanValue | ibis.Deferred | None' = None) -> 'NumericScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.median         [float] ibis(self, *, where: 'ir.BooleanValue | None' = None) -> 'Scalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.min            [int] ibis(self, *, where: 'ir.BooleanValue | None' = None) -> 'Scalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.nunique        [int] ibis(self, *, where: 'ir.BooleanValue | None' = None) -> 'ir.IntegerScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.nunique        [str] ibis(self, *, where: 'ir.BooleanValue | None' = None) -> 'ir.IntegerScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.over           [int] ibis(self, window=None, *, rows=None, range=None, group_by=None, order_by=None) -> 'Self'
+      missing-in-facade=['rows', 'range'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.over           [str] ibis(self, window=None, *, rows=None, range=None, group_by=None, order_by=None) -> 'Self'
+      missing-in-facade=['rows', 'range'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.replace        [str] ibis(self, pattern: 'str | StringValue | Deferred', replacement: 'str | StringValue | Deferred') -> 'StringValue'
+      missing-in-facade=[] renamed/extra=[] positional-only-but-ibis-allows-keyword=['pattern', 'replacement']
+Column.startswith     [str] ibis(self, start: 'str | StringValue | Deferred', /) -> 'ir.BooleanValue'
+      missing-in-facade=['start'] renamed/extra=['prefix'] positional-only-but-ibis-allows-keyword=[]
+Column.std            [float] ibis(self, *, where: 'bool | ir.BooleanValue | ibis.Deferred | None' = None, how: "Literal['sample', 'pop']" = 'sample') -> 'NumericScalar'
+      missing-in-facade=['where', 'how'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.sum            [Decimal] ibis(self, *, where: 'bool | ir.BooleanValue | ibis.Deferred | None' = None) -> 'NumericScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.sum            [float] ibis(self, *, where: 'bool | ir.BooleanValue | ibis.Deferred | None' = None) -> 'NumericScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.sum            [int] ibis(self, *, where: 'bool | ir.BooleanValue | ibis.Deferred | None' = None) -> 'NumericScalar'
+      missing-in-facade=['where'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.topk           [int] ibis(self, k: 'int | None' = None, by: 'ir.Value | None' = None, *, name: 'str | None' = None) -> 'ir.Table'
+      missing-in-facade=['by', 'name'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.topk           [str] ibis(self, k: 'int | None' = None, by: 'ir.Value | None' = None, *, name: 'str | None' = None) -> 'ir.Table'
+      missing-in-facade=['by', 'name'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.try_cast       [int] ibis(self, target_type: 'Any', /) -> 'Value'
+      missing-in-facade=['target_type'] renamed/extra=['target'] positional-only-but-ibis-allows-keyword=[]
+Column.try_cast       [str] ibis(self, target_type: 'Any', /) -> 'Value'
+      missing-in-facade=['target_type'] renamed/extra=['target'] positional-only-but-ibis-allows-keyword=[]
+Column.value_counts   [int] ibis(self, *, name: 'str | None' = None) -> 'ir.Table'
+      missing-in-facade=['name'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.value_counts   [str] ibis(self, *, name: 'str | None' = None) -> 'ir.Table'
+      missing-in-facade=['name'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Column.var            [float] ibis(self, *, where: 'ir.BooleanValue | None' = None, how: "Literal['sample', 'pop']" = 'sample') -> 'NumericScalar'
+      missing-in-facade=['where', 'how'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Scalar.cast           [int] ibis(self, target_type: 'Any', /) -> 'Value'
+      missing-in-facade=['target_type'] renamed/extra=['target'] positional-only-but-ibis-allows-keyword=[]
+Scalar.cast           [str] ibis(self, target_type: 'Any', /) -> 'Value'
+      missing-in-facade=['target_type'] renamed/extra=['target'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [Decimal] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [_date] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [_datetime] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [_time] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [bool] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [float] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [int] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.fill_null      [str] ibis(self, fill_value: 'Scalar', /) -> 'Self'
+      missing-in-facade=['fill_value'] renamed/extra=['value'] positional-only-but-ibis-allows-keyword=[]
+Scalar.over           [int] ibis(self, window=None, *, rows=None, range=None, group_by=None, order_by=None) -> 'Self'
+      missing-in-facade=['rows', 'range'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]
+Scalar.over           [str] ibis(self, window=None, *, rows=None, range=None, group_by=None, order_by=None) -> 'Self'
+      missing-in-facade=['rows', 'range'] renamed/extra=[] positional-only-but-ibis-allows-keyword=[]

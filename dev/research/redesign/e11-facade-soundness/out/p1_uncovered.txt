@@ -1,0 +1,116 @@
+### pyright
+p1_uncovered.py:18:17 - information: Type of "o.amount.log()" is "Unknown"
+p1_uncovered.py:18:26 - error: Cannot access attribute "log" for class "Column[float]"
+p1_uncovered.py:19:17 - information: Type of "o.note.split(",")" is "Unknown"
+p1_uncovered.py:19:24 - error: Cannot access attribute "split" for class "Column[str]"
+p1_uncovered.py:20:17 - error: Operator "**" not supported for types "Column[float]" and "Literal[2]" (reportOperatorIssue)
+p1_uncovered.py:20:17 - information: Type of "o.amount ** 2" is "Unknown"
+p1_uncovered.py:21:17 - information: Type of "o.amount.mean().round(2)" is "Unknown"
+p1_uncovered.py:21:33 - error: Cannot access attribute "round" for class "Scalar[float]"
+p1_uncovered.py:22:17 - information: Type of "o.ts.minute()" is "Unknown"
+p1_uncovered.py:22:22 - error: Cannot access attribute "minute" for class "Column[datetime]"
+p1_uncovered.py:23:17 - information: Type of "o.amount.cumsum()" is "Unknown"
+p1_uncovered.py:23:26 - error: Cannot access attribute "cumsum" for class "Column[float]"
+p1_uncovered.py:24:17 - information: Type of "o.amount.lag()" is "Unknown"
+p1_uncovered.py:24:26 - error: Cannot access attribute "lag" for class "Column[float]"
+p1_uncovered.py:25:17 - information: Type of "o.amount.coalesce(0)" is "Value"
+p1_uncovered.py:25:35 - error: Argument of type "float" cannot be assigned to parameter "args" of type "Value" in function "coalesce"
+p1_uncovered.py:26:17 - information: Type of "o.amount.typeof()" is "StringValue"
+p1_uncovered.py:27:17 - information: Type of "o.note.like("a%")" is "Unknown"
+p1_uncovered.py:27:24 - error: Cannot access attribute "like" for class "Column[str]"
+p1_uncovered.py:28:17 - error: Operator "-" not supported for types "Column[datetime]" and "Column[datetime]" (reportOperatorIssue)
+p1_uncovered.py:28:17 - information: Type of "o.ts - o.ts" is "Unknown"
+p1_uncovered.py:29:17 - information: Type of "o.qty.typo()" is "Unknown"
+p1_uncovered.py:29:23 - error: Cannot access attribute "typo" for class "Column[int]"
+p1_uncovered.py:30:17 - information: Type of "o.note.abs()" is "Unknown"
+p1_uncovered.py:30:24 - error: Cannot access attribute "abs" for class "Column[str]"
+p1_uncovered.py:31:17 - information: Type of "tc.as_ibis(o.amount).log()" is "NumericValue"
+p1_uncovered.py:32:17 - information: Type of "tc.as_column(tc.as_ibis(o.amount).log())" is "Column[float]"
+### mypy
+p1_uncovered.py:18: error: "Column[float]" has no attribute "log"  [attr-defined]
+p1_uncovered.py:18: note: Revealed type is "Any"
+p1_uncovered.py:19: error: "Column[str]" has no attribute "split"  [attr-defined]
+p1_uncovered.py:19: note: Revealed type is "Any"
+p1_uncovered.py:20: error: Unsupported operand types for ** ("Column[float]" and "int")  [operator]
+p1_uncovered.py:20: note: Revealed type is "Any"
+p1_uncovered.py:21: error: "Scalar[float]" has no attribute "round"  [attr-defined]
+p1_uncovered.py:21: note: Revealed type is "Any"
+p1_uncovered.py:22: error: "Column[datetime]" has no attribute "minute"  [attr-defined]
+p1_uncovered.py:22: note: Revealed type is "Any"
+p1_uncovered.py:23: error: "Column[float]" has no attribute "cumsum"  [attr-defined]
+p1_uncovered.py:23: note: Revealed type is "Any"
+p1_uncovered.py:24: error: "Column[float]" has no attribute "lag"  [attr-defined]
+p1_uncovered.py:24: note: Revealed type is "Any"
+p1_uncovered.py:25: note: Revealed type is "ibis.expr.types.generic.Value"
+p1_uncovered.py:25: error: Argument 1 to "coalesce" of "Value" has incompatible type "float"; expected "Value"  [arg-type]
+p1_uncovered.py:26: note: Revealed type is "ibis.expr.types.strings.StringValue"
+p1_uncovered.py:27: error: "Column[str]" has no attribute "like"  [attr-defined]
+p1_uncovered.py:27: note: Revealed type is "Any"
+p1_uncovered.py:28: error: Invalid self argument "Column[datetime]" to attribute function "__sub__" with type "Callable[[Column[int], int | Column[int] | Scalar[int]], Column[int]]"  [misc]
+p1_uncovered.py:28: note: Revealed type is "tacit_next._column.Column[int]"
+p1_uncovered.py:28: error: Unsupported operand types for - ("Column[datetime]" and "Column[datetime]")  [operator]
+p1_uncovered.py:29: error: "Column[int]" has no attribute "typo"  [attr-defined]
+p1_uncovered.py:29: note: Revealed type is "Any"
+p1_uncovered.py:30: error: Invalid self argument "Column[str]" to attribute function "abs" with type "Callable[[Column[int]], Column[int]]"  [misc]
+p1_uncovered.py:30: note: Revealed type is "tacit_next._column.Column[int]"
+p1_uncovered.py:31: note: Revealed type is "ibis.expr.types.numeric.NumericValue"
+p1_uncovered.py:32: note: Revealed type is "tacit_next._column.Column[float]"
+Found 13 errors in 1 file (checked 1 source file)
+### ty
+p1_uncovered.py:18:17: error[unresolved-attribute] Object of type `Column[float]` has no attribute `log`
+p1_uncovered.py:18:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:19:17: error[unresolved-attribute] Object of type `Column[str]` has no attribute `split`
+p1_uncovered.py:19:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:20:17: error[unsupported-operator] Operator `**` is not supported between objects of type `Column[float]` and `Literal[2]`
+p1_uncovered.py:20:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:21:17: error[unresolved-attribute] Object of type `Scalar[float]` has no attribute `round`
+p1_uncovered.py:21:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:22:17: error[unresolved-attribute] Object of type `Column[datetime]` has no attribute `minute`
+p1_uncovered.py:22:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:23:17: error[unresolved-attribute] Object of type `Column[float]` has no attribute `cumsum`
+p1_uncovered.py:23:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:24:17: error[unresolved-attribute] Object of type `Column[float]` has no attribute `lag`
+p1_uncovered.py:24:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:25:17: info[revealed-type] Revealed type: `Value`
+p1_uncovered.py:25:35: error[invalid-argument-type] Argument to bound method `Value.coalesce` is incorrect: Expected `Value`, found `float*`
+p1_uncovered.py:26:17: info[revealed-type] Revealed type: `StringValue`
+p1_uncovered.py:27:17: error[unresolved-attribute] Object of type `Column[str]` has no attribute `like`
+p1_uncovered.py:27:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:28:17: error[unsupported-operator] Operator `-` is not supported between two objects of type `Column[datetime]`
+p1_uncovered.py:28:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:29:17: error[unresolved-attribute] Object of type `Column[int]` has no attribute `typo`
+p1_uncovered.py:29:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:30:17: error[no-matching-overload] No overload of bound method `Column.abs` matches arguments
+p1_uncovered.py:30:17: info[revealed-type] Revealed type: `Unknown`
+p1_uncovered.py:31:17: info[revealed-type] Revealed type: `NumericValue & Unknown`
+p1_uncovered.py:32:17: info[revealed-type] Revealed type: `Column[Unknown]`
+Found 27 diagnostics
+### pyrefly
+p1_uncovered.py:18:16-32: revealed type: Unknown [reveal-type]
+p1_uncovered.py:18:17-29: Object of class `Column` has no attribute `log` [missing-attribute]
+p1_uncovered.py:19:16-35: revealed type: Unknown [reveal-type]
+p1_uncovered.py:19:17-29: Object of class `Column` has no attribute `split` [missing-attribute]
+p1_uncovered.py:20:16-31: revealed type: Any [reveal-type]
+p1_uncovered.py:20:17-30: `**` is not supported between `Column[float]` and `Literal[2]` [unsupported-operation]
+p1_uncovered.py:21:16-42: revealed type: Unknown [reveal-type]
+p1_uncovered.py:21:17-38: Object of class `Scalar` has no attribute `round` [missing-attribute]
+p1_uncovered.py:22:16-31: revealed type: Unknown [reveal-type]
+p1_uncovered.py:22:17-28: Object of class `Column` has no attribute `minute` [missing-attribute]
+p1_uncovered.py:23:16-35: revealed type: Unknown [reveal-type]
+p1_uncovered.py:23:17-32: Object of class `Column` has no attribute `cumsum` [missing-attribute]
+p1_uncovered.py:24:16-32: revealed type: Unknown [reveal-type]
+p1_uncovered.py:24:17-29: Object of class `Column` has no attribute `lag` [missing-attribute]
+p1_uncovered.py:25:16-40: revealed type: Value [reveal-type]
+p1_uncovered.py:25:35-38: Argument `float` is not assignable to parameter `*args` with type `Value` in function `ibis.expr.types.generic.Value.coalesce` [bad-argument-type]
+p1_uncovered.py:26:16-35: revealed type: StringValue [reveal-type]
+p1_uncovered.py:27:16-35: revealed type: Unknown [reveal-type]
+p1_uncovered.py:27:17-28: Object of class `Column` has no attribute `like` [missing-attribute]
+p1_uncovered.py:28:16-29: revealed type: Unknown [reveal-type]
+p1_uncovered.py:28:17-28: `-` is not supported between `Column[datetime]` and `Column[datetime]` [unsupported-operation]
+p1_uncovered.py:29:16-30: revealed type: Unknown [reveal-type]
+p1_uncovered.py:29:17-27: Object of class `Column` has no attribute `typo` [missing-attribute]
+p1_uncovered.py:30:16-30: revealed type: Unknown [reveal-type]
+p1_uncovered.py:30:27-29: No matching overload found for function `tacit_next._column.Column.abs` called with arguments: () [no-matching-overload]
+p1_uncovered.py:31:16-44: revealed type: NumericValue [reveal-type]
+p1_uncovered.py:32:16-58: revealed type: Column[float] [reveal-type]
+ INFO 12 errors

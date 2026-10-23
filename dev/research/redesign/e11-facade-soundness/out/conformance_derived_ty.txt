@@ -1,0 +1,299 @@
+checker=ty ibis=12.0.0 cases=5408
+
+category counts: ACCEPT_BACKEND=296, ACCEPT_ERROR=136, EMPTY_NULL=374, FALSE_POS=24, WIDER=24, ok=4554
+
+declared-nullable vs ibis dtype.nullable on agreeing cases (declared, ibis): (False, False)=88, (False, True)=620, (True, False)=10, (True, True)=1320
+
+===== NULL_LIE: 0 cases in 0 groups
+
+===== KIND_LIE: 0 cases in 0 groups
+
+===== FAMILY_LIE: 0 cases in 0 groups
+
+===== ACCEPT_ERROR: 136 cases in 19 groups
+  x != "2024-01-01"            [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x != 1                       [C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x % 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x % 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x * 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x * 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x + 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x + 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x - 1                        [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x - 1.5                      [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x == "2024-01-01"            [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x == 1                       [C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  IbisTypeError: Arguments <col>:<T> and <lit>:<T> are not comparable
+  x.clip(lower=0.5)            [C:bool C:bool? S:bool S:bool?]  SignatureValidationError: Clip(r0 := InMemoryTable
+  x.clip(lower={L}, upper={L2}) [C:bool C:bool? S:bool S:bool?]  SignatureValidationError: Clip(r0 := InMemoryTable
+  x.fill_null(0)               [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x.fill_null(1.5)             [C:bool C:bool? S:bool S:bool?]  IbisTypeError: Cannot compute precedence for `<T>` and `<T>` types
+  x.over(group_by=y)           [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str? C:datetime C:datetime? C:date C:date? C:time C:time?]  IbisTypeError: No reduction or analytic function found to construct a window exp
+  x.round()                    [C:bool C:bool? S:bool S:bool?]  SignatureValidationError: Round(r0 := InMemoryTable
+  x.round(1)                   [C:bool C:bool? S:bool S:bool?]  SignatureValidationError: Round(r0 := InMemoryTable
+
+===== ACCEPT_BACKEND: 296 cases in 58 groups
+  x % x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x % y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x % yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x % {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x * {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x + {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - x                        [C:datetime C:datetime? S:datetime S:datetime?]  ArrowNotImplementedError: Unsupported cast from month_day_nano_interval to durat
+  x - x                        [C:date C:date? S:date S:date?]  ArrowNotImplementedError: Unsupported cast from <T> to month_day_nano_interval u
+  x - y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - y                        [C:datetime C:datetime? S:datetime S:datetime?]  ArrowNotImplementedError: Unsupported cast from month_day_nano_interval to durat
+  x - y                        [C:date C:date? S:date S:date?]  ArrowNotImplementedError: Unsupported cast from <T> to month_day_nano_interval u
+  x - yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - yn                       [C:datetime C:datetime? S:datetime S:datetime?]  ArrowNotImplementedError: Unsupported cast from month_day_nano_interval to durat
+  x - yn                       [C:date C:date? S:date S:date?]  ArrowNotImplementedError: Unsupported cast from <T> to month_day_nano_interval u
+  x - {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x - {L}                      [C:datetime C:datetime? S:datetime S:datetime?]  ArrowNotImplementedError: Unsupported cast from month_day_nano_interval to durat
+  x - {L}                      [C:date C:date? S:date S:date?]  ArrowNotImplementedError: Unsupported cast from <T> to month_day_nano_interval u
+  x / 1                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / 1.5                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / x                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / y                        [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / yn                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x / {L}                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // 1                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // 1.5                     [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // x                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // y                       [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // yn                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x // {L}                     [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x.abs()                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x.asc()                      [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  ParserException: Parser Error: syntax error at or near "ASC"
+  x.between({L}, {L2})         [C:time C:time? S:time S:time?]  BinderException: Binder Error: Cannot mix values of type <T> and <T> in BETWEEN 
+  x.cast("date")               [C:bool C:bool? C:int C:int? C:float C:float? C:time C:time? S:bool S:bool? S:int S:int? S:float S:float? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast("date")               [C:Decimal C:Decimal? S:Decimal S:Decimal?]  ConversionException: Conversion Error: Unimplemented type for cast (DECIMAL(12,2
+  x.cast("decimal(10, 2)")     [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> DECIM
+  x.cast("float64")            [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast("int64")              [C:datetime C:datetime? C:date C:date? C:time C:time? S:datetime S:datetime? S:date S:date? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast("timestamp")          [C:bool C:bool? C:time C:time? S:bool S:bool? S:time S:time?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.cast(datetime)             [C:bool C:bool? S:bool S:bool?]  ConversionException: Conversion Error: Unimplemented type for cast (<T> -> <T>) 
+  x.ceil()                     [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  x.desc()                     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  ParserException: Parser Error: syntax error at or near "DESC"
+  x.fill_null({L})             [C:time C:time? S:time S:time?]  BinderException: Binder Error: Cannot mix values of type <T> and <T> in COALESCE
+  x.floor()                    [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} % x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} * x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} + x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} - x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} - x                      [C:datetime C:datetime? S:datetime S:datetime?]  ArrowNotImplementedError: Unsupported cast from month_day_nano_interval to durat
+  {L} - x                      [C:date C:date? S:date S:date?]  ArrowNotImplementedError: Unsupported cast from <T> to month_day_nano_interval u
+  {L} / x                      [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+  {L} // x                     [C:bool C:bool? S:bool S:bool?]  BinderException: Binder Error: No function matches the given name and argument t
+
+===== EMPTY_NULL: 374 cases in 193 groups
+  -x                           [S:bool]  declared Scalar[bool], NULL on empty input
+  -x                           [S:int]  declared Scalar[int], NULL on empty input
+  -x                           [S:float]  declared Scalar[float], NULL on empty input
+  -x                           [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x != "2024-01-01"            [S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x != 1                       [S:bool S:int S:float S:Decimal]  declared Scalar[bool], NULL on empty input
+  x != {L}                     [S:bool S:int S:float S:Decimal S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x % 1                        [S:int]  declared Scalar[int], NULL on empty input
+  x % 1                        [S:float]  declared Scalar[float], NULL on empty input
+  x % 1                        [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x % 1.5                      [S:int S:float]  declared Scalar[float], NULL on empty input
+  x % 1.5                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x % x                        [S:int]  declared Scalar[int], NULL on empty input
+  x % x                        [S:float]  declared Scalar[float], NULL on empty input
+  x % x                        [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x % {L}                      [S:int]  declared Scalar[int], NULL on empty input
+  x % {L}                      [S:float]  declared Scalar[float], NULL on empty input
+  x % {L}                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x & True                     [S:bool]  declared Scalar[bool], NULL on empty input
+  x & True                     [S:int]  declared Scalar[int], NULL on empty input
+  x * 1                        [S:int]  declared Scalar[int], NULL on empty input
+  x * 1                        [S:float]  declared Scalar[float], NULL on empty input
+  x * 1                        [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x * 1                        [S:str]  declared Scalar[str], NULL on empty input
+  x * 1.5                      [S:int S:float]  declared Scalar[float], NULL on empty input
+  x * 1.5                      [S:str]  declared Scalar[str], NULL on empty input
+  x * x                        [S:int]  declared Scalar[int], NULL on empty input
+  x * x                        [S:float]  declared Scalar[float], NULL on empty input
+  x * {L}                      [S:int]  declared Scalar[int], NULL on empty input
+  x * {L}                      [S:float]  declared Scalar[float], NULL on empty input
+  x * {L}                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x + "a"                      [S:str]  declared Scalar[str], NULL on empty input
+  x + 1                        [S:int]  declared Scalar[int], NULL on empty input
+  x + 1                        [S:float]  declared Scalar[float], NULL on empty input
+  x + 1                        [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x + 1                        [S:str]  declared Scalar[str], NULL on empty input
+  x + 1.5                      [S:int S:float]  declared Scalar[float], NULL on empty input
+  x + 1.5                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x + 1.5                      [S:str]  declared Scalar[str], NULL on empty input
+  x + x                        [S:int]  declared Scalar[int], NULL on empty input
+  x + x                        [S:float]  declared Scalar[float], NULL on empty input
+  x + x                        [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x + x                        [S:str]  declared Scalar[str], NULL on empty input
+  x + {L}                      [S:int]  declared Scalar[int], NULL on empty input
+  x + {L}                      [S:float]  declared Scalar[float], NULL on empty input
+  x + {L}                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x + {L}                      [S:str]  declared Scalar[str], NULL on empty input
+  x - 1                        [S:int]  declared Scalar[int], NULL on empty input
+  x - 1                        [S:float]  declared Scalar[float], NULL on empty input
+  x - 1                        [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x - 1.5                      [S:int S:float]  declared Scalar[float], NULL on empty input
+  x - 1.5                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x - x                        [S:int]  declared Scalar[int], NULL on empty input
+  x - x                        [S:float]  declared Scalar[float], NULL on empty input
+  x - x                        [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x - {L}                      [S:int]  declared Scalar[int], NULL on empty input
+  x - {L}                      [S:float]  declared Scalar[float], NULL on empty input
+  x - {L}                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x / 1                        [S:int S:float S:Decimal]  declared Scalar[float], NULL on empty input
+  x / 1.5                      [S:int S:float S:Decimal]  declared Scalar[float], NULL on empty input
+  x / x                        [S:int S:float S:Decimal]  declared Scalar[float], NULL on empty input
+  x / {L}                      [S:int S:float S:Decimal]  declared Scalar[float], NULL on empty input
+  x // 1                       [S:int S:float S:Decimal]  declared Scalar[int], NULL on empty input
+  x // 1.5                     [S:int S:float S:Decimal]  declared Scalar[int], NULL on empty input
+  x // x                       [S:int S:float S:Decimal]  declared Scalar[int], NULL on empty input
+  x // {L}                     [S:int S:float S:Decimal]  declared Scalar[int], NULL on empty input
+  x < "2024-01-01"             [S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x < 1                        [S:bool S:int S:float S:Decimal]  declared Scalar[bool], NULL on empty input
+  x < {L}                      [S:bool S:int S:float S:Decimal S:str S:datetime S:date]  declared Scalar[bool], NULL on empty input
+  x <= "2024-01-01"            [S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x <= 1                       [S:bool S:int S:float S:Decimal]  declared Scalar[bool], NULL on empty input
+  x <= {L}                     [S:bool S:int S:float S:Decimal S:str S:datetime S:date]  declared Scalar[bool], NULL on empty input
+  x == "2024-01-01"            [S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x == 1                       [S:bool S:int S:float S:Decimal]  declared Scalar[bool], NULL on empty input
+  x == {L}                     [S:bool S:int S:float S:Decimal S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x > "2024-01-01"             [S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x > 1                        [S:bool S:int S:float S:Decimal]  declared Scalar[bool], NULL on empty input
+  x > {L}                      [S:bool S:int S:float S:Decimal S:str S:datetime S:date]  declared Scalar[bool], NULL on empty input
+  x >= "2024-01-01"            [S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x >= 1                       [S:bool S:int S:float S:Decimal]  declared Scalar[bool], NULL on empty input
+  x >= {L}                     [S:bool S:int S:float S:Decimal S:str S:datetime S:date]  declared Scalar[bool], NULL on empty input
+  x ^ True                     [S:bool]  declared Scalar[bool], NULL on empty input
+  x ^ True                     [S:int]  declared Scalar[int], NULL on empty input
+  x | True                     [S:int]  declared Scalar[int], NULL on empty input
+  x.abs()                      [S:int]  declared Scalar[int], NULL on empty input
+  x.abs()                      [S:float]  declared Scalar[float], NULL on empty input
+  x.abs()                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.all()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.any()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.between({L}, {L2})         [S:bool S:int S:float S:Decimal S:str S:datetime S:date]  declared Scalar[bool], NULL on empty input
+  x.cast("date")               [S:datetime S:date]  declared Scalar[date], NULL on empty input
+  x.cast("float64")            [S:bool S:int S:float S:Decimal]  declared Scalar[float], NULL on empty input
+  x.cast("int64")              [S:bool S:int S:float S:Decimal]  declared Scalar[int], NULL on empty input
+  x.cast("string")             [S:bool S:int S:float S:Decimal S:str S:datetime S:date S:time]  declared Scalar[str], NULL on empty input
+  x.cast("timestamp")          [S:int S:float S:Decimal S:datetime S:date]  declared Scalar[datetime], NULL on empty input
+  x.cast(Decimal)              [S:bool S:int S:float S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.cast(bool)                 [S:bool S:int S:float S:Decimal]  declared Scalar[bool], NULL on empty input
+  x.cast(date)                 [S:datetime S:date]  declared Scalar[date], NULL on empty input
+  x.cast(datetime)             [S:int S:float S:Decimal S:datetime S:date]  declared Scalar[datetime], NULL on empty input
+  x.cast(float)                [S:bool S:int S:float S:Decimal]  declared Scalar[float], NULL on empty input
+  x.cast(int)                  [S:bool S:int S:float S:Decimal]  declared Scalar[int], NULL on empty input
+  x.cast(str)                  [S:bool S:int S:float S:Decimal S:str S:datetime S:date S:time]  declared Scalar[str], NULL on empty input
+  x.ceil()                     [S:int S:float]  declared Scalar[int], NULL on empty input
+  x.ceil()                     [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.clip(lower=0.5)            [S:int]  declared Scalar[int], NULL on empty input
+  x.clip(lower=0.5)            [S:float]  declared Scalar[float], NULL on empty input
+  x.clip(lower=0.5)            [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.clip(lower={L}, upper={L2}) [S:int]  declared Scalar[int], NULL on empty input
+  x.clip(lower={L}, upper={L2}) [S:float]  declared Scalar[float], NULL on empty input
+  x.clip(lower={L}, upper={L2}) [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.contains("a")              [S:str]  declared Scalar[bool], NULL on empty input
+  x.date()                     [S:datetime]  declared Scalar[date], NULL on empty input
+  x.day()                      [S:datetime S:date]  declared Scalar[int], NULL on empty input
+  x.endswith("a")              [S:str]  declared Scalar[bool], NULL on empty input
+  x.epoch_seconds()            [S:datetime S:date]  declared Scalar[int], NULL on empty input
+  x.floor()                    [S:int S:float]  declared Scalar[int], NULL on empty input
+  x.floor()                    [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.hour()                     [S:datetime S:time]  declared Scalar[int], NULL on empty input
+  x.isin([{L}])                [S:bool S:int S:float S:Decimal S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x.isin(y)                    [S:bool S:int S:float S:Decimal S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x.length()                   [S:str]  declared Scalar[int], NULL on empty input
+  x.lower()                    [S:str]  declared Scalar[str], NULL on empty input
+  x.max()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.max()                      [C:int]  declared Scalar[int], NULL on empty input
+  x.max()                      [C:float]  declared Scalar[float], NULL on empty input
+  x.max()                      [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.max()                      [C:str]  declared Scalar[str], NULL on empty input
+  x.max()                      [C:datetime]  declared Scalar[datetime], NULL on empty input
+  x.max()                      [C:date]  declared Scalar[date], NULL on empty input
+  x.max()                      [C:time]  declared Scalar[time], NULL on empty input
+  x.mean()                     [C:bool C:int C:float]  declared Scalar[float], NULL on empty input
+  x.mean()                     [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.median()                   [C:bool]  declared Scalar[bool], NULL on empty input
+  x.median()                   [C:int C:float]  declared Scalar[float], NULL on empty input
+  x.median()                   [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.median()                   [C:str]  declared Scalar[str], NULL on empty input
+  x.median()                   [C:datetime]  declared Scalar[datetime], NULL on empty input
+  x.median()                   [C:date]  declared Scalar[date], NULL on empty input
+  x.median()                   [C:time]  declared Scalar[time], NULL on empty input
+  x.min()                      [C:bool]  declared Scalar[bool], NULL on empty input
+  x.min()                      [C:int]  declared Scalar[int], NULL on empty input
+  x.min()                      [C:float]  declared Scalar[float], NULL on empty input
+  x.min()                      [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.min()                      [C:str]  declared Scalar[str], NULL on empty input
+  x.min()                      [C:datetime]  declared Scalar[datetime], NULL on empty input
+  x.min()                      [C:date]  declared Scalar[date], NULL on empty input
+  x.min()                      [C:time]  declared Scalar[time], NULL on empty input
+  x.month()                    [S:datetime S:date]  declared Scalar[int], NULL on empty input
+  x.name("r")                  [S:bool]  declared Scalar[bool], NULL on empty input
+  x.name("r")                  [S:int]  declared Scalar[int], NULL on empty input
+  x.name("r")                  [S:float]  declared Scalar[float], NULL on empty input
+  x.name("r")                  [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.name("r")                  [S:str]  declared Scalar[str], NULL on empty input
+  x.name("r")                  [S:datetime]  declared Scalar[datetime], NULL on empty input
+  x.name("r")                  [S:date]  declared Scalar[date], NULL on empty input
+  x.name("r")                  [S:time]  declared Scalar[time], NULL on empty input
+  x.notin([{L}])               [S:bool S:int S:float S:Decimal S:str S:datetime S:date S:time]  declared Scalar[bool], NULL on empty input
+  x.re_extract("(a)", 1)       [S:str]  declared Scalar[str], NULL on empty input
+  x.re_search("a")             [S:str]  declared Scalar[bool], NULL on empty input
+  x.replace("a", "b")          [S:str]  declared Scalar[str], NULL on empty input
+  x.round()                    [S:int S:float]  declared Scalar[int], NULL on empty input
+  x.round()                    [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.round(1)                   [S:int S:float]  declared Scalar[float], NULL on empty input
+  x.round(1)                   [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.startswith("a")            [S:str]  declared Scalar[bool], NULL on empty input
+  x.strftime("%Y")             [S:datetime S:date]  declared Scalar[str], NULL on empty input
+  x.strip()                    [S:str]  declared Scalar[str], NULL on empty input
+  x.substr(0, 2)               [S:str]  declared Scalar[str], NULL on empty input
+  x.sum()                      [C:bool C:int]  declared Scalar[int], NULL on empty input
+  x.sum()                      [C:float]  declared Scalar[float], NULL on empty input
+  x.sum()                      [C:Decimal]  declared Scalar[Decimal], NULL on empty input
+  x.truncate("D")              [S:datetime]  declared Scalar[datetime], NULL on empty input
+  x.truncate("D")              [S:date]  declared Scalar[date], NULL on empty input
+  x.truncate("h")              [S:datetime]  declared Scalar[datetime], NULL on empty input
+  x.upper()                    [S:str]  declared Scalar[str], NULL on empty input
+  x.year()                     [S:datetime S:date]  declared Scalar[int], NULL on empty input
+  {L} % x                      [S:int]  declared Scalar[int], NULL on empty input
+  {L} % x                      [S:float]  declared Scalar[float], NULL on empty input
+  {L} % x                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  {L} * x                      [S:int]  declared Scalar[int], NULL on empty input
+  {L} * x                      [S:float]  declared Scalar[float], NULL on empty input
+  {L} * x                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  {L} + x                      [S:int]  declared Scalar[int], NULL on empty input
+  {L} + x                      [S:float]  declared Scalar[float], NULL on empty input
+  {L} + x                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  {L} + x                      [S:str]  declared Scalar[str], NULL on empty input
+  {L} - x                      [S:int]  declared Scalar[int], NULL on empty input
+  {L} - x                      [S:float]  declared Scalar[float], NULL on empty input
+  {L} - x                      [S:Decimal]  declared Scalar[Decimal], NULL on empty input
+  {L} / x                      [S:int S:float S:Decimal]  declared Scalar[float], NULL on empty input
+  {L} // x                     [S:int S:float S:Decimal]  declared Scalar[int], NULL on empty input
+  ~x                           [S:bool]  declared Scalar[bool], NULL on empty input
+  ~x                           [S:int]  declared Scalar[int], NULL on empty input
+
+===== WIDER: 24 cases in 3 groups
+  x.cast("decimal(10, 2)")     [C:bool C:bool? C:int C:int? C:float C:float? C:Decimal C:Decimal? C:str C:str?]  declared Column[Any], runtime decimal(10, 2)
+  x.cast("decimal(10, 2)")     [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str?]  declared Scalar[Any], runtime decimal(10, 2)
+  {L} % x                      [C:str C:str? S:str S:str?]  declared str (fallback), runtime str[None]
+
+===== FALSE_POS: 24 cases in 5 groups
+  x + None                     [C:str C:str?]  [unsupported-operator] Operator `+` is not supported between objects of type `Co
+  x + None                     [S:str S:str?]  [unsupported-operator] Operator `+` is not supported between objects of type `Sc
+  x.fill_null(1.5)             [C:Decimal C:Decimal?]  [no-matching-overload] No overload of bound method `Column.fill_null` matches ar
+  x.fill_null(1.5)             [S:Decimal S:Decimal?]  [no-matching-overload] No overload of bound method `Scalar.fill_null` matches ar
+  x.fill_null(y)               [S:bool S:bool? S:int S:int? S:float S:float? S:Decimal S:Decimal? S:str S:str? S:datetime S:datetime? S:date S:date? S:time S:time?]  [no-matching-overload] No overload of bound method `Scalar.fill_null` matches ar

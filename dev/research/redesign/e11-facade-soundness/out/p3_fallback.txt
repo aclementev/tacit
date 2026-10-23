@@ -1,0 +1,108 @@
+# p3_fallback.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e8-prototype/src
+L1 unreachable: NumericValue.log                             | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L2 unreachable: StringValue.split                            | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L3 unreachable operator __pow__                              | E Unknown                      | E Any                          | E Unknown                      | E Any                         
+L4 Scalar.round not on facade                                | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L5 TimestampValue.minute                                     | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L6 window fn                                                 | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L7 window fn                                                 | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L8 via ir.Value (inherited)                                  | E Value                        | E Value                        | E Value                        | E Value                       
+L9 via ir.Value                                              | StringValue                    | StringValue                    | StringValue                    | StringValue                   
+L10 StringValue.like                                         | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L11 timestamp diff -> interval                               | E Unknown                      | E Column[int]                  | E Unknown                      | E Unknown                     
+L12 genuine typo (must stay an error)                        | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L13 wrong method for family (must stay an error)             | E Unknown                      | E Column[int]                  | E Unknown                      | E Unknown                     
+L14 escape hatch                                             | NumericValue                   | NumericValue                   | NumericValue & Unknown         | NumericValue                  
+L15 escape hatch back                                        | Column[float]                  | Column[float]                  | Column[Unknown]                | Column[float]                 
+L16 wrong family, uncovered method (must stay an error)      | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L17 wrong family (must stay an error)                        | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L18 chaining on an ibis-typed fallback result                | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L19 downstream misuse after a method (must be an error)      | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L20 derived result keeps Column typing                       | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L21 ibis parameter the E8 facade omits                       | E Unknown                      | E Scalar[float]                | E Unknown                      | E Unknown                     
+L22 keyword call (E8: positional-only)                       | E Unknown                      | E Column[bool]                 | E Unknown                      | E Unknown                     
+L23 column bound (E8: float literal only)                    | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L24 method the probe could not type (fallback)               | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L25 int.round(digits) is float64 at runtime                  | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+L26 float.round() is int64 at runtime                        | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+# p3_fallback.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e11-facade-soundness/derived/out_ibis
+L1 unreachable: NumericValue.log                             | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L2 unreachable: StringValue.split                            | ArrayColumn                    | ArrayColumn                    | ArrayColumn                    | ArrayColumn                   
+L3 unreachable operator __pow__                              | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L4 Scalar.round not on facade                                | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]          
+L5 TimestampValue.minute                                     | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+L6 window fn                                                 | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L7 window fn                                                 | Column[float | None]           | Column[float | None]           | Column[float | None]           | Column[float | None]          
+L8 via ir.Value (inherited)                                  | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L9 via ir.Value                                              | Column[str]                    | Column[str]                    | Column[str]                    | Column[str]                   
+L10 StringValue.like                                         | Column[bool]                   | Column[bool]                   | Column[bool]                   | Column[bool]                  
+L11 timestamp diff -> interval                               | IntervalColumn                 | IntervalColumn                 | IntervalColumn                 | IntervalColumn                
+L12 genuine typo (must stay an error)                        | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L13 wrong method for family (must stay an error)             | E Unknown                      | E Column[int]                  | E Unknown                      | E Unknown                     
+L14 escape hatch                                             | NumericValue                   | NumericValue                   | NumericValue & Unknown         | NumericValue                  
+L15 escape hatch back                                        | Column[float]                  | Column[float]                  | Column[Unknown]                | Column[float]                 
+L16 wrong family, uncovered method (must stay an error)      | E Unknown                      | E ArrayColumn                  | E Unknown                      | E Unknown                     
+L17 wrong family (must stay an error)                        | E Unknown                      | E Column[float]                | E Unknown                      | E Unknown                     
+L18 chaining on an ibis-typed fallback result                | IntegerValue                   | IntegerValue                   | IntegerValue & Unknown         | IntegerValue                  
+L19 downstream misuse after a method (must be an error)      | E Unknown                      | E Column[str]                  | E Unknown                      | E Unknown                     
+L20 derived result keeps Column typing                       | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+L21 ibis parameter the E8 facade omits                       | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]          
+L22 keyword call (E8: positional-only)                       | Column[bool]                   | Column[bool]                   | Column[bool]                   | Column[bool]                  
+L23 column bound (E8: float literal only)                    | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L24 method the probe could not type (fallback)               | StringColumn                   | StringColumn                   | StringColumn                   | StringColumn                  
+L25 int.round(digits) is float64 at runtime                  | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L26 float.round() is int64 at runtime                        | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+# p3_fallback.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e11-facade-soundness/derived/out_any
+L1 unreachable: NumericValue.log                             | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L2 unreachable: StringValue.split                            | ArrayColumn                    | ArrayColumn                    | ArrayColumn                    | ArrayColumn                   
+L3 unreachable operator __pow__                              | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L4 Scalar.round not on facade                                | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]          
+L5 TimestampValue.minute                                     | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+L6 window fn                                                 | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L7 window fn                                                 | Column[float | None]           | Column[float | None]           | Column[float | None]           | Column[float | None]          
+L8 via ir.Value (inherited)                                  | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L9 via ir.Value                                              | Column[str]                    | Column[str]                    | Column[str]                    | Column[str]                   
+L10 StringValue.like                                         | Column[bool]                   | Column[bool]                   | Column[bool]                   | Column[bool]                  
+L11 timestamp diff -> interval                               | IntervalColumn                 | IntervalColumn                 | IntervalColumn                 | IntervalColumn                
+L12 genuine typo (must stay an error)                        | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L13 wrong method for family (must stay an error)             | E Unknown                      | E Column[int]                  | E Unknown                      | E Unknown                     
+L14 escape hatch                                             | NumericValue                   | NumericValue                   | NumericValue & Unknown         | NumericValue                  
+L15 escape hatch back                                        | Column[float]                  | Column[float]                  | Column[Unknown]                | Column[float]                 
+L16 wrong family, uncovered method (must stay an error)      | E Unknown                      | E ArrayColumn                  | E Unknown                      | E Unknown                     
+L17 wrong family (must stay an error)                        | E Unknown                      | E Column[float]                | E Unknown                      | E Unknown                     
+L18 chaining on an ibis-typed fallback result                | IntegerValue                   | IntegerValue                   | IntegerValue & Unknown         | IntegerValue                  
+L19 downstream misuse after a method (must be an error)      | E Unknown                      | E Column[str]                  | E Unknown                      | E Unknown                     
+L20 derived result keeps Column typing                       | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+L21 ibis parameter the E8 facade omits                       | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]          
+L22 keyword call (E8: positional-only)                       | Column[bool]                   | Column[bool]                   | Column[bool]                   | Column[bool]                  
+L23 column bound (E8: float literal only)                    | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L24 method the probe could not type (fallback)               | Any                            | Any                            | Any                            | Any                           
+L25 int.round(digits) is float64 at runtime                  | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L26 float.round() is int64 at runtime                        | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+# p3_fallback.py against /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e11-facade-soundness/derived/out_none
+L1 unreachable: NumericValue.log                             | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L2 unreachable: StringValue.split                            | ArrayColumn                    | ArrayColumn                    | ArrayColumn                    | ArrayColumn                   
+L3 unreachable operator __pow__                              | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L4 Scalar.round not on facade                                | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]          
+L5 TimestampValue.minute                                     | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+L6 window fn                                                 | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L7 window fn                                                 | Column[float | None]           | Column[float | None]           | Column[float | None]           | Column[float | None]          
+L8 via ir.Value (inherited)                                  | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L9 via ir.Value                                              | Column[str]                    | Column[str]                    | Column[str]                    | Column[str]                   
+L10 StringValue.like                                         | Column[bool]                   | Column[bool]                   | Column[bool]                   | Column[bool]                  
+L11 timestamp diff -> interval                               | IntervalColumn                 | IntervalColumn                 | IntervalColumn                 | IntervalColumn                
+L12 genuine typo (must stay an error)                        | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L13 wrong method for family (must stay an error)             | E Unknown                      | E Column[int]                  | E Unknown                      | E Unknown                     
+L14 escape hatch                                             | NumericValue                   | NumericValue                   | NumericValue & Unknown         | NumericValue                  
+L15 escape hatch back                                        | Column[float]                  | Column[float]                  | Column[Unknown]                | Column[float]                 
+L16 wrong family, uncovered method (must stay an error)      | E Unknown                      | E ArrayColumn                  | E Unknown                      | E Unknown                     
+L17 wrong family (must stay an error)                        | E Unknown                      | E Column[float]                | E Unknown                      | E Unknown                     
+L18 chaining on an ibis-typed fallback result                | IntegerValue                   | IntegerValue                   | IntegerValue & Unknown         | IntegerValue                  
+L19 downstream misuse after a method (must be an error)      | E Unknown                      | E Column[str]                  | E Unknown                      | E Unknown                     
+L20 derived result keeps Column typing                       | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
+L21 ibis parameter the E8 facade omits                       | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]           | Scalar[float | None]          
+L22 keyword call (E8: positional-only)                       | Column[bool]                   | Column[bool]                   | Column[bool]                   | Column[bool]                  
+L23 column bound (E8: float literal only)                    | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L24 method the probe could not type (fallback)               | E Unknown                      | E Any                          | E Unknown                      | E Unknown                     
+L25 int.round(digits) is float64 at runtime                  | Column[float]                  | Column[float]                  | Column[float]                  | Column[float]                 
+L26 float.round() is int64 at runtime                        | Column[int]                    | Column[int]                    | Column[int]                    | Column[int]                   
