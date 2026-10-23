@@ -1,0 +1,10 @@
+== n=1,000,000 bad=0.0 narwhals
+{"label": "n=1,000,000 bad=0.0 narwhals | A0 current tacit Schema.parse", "queries": 16, "min_s": 0.254, "med_s": 0.265, "cpu_min_s": 0.37, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 narwhals | A1 pandera lazy=True, n_failure_cases=5", "queries": 16, "min_s": 0.26, "med_s": 0.269, "cpu_min_s": 0.383, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 narwhals | A2 = A1 + cast once, materialize (temp table)", "queries": 18, "min_s": 0.391, "med_s": 0.394, "cpu_min_s": 0.656, "outcome": "ok"}
+{"label": "n=1,000,000 bad=0.0 narwhals | B  hybrid (pandera checks, 1 fused query)", "queries": 1, "min_s": 0.153, "med_s": 0.156, "cpu_min_s": 0.252, "outcome": "ok"}
+== n=1,000,000 bad=0.001 narwhals
+{"label": "n=1,000,000 bad=0.001 narwhals | A0 current tacit Schema.parse", "queries": 16, "min_s": 0.303, "med_s": 0.309, "cpu_min_s": 0.44, "outcome": "ConstraintError"}
+{"label": "n=1,000,000 bad=0.001 narwhals | A1 pandera lazy=True, n_failure_cases=5", "queries": 37, "min_s": 0.535, "med_s": 0.571, "cpu_min_s": 0.679, "outcome": "RelationError"}
+{"label": "n=1,000,000 bad=0.001 narwhals | A2 = A1 + cast once, materialize (temp table)", "queries": 39, "min_s": 0.661, "med_s": 0.671, "cpu_min_s": 0.971, "outcome": "RelationError"}
+{"label": "n=1,000,000 bad=0.001 narwhals | B  hybrid (pandera checks, 1 fused query)", "queries": 2, "min_s": 0.221, "med_s": 0.225, "cpu_min_s": 0.345, "outcome": "report:7 failures"}

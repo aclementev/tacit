@@ -1,0 +1,27 @@
+### parity on duckdb: 685 cases -> {'MATCH': 677, 'MISMATCH': 7, 'COUNT-DIFF': 1}
+logged data queries: pandera total 3998, hybrid total 1121; max per case pandera 12, hybrid 2
+queries per hybrid run: {2: 514, 1: 93, 0: 78}; fallback checks: 0
+MISMATCH   custom: registered table-output
+    pandera={('x', None, 'CHECK_ERROR'): None}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): 1}
+MISMATCH   custom: lambda dict output
+    pandera={('x', None, 'CHECK_ERROR'): None}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): 2}
+MISMATCH   custom: element_wise annotated
+    pandera={('x', None, 'CHECK_ERROR'): None}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): 1}
+COUNT-DIFF custom: n_failure_cases=1
+    pandera={('x', 0, 'DATAFRAME_CHECK'): 1}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): 2}
+MISMATCH   custom: groupby (ignored upstream)
+    pandera={('x', None, 'CHECK_ERROR'): None}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): 2}
+MISMATCH   df: df-level bool table
+    pandera={(None, None, 'CHECK_ERROR'): None}
+    hybrid ={(None, 0, 'DATAFRAME_CHECK'): 1}
+MISMATCH   df: df-level element_wise
+    pandera={(None, None, 'CHECK_ERROR'): None}
+    hybrid ={(None, 0, 'DATAFRAME_CHECK'): 1}
+MISMATCH   df: df-level ignore_na table
+    pandera={(None, None, 'CHECK_ERROR'): None}
+    hybrid ={(None, 0, 'DATAFRAME_CHECK'): 1}

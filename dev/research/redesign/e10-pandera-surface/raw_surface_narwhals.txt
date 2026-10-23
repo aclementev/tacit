@@ -1,0 +1,49 @@
+Installed 11 packages in 11ms
+### backend: narwhals  pandera=0.34.1 ibis=12.0.0
+| feature | verdict | detail |
+|---|---|---|
+| Column dtype (int64 vs int32) | WORKS | bad -> WRONG_DATATYPE |
+| Column dtype timestamp vs duckdb timestamp(6) | WORKS | pass  |
+| Column nullable=False (+NaN) | WORKS | bad -> SERIES_CONTAINS_NULLS |
+| Column unique=True | WORKS | bad -> SERIES_CONTAINS_DUPLICATES |
+| Column coerce=True (string->int64) | IGNORED | FAIL WRONG_DATATYPE |
+| DataFrameSchema coerce=True | IGNORED | FAIL WRONG_DATATYPE |
+| coerce=True with bad value 'N/A' | IGNORED | FAIL WRONG_DATATYPE |
+| Column required=False | WORKS | pass |
+| Column regex=True | WORKS | bad -> DATAFRAME_CHECK |
+| Column default= (fill nulls) | WORKS | values after validate: [1, 0] |
+| Column drop_invalid_rows=True | WORKS | rows kept: [1, 2] |
+| Column title/description/metadata | WORKS | metadata={'k': 1} (pure metadata, no runtime effect) |
+| strict=True | WORKS | bad -> COLUMN_NOT_IN_SCHEMA |
+| strict='filter' | WORKS | pass cols=('x',) |
+| ordered=True | WORKS | bad -> COLUMN_NOT_ORDERED |
+| DataFrameSchema unique=[cols] | WORKS | bad -> DUPLICATES |
+| report_duplicates='exclude_first' | WORKS | bad -> DUPLICATES |
+| add_missing_columns=True | RAISES | NotImplementedError:  |
+| dataframe-level Check (a < b) | WORKS | bad -> DATAFRAME_CHECK |
+| validate(head=1) subsampling | WORKS | head=1 over [1,-1] -> pass (TODO in backend source) |
+| validate(sample=1, random_state=0) | ? | EXC NotImplementedError: sample= is not supported in the Narwhals backend. Use head= or tail= instead. |
+| Parser (column-level) | IGNORED | [-1] |
+| lazy=True aggregates all errors | RAISES | RelationError: Table schemas must be equal for set operations. |
+| SchemaErrors.message (json summary) | WORKS | keys=['DATA'] |
+| Check raise_warning=True | WORKS | pass, 2 warning(s) |
+| Check n_failure_cases=2 | RAISES | ExpressionError: Use .count() instead |
+| Check ignore_na=False (builtin ge on NULL) | IGNORED | NULL row with ignore_na=False -> pass (bool_and skips NULL) |
+| Check groupby='g' | PARTIAL | group b sums to -1 -> FAIL |
+| Check element_wise=True (annotated fn) | BROKEN | good=FAIL:CHECK_ERROR bad=FAIL:CHECK_ERROR |
+| Check element_wise=True (lambda) | BROKEN | good=FAIL:CHECK_ERROR bad=FAIL:CHECK_ERROR |
+| Check name=/error= | WORKS | Check '<Check nonneg: must be >= 0>' failed. |
+| register_check_method (vectorized) on ibis | WORKS | bad -> DATAFRAME_CHECK |
+| register_builtin_check (new dispatch for IbisData) | WORKS | API exists (pandera-internal: it's how backends add builtins); see hybrid parity for use |
+| DataFrameModel + Field(ge, isin, unique, nullable) | WORKS | ge/isin -> RelationError: Table schemas must be equal for set operations.; Field(unique=True) dup -> FAIL |
+| DataFrameModel Config(strict, coerce, unique) | WORKS | bad -> DUPLICATES |
+| DataFrameModel @pa.check / @pa.dataframe_check | WORKS | bad -> DATAFRAME_CHECK |
+| DataFrameModel @parser | IGNORED | pass [-1] |
+| pandera.typing.ibis Table[Model] + @check_types | WORKS | bad input rejected by decorator |
+| to_yaml / from_yaml roundtrip | WORKS | 142 chars |
+| to_json / from_json | WORKS | 113 chars |
+| to_script | WORKS | import ibis |
+| infer_schema(ibis.Table) | WORKS | inferred checks on x: ['greater_than_or_equal_to', 'less_than_or_equal_to'] |
+| strategies / Model.example (hypothesis) | RAISES | NotImplementedError:  |
+| PANDERA_VALIDATION_DEPTH=SCHEMA_ONLY | WORKS | data check skipped -> pass |
+| PANDERA_VALIDATION_ENABLED=False | IGNORED | FAIL (flag is never read outside pandera/config.py in 0.34.1) |

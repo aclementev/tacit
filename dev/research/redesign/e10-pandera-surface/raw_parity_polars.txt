@@ -1,0 +1,17 @@
+### parity on polars: 613 cases -> {'MATCH': 608, 'COUNT-DIFF': 2, 'MISMATCH': 3}
+queries per hybrid run: {None: 613}; fallback checks: 1
+COUNT-DIFF custom: lambda select->mutate
+    pandera={('x', 0, 'DATAFRAME_CHECK'): 2}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): None}
+COUNT-DIFF custom: n_failure_cases=1
+    pandera={('x', 0, 'DATAFRAME_CHECK'): 1}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): 2}
+MISMATCH   custom: schema unique (NULL single)
+    pandera={'EXC': "OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>"}
+    hybrid ={}
+MISMATCH   df: schema unique [a,b] w/ NULL dup
+    pandera={'EXC': "OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>"}
+    hybrid ={(None, None, 'DUPLICATES'): None}
+MISMATCH   df: schema unique report_duplicates=exclude_first
+    pandera={'EXC': "OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>"}
+    hybrid ={(None, None, 'DUPLICATES'): None}

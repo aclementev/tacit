@@ -1,0 +1,12 @@
+### parity on duckdb: 685 cases -> {'MATCH': 682, 'COUNT-DIFF': 2, 'MISMATCH': 1}
+logged data queries: pandera total 2827, hybrid total 1220; max per case pandera 9, hybrid 3
+queries per hybrid run: {2: 522, 1: 113, 3: 21, 0: 29}; fallback checks: 1
+COUNT-DIFF custom: lambda select->mutate
+    pandera={('x', 0, 'DATAFRAME_CHECK'): 2}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): None}
+COUNT-DIFF custom: n_failure_cases=1
+    pandera={('x', 0, 'DATAFRAME_CHECK'): 1}
+    hybrid ={('x', 0, 'DATAFRAME_CHECK'): 2}
+MISMATCH   custom: empty table, ge(0)
+    pandera={('x', None, 'SERIES_CONTAINS_NULLS'): 0, ('x', 0, 'DATAFRAME_CHECK'): 0}
+    hybrid ={}

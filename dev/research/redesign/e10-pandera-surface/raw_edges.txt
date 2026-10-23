@@ -1,0 +1,11 @@
+empty table + ge(0): SchemaErrors: '{\n    "SCHEMA": {\n        "SERIES_CONTAINS_NULLS": [\n            {\n                "schema": null,\n                "column": "x",\n                "check": "not_'
+all-NULL nullable column + ge(0): pass
+SCHEMA_ONLY data queries: 0
+SCHEMA_AND_DATA data queries: 3
+schema unique=['x'] with two NULLs: SchemaErrors: '{\n    "DATA": {\n        "DUPLICATES": [\n            {\n                "schema": null,\n                "column": null,\n                "check": "multiple_fields_'
+schema unique=['x'] with one NULL: pass
+float NaN vs greater_than_or_equal_to(0.0): pass
+float NaN vs less_than_or_equal_to(5.0): SchemaErrors: '{\n    "DATA": {\n        "DATAFRAME_CHECK": 
+float NaN vs in_range(0.0, 5.0): SchemaErrors: '{\n    "DATA": {\n        "DATAFRAME_CHECK": 
+float NaN vs isin([1.0]): SchemaErrors: '{\n    "DATA": {\n        "DATAFRAME_CHECK": 
+float NaN vs not_equal_to(2.0): pass

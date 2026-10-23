@@ -1,0 +1,26 @@
+### E4 ibisval / E8 _validate vs pandera on the builtin battery (330 check x dtype x null cases)
+E4 ibisval: {'agree': 246, 'unsupported': 56, 'both-ERR': 26, 'DISAGREE': 2}
+E8 _validate: {'unsupported': 140, 'agree': 168, 'DISAGREE': 4, 'both-ERR': 18}
+
+per builtin (E4 / E8 coverage of pandera's ibis builtins):
+  equal_to                   cases=20  E4={'agree': 18, 'both-ERR': 2}  E8={'unsupported': 20}
+  greater_than               cases=18  E4={'agree': 16, 'both-ERR': 2}  E8={'agree': 16, 'both-ERR': 2}
+  greater_than_or_equal_to   cases=60  E4={'agree': 36, 'unsupported': 18, 'both-ERR': 6}  E8={'agree': 36, 'unsupported': 18, 'both-ERR': 6}
+  in_range                   cases=72  E4={'agree': 64, 'both-ERR': 8}  E8={'agree': 32, 'unsupported': 36, 'both-ERR': 4}
+  isin                       cases=20  E4={'agree': 18, 'DISAGREE': 2}  E8={'agree': 18, 'DISAGREE': 2}
+  less_than                  cases=20  E4={'agree': 16, 'both-ERR': 4}  E8={'agree': 16, 'both-ERR': 4}
+  less_than_or_equal_to      cases=20  E4={'agree': 18, 'both-ERR': 2}  E8={'agree': 18, 'both-ERR': 2}
+  not_equal_to               cases=20  E4={'agree': 18, 'both-ERR': 2}  E8={'unsupported': 20}
+  notin                      cases=20  E4={'agree': 20}  E8={'agree': 20}
+  str_contains               cases=4   E4={'agree': 4}  E8={'unsupported': 4}
+  str_endswith               cases=2   E4={'agree': 2}  E8={'unsupported': 2}
+  str_length                 cases=8   E4={'agree': 8}  E8={'agree': 8}
+  str_matches                cases=6   E4={'agree': 6}  E8={'agree': 4, 'DISAGREE': 2}
+  str_startswith             cases=2   E4={'agree': 2}  E8={'unsupported': 2}
+  unique_values_eq           cases=38  E4={'unsupported': 38}  E8={'unsupported': 38}
+
+DISAGREEMENTS (dtype, null, check, pandera, E4, E8):
+  string      null=1 str_matches('re.compile('^c')')                              pandera=3      E4=3            E8=4
+  string      null=0 str_matches('re.compile('^c')')                              pandera=3      E4=3            E8=4
+  interval    null=1 isin([datetime.timedelta(seconds=3600), datetime.timedelta(d pandera=2      E4=ERR          E8=ERR
+  interval    null=0 isin([datetime.timedelta(seconds=3600), datetime.timedelta(d pandera=2      E4=ERR          E8=ERR

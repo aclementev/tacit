@@ -1,0 +1,5 @@
+{"label": "n=1,000,000 src=csv(all varchar) | A0 current tacit Schema.parse", "queries": 16, "min_s": 13.367, "med_s": 14.842, "cpu_min_s": 12.571, "outcome": "ok"}
+{"label": "n=1,000,000 src=csv(all varchar) | A1 pandera lazy=True, n_failure_cases=5", "queries": 16, "min_s": 10.609, "med_s": 11.632, "cpu_min_s": 12.195, "outcome": "ok"}
+{"label": "n=1,000,000 src=csv(all varchar) | A2 = A1 + cast once, materialize (temp table)", "queries": 18, "min_s": 1.752, "med_s": 1.871, "cpu_min_s": 1.895, "outcome": "ok"}
+{"label": "n=1,000,000 src=csv(all varchar) | B  hybrid (pandera checks, 1 fused query)", "queries": 1, "min_s": 0.983, "med_s": 0.989, "cpu_min_s": 1.094, "outcome": "ok"}
+{"label": "n=1,000,000 src=csv(all varchar) | C  native ibisval", "queries": 1, "min_s": 1.021, "med_s": 1.041, "cpu_min_s": 1.223, "outcome": "ok"}

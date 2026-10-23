@@ -1,0 +1,82 @@
+[
+ {
+  "label": "n=1,000,000 bad=0.0 | A0 current tacit Schema.parse",
+  "queries": 16,
+  "min_s": 0.764,
+  "med_s": 1.104,
+  "cpu_min_s": 0.481,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 bad=0.0 | A1 pandera lazy=True, n_failure_cases=5",
+  "queries": 16,
+  "min_s": 0.484,
+  "med_s": 0.717,
+  "cpu_min_s": 0.468,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 bad=0.0 | A2 = A1 + cast once, materialize (temp table)",
+  "queries": 18,
+  "min_s": 0.79,
+  "med_s": 0.811,
+  "cpu_min_s": 0.769,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 bad=0.0 | B  hybrid (pandera checks, 1 fused query)",
+  "queries": 1,
+  "min_s": 0.371,
+  "med_s": 0.453,
+  "cpu_min_s": 0.257,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 bad=0.0 | C  native ibisval",
+  "queries": 1,
+  "min_s": 0.276,
+  "med_s": 0.345,
+  "cpu_min_s": 0.221,
+  "outcome": "ok"
+ },
+ {
+  "label": "n=1,000,000 bad=0.001 | A0 current tacit Schema.parse",
+  "queries": 30,
+  "min_s": 1.867,
+  "med_s": 2.138,
+  "cpu_min_s": 1.369,
+  "outcome": "ConstraintError"
+ },
+ {
+  "label": "n=1,000,000 bad=0.001 | A1 pandera lazy=True, n_failure_cases=5",
+  "queries": 30,
+  "min_s": 1.481,
+  "med_s": 2.411,
+  "cpu_min_s": 1.431,
+  "outcome": "SchemaErrors"
+ },
+ {
+  "label": "n=1,000,000 bad=0.001 | A2 = A1 + cast once, materialize (temp table)",
+  "queries": 32,
+  "min_s": 2.021,
+  "med_s": 2.127,
+  "cpu_min_s": 1.661,
+  "outcome": "SchemaErrors"
+ },
+ {
+  "label": "n=1,000,000 bad=0.001 | B  hybrid (pandera checks, 1 fused query)",
+  "queries": 2,
+  "min_s": 0.412,
+  "med_s": 0.495,
+  "cpu_min_s": 0.323,
+  "outcome": "report:7 failures"
+ },
+ {
+  "label": "n=1,000,000 bad=0.001 | C  native ibisval",
+  "queries": 2,
+  "min_s": 0.356,
+  "med_s": 0.373,
+  "cpu_min_s": 0.282,
+  "outcome": "report:failures"
+ }
+]
