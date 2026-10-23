@@ -1,0 +1,235 @@
+e13-thin-frame/tests/typecheck/t01_columns.py:13:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:14:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:15:17: info[revealed-type] Revealed type: `Column[str]`
+e13-thin-frame/tests/typecheck/t01_columns.py:16:17: info[revealed-type] Revealed type: `Column[datetime]`
+e13-thin-frame/tests/typecheck/t01_columns.py:17:17: info[revealed-type] Revealed type: `Column[Decimal]`
+e13-thin-frame/tests/typecheck/t01_columns.py:18:17: info[revealed-type] Revealed type: `Column[float | None]`
+e13-thin-frame/tests/typecheck/t01_columns.py:19:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:21:5: error[unresolved-attribute] Object of type `Orders` has no attribute `amout`
+e13-thin-frame/tests/typecheck/t01_columns.py:22:5: error[unresolved-attribute] Class `Orders` has no attribute `amout`
+e13-thin-frame/tests/typecheck/t01_columns.py:27:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:28:5: error[no-matching-overload] No overload of bound method `Column.mean` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:29:5: error[no-matching-overload] No overload of bound method `Column.sum` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:30:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:31:5: error[no-matching-overload] No overload of bound method `Column.year` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:32:5: error[no-matching-overload] No overload of bound method `Column.hour` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:33:5: error[no-matching-overload] No overload of bound method `Column.abs` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:34:5: error[no-matching-overload] No overload of bound method `Column.mean` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:35:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:40:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:41:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:42:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:43:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:44:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:45:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:46:17: info[revealed-type] Revealed type: `Column[Decimal]`
+e13-thin-frame/tests/typecheck/t01_columns.py:47:17: info[revealed-type] Revealed type: `Column[Decimal]`
+e13-thin-frame/tests/typecheck/t01_columns.py:48:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:49:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:50:17: info[revealed-type] Revealed type: `Column[str]`
+e13-thin-frame/tests/typecheck/t01_columns.py:51:5: error[unsupported-operator] Operator `/` is not supported between objects of type `Column[str]` and `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:52:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Column[float]` and `Literal["x"]`
+e13-thin-frame/tests/typecheck/t01_columns.py:53:5: error[unsupported-operator] Operator `*` is not supported between objects of type `Column[str]` and `Literal[2]`
+e13-thin-frame/tests/typecheck/t01_columns.py:54:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Column[datetime]` and `Literal[1]`
+e13-thin-frame/tests/typecheck/t01_columns.py:55:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Column[Decimal]` and `float*`
+e13-thin-frame/tests/typecheck/t01_columns.py:60:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:61:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:62:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:63:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:64:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:65:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:66:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:67:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:68:5: error[unsupported-operator] Operator `>` is not supported between objects of type `Column[str]` and `Literal[5]`
+e13-thin-frame/tests/typecheck/t01_columns.py:69:5: error[unsupported-operator] Operator `>` is not supported between objects of type `Column[float]` and `Literal["5"]`
+e13-thin-frame/tests/typecheck/t01_columns.py:70:17: info[revealed-type] Revealed type: `bool`
+e13-thin-frame/tests/typecheck/t01_columns.py:71:14: error[invalid-argument-type] Argument to bound method `Frame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+e13-thin-frame/tests/typecheck/t01_columns.py:72:5: error[unsupported-operator] Operator `&` is not supported between objects of type `Column[float]` and `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:77:17: info[revealed-type] Revealed type: `Column[str]`
+e13-thin-frame/tests/typecheck/t01_columns.py:78:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:79:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:80:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:81:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:82:17: info[revealed-type] Revealed type: `Column[date]`
+e13-thin-frame/tests/typecheck/t01_columns.py:83:17: info[revealed-type] Revealed type: `Column[datetime]`
+e13-thin-frame/tests/typecheck/t01_columns.py:84:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:85:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:86:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:87:17: info[revealed-type] Revealed type: `Column[Literal["y", "n"]]`
+e13-thin-frame/tests/typecheck/t01_columns.py:88:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:89:5: error[no-matching-overload] No overload of bound method `Column.isin` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:90:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t01_columns.py:91:5: error[no-matching-overload] No overload of bound method `Column.between` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:92:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e13-thin-frame/tests/typecheck/t01_columns.py:97:17: info[revealed-type] Revealed type: `Scalar[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:98:17: info[revealed-type] Revealed type: `Scalar[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:99:17: info[revealed-type] Revealed type: `Scalar[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:100:17: info[revealed-type] Revealed type: `Scalar[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:101:17: info[revealed-type] Revealed type: `Scalar[Decimal]`
+e13-thin-frame/tests/typecheck/t01_columns.py:102:17: info[revealed-type] Revealed type: `Scalar[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:103:17: info[revealed-type] Revealed type: `Scalar[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:104:17: info[revealed-type] Revealed type: `Scalar[str]`
+e13-thin-frame/tests/typecheck/t01_columns.py:105:17: info[revealed-type] Revealed type: `Scalar[datetime]`
+e13-thin-frame/tests/typecheck/t01_columns.py:106:17: info[revealed-type] Revealed type: `Scalar[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:107:17: info[revealed-type] Revealed type: `Scalar[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:108:17: info[revealed-type] Revealed type: `Scalar[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:109:5: error[unresolved-attribute] Object of type `Scalar[float]` has no attribute `mean`
+e13-thin-frame/tests/typecheck/t01_columns.py:114:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t01_columns.py:115:17: info[revealed-type] Revealed type: `Column[float*]`
+e13-thin-frame/tests/typecheck/t01_columns.py:116:17: info[revealed-type] Revealed type: `Column[datetime | None]`
+e13-thin-frame/tests/typecheck/t01_columns.py:117:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:118:17: info[revealed-type] Revealed type: `Scalar[float]`
+e13-thin-frame/tests/typecheck/t01_columns.py:119:17: info[revealed-type] Revealed type: `Column[Any]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:16:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:17:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:18:17: info[revealed-type] Revealed type: `Column[str]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:19:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:20:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:21:5: error[no-matching-overload] No overload of bound method `Column.fill_null` matches arguments
+e13-thin-frame/tests/typecheck/t02_nullability.py:26:15: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[float | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:27:15: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[float | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:29:17: error[invalid-argument-type] Argument to function `takes_float` is incorrect: Expected `Column[float]`, found `Column[float | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:35:17: info[revealed-type] Revealed type: `Column[float | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:36:17: info[revealed-type] Revealed type: `Column[float | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:37:17: info[revealed-type] Revealed type: `Column[float | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:38:17: info[revealed-type] Revealed type: `Column[str | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:39:17: info[revealed-type] Revealed type: `Column[int | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:40:17: info[revealed-type] Revealed type: `Column[float | None]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:41:17: info[revealed-type] Revealed type: `Scalar[float]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:42:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t02_nullability.py:43:17: info[revealed-type] Revealed type: `Column[bool]`
+e13-thin-frame/tests/typecheck/t03_fields.py:26:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t03_fields.py:27:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t03_fields.py:28:17: info[revealed-type] Revealed type: `Column[str | None]`
+e13-thin-frame/tests/typecheck/t03_fields.py:31:5: error[missing-argument] No argument provided for required parameter `a`
+e13-thin-frame/tests/typecheck/t03_fields.py:32:8: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[str]`
+e13-thin-frame/tests/typecheck/t03_fields.py:33:5: error[missing-argument] No argument provided for required parameter `b`
+e13-thin-frame/tests/typecheck/t03_fields.py:38:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck/t03_fields.py:39:17: info[revealed-type] Revealed type: `Column[float | None]`
+e13-thin-frame/tests/typecheck/t03_fields.py:40:17: info[revealed-type] Revealed type: `Column[str | None]`
+e13-thin-frame/tests/typecheck/t03_fields.py:43:5: error[missing-argument] No argument provided for required parameter `a`
+e13-thin-frame/tests/typecheck/t03_fields.py:44:8: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[str]`
+e13-thin-frame/tests/typecheck/t03_fields.py:59:14: error[invalid-argument-type] Argument to function `check` is incorrect: Expected `(Column[Any], /) -> Column[bool]`, found `def shout(c: Column[str]) -> Column[str]`
+e13-thin-frame/tests/typecheck/t03_fields.py:60:14: error[invalid-argument-type] Argument to function `field` is incorrect: Expected `Sequence[Constraint]`, found `list[(c: Column[float]) -> Column[bool]]`
+e13-thin-frame/tests/typecheck/t04_frame.py:18:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:19:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:20:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:21:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:22:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:23:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:24:14: error[invalid-argument-type] Argument to bound method `Frame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `Column[float]`
+e13-thin-frame/tests/typecheck/t04_frame.py:25:14: error[invalid-argument-type] Argument to bound method `Frame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `Literal["amount > 0"]`
+e13-thin-frame/tests/typecheck/t04_frame.py:26:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:28:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t04_frame.py:29:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t04_frame.py:30:5: error[unresolved-attribute] Object of type `Orders` has no attribute `ibis`
+e13-thin-frame/tests/typecheck/t04_frame.py:32:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:33:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:34:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:35:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t04_frame.py:41:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `Orders`, found `Customers`
+e13-thin-frame/tests/typecheck/t04_frame.py:43:20: error[invalid-assignment] Object of type `Orders` is not assignable to `NetOrders`
+e13-thin-frame/tests/typecheck/t04_frame.py:44:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `Orders`, found `Literal[1]`
+e13-thin-frame/tests/typecheck/t05_construct.py:20:17: info[revealed-type] Revealed type: `Proj`
+e13-thin-frame/tests/typecheck/t05_construct.py:21:5: error[missing-argument] No argument provided for required parameter `label`
+e13-thin-frame/tests/typecheck/t05_construct.py:22:64: error[unknown-argument] Argument `bogus` does not match any known parameter
+e13-thin-frame/tests/typecheck/t05_construct.py:23:31: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[str]`
+e13-thin-frame/tests/typecheck/t05_construct.py:24:10: error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Column[float]`
+e13-thin-frame/tests/typecheck/t05_construct.py:27:48: error[invalid-argument-type] Argument is incorrect: Expected `Column[str] | Scalar[str] | str`, found `Literal[3]`
+e13-thin-frame/tests/typecheck/t05_construct.py:29:5: error[missing-argument] No arguments provided for required parameters `order_id`, `amount`, `label`
+e13-thin-frame/tests/typecheck/t05_construct.py:29:10: error[too-many-positional-arguments] Too many positional arguments: expected 0, got 3
+e13-thin-frame/tests/typecheck/t05_construct.py:35:17: info[revealed-type] Revealed type: `Stats`
+e13-thin-frame/tests/typecheck/t05_construct.py:36:28: error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Scalar[float]`
+e13-thin-frame/tests/typecheck/t05_construct.py:37:50: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Scalar[str]`
+e13-thin-frame/tests/typecheck/t05_construct.py:41:17: info[revealed-type] Revealed type: `Stats`
+e13-thin-frame/tests/typecheck/t05_construct.py:42:5: error[missing-argument] No argument provided for required parameter `total`
+e13-thin-frame/tests/typecheck/t05_construct.py:43:32: error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Scalar[float]`
+e13-thin-frame/tests/typecheck/t05_construct.py:44:24: error[invalid-argument-type] Argument to bound method `Frame.aggregate_by` is incorrect: Expected `Sequence[Column[Any]]`, found `Column[str]`
+e13-thin-frame/tests/typecheck/t06_extend.py:14:17: info[revealed-type] Revealed type: `NetOrders`
+e13-thin-frame/tests/typecheck/t06_extend.py:15:22: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[NetOrders]`, found `Customers`
+e13-thin-frame/tests/typecheck/t06_extend.py:16:18: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[Stats]`, found `Orders`
+e13-thin-frame/tests/typecheck/t06_extend.py:16:21: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[Stats]`, found `NetAmount`
+e13-thin-frame/tests/typecheck/t06_extend.py:17:25: error[invalid-argument-type] Argument to bound method `Frame.extend` is incorrect: Expected `Into[NetOrders]`, found `Scored`
+e13-thin-frame/tests/typecheck/t06_extend.py:18:35: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[str]`
+e13-thin-frame/tests/typecheck/t06_extend.py:19:25: error[missing-argument] No argument provided for required parameter `net_amount`
+e13-thin-frame/tests/typecheck/t06_extend.py:20:5: error[missing-argument] No argument provided for required parameter `delta` of bound method `Frame.extend`
+e13-thin-frame/tests/typecheck/t06_extend.py:30:17: info[revealed-type] Revealed type: `ScoredOrders`
+e13-thin-frame/tests/typecheck/t06_extend.py:31:15: error[invalid-argument-type] Argument to function `add_score` is incorrect: Expected `Into[(Orders & Scored) | ScoredCustomers]`, found `Orders`
+e13-thin-frame/tests/typecheck/t06_extend.py:32:28: error[invalid-argument-type] Argument to function `add_score` is incorrect: Argument type `NetOrders` does not satisfy upper bound `Scored` of type variable `O`
+e13-thin-frame/tests/typecheck/t06_extend.py:33:18: error[invalid-argument-type] Argument to function `add_score` is incorrect: Expected `Column[float]`, found `Column[str]`
+e13-thin-frame/tests/typecheck/t07_generic.py:23:17: info[revealed-type] Revealed type: `Column[datetime]`
+e13-thin-frame/tests/typecheck/t07_generic.py:24:5: error[unresolved-attribute] Object of type `F@recent` has no attribute `event_tss`
+e13-thin-frame/tests/typecheck/t07_generic.py:34:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t07_generic.py:35:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t07_generic.py:36:17: info[revealed-type] Revealed type: `NetOrders`
+e13-thin-frame/tests/typecheck/t07_generic.py:37:42: error[invalid-argument-type] Argument to function `latest_per_key` is incorrect: Expected `Column[datetime]`, found `Column[float]`
+e13-thin-frame/tests/typecheck/t07_generic.py:38:42: error[invalid-argument-type] Argument to function `latest_per_key` is incorrect: Expected `Column[datetime]`, found `Column[float | None]`
+e13-thin-frame/tests/typecheck/t07_generic.py:40:17: info[revealed-type] Revealed type: `Clicks`
+e13-thin-frame/tests/typecheck/t07_generic.py:41:12: error[invalid-argument-type] Argument to function `recent` is incorrect: Argument type `Orders` does not satisfy upper bound `HasEventTs` of type variable `F`
+e13-thin-frame/tests/typecheck/t07_generic.py:45:11: error[invalid-argument-type] Argument to function `maybe` is incorrect: Expected `Orders | None`, found `Customers`
+e13-thin-frame/tests/typecheck/t08_join.py:14:17: info[revealed-type] Revealed type: `Join[Orders, Customers]`
+e13-thin-frame/tests/typecheck/t08_join.py:15:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t08_join.py:16:17: info[revealed-type] Revealed type: `Column[str]`
+e13-thin-frame/tests/typecheck/t08_join.py:17:55: error[unresolved-attribute] Object of type `Customers` has no attribute `custmer_id`
+e13-thin-frame/tests/typecheck/t08_join.py:18:19: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `((Orders, Customers, /) -> Column[bool]) | Sequence[tuple[Column[Any], Column[Any]]]`, found `(lo: Orders, rc: Customers) -> Column[int]`
+e13-thin-frame/tests/typecheck/t08_join.py:21:17: info[revealed-type] Revealed type: `OrderWithCountry`
+e13-thin-frame/tests/typecheck/t08_join.py:22:56: error[unresolved-attribute] Object of type `Orders` has no attribute `country`
+e13-thin-frame/tests/typecheck/t08_join.py:24:48: error[invalid-argument-type] Argument is incorrect: Expected `Column[str] | Scalar[str] | str`, found `Column[int]`
+e13-thin-frame/tests/typecheck/t09_step.py:28:17: info[revealed-type] Revealed type: `NetOrders`
+e13-thin-frame/tests/typecheck/t09_step.py:29:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t09_step.py:30:11: error[invalid-argument-type] Argument is incorrect: Expected `Orders`, found `Customers`
+e13-thin-frame/tests/typecheck/t09_step.py:31:16: error[invalid-argument-type] Argument is incorrect: Expected `Customers | None`, found `Orders`
+e13-thin-frame/tests/typecheck/t09_step.py:32:13: error[invalid-argument-type] Argument is incorrect: Argument type `Orders` does not satisfy upper bound `HasEventTs` of type variable `F`
+e13-thin-frame/tests/typecheck/t10_interop.py:26:14: error[invalid-argument-type] Argument to bound method `Table.filter` is incorrect: Expected `BooleanValue | bool | Sequence[BooleanValue | bool] | IfAnyAll | Deferred`, found `Column[bool]`
+e13-thin-frame/tests/typecheck/t10_interop.py:27:16: error[invalid-argument-type] Argument to bound method `Table.order_by` is incorrect: Expected `Sequence[str | ibis.expr.types.generic.Column | Selector | Deferred] | ibis.expr.types.generic.Column | Selector | Deferred`, found `tacit_thin._column.Column[float]`
+e13-thin-frame/tests/typecheck/t10_interop.py:30:17: info[revealed-type] Revealed type: `StringColumn`
+e13-thin-frame/tests/typecheck/t10_interop.py:31:17: info[revealed-type] Revealed type: `FloatingColumn`
+e13-thin-frame/tests/typecheck/t10_interop.py:32:17: info[revealed-type] Revealed type: `Column[Unknown]`
+e13-thin-frame/tests/typecheck/t10_interop.py:33:17: info[revealed-type] Revealed type: `Column[Literal["small", "mid", "big"]]`
+e13-thin-frame/tests/typecheck/t10_interop.py:34:17: info[revealed-type] Revealed type: `Scalar[float*]`
+e13-thin-frame/tests/typecheck/t10_interop.py:36:11: error[invalid-argument-type] Argument is incorrect: Expected `Column[str] | Scalar[str] | str`, found `Column[Literal[1, 2]]`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:17:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:18:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:19:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:20:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:21:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:22:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:23:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:24:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:25:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:26:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:27:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:28:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:29:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:30:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:31:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:32:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:33:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:34:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:35:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:36:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:37:17: info[revealed-type] Revealed type: `IntegerScalar`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:38:17: info[revealed-type] Revealed type: `Schema`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:39:17: info[revealed-type] Revealed type: `tuple[str, ...]`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:40:17: info[revealed-type] Revealed type: `DataFrame`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:41:17: info[revealed-type] Revealed type: `DataFrame`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:42:17: info[revealed-type] Revealed type: `str | LazyFrame`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:43:17: info[revealed-type] Revealed type: `Column`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:47:7: warning[deprecated] The function `dropna` is deprecated: deprecated since ibis 9.1: use drop_null instead
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:49:5: error[unresolved-attribute] Object of type `Orders` has no attribute `mutat`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:50:5: error[unresolved-attribute] Object of type `Orders` has no attribute `amout`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:51:36: error[unresolved-attribute] Object of type `Orders` has no attribute `amout`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:62:17: info[revealed-type] Revealed type: `Orders`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:63:17: info[revealed-type] Revealed type: `Stats`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:68:16: error[invalid-argument-type] Argument to function `union` is incorrect: Expected `Table`, found `Orders`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:68:19: error[invalid-argument-type] Argument to function `union` is incorrect: Expected `Table`, found `Orders`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:69:19: error[invalid-assignment] Object of type `Orders` is not assignable to `Table`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:72:12: error[invalid-argument-type] Argument to bound method `Table.join` is incorrect: Expected `Table`, found `Orders`
+e13-thin-frame/tests/typecheck/t11_ibis_api.py:84:17: error[invalid-argument-type] Argument to function `takes_table` is incorrect: Expected `Table`, found `Orders`
+e13-thin-frame/tests/typecheck/t12_collisions.py:12:5: error[invalid-attribute-override] Invalid override of attribute `count`: Type `Column[int]` is not assignable to inherited type `(*, where: BooleanValue | Column[bool | None] | Scalar[bool | None] | Deferred | None = ...) -> IntegerScalar`
+e13-thin-frame/tests/typecheck/t12_collisions.py:16:5: error[invalid-attribute-override] Invalid override of attribute `schema`: Type `Column[str]` is not assignable to inherited type `() -> Schema`
+e13-thin-frame/tests/typecheck/t12_collisions.py:20:5: error[invalid-property-type-override] Invalid override of attribute `columns`: Read type `Column[str]` is not assignable to inherited read type `tuple[str, ...]`
+e13-thin-frame/tests/typecheck/t12_collisions.py:30:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck/t12_collisions.py:31:17: info[revealed-type] Revealed type: `Column`
+e13-thin-frame/tests/typecheck/t12_collisions.py:32:17: info[revealed-type] Revealed type: `IntegerScalar`
+Found 234 diagnostics

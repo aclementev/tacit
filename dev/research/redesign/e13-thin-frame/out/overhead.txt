@@ -1,0 +1,6 @@
+operation                      plain ibis       W (E8)      T (E13)   (us per call)
+column access                        89.6         40.6         28.2
+filter (schema-preserving)          575.4        488.9        351.7
+mutate (ibis op)                    613.2        431.2        574.4
+cast/conform (memoised)               0.0        396.8        420.7
+constructor projection              361.5            -            -

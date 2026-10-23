@@ -1,0 +1,14 @@
+wrote e13-thin-frame/out/_ibis_api.mirror.pyi (162 lines, returns=mirror)
+  alias: 5
+  method: 102
+  overloaded: 1
+  property: 1
+  rewrite:param:Table: 18
+  rewrite:param:facade-widening: 68
+  rewrite:return:GroupedTable: 4
+  rewrite:return:Table: 56
+  unannotated:param: 19
+  unannotated:return: 5
+  hand fixes: none
+  upstream-bug patches applied: 13 params: ['Table.anti_join(predicates)', 'Table.any_inner_join(predicates)', 'Table.any_left_join(predicates)', 'Table.asof_join(predicates)', 'Table.inner_join(predicates)', 'Table.join(predicates)', 'Table.left_join(predicates)', 'Table.mutate(mutations)', 'Table.outer_join(predicates)', 'Table.projection(exprs)', 'Table.right_join(predicates)', 'Table.select(exprs)', 'Table.semi_join(predicates)']
+  unresolved names: none

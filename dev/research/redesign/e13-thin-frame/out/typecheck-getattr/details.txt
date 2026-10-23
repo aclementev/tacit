@@ -1,0 +1,40 @@
+TYPE    ty       t01_columns.py:87  expected Column[str], got Column[Literal["y", "n"]]
+TYPE    mypy     t04_frame.py:29  expected Table, got Any
+MISSED  mypy     t04_frame.py:42  takes_orders(t)  # E: raw ibis table is not a frame
+MISSED  ty       t04_frame.py:42  takes_orders(t)  # E: raw ibis table is not a frame
+MISSED  pyrefly  t04_frame.py:42  takes_orders(t)  # E: raw ibis table is not a frame
+TYPE    mypy     t10_interop.py:32  expected Column[str], got Column[Any]
+TYPE    ty       t10_interop.py:32  expected Column[str], got Column[Unknown]
+TYPE    pyrefly  t10_interop.py:32  expected Column[str], got Column[Any]
+TYPE    ty       t10_interop.py:33  expected Column[str], got Column[Literal["small", "mid", "big"]]
+MISSED  ty       t10_interop.py:39  Proj2(label=o.status, amount=raw)  # E: untyped ibis expr needs tc.as_column
+MISSED  pyrefly  t10_interop.py:39  Proj2(label=o.status, amount=raw)  # E: untyped ibis expr needs tc.as_column
+TYPE    pyrefly  t11_ibis_api.py:42  expected str | LazyFrame, got LazyFrame | str
+FP      pyright  t11_ibis_api.py:57  m.filter(m["x"] > 1).select("x")
+          -> Operator ">" not supported for types "Column" and "Literal[1]" (reportOperatorIssue)
+FP      mypy     t11_ibis_api.py:57  m.filter(m["x"] > 1).select("x")
+          -> Unsupported operand types for > ("Column" and "int")  [operator]
+FP      pyright  t11_ibis_api.py:60  m.filter(m.x > 1)  # ok: same idiom
+          -> Operator ">" not supported for types "Column" and "Literal[1]" (reportOperatorIssue)
+FP      mypy     t11_ibis_api.py:60  m.filter(m.x > 1)  # ok: same idiom
+          -> Unsupported operand types for > ("Column" and "int")  [operator]
+FP      pyright  t11_ibis_api.py:68  ibis.union(o, o)  # ok at runtime: a frame IS an ir.Table
+          -> Argument of type "Orders" cannot be assigned to parameter "table" of type "Table" in function "union" (reportArgumentType)
+FP      ty       t11_ibis_api.py:68  ibis.union(o, o)  # ok at runtime: a frame IS an ir.Table
+          -> invalid-argument-type: Argument to function `union` is incorrect: Expected `Table`, found `Orders`
+FP      pyright  t11_ibis_api.py:69  x: ir.Table = o  # ok at runtime
+          -> Type "Orders" is not assignable to declared type "Table" (reportAssignmentType)
+FP      ty       t11_ibis_api.py:69  x: ir.Table = o  # ok at runtime
+          -> invalid-assignment: Object of type `Orders` is not assignable to `Table`
+FP      pyright  t11_ibis_api.py:72  t.join(o, "order_id")  # ok: ibis method taking a table
+          -> Argument of type "Orders" cannot be assigned to parameter "right" of type "Table" in function "join" (reportArgumentType)
+FP      ty       t11_ibis_api.py:72  t.join(o, "order_id")  # ok: ibis method taking a table
+          -> invalid-argument-type: Argument to bound method `Table.join` is incorrect: Expected `Table`, found `Orders`
+FP      pyright  t11_ibis_api.py:84  takes_table(o)  # ok at runtime (a frame IS a Table)
+          -> Argument of type "Orders" cannot be assigned to parameter "t" of type "Table" in function "takes_table" (reportArgumentType)
+FP      mypy     t11_ibis_api.py:84  takes_table(o)  # ok at runtime (a frame IS a Table)
+          -> Argument 1 to "takes_table" has incompatible type "Orders"; expected "Table"  [arg-type]
+FP      ty       t11_ibis_api.py:84  takes_table(o)  # ok at runtime (a frame IS a Table)
+          -> invalid-argument-type: Argument to function `takes_table` is incorrect: Expected `Table`, found `Orders`
+FP      pyrefly  t11_ibis_api.py:84  takes_table(o)  # ok at runtime (a frame IS a Table)
+          -> bad-argument-type: Argument `Orders` is not assignable to parameter `t` with type `Table` in function `takes_table`

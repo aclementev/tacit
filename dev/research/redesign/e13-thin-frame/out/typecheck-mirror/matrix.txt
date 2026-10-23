@@ -1,0 +1,60 @@
+feature                                                               pyright           mypy             ty        pyrefly
+t01_columns: (module)                                                     0/0            0/0            0/0            0/0
+t01_columns: column access + readable hover                               7/7            7/7            7/7            7/7
+t01_columns: typo on frame / class                                        2/2            2/2            2/2            2/2
+t01_columns: wrong method for the column type                             9/9            9/9            9/9            9/9
+t01_columns: arithmetic (int vs float vs Decimal)                       16/16          16/16          16/16          16/16
+t01_columns: comparisons with literals                                  13/13          13/13          13/13          13/13
+t01_columns: typed methods                                              16/16          16/16       15/16 w1          16/16
+t01_columns: reductions                                                 13/13          13/13          13/13          13/13
+t01_columns: cast                                                         6/6            6/6            6/6            6/6
+t02_nullability: (module)                                                 0/0            0/0            0/0            0/0
+t02_nullability: (a) fill_null solves T from Column[T | None]             6/6            6/6            6/6            6/6
+t02_nullability: (b) nullable expression into a non-null outpu            3/3            3/3            3/3            3/3
+t02_nullability: (c) nullability propagates through operators             9/9            9/9            9/9            9/9
+t03_fields: (module)                                                      0/0            0/0            0/0            0/0
+t03_fields: field specifier: descriptor typing                            3/3            3/3            3/3            3/3
+t03_fields: field specifier: constructor                                  3/3            3/3            3/3            3/3
+t03_fields: Annotated metadata: descriptor typing                         3/3            3/3            3/3            3/3
+t03_fields: Annotated metadata: constructor                               2/2            2/2            2/2            2/2
+t03_fields: custom checks typed Callable[[Column[T]], Column[b            2/2            2/2            2/2            2/2
+t04_frame: (module)                                                       0/0            0/0            0/0            0/0
+t04_frame: schema-preserving methods return Self                          9/9            9/9            9/9            9/9
+t04_frame: no escape hatch needed: the frame is the table                 3/3         2/3 w1            3/3            3/3
+t04_frame: boundaries: parse / conform return the frame                   4/4            4/4            4/4            4/4
+t04_frame: nominal subtyping: subclass has at least these colu            4/4         3/4 m1         3/4 m1         3/4 m1
+t04_frame: forgot to cast/construct: ibis results are not fram            5/5            5/5            5/5            5/5
+t05_construct: (module)                                                   0/0            0/0            0/0            0/0
+t05_construct: constructor: missing / extra / wrong-type colum            7/7            7/7            7/7            7/7
+t05_construct: implicit GROUP BY via reductions                           3/3            3/3            3/3            3/3
+t05_construct: explicit aggregate_by([...])                               4/4            4/4            4/4            4/4
+t06_extend: (module)                                                      0/0            0/0            0/0            0/0
+t06_extend: extend: Out must subclass the base frame and every            7/7            7/7            7/7            7/7
+t06_extend: additive generic step via Into[O]                             4/4            4/4            4/4            4/4
+t07_generic: (module)                                                     0/0            0/0            0/0            0/0
+t07_generic: mixin bounds: typed columns in the generic body              2/2            2/2            2/2            2/2
+t07_generic: schema-preserving generic step with typed handles            5/5            5/5            5/5            5/5
+t07_generic: mixin bounds                                                 2/2            2/2            2/2            2/2
+t07_generic: optional frame params                                        1/1            1/1            1/1            1/1
+t08_join: (module)                                                        0/0            0/0            0/0            0/0
+t08_join: join scope: typed views and lambda inference                    5/5            5/5            5/5            5/5
+t08_join: join output built by the constructor (no collisions             3/3            3/3            3/3            3/3
+t09_step: (module)                                                        0/0            0/0            0/0            0/0
+t09_step: @step preserves signatures                                      5/5            5/5            5/5            5/5
+t10_interop: (module)                                                     0/0            0/0            0/0            0/0
+t10_interop: typed columns accepted by ibis APIs (directly on             0/0            0/0            0/0            0/0
+t10_interop: typed columns into ibis APIs on an untyped interm            0/0            0/0            0/0            0/0
+t10_interop: as_ibis / as_column / cases / lit                            6/6         5/6 w1         4/6 w2         5/6 w1
+t10_interop: raw ibis values are not typed columns                        1/1            1/1         0/1 m1         0/1 m1
+t11_ibis_api: (module)                                                    0/0            0/0            0/0            0/0
+t11_ibis_api: ibis methods on the frame type-check and return           27/27          27/27          27/27       26/27 w1
+t11_ibis_api: typos stay errors on the frame, and on ibis meth            3/3            3/3            3/3            3/3
+t11_ibis_api: chaining on untyped results (plain ibis idioms)          0/0 f3         0/0 f3         0/0 f2         0/0 f2
+t11_ibis_api: re-entering the schema world                                2/2            2/2            2/2            2/2
+t11_ibis_api: a frame passed to ibis functions typed `ir.Table         0/0 f3            0/0         0/0 f3            0/0
+t11_ibis_api: tacit's own table annotations accept frames and             0/0            0/0            0/0            0/0
+t12_collisions: (module)                                                  0/0            0/0            0/0            0/0
+t12_collisions: collision with an ibis method is flagged stati            3/3            3/3            3/3            3/3
+t12_collisions: the escape: rename the attribute, keep the phy            3/3            3/3            3/3            3/3
+TOTAL                                                              231/231 f6 228/231 m1 w2 f3 226/231 m2 w3 f5 227/231 m2 w2 f2
+cell = ok/cases [mN = missed errors, wN = wrong revealed type, fN = false positives]

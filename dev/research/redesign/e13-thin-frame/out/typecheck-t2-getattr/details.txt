@@ -1,0 +1,7 @@
+MISSED  mypy     t2_cases.py:78  takes_orders(t)  # E: raw ibis table
+MISSED  ty       t2_cases.py:78  takes_orders(t)  # E: raw ibis table
+MISSED  pyrefly  t2_cases.py:78  takes_orders(t)  # E: raw ibis table
+FP      pyright  t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> Type "DataFrame[Orders]" is not assignable to declared type "Table" (reportAssignmentType)
+FP      ty       t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> invalid-assignment: Object of type `DataFrame[Orders]` is not assignable to `Table`

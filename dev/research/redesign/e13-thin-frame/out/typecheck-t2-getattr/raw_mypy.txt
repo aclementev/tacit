@@ -1,0 +1,40 @@
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:56: note: Revealed type is "tacit_thin._column.Column[float]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:57: note: Revealed type is "tacit_thin._column.Column[int]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:58: note: Revealed type is "ibis.expr.types.numeric.IntegerScalar"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:59: note: Revealed type is "tacit_thin._column.Column[float]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:60: error: "Orders" has no attribute "amout"; maybe "amount"?  [attr-defined]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:61: error: "DataFrame[Orders]" has no attribute "amount"  [attr-defined]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:62: error: Invalid self argument "Column[float]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:63: note: Revealed type is "tacit_thin._column.Column[float]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:65: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Orders]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:66: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Orders]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:67: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Orders]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:69: note: Revealed type is "tacit_thin._ibis_api.Table"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:70: note: Revealed type is "tacit_thin._ibis_api.Table"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:71: note: Revealed type is "tacit_thin._ibis_api.Table"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:72: note: Revealed type is "tacit_thin._ibis_api.Table"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:73: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Orders]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:75: error: Argument 1 to "takes_orders" has incompatible type "DataFrame[Customers]"; expected "DataFrame[Orders]"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:76: error: Argument 1 to "takes_orders" has incompatible type "Table"; expected "DataFrame[Orders]"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:77: error: Argument 1 to "takes_orders" has incompatible type "Table"; expected "DataFrame[Orders]"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:80: error: Incompatible types in assignment (expression has type "DataFrame[Orders]", variable has type "DataFrame[NetOrders]")  [assignment]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:85: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Net]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:86: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:87: error: Missing named argument "net_amount" for "build" of "Schema"  [call-arg]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:87: note: "build" defined in "tacit_t2._df"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:88: error: Unexpected keyword argument "bogus" for "build" of "Schema"  [call-arg]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:88: note: "build" defined in "tacit_t2._df"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:89: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Stats]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:90: error: Argument "n" to "build" of "Schema" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:92: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.NetOrders]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:93: error: Argument 1 to "extend" of "Schema" has incompatible type "DataFrame[Customers]"; expected "Into[NetOrders]"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:94: error: Argument 1 to "extend" of "Schema" has incompatible type "DataFrame[Orders]"; expected "Into[Stats]"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:94: error: Argument 2 to "extend" of "Schema" has incompatible type "DataFrame[Net]"; expected "Into[Stats]"  [arg-type]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:102: note: Revealed type is "tacit_thin._column.Column[datetime.datetime]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:103: error: "S" has no attribute "event_tss"  [attr-defined]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:109: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Orders]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:110: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.NetOrders]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:111: note: Revealed type is "tacit_t2._df.DataFrame[t2_cases.Clicks]"
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:112: error: Value of type variable "S" of "recent" cannot be "Orders"  [type-var]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:116: error: "Net" has no attribute "net_amont"; maybe "net_amount"?  [attr-defined]
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:117: note: Revealed type is "tacit_thin._column.Column[float]"

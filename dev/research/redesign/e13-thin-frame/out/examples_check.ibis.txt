@@ -1,0 +1,28 @@
+### pyright
+### mypy
+Success: no issues found in 1 source file
+### ty
+All checks passed!
+### pyrefly
+ INFO 0 errors
+### pyright
+### mypy
+Success: no issues found in 1 source file
+### ty
+All checks passed!
+### pyrefly
+ INFO 0 errors
+### pyright
+### mypy
+Success: no issues found in 1 source file
+### ty
+All checks passed!
+### pyrefly
+ INFO 0 errors
+### pyright
+### mypy
+Success: no issues found in 1 source file
+### ty
+All checks passed!
+### pyrefly
+ INFO 0 errors

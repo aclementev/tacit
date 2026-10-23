@@ -1,0 +1,32 @@
+TYPE    mypy     t2n_cases.py:58  expected IntegerScalar, got Any
+MISSED  pyright  t2n_cases.py:61  o.amount  # E: columns are not table attributes in T2
+MISSED  mypy     t2n_cases.py:61  o.amount  # E: columns are not table attributes in T2
+MISSED  ty       t2n_cases.py:61  o.amount  # E: columns are not table attributes in T2
+MISSED  pyrefly  t2n_cases.py:61  o.amount  # E: columns are not table attributes in T2
+TYPE    mypy     t2n_cases.py:69  expected Table, got Any
+TYPE    mypy     t2n_cases.py:70  expected Table, got Any
+FP      pyright  t2n_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> Argument of type "Column[bool]" cannot be assigned to parameter "predicates" of type "str | Sequence[str | BooleanColumn | tuple[str | Column | Deferred, str | Column | Deferred] | BooleanValue | bool
+TYPE    mypy     t2n_cases.py:71  expected Table, got Any
+FP      ty       t2n_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> invalid-argument-type: Argument to bound method `Table.join` is incorrect: Expected `Sequence[str | BooleanValue | bool | tuple[str | ibis.expr.types.generic.Column | Deferred, str | ibis.expr.types.g
+FP      pyrefly  t2n_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> bad-argument-type: Argument `tacit_thin._column.Column[bool]` is not assignable to parameter `predicates` with type `Sequence[BooleanColumn | BooleanValue | bool | str | tuple[ibis.expr.types.generic.
+TYPE    mypy     t2n_cases.py:72  expected Table, got Any
+MISSED  mypy     t2n_cases.py:75  takes_orders(c)  # E: Customers frame
+MISSED  mypy     t2n_cases.py:76  takes_orders(o.mutate(x=o.c.amount * 2))  # E: forgot to conform
+MISSED  ty       t2n_cases.py:76  takes_orders(o.mutate(x=o.c.amount * 2))  # E: forgot to conform
+MISSED  pyrefly  t2n_cases.py:76  takes_orders(o.mutate(x=o.c.amount * 2))  # E: forgot to conform
+MISSED  mypy     t2n_cases.py:77  takes_orders(o.group_by(o.c.status).agg(n=o.c.order_id.count()))  # E: forgot to conform
+MISSED  ty       t2n_cases.py:77  takes_orders(o.group_by(o.c.status).agg(n=o.c.order_id.count()))  # E: forgot to conform
+MISSED  pyrefly  t2n_cases.py:77  takes_orders(o.group_by(o.c.status).agg(n=o.c.order_id.count()))  # E: forgot to conform
+MISSED  mypy     t2n_cases.py:78  takes_orders(t)  # E: raw ibis table
+MISSED  ty       t2n_cases.py:78  takes_orders(t)  # E: raw ibis table
+MISSED  pyrefly  t2n_cases.py:78  takes_orders(t)  # E: raw ibis table
+MISSED  mypy     t2n_cases.py:80  x: DataFrame[NetOrders] = o  # E: Orders is not NetOrders
+MISSED  mypy     t2n_cases.py:93  NetOrders.extend(c, Net.build(net_amount=o.c.amount))  # E: Customers is not a base of NetOrders
+MISSED  ty       t2n_cases.py:93  NetOrders.extend(c, Net.build(net_amount=o.c.amount))  # E: Customers is not a base of NetOrders
+MISSED  pyrefly  t2n_cases.py:93  NetOrders.extend(c, Net.build(net_amount=o.c.amount))  # E: Customers is not a base of NetOrders
+MISSED  mypy     t2n_cases.py:94  Stats.extend(o, Net.build(net_amount=o.c.amount))  # E: Stats does not subclass Orders
+MISSED  ty       t2n_cases.py:94  Stats.extend(o, Net.build(net_amount=o.c.amount))  # E: Stats does not subclass Orders
+MISSED  pyrefly  t2n_cases.py:94  Stats.extend(o, Net.build(net_amount=o.c.amount))  # E: Stats does not subclass Orders

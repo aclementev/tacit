@@ -1,0 +1,633 @@
+{
+    "version": "1.1.414",
+    "time": "1792785203728",
+    "generalDiagnostics": [
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.c.amount\" is \"Column[float]\"",
+            "range": {
+                "start": {
+                    "line": 55,
+                    "character": 16
+                },
+                "end": {
+                    "line": 55,
+                    "character": 26
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.c.count\" is \"Column[int]\"",
+            "range": {
+                "start": {
+                    "line": 56,
+                    "character": 16
+                },
+                "end": {
+                    "line": 56,
+                    "character": 25
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.count()\" is \"IntegerScalar\"",
+            "range": {
+                "start": {
+                    "line": 57,
+                    "character": 16
+                },
+                "end": {
+                    "line": 57,
+                    "character": 25
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"Orders.amount\" is \"Column[float]\"",
+            "range": {
+                "start": {
+                    "line": 58,
+                    "character": 16
+                },
+                "end": {
+                    "line": 58,
+                    "character": 29
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"amout\" for class \"Orders\"\n  Attribute \"amout\" is unknown",
+            "range": {
+                "start": {
+                    "line": 59,
+                    "character": 8
+                },
+                "end": {
+                    "line": 59,
+                    "character": 13
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"amount\" for class \"DataFrame[Orders]\"\n  Attribute \"amount\" is unknown",
+            "range": {
+                "start": {
+                    "line": 60,
+                    "character": 6
+                },
+                "end": {
+                    "line": 60,
+                    "character": 12
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"upper\" for class \"Column[float]\"\n  Could not bind method \"upper\" because \"Column[float]\" is not assignable to parameter \"self\"\n    \"Column[float]\" is not assignable to \"Column[str]\"\n      Type parameter \"T_co@Column\" is covariant, but \"float\" is not a subtype of \"str\"\n        \"float\" is not assignable to \"str\"\n  Could not bind method \"upper\" because \"Column[float]\" is not assignable to parameter \"self\"\n    \"Column[float]\" is not assignable to \"Column[str | None]\"\n      Type parameter \"T_co@Column\" is covariant, but \"float\" is not a subtype of \"str | None\"\n        Type \"float\" is not assignable to type \"str | None\"",
+            "range": {
+                "start": {
+                    "line": 61,
+                    "character": 15
+                },
+                "end": {
+                    "line": 61,
+                    "character": 20
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.c.amount * 2\" is \"Column[float]\"",
+            "range": {
+                "start": {
+                    "line": 62,
+                    "character": 16
+                },
+                "end": {
+                    "line": 62,
+                    "character": 30
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.filter(o.c.amount > 0)\" is \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 64,
+                    "character": 16
+                },
+                "end": {
+                    "line": 64,
+                    "character": 40
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.order_by(o.c.order_ts.desc()).limit(5)\" is \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 65,
+                    "character": 16
+                },
+                "end": {
+                    "line": 65,
+                    "character": 56
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.distinct(on=o.c.order_id)\" is \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 66,
+                    "character": 16
+                },
+                "end": {
+                    "line": 66,
+                    "character": 43
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.mutate(x=o.c.amount * 2)\" is \"Table\"",
+            "range": {
+                "start": {
+                    "line": 68,
+                    "character": 16
+                },
+                "end": {
+                    "line": 68,
+                    "character": 42
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.group_by(o.c.status).agg(total=o.c.amount.sum())\" is \"Table\"",
+            "range": {
+                "start": {
+                    "line": 69,
+                    "character": 16
+                },
+                "end": {
+                    "line": 69,
+                    "character": 66
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.join(c, o.c.customer_id == c.c.customer_id)\" is \"Table\"",
+            "range": {
+                "start": {
+                    "line": 70,
+                    "character": 16
+                },
+                "end": {
+                    "line": 70,
+                    "character": 61
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"o.select(o.c.order_id, \"status\")\" is \"Table\"",
+            "range": {
+                "start": {
+                    "line": 71,
+                    "character": 16
+                },
+                "end": {
+                    "line": 71,
+                    "character": 48
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"Orders.conform(o.mutate(amount=_.amount * 2))\" is \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 72,
+                    "character": 16
+                },
+                "end": {
+                    "line": 72,
+                    "character": 61
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"DataFrame[Customers]\" cannot be assigned to parameter \"df\" of type \"DataFrame[Orders]\" in function \"takes_orders\"\n  \"DataFrame[Customers]\" is not assignable to \"DataFrame[Orders]\"\n    Type parameter \"S_co@DataFrame\" is covariant, but \"Customers\" is not a subtype of \"Orders\"\n      \"Customers\" is not assignable to \"Orders\"",
+            "range": {
+                "start": {
+                    "line": 74,
+                    "character": 17
+                },
+                "end": {
+                    "line": 74,
+                    "character": 18
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"Table\" cannot be assigned to parameter \"df\" of type \"DataFrame[Orders]\" in function \"takes_orders\"\n  \"Table\" is not assignable to \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 75,
+                    "character": 17
+                },
+                "end": {
+                    "line": 75,
+                    "character": 43
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"Table\" cannot be assigned to parameter \"df\" of type \"DataFrame[Orders]\" in function \"takes_orders\"\n  \"Table\" is not assignable to \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 76,
+                    "character": 17
+                },
+                "end": {
+                    "line": 76,
+                    "character": 67
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"Table\" cannot be assigned to parameter \"df\" of type \"DataFrame[Orders]\" in function \"takes_orders\"\n  \"Table\" is not assignable to \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 77,
+                    "character": 17
+                },
+                "end": {
+                    "line": 77,
+                    "character": 18
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Type \"DataFrame[Orders]\" is not assignable to declared type \"DataFrame[NetOrders]\"\n  \"DataFrame[Orders]\" is not assignable to \"DataFrame[NetOrders]\"\n    Type parameter \"S_co@DataFrame\" is covariant, but \"Orders\" is not a subtype of \"NetOrders\"\n      \"Orders\" is not assignable to \"NetOrders\"",
+            "range": {
+                "start": {
+                    "line": 79,
+                    "character": 30
+                },
+                "end": {
+                    "line": 79,
+                    "character": 31
+                }
+            },
+            "rule": "reportAssignmentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"Net.build(net_amount=o.c.amount - 1)\" is \"DataFrame[Net]\"",
+            "range": {
+                "start": {
+                    "line": 84,
+                    "character": 16
+                },
+                "end": {
+                    "line": 84,
+                    "character": 52
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"Column[str]\" cannot be assigned to parameter \"net_amount\" of type \"Column[float] | Scalar[float] | float\" in function \"build\"\n  Type \"Column[str]\" is not assignable to type \"Column[float] | Scalar[float] | float\"\n    \"Column[str]\" is not assignable to \"Column[float]\"\n      Type parameter \"T_co@Column\" is covariant, but \"str\" is not a subtype of \"float\"\n        \"str\" is not assignable to \"float\"\n    \"Column[str]\" is not assignable to \"Scalar[float]\"\n    \"Column[str]\" is not assignable to \"float\"",
+            "range": {
+                "start": {
+                    "line": 85,
+                    "character": 25
+                },
+                "end": {
+                    "line": 85,
+                    "character": 35
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument missing for parameter \"net_amount\"",
+            "range": {
+                "start": {
+                    "line": 86,
+                    "character": 4
+                },
+                "end": {
+                    "line": 86,
+                    "character": 15
+                }
+            },
+            "rule": "reportCallIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "No parameter named \"bogus\"",
+            "range": {
+                "start": {
+                    "line": 87,
+                    "character": 37
+                },
+                "end": {
+                    "line": 87,
+                    "character": 42
+                }
+            },
+            "rule": "reportCallIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"Stats.build(status=o.c.status, n=o.c.order_id.count(), total=o.c.amount.sum())\" is \"DataFrame[Stats]\"",
+            "range": {
+                "start": {
+                    "line": 88,
+                    "character": 16
+                },
+                "end": {
+                    "line": 88,
+                    "character": 94
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"Scalar[float]\" cannot be assigned to parameter \"n\" of type \"Column[int] | Scalar[int] | int\" in function \"build\"\n  Type \"Scalar[float]\" is not assignable to type \"Column[int] | Scalar[int] | int\"\n    \"Scalar[float]\" is not assignable to \"Column[int]\"\n    \"Scalar[float]\" is not assignable to \"Scalar[int]\"\n      Type parameter \"T_co@Scalar\" is covariant, but \"float\" is not a subtype of \"int\"\n        \"float\" is not assignable to \"int\"\n    \"Scalar[float]\" is not assignable to \"int\"",
+            "range": {
+                "start": {
+                    "line": 89,
+                    "character": 37
+                },
+                "end": {
+                    "line": 89,
+                    "character": 53
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"NetOrders.extend(o, Net.build(net_amount=o.c.amount))\" is \"DataFrame[NetOrders]\"",
+            "range": {
+                "start": {
+                    "line": 91,
+                    "character": 16
+                },
+                "end": {
+                    "line": 91,
+                    "character": 69
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"DataFrame[Customers]\" cannot be assigned to parameter \"base\" of type \"Into[NetOrders]\" in function \"extend\"\n  \"DataFrame[Customers]\" is incompatible with protocol \"Into[NetOrders]\"\n    \"__tacit_into__\" is an incompatible type\n      Type \"(x: Customers, /) -> object\" is not assignable to type \"(x: S@Into, /) -> object\"\n        Parameter 1: type \"S@Into\" is incompatible with type \"Customers\"\n          \"NetOrders\" is not assignable to \"Customers\"",
+            "range": {
+                "start": {
+                    "line": 92,
+                    "character": 21
+                },
+                "end": {
+                    "line": 92,
+                    "character": 22
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"DataFrame[Orders]\" cannot be assigned to parameter \"base\" of type \"Into[Stats]\" in function \"extend\"\n  \"DataFrame[Orders]\" is incompatible with protocol \"Into[Stats]\"\n    \"__tacit_into__\" is an incompatible type\n      Type \"(x: Orders, /) -> object\" is not assignable to type \"(x: S@Into, /) -> object\"\n        Parameter 1: type \"S@Into\" is incompatible with type \"Orders\"\n          \"Stats\" is not assignable to \"Orders\"",
+            "range": {
+                "start": {
+                    "line": 93,
+                    "character": 17
+                },
+                "end": {
+                    "line": 93,
+                    "character": 18
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"DataFrame[Net]\" cannot be assigned to parameter \"delta\" of type \"Into[Stats]\" in function \"extend\"\n  \"DataFrame[Net]\" is incompatible with protocol \"Into[Stats]\"\n    \"__tacit_into__\" is an incompatible type\n      Type \"(x: Net, /) -> object\" is not assignable to type \"(x: S@Into, /) -> object\"\n        Parameter 1: type \"S@Into\" is incompatible with type \"Net\"\n          \"Stats\" is not assignable to \"Net\"",
+            "range": {
+                "start": {
+                    "line": 93,
+                    "character": 20
+                },
+                "end": {
+                    "line": 93,
+                    "character": 52
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"df.c.event_ts\" is \"Column[datetime]\"",
+            "range": {
+                "start": {
+                    "line": 101,
+                    "character": 16
+                },
+                "end": {
+                    "line": 101,
+                    "character": 29
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"event_tss\" for class \"HasEventTs*\"\n  Attribute \"event_tss\" is unknown",
+            "range": {
+                "start": {
+                    "line": 102,
+                    "character": 9
+                },
+                "end": {
+                    "line": 102,
+                    "character": 18
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"dedupe(o, o.c.order_id)\" is \"DataFrame[Orders]\"",
+            "range": {
+                "start": {
+                    "line": 108,
+                    "character": 16
+                },
+                "end": {
+                    "line": 108,
+                    "character": 39
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"dedupe(n, n.c.order_id)\" is \"DataFrame[NetOrders]\"",
+            "range": {
+                "start": {
+                    "line": 109,
+                    "character": 16
+                },
+                "end": {
+                    "line": 109,
+                    "character": 39
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"recent(k, datetime(2024, 1, 1))\" is \"DataFrame[Clicks]\"",
+            "range": {
+                "start": {
+                    "line": 110,
+                    "character": 16
+                },
+                "end": {
+                    "line": 110,
+                    "character": 47
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Argument of type \"DataFrame[Orders]\" cannot be assigned to parameter \"df\" of type \"DataFrame[S@recent]\" in function \"recent\"\n  \"DataFrame[Orders]\" is not assignable to \"DataFrame[S@recent]\"\n    Type parameter \"S_co@DataFrame\" is covariant, but \"Orders\" is not a subtype of \"S@recent\"\n      Type \"Orders\" is not assignable to type \"HasEventTs\"\n        \"Orders\" is not assignable to \"HasEventTs\"",
+            "range": {
+                "start": {
+                    "line": 111,
+                    "character": 11
+                },
+                "end": {
+                    "line": 111,
+                    "character": 12
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Cannot access attribute \"net_amont\" for class \"Net\"\n  Attribute \"net_amont\" is unknown",
+            "range": {
+                "start": {
+                    "line": 115,
+                    "character": 39
+                },
+                "end": {
+                    "line": 115,
+                    "character": 48
+                }
+            },
+            "rule": "reportAttributeAccessIssue"
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "information",
+            "message": "Type of \"Net.build(net_amount=o.c.amount).c.net_amount\" is \"Column[float]\"",
+            "range": {
+                "start": {
+                    "line": 116,
+                    "character": 16
+                },
+                "end": {
+                    "line": 116,
+                    "character": 61
+                }
+            }
+        },
+        {
+            "file": "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e13-thin-frame/tests/typecheck_t2/t2_cases.py",
+            "severity": "error",
+            "message": "Type \"DataFrame[Orders]\" is not assignable to declared type \"Table\"\n  \"DataFrame[Orders]\" is not assignable to \"Table\"",
+            "range": {
+                "start": {
+                    "line": 118,
+                    "character": 19
+                },
+                "end": {
+                    "line": 118,
+                    "character": 20
+                }
+            },
+            "rule": "reportAssignmentType"
+        }
+    ],
+    "summary": {
+        "filesAnalyzed": 1,
+        "errorCount": 19,
+        "warningCount": 0,
+        "informationCount": 21,
+        "timeInSec": 2.677
+    }
+}
+

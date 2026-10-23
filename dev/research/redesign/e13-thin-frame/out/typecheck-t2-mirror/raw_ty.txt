@@ -1,0 +1,41 @@
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:56:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:57:17: info[revealed-type] Revealed type: `Column[int]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:58:17: info[revealed-type] Revealed type: `IntegerScalar`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:59:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:60:5: error[unresolved-attribute] Object of type `Orders` has no attribute `amout`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:61:5: error[unresolved-attribute] Object of type `DataFrame[Orders]` has no attribute `amount`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:62:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:63:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:65:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:66:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:67:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:69:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:70:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:71:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:72:17: info[revealed-type] Revealed type: `Table`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:73:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:75:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `DataFrame[Customers]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:76:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `Table`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:77:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `Table`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:80:31: error[invalid-assignment] Object of type `DataFrame[Orders]` is not assignable to `DataFrame[NetOrders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:85:17: info[revealed-type] Revealed type: `DataFrame[Net]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:86:15: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[str]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:87:5: error[missing-argument] No argument provided for required parameter `net_amount` of bound method `Schema.build`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:88:38: error[unknown-argument] Argument `bogus` does not match any known parameter of bound method `Schema.build`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:89:17: info[revealed-type] Revealed type: `DataFrame[Stats]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:90:36: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Scalar[float]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:92:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:93:22: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Customers]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:93:25: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Net]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:94:18: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Stats | Orders | Net]`, found `DataFrame[Orders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:94:21: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Stats | Orders | Net]`, found `DataFrame[Net]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:102:17: info[revealed-type] Revealed type: `Column[datetime]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:103:5: error[unresolved-attribute] Object of type `S@recent` has no attribute `event_tss`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:109:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:110:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:111:17: info[revealed-type] Revealed type: `DataFrame[Clicks]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:112:12: error[invalid-argument-type] Argument to function `recent` is incorrect: Argument type `Orders` does not satisfy upper bound `HasEventTs` of type variable `S`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:116:5: error[unresolved-attribute] Object of type `Net` has no attribute `net_amont`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:117:17: info[revealed-type] Revealed type: `Column[float]`
+e13-thin-frame/tests/typecheck_t2/t2_cases.py:119:20: error[invalid-assignment] Object of type `DataFrame[Orders]` is not assignable to `Table`
+Found 40 diagnostics
