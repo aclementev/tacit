@@ -1,19 +1,19 @@
 ## standalone single-aggregate cost per check (1M rows, min of 5, wall s)
-age      greater_than_or_equal_to(min_value=0)                       2.2 ms
-age      less_than_or_equal_to(max_value=120)                        2.1 ms
-score    greater_than_or_equal_to(min_value=0.0)                     3.3 ms
-score    less_than_or_equal_to(max_value=1.0)                        4.1 ms
-status   isin(allowed_values=['active', 'inactive', 'pending', '    14.5 ms
-email    str_matches(pattern='^[^@]+@[^@]+\\.[a-z]+$')              73.2 ms
-country  str_length(min_value=2, max_value=2, exact_value=None)     11.4 ms
-amount   greater_than_or_equal_to(min_value=0.0)                     2.6 ms
-qty      greater_than(min_value=0)                                   3.2 ms
-id       unique (count distinct)                                    64.2 ms
-sum of standalone check queries: 117 ms
+age      greater_than_or_equal_to(min_value=0)                       2.3 ms
+age      less_than_or_equal_to(max_value=120)                        2.2 ms
+score    greater_than_or_equal_to(min_value=0.0)                     3.4 ms
+score    less_than_or_equal_to(max_value=1.0)                        3.3 ms
+status   isin(allowed_values=['active', 'inactive', 'pending', '    13.7 ms
+email    str_matches(pattern='^[^@]+@[^@]+\\.[a-z]+$')              75.8 ms
+country  str_length(min_value=2, max_value=2, exact_value=None)     10.7 ms
+amount   greater_than_or_equal_to(min_value=0.0)                     2.3 ms
+qty      greater_than(min_value=0)                                   2.3 ms
+id       unique (count distinct)                                    57.0 ms
+sum of standalone check queries: 116 ms
 
 ## fixed overhead on a 1,000-row table (min of 20, wall ms)
-tacit parse (pandera, 16 queries): 132.3 ms
-native validate (1 query)        : 15.6 ms
-native validate, plan rebuilt    : 14.3 ms
+tacit parse (pandera, 16 queries): 138.5 ms
+native validate (1 query)        : 16.8 ms
+native validate, plan rebuilt    : 13.6 ms
 Customer._pandera_schema() build : 0.56 ms
-pandera schema.validate only     : 131.0 ms
+pandera schema.validate only     : 127.8 ms

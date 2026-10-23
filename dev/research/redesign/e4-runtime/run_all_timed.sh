@@ -1,5 +1,5 @@
 #!/bin/sh
-# Timed benchmarks, run sequentially (best on an otherwise idle box; the machine has 2 cores).
+# Timed benchmarks, run sequentially on an otherwise idle box.
 set -e
 cd "$(dirname "$0")"
 REPEAT=5 uv run python bench_parse.py 1000000 > raw_parse_1M.txt 2>&1
