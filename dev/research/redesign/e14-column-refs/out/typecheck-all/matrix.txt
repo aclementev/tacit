@@ -1,0 +1,42 @@
+feature                                                               pyright           mypy             ty        pyrefly
+r00_t2_regress: (module)                                                  0/0            0/0            0/0            0/0
+r00_t2_regress: typed namespace access, typos                             8/8            8/8            8/8            8/8
+r00_t2_regress: schema-preserving methods keep DataFrame[S]               3/3            3/3            3/3            3/3
+r00_t2_regress: ibis API directly; results are plain tables               5/5            5/5            5/5            5/5
+r00_t2_regress: wrong frame / forgot cast / subtyping                     5/5         4/5 m1         4/5 m1         4/5 m1
+r00_t2_regress: build(): checked projection and implicit GROUP            6/6            6/6            6/6            6/6
+r00_t2_regress: extend: Out must subclass the base schema and             5/5            5/5            5/5            5/5
+r00_t2_regress: generic steps over S                                      4/4            4/4            4/4            4/4
+r00_t2_regress: typed namespace survives build() (inference of            2/2            2/2            2/2            2/2
+r00_t2_regress: frame accepted by ibis functions typed ir.Tabl         0/0 f1            0/0         0/0 f1            0/0
+r01_refs: (module)                                                        0/0            0/0            0/0            0/0
+r01_refs: ref access, typos, value types                                12/12          12/12          12/12          12/12
+r01_refs: nullability through refs                                        3/3            3/3            3/3            3/3
+r01_refs: E8 section 6 unsoundness fixed: a ref is not a colum            4/4            4/4            4/4            4/4
+r01_refs: owner check on DataFrame methods                              11/11     9/11 m1 f1          11/11          11/11
+r01_refs: owner check on the generated ibis API (mutate/select            9/9            9/9            9/9            9/9
+r01_refs: intermediate (untyped) tables: owner unchecked by de         0/1 m1         0/1 m1         0/1 m1         0/1 m1
+r01_refs: combining refs from two schemas                                 7/7      5/7 w1 f1            7/7            7/7
+r01_refs: joins with refs: key pairs are (left schema, right s            3/3            3/3            3/3            3/3
+r01_refs: build(src, ...) / extend with refs                           8/9 m1      8/9 m1 f1         8/9 m1         8/9 m1
+r01_refs: generic steps with parent-schema refs                           3/3            3/3            3/3            3/3
+r02_strings: (module)                                                     0/0            0/0            0/0            0/0
+r02_strings: df.c["x"]: generated __getitem__ overloads on the          10/10          10/10          10/10          10/10
+r02_strings: df["x"]: DataFrame.__getitem__ through a Protocol         1/6 f5         1/6 f5      1/6 m1 w4         1/6 f5
+r02_strings: Orders.col("x"): generated classmethod overloads             9/9            9/9         8/9 w1            9/9
+r02_strings: generic steps with string keys                               3/3            3/3         2/3 w1            3/3
+r03_interop: (module)                                                  1/1 f2         1/1 f2         1/1 f2         1/1 f2
+b_attr: (module)                                                          0/0            0/0            0/0            0/0
+b_attr: bug matrix                                                     7/8 m1         7/8 m1         7/8 m1         7/8 m1
+b_ibis: (module)                                                          0/0            0/0            0/0            0/0
+b_ibis: bug matrix                                                     1/8 m7         0/8 m8         0/8 m8         0/8 m8
+b_ref: (module)                                                           0/0            0/0            0/0            0/0
+b_ref: bug matrix                                                      7/8 m1         7/8 m1         7/8 m1         7/8 m1
+b_str: (module)                                                           0/0            0/0            0/0            0/0
+b_str: bug matrix                                                      7/8 m1         7/8 m1         7/8 m1         7/8 m1
+s_attr: (module)                                                          0/0            0/0            0/0            0/0
+s_ibis: (module)                                                          0/0            0/0            0/0            0/0
+s_ref: (module)                                                           0/0            0/0            0/0            0/0
+s_str: (module)                                                           0/0            0/0            0/0            0/0
+TOTAL                                                          144/161 m12 f8 138/161 m15 w1 f10 140/161 m15 w6 f3 142/161 m14 f7
+cell = ok/cases [mN = missed errors, wN = wrong revealed type, fN = false positives]

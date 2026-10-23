@@ -1,0 +1,119 @@
+MISSED  mypy     r00_t2_regress.py:78  takes_orders(t)  # E: raw ibis table
+MISSED  ty       r00_t2_regress.py:78  takes_orders(t)  # E: raw ibis table
+MISSED  pyrefly  r00_t2_regress.py:78  takes_orders(t)  # E: raw ibis table
+FP      pyright  r00_t2_regress.py:119  xt: ir.Table = o  # ok at runtime
+          -> Type "DataFrame[Orders]" is not assignable to declared type "Table" (reportAssignmentType)
+FP      ty       r00_t2_regress.py:119  xt: ir.Table = o  # ok at runtime
+          -> invalid-assignment: Object of type `DataFrame[Orders]` is not assignable to `Table`
+FP      mypy     r01_refs.py:89  reveal_type(n.order_by(Orders.amount))  # R: DataFrame[NetOrders]
+          -> Argument 2 to "__get__" of "Column" has incompatible type "type[Orders]"; expected "type[NetOrders]"  [arg-type]
+MISSED  mypy     r01_refs.py:90  o.order_by(NetOrders.net_amount)  # E: bare child-schema ref on parent frame
+MISSED  pyright  r01_refs.py:105  m.filter(Customers.country == "x")  # E: wrong owner, but m is a plain Table (TableAPI[Any])
+MISSED  mypy     r01_refs.py:105  m.filter(Customers.country == "x")  # E: wrong owner, but m is a plain Table (TableAPI[Any])
+MISSED  ty       r01_refs.py:105  m.filter(Customers.country == "x")  # E: wrong owner, but m is a plain Table (TableAPI[Any])
+MISSED  pyrefly  r01_refs.py:105  m.filter(Customers.country == "x")  # E: wrong owner, but m is a plain Table (TableAPI[Any])
+FP      mypy     r01_refs.py:113  reveal_type(NetOrders.net_amount + Orders.amount)  # R: Ref[NetOrders, float]
+          -> Argument 2 to "__get__" of "Column" has incompatible type "type[Orders]"; expected "type[NetOrders]"  [arg-type]
+TYPE    mypy     r01_refs.py:114  expected Ref[NetOrders, float], got Ref[Orders, float]
+MISSED  pyright  r01_refs.py:131  Net.build(c, net_amount=Orders.amount)  # E: owner vs src (not expressible: build kwargs come from the schema)
+MISSED  mypy     r01_refs.py:131  Net.build(c, net_amount=Orders.amount)  # E: owner vs src (not expressible: build kwargs come from the schema)
+MISSED  ty       r01_refs.py:131  Net.build(c, net_amount=Orders.amount)  # E: owner vs src (not expressible: build kwargs come from the schema)
+MISSED  pyrefly  r01_refs.py:131  Net.build(c, net_amount=Orders.amount)  # E: owner vs src (not expressible: build kwargs come from the schema)
+FP      mypy     r01_refs.py:144  return df.order_by(HasEventTs.event_ts)
+          -> Argument 2 to "__get__" of "Column" has incompatible type "type[HasEventTs]"; expected "type[S]"  [arg-type]
+FP      pyright  r02_strings.py:28  reveal_type(o["amount"])  # R: Column[float]
+          -> Argument of type "Literal['amount']" cannot be assigned to parameter "key" of type "Literal['order_id']" in function "__getitem__" (reportArgumentType)
+FP      mypy     r02_strings.py:28  reveal_type(o["amount"])  # R: Column[float]
+          -> Invalid index type "Literal['amount']" for "DataFrame[Orders]"; expected type "Literal['order_id']"  [index]
+TYPE    ty       r02_strings.py:28  expected Column[float], got Unknown
+FP      pyrefly  r02_strings.py:28  reveal_type(o["amount"])  # R: Column[float]
+          -> bad-index: Cannot index into `DataFrame[Orders]`
+FP      pyright  r02_strings.py:29  reveal_type(o["discount"])  # R: Column[float | None]
+          -> Argument of type "Literal['discount']" cannot be assigned to parameter "key" of type "Literal['order_id']" in function "__getitem__" (reportArgumentType)
+FP      mypy     r02_strings.py:29  reveal_type(o["discount"])  # R: Column[float | None]
+          -> Invalid index type "Literal['discount']" for "DataFrame[Orders]"; expected type "Literal['order_id']"  [index]
+TYPE    ty       r02_strings.py:29  expected Column[float | None], got Unknown
+FP      pyrefly  r02_strings.py:29  reveal_type(o["discount"])  # R: Column[float | None]
+          -> bad-index: Cannot index into `DataFrame[Orders]`
+MISSED  ty       r02_strings.py:30  o["amout"]  # E: typo
+FP      pyright  r02_strings.py:31  reveal_type(n["net_amount"])  # R: Column[float]
+          -> Argument of type "Literal['net_amount']" cannot be assigned to parameter "key" of type "Literal['order_id']" in function "__getitem__" (reportArgumentType)
+FP      mypy     r02_strings.py:31  reveal_type(n["net_amount"])  # R: Column[float]
+          -> Invalid index type "Literal['net_amount']" for "DataFrame[NetOrders]"; expected type "Literal['order_id']"  [index]
+TYPE    ty       r02_strings.py:31  expected Column[float], got Unknown
+FP      pyrefly  r02_strings.py:31  reveal_type(n["net_amount"])  # R: Column[float]
+          -> bad-index: Cannot index into `DataFrame[NetOrders]`
+FP      pyright  r02_strings.py:32  reveal_type(c["country"])  # R: Column[str]
+          -> Argument of type "Literal['country']" cannot be assigned to parameter "key" of type "Literal['customer_id']" in function "__getitem__" (reportArgumentType)
+FP      mypy     r02_strings.py:32  reveal_type(c["country"])  # R: Column[str]
+          -> Invalid index type "Literal['country']" for "DataFrame[Customers]"; expected type "Literal['customer_id']"  [index]
+TYPE    ty       r02_strings.py:32  expected Column[str], got Unknown
+FP      pyrefly  r02_strings.py:32  reveal_type(c["country"])  # R: Column[str]
+          -> bad-index: Cannot index into `DataFrame[Customers]`
+FP      pyright  r02_strings.py:33  reveal_type(o.filter(o["amount"] > 0))  # R: DataFrame[Orders]
+          -> Argument of type "Literal['amount']" cannot be assigned to parameter "key" of type "Literal['order_id']" in function "__getitem__" (reportArgumentType)
+FP      mypy     r02_strings.py:33  reveal_type(o.filter(o["amount"] > 0))  # R: DataFrame[Orders]
+          -> Invalid index type "Literal['amount']" for "DataFrame[Orders]"; expected type "Literal['order_id']"  [index]
+FP      pyrefly  r02_strings.py:33  reveal_type(o.filter(o["amount"] > 0))  # R: DataFrame[Orders]
+          -> bad-index: Cannot index into `DataFrame[Orders]`
+TYPE    ty       r02_strings.py:49  expected Column[datetime], got Unknown
+TYPE    ty       r02_strings.py:57  expected Column[float], got Unknown
+FP      pyright  r03_interop.py:13  Orders.amount + tr.lit(1.0)  # L1 helper scalar (bound type)
+          -> Operator "+" not supported for types "Ref[Orders, float]" and "Scalar[float]" (reportOperatorIssue)
+FP      mypy     r03_interop.py:13  Orders.amount + tr.lit(1.0)  # L1 helper scalar (bound type)
+          -> No overload variant of "__add__" of "Ref" matches argument type "Scalar[float]"  [operator]
+FP      ty       r03_interop.py:13  Orders.amount + tr.lit(1.0)  # L1 helper scalar (bound type)
+          -> unsupported-operator: Operator `+` is not supported between objects of type `Ref[Orders, float]` and `Scalar[float*]`
+FP      pyrefly  r03_interop.py:13  Orders.amount + tr.lit(1.0)  # L1 helper scalar (bound type)
+          -> unsupported-operation: `+` is not supported between `Ref[Orders, float]` and `Scalar[float]`
+FP      pyright  r03_interop.py:14  tr.cases((Orders.amount > 0, 1), else_=0)  # L2 tacit cases with a ref condition
+          -> Argument of type "tuple[Ref[Orders, bool], Literal[1]]" cannot be assigned to parameter "branches" of type "tuple[Column[bool] | Scalar[bool], V@cases | Column[V@cases] | Scalar[V@cases]]" in function
+FP      mypy     r03_interop.py:14  tr.cases((Orders.amount > 0, 1), else_=0)  # L2 tacit cases with a ref condition
+          -> Argument 1 to "cases" has incompatible type "tuple[Ref[Orders, bool], int]"; expected "tuple[Column[bool] | Scalar[bool], int | Column[int] | Scalar[int]]"  [arg-type]
+FP      ty       r03_interop.py:14  tr.cases((Orders.amount > 0, 1), else_=0)  # L2 tacit cases with a ref condition
+          -> invalid-argument-type: Argument to function `cases` is incorrect: Expected `tuple[Column[bool] | Scalar[bool], Literal[1, 0] | Column[Literal[1, 0]] | Scalar[Literal[1, 0]]]`, found `tuple[Ref[Orders,
+FP      pyrefly  r03_interop.py:14  tr.cases((Orders.amount > 0, 1), else_=0)  # L2 tacit cases with a ref condition
+          -> bad-argument-type: Argument `tuple[Ref[Orders, bool], Literal[1]]` is not assignable to parameter `*branches` with type `tuple[Column[bool] | Scalar[bool], Column[@_] | Scalar[@_] | @_]` in function `
+MISSED  pyright  b_attr.py:14  orders.filter(customers.c.country == "DE")  # E: B3 other frame's column
+MISSED  mypy     b_attr.py:14  orders.filter(customers.c.country == "DE")  # E: B3 other frame's column
+MISSED  ty       b_attr.py:14  orders.filter(customers.c.country == "DE")  # E: B3 other frame's column
+MISSED  pyrefly  b_attr.py:14  orders.filter(customers.c.country == "DE")  # E: B3 other frame's column
+MISSED  pyright  b_ibis.py:10  orders.filter(_.statuz != "cancelled")  # E: B1 typo
+MISSED  mypy     b_ibis.py:10  orders.filter(_.statuz != "cancelled")  # E: B1 typo
+MISSED  ty       b_ibis.py:10  orders.filter(_.statuz != "cancelled")  # E: B1 typo
+MISSED  pyrefly  b_ibis.py:10  orders.filter(_.statuz != "cancelled")  # E: B1 typo
+MISSED  pyright  b_ibis.py:11  orders.filter(_.status > 5)  # E: B2 str compared with int
+MISSED  mypy     b_ibis.py:11  orders.filter(_.status > 5)  # E: B2 str compared with int
+MISSED  ty       b_ibis.py:11  orders.filter(_.status > 5)  # E: B2 str compared with int
+MISSED  pyrefly  b_ibis.py:11  orders.filter(_.status > 5)  # E: B2 str compared with int
+MISSED  pyright  b_ibis.py:12  orders.filter(customers.country == "DE")  # E: B3 other frame's column
+MISSED  mypy     b_ibis.py:12  orders.filter(customers.country == "DE")  # E: B3 other frame's column
+MISSED  ty       b_ibis.py:12  orders.filter(customers.country == "DE")  # E: B3 other frame's column
+MISSED  pyrefly  b_ibis.py:12  orders.filter(customers.country == "DE")  # E: B3 other frame's column
+MISSED  pyright  b_ibis.py:13  orders.mutate(net_amount=_.amount - _.discount)  # E: B4 nullable into non-null
+MISSED  mypy     b_ibis.py:13  orders.mutate(net_amount=_.amount - _.discount)  # E: B4 nullable into non-null
+MISSED  ty       b_ibis.py:13  orders.mutate(net_amount=_.amount - _.discount)  # E: B4 nullable into non-null
+MISSED  pyrefly  b_ibis.py:13  orders.mutate(net_amount=_.amount - _.discount)  # E: B4 nullable into non-null
+MISSED  pyright  b_ibis.py:14  x: ir.Table = orders.mutate(net_amount=_.amount)  # E: B5 forgot to conform (no schema to forget)
+MISSED  mypy     b_ibis.py:14  x: ir.Table = orders.mutate(net_amount=_.amount)  # E: B5 forgot to conform (no schema to forget)
+MISSED  ty       b_ibis.py:14  x: ir.Table = orders.mutate(net_amount=_.amount)  # E: B5 forgot to conform (no schema to forget)
+MISSED  pyrefly  b_ibis.py:14  x: ir.Table = orders.mutate(net_amount=_.amount)  # E: B5 forgot to conform (no schema to forget)
+MISSED  pyright  b_ibis.py:15  orders.group_by(_.status).agg(t=_.net_amount)  # E: B6 agg of a non-reduced column
+MISSED  mypy     b_ibis.py:15  orders.group_by(_.status).agg(t=_.net_amount)  # E: B6 agg of a non-reduced column
+MISSED  ty       b_ibis.py:15  orders.group_by(_.status).agg(t=_.net_amount)  # E: B6 agg of a non-reduced column
+MISSED  pyrefly  b_ibis.py:15  orders.group_by(_.status).agg(t=_.net_amount)  # E: B6 agg of a non-reduced column
+MISSED  mypy     b_ibis.py:16  orders.join(customers, _.customer_id == customers.country)  # E: B7 int key vs str key
+MISSED  ty       b_ibis.py:16  orders.join(customers, _.customer_id == customers.country)  # E: B7 int key vs str key
+MISSED  pyrefly  b_ibis.py:16  orders.join(customers, _.customer_id == customers.country)  # E: B7 int key vs str key
+MISSED  pyright  b_ibis.py:20  return df.filter(_.status == "x")  # E: B8 column outside the generic bound
+MISSED  mypy     b_ibis.py:20  return df.filter(_.status == "x")  # E: B8 column outside the generic bound
+MISSED  ty       b_ibis.py:20  return df.filter(_.status == "x")  # E: B8 column outside the generic bound
+MISSED  pyrefly  b_ibis.py:20  return df.filter(_.status == "x")  # E: B8 column outside the generic bound
+MISSED  pyright  b_ref.py:17  orders.join(customers, [(RawOrder.customer_id, RawCustomer.country)])  # E: B7 int key vs str key
+MISSED  mypy     b_ref.py:17  orders.join(customers, [(RawOrder.customer_id, RawCustomer.country)])  # E: B7 int key vs str key
+MISSED  ty       b_ref.py:17  orders.join(customers, [(RawOrder.customer_id, RawCustomer.country)])  # E: B7 int key vs str key
+MISSED  pyrefly  b_ref.py:17  orders.join(customers, [(RawOrder.customer_id, RawCustomer.country)])  # E: B7 int key vs str key
+MISSED  pyright  b_str.py:13  orders.filter(customers.c["country"] == "DE")  # E: B3 other frame's column
+MISSED  mypy     b_str.py:13  orders.filter(customers.c["country"] == "DE")  # E: B3 other frame's column
+MISSED  ty       b_str.py:13  orders.filter(customers.c["country"] == "DE")  # E: B3 other frame's column
+MISSED  pyrefly  b_str.py:13  orders.filter(customers.c["country"] == "DE")  # E: B3 other frame's column

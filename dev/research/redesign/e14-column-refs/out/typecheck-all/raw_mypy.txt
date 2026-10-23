@@ -1,0 +1,206 @@
+e14-column-refs/tests/typecheck/r01_refs.py:56: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:57: note: Revealed type is "tacit_thin._column.Ref[r01_refs.NetOrders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:58: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, int]"
+e14-column-refs/tests/typecheck/r01_refs.py:59: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/tests/typecheck/r01_refs.py:60: error: "type[Orders]" has no attribute "amout"  [attr-defined]
+e14-column-refs/tests/typecheck/r01_refs.py:61: error: Invalid self argument "Ref[Orders, float]" to attribute function "upper" with type "Callable[[Ref[O_contra, str]], Ref[O_contra, str]]"  [misc]
+e14-column-refs/tests/typecheck/r01_refs.py:62: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:63: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, int]"
+e14-column-refs/tests/typecheck/r01_refs.py:64: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, datetime.datetime]"
+e14-column-refs/tests/typecheck/r01_refs.py:65: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:66: note: Revealed type is "tacit_thin._column.RefScalar[r01_refs.Orders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:67: error: No overload variant of "__add__" of "Ref" matches argument type "str"  [operator]
+e14-column-refs/tests/typecheck/r01_refs.py:67: note: Possible overload variants:
+e14-column-refs/tests/typecheck/r01_refs.py:67: note:     def __add__(self, float | Ref[Orders, float] | RefScalar[Orders, float], /) -> Ref[Orders, float]
+e14-column-refs/tests/typecheck/r01_refs.py:67: note:     def __add__(self, float | Ref[Orders, float | None] | RefScalar[Orders, float | None] | None, /) -> Ref[Orders, float | None]
+e14-column-refs/tests/typecheck/r01_refs.py:69: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, float | None]"
+e14-column-refs/tests/typecheck/r01_refs.py:70: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:71: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:73: error: "Ref[Orders, float]" has no attribute "get_name"  [attr-defined]
+e14-column-refs/tests/typecheck/r01_refs.py:74: error: "Ref[Orders, float]" has no attribute "execute"  [attr-defined]
+e14-column-refs/tests/typecheck/r01_refs.py:75: error: Argument 1 to "takes_column" has incompatible type "Ref[Orders, float]"; expected "Column[float]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:76: error: Incompatible types in assignment (expression has type "Ref[Orders, float]", variable has type "Value")  [assignment]
+e14-column-refs/tests/typecheck/r01_refs.py:81: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Orders]"
+e14-column-refs/tests/typecheck/r01_refs.py:82: error: Argument 1 to "filter" of "DataFrame" has incompatible type "Ref[Customers, bool]"; expected "Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:83: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.NetOrders]"
+e14-column-refs/tests/typecheck/r01_refs.py:84: error: Argument 1 to "filter" of "DataFrame" has incompatible type "Ref[NetOrders, bool]"; expected "Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:85: error: Argument 1 to "filter" of "DataFrame" has incompatible type "Ref[Orders, float]"; expected "Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:86: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Orders]"
+e14-column-refs/tests/typecheck/r01_refs.py:87: error: Argument 1 to "order_by" of "DataFrame" has incompatible type "Ref[Customers, str]"; expected "Column[Any] | Value | Deferred | str | Ref[Orders, Any]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:88: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Orders]"
+e14-column-refs/tests/typecheck/r01_refs.py:89: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.NetOrders]"
+e14-column-refs/tests/typecheck/r01_refs.py:89: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Orders]"; expected "type[NetOrders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:91: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Orders]"
+e14-column-refs/tests/typecheck/r01_refs.py:93: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r01_refs.py:94: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Customers]"; expected "type[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:95: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r01_refs.py:96: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Customers]"; expected "type[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:97: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r01_refs.py:98: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Customers]"; expected "type[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:99: error: Argument "total" to "agg" of "GroupedTable" has incompatible type "Ref[Orders, float]"; expected "ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Orders, Any]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:100: error: Argument "total" to "agg" of "GroupedTable" has incompatible type "RefScalar[Customers, int]"; expected "ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Orders, Any]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:101: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r01_refs.py:110: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Customers]"; expected "type[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:111: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Customers]"; expected "type[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:112: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Customers]"; expected "type[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:113: note: Revealed type is "Any"
+e14-column-refs/tests/typecheck/r01_refs.py:113: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Orders]"; expected "type[NetOrders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:114: note: Revealed type is "tacit_thin._column.Ref[r01_refs.Orders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:115: note: Revealed type is "tacit_thin._column.Ref[r01_refs.NetOrders, float]"
+e14-column-refs/tests/typecheck/r01_refs.py:116: error: No overload variant of "__add__" of "Ref" matches argument type "Column[float]"  [operator]
+e14-column-refs/tests/typecheck/r01_refs.py:116: note: Possible overload variants:
+e14-column-refs/tests/typecheck/r01_refs.py:116: note:     def __add__(self, float | Ref[Orders, float] | RefScalar[Orders, float], /) -> Ref[Orders, float]
+e14-column-refs/tests/typecheck/r01_refs.py:116: note:     def __add__(self, float | Ref[Orders, float | None] | RefScalar[Orders, float | None] | None, /) -> Ref[Orders, float | None]
+e14-column-refs/tests/typecheck/r01_refs.py:121: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r01_refs.py:122: error: Argument 2 to "join" of "TableAPI" has incompatible type "list[tuple[Ref[Customers, int], Ref[Orders, int]]]"; expected "BooleanValue | Column[bool | None] | Deferred | Ref[Orders, Any] | RefScalar[Orders, Any] | str | Sequence[Literal[True, False] | str | BooleanValue | Column[bool | None] | tuple[str | Value | Column[Any] | Deferred | Ref[Orders, Any], str | Value | Column[Any] | Deferred | Ref[Never, Any]] | Scalar[bool | None]]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:123: error: Argument 2 to "__get__" of "Column" has incompatible type "type[Customers]"; expected "type[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:129: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Net]"
+e14-column-refs/tests/typecheck/r01_refs.py:130: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Ref[Orders, str]"; expected "Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:132: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Stats]"
+e14-column-refs/tests/typecheck/r01_refs.py:133: error: Argument "n" to "build" of "Schema" has incompatible type "RefScalar[Orders, float]"; expected "Column[int] | Scalar[int] | int | Ref[Any, int] | RefScalar[Any, int]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:134: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.NetOrders]"
+e14-column-refs/tests/typecheck/r01_refs.py:135: error: Argument 1 to "extend" of "Schema" has incompatible type "DataFrame[Customers]"; expected "Into[NetOrders]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:139: error: "type[HasEventTs]" has no attribute "event_tss"  [attr-defined]
+e14-column-refs/tests/typecheck/r01_refs.py:144: error: Argument 2 to "__get__" of "Column" has incompatible type "type[HasEventTs]"; expected "type[S]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:148: error: Argument 1 to "filter" of "DataFrame" has incompatible type "Ref[Clicks, bool]"; expected "Column[bool | None] | BooleanValue | Deferred | Ref[S, bool | None]"  [arg-type]
+e14-column-refs/tests/typecheck/r01_refs.py:153: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Clicks]"
+e14-column-refs/tests/typecheck/r01_refs.py:154: note: Revealed type is "tacit_r._df.DataFrame[r01_refs.Clicks]"
+e14-column-refs/tests/typecheck/r01_refs.py:155: error: Value of type variable "S" of "recent" cannot be "Orders"  [type-var]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:56: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:57: note: Revealed type is "tacit_thin._column.Column[int]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:58: note: Revealed type is "ibis.expr.types.numeric.IntegerScalar"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:59: note: Revealed type is "tacit_thin._column.Ref[r00_t2_regress.Orders, float]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:60: error: "Orders" has no attribute "amout"; maybe "amount"?  [attr-defined]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:61: error: "DataFrame[Orders]" has no attribute "amount"  [attr-defined]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:62: error: Invalid self argument "Column[float]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:63: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:65: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Orders]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:66: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Orders]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:67: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Orders]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:69: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:70: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:71: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:72: note: Revealed type is "tacit_thin._ibis_api.Table"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:73: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Orders]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:75: error: Argument 1 to "takes_orders" has incompatible type "DataFrame[Customers]"; expected "DataFrame[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:76: error: Argument 1 to "takes_orders" has incompatible type "Table"; expected "DataFrame[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:77: error: Argument 1 to "takes_orders" has incompatible type "Table"; expected "DataFrame[Orders]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:80: error: Incompatible types in assignment (expression has type "DataFrame[Orders]", variable has type "DataFrame[NetOrders]")  [assignment]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:85: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Net]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:86: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:87: error: Missing named argument "net_amount" for "build" of "Schema"  [call-arg]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:87: note: "build" defined in "tacit_r._df"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:88: error: Unexpected keyword argument "bogus" for "build" of "Schema"  [call-arg]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:88: note: "build" defined in "tacit_r._df"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:89: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Stats]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:90: error: Argument "n" to "build" of "Schema" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int | Ref[Any, int] | RefScalar[Any, int]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:92: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.NetOrders]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:93: error: Argument 1 to "extend" of "Schema" has incompatible type "DataFrame[Customers]"; expected "Into[NetOrders]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:94: error: Argument 1 to "extend" of "Schema" has incompatible type "DataFrame[Orders]"; expected "Into[Stats]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:94: error: Argument 2 to "extend" of "Schema" has incompatible type "DataFrame[Net]"; expected "Into[Stats]"  [arg-type]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:102: note: Revealed type is "tacit_thin._column.Column[datetime.datetime]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:103: error: "S" has no attribute "event_tss"  [attr-defined]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:109: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Orders]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:110: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.NetOrders]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:111: note: Revealed type is "tacit_r._df.DataFrame[r00_t2_regress.Clicks]"
+e14-column-refs/tests/typecheck/r00_t2_regress.py:112: error: Value of type variable "S" of "recent" cannot be "Orders"  [type-var]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:116: error: "Net" has no attribute "net_amont"; maybe "net_amount"?  [attr-defined]
+e14-column-refs/tests/typecheck/r00_t2_regress.py:117: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/examples/b_str.py:11: error: No overload variant of "__getitem__" of "RawOrder" matches argument type "str"  [call-overload]
+e14-column-refs/examples/b_str.py:11: note: Possible overload variants:
+e14-column-refs/examples/b_str.py:11: note:     def __getitem__(self, Literal['customer_id'], /) -> Column[int]
+e14-column-refs/examples/b_str.py:11: note:     def __getitem__(self, Literal['order_ts'], /) -> Column[datetime]
+e14-column-refs/examples/b_str.py:11: note:     def __getitem__(self, Literal['order_id'], /) -> Column[int]
+e14-column-refs/examples/b_str.py:11: note:     def __getitem__(self, Literal['status'], /) -> Column[str]
+e14-column-refs/examples/b_str.py:11: note:     def __getitem__(self, Literal['amount'], /) -> Column[float]
+e14-column-refs/examples/b_str.py:11: note:     def __getitem__(self, Literal['discount'], /) -> Column[float | None]
+e14-column-refs/examples/b_str.py:12: error: Unsupported operand types for > ("Column[str]" and "int")  [operator]
+e14-column-refs/examples/b_str.py:14: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]"  [arg-type]
+e14-column-refs/examples/b_str.py:15: error: Incompatible types in assignment (expression has type "Table", variable has type "DataFrame[Order]")  [assignment]
+e14-column-refs/examples/b_str.py:16: error: Argument "t" to "agg" of "GroupedTable" has incompatible type "Column[float]"; expected "ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Order, Any]"  [arg-type]
+e14-column-refs/examples/b_str.py:17: error: Unsupported operand types for == ("Column[int]" and "Column[str]")  [operator]
+e14-column-refs/examples/b_str.py:21: error: No overload variant of "__getitem__" of "Keyed" matches argument type "str"  [call-overload]
+e14-column-refs/examples/b_str.py:21: note: Possible overload variants:
+e14-column-refs/examples/b_str.py:21: note:     def __getitem__(self, Literal['customer_id'], /) -> Column[int]
+e14-column-refs/examples/b_str.py:21: note:     def __getitem__(self, Literal['order_ts'], /) -> Column[datetime]
+e14-column-refs/examples/b_ref.py:11: error: "type[RawOrder]" has no attribute "statuz"  [attr-defined]
+e14-column-refs/examples/b_ref.py:12: error: Unsupported operand types for > ("Ref[RawOrder, str]" and "int")  [operator]
+e14-column-refs/examples/b_ref.py:13: error: Argument 1 to "filter" of "DataFrame" has incompatible type "Ref[RawCustomer, bool]"; expected "Column[bool | None] | BooleanValue | Deferred | Ref[RawOrder, bool | None]"  [arg-type]
+e14-column-refs/examples/b_ref.py:14: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Ref[RawOrder, float | None]"; expected "Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]"  [arg-type]
+e14-column-refs/examples/b_ref.py:15: error: Incompatible types in assignment (expression has type "Table", variable has type "DataFrame[Order]")  [assignment]
+e14-column-refs/examples/b_ref.py:16: error: Argument "t" to "agg" of "GroupedTable" has incompatible type "Ref[Order, float]"; expected "ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Order, Any]"  [arg-type]
+e14-column-refs/examples/b_ref.py:21: error: Argument 1 to "filter" of "DataFrame" has incompatible type "Ref[RawOrder, bool]"; expected "Column[bool | None] | BooleanValue | Deferred | Ref[S, bool | None]"  [arg-type]
+e14-column-refs/examples/b_attr.py:12: error: "RawOrder" has no attribute "statuz"; maybe "status"?  [attr-defined]
+e14-column-refs/examples/b_attr.py:13: error: Unsupported operand types for > ("Column[str]" and "int")  [operator]
+e14-column-refs/examples/b_attr.py:15: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]"  [arg-type]
+e14-column-refs/examples/b_attr.py:16: error: Incompatible types in assignment (expression has type "Table", variable has type "DataFrame[Order]")  [assignment]
+e14-column-refs/examples/b_attr.py:17: error: Argument "t" to "agg" of "GroupedTable" has incompatible type "Column[float]"; expected "ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Order, Any]"  [arg-type]
+e14-column-refs/examples/b_attr.py:18: error: Unsupported operand types for == ("Column[int]" and "Column[str]")  [operator]
+e14-column-refs/examples/b_attr.py:22: error: "S" has no attribute "status"  [attr-defined]
+e14-column-refs/tests/typecheck/r03_interop.py:13: error: No overload variant of "__add__" of "Ref" matches argument type "Scalar[float]"  [operator]
+e14-column-refs/tests/typecheck/r03_interop.py:13: note: Possible overload variants:
+e14-column-refs/tests/typecheck/r03_interop.py:13: note:     def __add__(self, float | Ref[Orders, float] | RefScalar[Orders, float], /) -> Ref[Orders, float]
+e14-column-refs/tests/typecheck/r03_interop.py:13: note:     def __add__(self, float | Ref[Orders, float | None] | RefScalar[Orders, float | None] | None, /) -> Ref[Orders, float | None]
+e14-column-refs/tests/typecheck/r03_interop.py:14: error: Argument 1 to "cases" has incompatible type "tuple[Ref[Orders, bool], int]"; expected "tuple[Column[bool] | Scalar[bool], int | Column[int] | Scalar[int]]"  [arg-type]
+e14-column-refs/tests/typecheck/r03_interop.py:19: note: Revealed type is "tacit_thin._column.Ref[gen_schemas.Orders, int]"
+e14-column-refs/tests/typecheck/r02_strings.py:14: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/tests/typecheck/r02_strings.py:15: note: Revealed type is "tacit_thin._column.Column[float | None]"
+e14-column-refs/tests/typecheck/r02_strings.py:16: error: No overload variant of "__getitem__" of "Orders" matches argument type "str"  [call-overload]
+e14-column-refs/tests/typecheck/r02_strings.py:16: note: Possible overload variants:
+e14-column-refs/tests/typecheck/r02_strings.py:16: note:     def __getitem__(self, Literal['order_id'], /) -> Column[int]
+e14-column-refs/tests/typecheck/r02_strings.py:16: note:     def __getitem__(self, Literal['customer_id'], /) -> Column[int]
+e14-column-refs/tests/typecheck/r02_strings.py:16: note:     def __getitem__(self, Literal['order_ts'], /) -> Column[datetime]
+e14-column-refs/tests/typecheck/r02_strings.py:16: note:     def __getitem__(self, Literal['status'], /) -> Column[str]
+e14-column-refs/tests/typecheck/r02_strings.py:16: note:     def __getitem__(self, Literal['amount'], /) -> Column[float]
+e14-column-refs/tests/typecheck/r02_strings.py:16: note:     def __getitem__(self, Literal['discount'], /) -> Column[float | None]
+e14-column-refs/tests/typecheck/r02_strings.py:17: error: No overload variant of "__getitem__" of "Orders" matches argument type "str"  [call-overload]
+e14-column-refs/tests/typecheck/r02_strings.py:17: note: Possible overload variants:
+e14-column-refs/tests/typecheck/r02_strings.py:17: note:     def __getitem__(self, Literal['order_id'], /) -> Column[int]
+e14-column-refs/tests/typecheck/r02_strings.py:17: note:     def __getitem__(self, Literal['customer_id'], /) -> Column[int]
+e14-column-refs/tests/typecheck/r02_strings.py:17: note:     def __getitem__(self, Literal['order_ts'], /) -> Column[datetime]
+e14-column-refs/tests/typecheck/r02_strings.py:17: note:     def __getitem__(self, Literal['status'], /) -> Column[str]
+e14-column-refs/tests/typecheck/r02_strings.py:17: note:     def __getitem__(self, Literal['amount'], /) -> Column[float]
+e14-column-refs/tests/typecheck/r02_strings.py:17: note:     def __getitem__(self, Literal['discount'], /) -> Column[float | None]
+e14-column-refs/tests/typecheck/r02_strings.py:18: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/tests/typecheck/r02_strings.py:19: error: Invalid self argument "Column[float]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e14-column-refs/tests/typecheck/r02_strings.py:20: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/tests/typecheck/r02_strings.py:21: note: Revealed type is "tacit_thin._column.Column[float]"
+e14-column-refs/tests/typecheck/r02_strings.py:22: error: No overload variant of "__getitem__" of "Orders" matches argument type "str"  [call-overload]
+e14-column-refs/tests/typecheck/r02_strings.py:22: note: Possible overload variants:
+e14-column-refs/tests/typecheck/r02_strings.py:22: note:     def __getitem__(self, Literal['order_id'], /) -> Column[int]
+e14-column-refs/tests/typecheck/r02_strings.py:22: note:     def __getitem__(self, Literal['customer_id'], /) -> Column[int]
+e14-column-refs/tests/typecheck/r02_strings.py:22: note:     def __getitem__(self, Literal['order_ts'], /) -> Column[datetime]
+e14-column-refs/tests/typecheck/r02_strings.py:22: note:     def __getitem__(self, Literal['status'], /) -> Column[str]
+e14-column-refs/tests/typecheck/r02_strings.py:22: note:     def __getitem__(self, Literal['amount'], /) -> Column[float]
+e14-column-refs/tests/typecheck/r02_strings.py:22: note:     def __getitem__(self, Literal['discount'], /) -> Column[float | None]
+e14-column-refs/tests/typecheck/r02_strings.py:23: note: Revealed type is "tacit_r._df.DataFrame[gen_schemas.Orders]"
+e14-column-refs/tests/typecheck/r02_strings.py:28: note: Revealed type is "tacit_thin._column.Column[int]"
+e14-column-refs/tests/typecheck/r02_strings.py:28: error: Invalid index type "Literal['amount']" for "DataFrame[Orders]"; expected type "Literal['order_id']"  [index]
+e14-column-refs/tests/typecheck/r02_strings.py:29: note: Revealed type is "tacit_thin._column.Column[int]"
+e14-column-refs/tests/typecheck/r02_strings.py:29: error: Invalid index type "Literal['discount']" for "DataFrame[Orders]"; expected type "Literal['order_id']"  [index]
+e14-column-refs/tests/typecheck/r02_strings.py:30: error: Invalid index type "Literal['amout']" for "DataFrame[Orders]"; expected type "Literal['order_id']"  [index]
+e14-column-refs/tests/typecheck/r02_strings.py:31: note: Revealed type is "tacit_thin._column.Column[int]"
+e14-column-refs/tests/typecheck/r02_strings.py:31: error: Invalid index type "Literal['net_amount']" for "DataFrame[NetOrders]"; expected type "Literal['order_id']"  [index]
+e14-column-refs/tests/typecheck/r02_strings.py:32: note: Revealed type is "tacit_thin._column.Column[int]"
+e14-column-refs/tests/typecheck/r02_strings.py:32: error: Invalid index type "Literal['country']" for "DataFrame[Customers]"; expected type "Literal['customer_id']"  [index]
+e14-column-refs/tests/typecheck/r02_strings.py:33: note: Revealed type is "tacit_r._df.DataFrame[gen_schemas.Orders]"
+e14-column-refs/tests/typecheck/r02_strings.py:33: error: Invalid index type "Literal['amount']" for "DataFrame[Orders]"; expected type "Literal['order_id']"  [index]
+e14-column-refs/tests/typecheck/r02_strings.py:38: note: Revealed type is "tacit_thin._column.Ref[gen_schemas.Orders, float]"
+e14-column-refs/tests/typecheck/r02_strings.py:39: note: Revealed type is "tacit_thin._column.Ref[gen_schemas.NetOrders, float]"
+e14-column-refs/tests/typecheck/r02_strings.py:40: error: No overload variant of "col" of "Orders" matches argument type "str"  [call-overload]
+e14-column-refs/tests/typecheck/r02_strings.py:40: note: Possible overload variants:
+e14-column-refs/tests/typecheck/r02_strings.py:40: note:     def col(cls, Literal['order_id'], /) -> Ref[Orders, int]
+e14-column-refs/tests/typecheck/r02_strings.py:40: note:     def col(cls, Literal['customer_id'], /) -> Ref[Orders, int]
+e14-column-refs/tests/typecheck/r02_strings.py:40: note:     def col(cls, Literal['order_ts'], /) -> Ref[Orders, datetime]
+e14-column-refs/tests/typecheck/r02_strings.py:40: note:     def col(cls, Literal['status'], /) -> Ref[Orders, str]
+e14-column-refs/tests/typecheck/r02_strings.py:40: note:     def col(cls, Literal['amount'], /) -> Ref[Orders, float]
+e14-column-refs/tests/typecheck/r02_strings.py:40: note:     def col(cls, Literal['discount'], /) -> Ref[Orders, float | None]
+e14-column-refs/tests/typecheck/r02_strings.py:41: note: Revealed type is "tacit_r._df.DataFrame[gen_schemas.Orders]"
+e14-column-refs/tests/typecheck/r02_strings.py:42: error: Argument 1 to "filter" of "DataFrame" has incompatible type "Ref[Customers, bool]"; expected "Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]"  [arg-type]
+e14-column-refs/tests/typecheck/r02_strings.py:43: note: Revealed type is "tacit_r._df.DataFrame[gen_schemas.NetOrders]"
+e14-column-refs/tests/typecheck/r02_strings.py:47: note: Revealed type is "tacit_thin._column.Column[datetime.datetime]"
+e14-column-refs/tests/typecheck/r02_strings.py:48: error: Invalid index type "Literal['url']" for "HasEventTs"; expected type "Literal['event_ts']"  [index]
+e14-column-refs/tests/typecheck/r02_strings.py:49: note: Revealed type is "tacit_thin._column.Column[datetime.datetime]"
+e14-column-refs/tests/typecheck/r02_strings.py:55: note: Revealed type is "tacit_r._df.DataFrame[gen_schemas.Clicks]"
+e14-column-refs/tests/typecheck/r02_strings.py:56: note: Revealed type is "tacit_thin._column.Column[str]"
+e14-column-refs/tests/typecheck/r02_strings.py:57: note: Revealed type is "tacit_thin._column.Column[float]"

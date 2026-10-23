@@ -1,0 +1,153 @@
+e14-column-refs/examples/b_attr.py:12:19: error[unresolved-attribute] Object of type `RawOrder` has no attribute `statuz`
+e14-column-refs/examples/b_attr.py:13:19: error[unsupported-operator] Operator `>` is not supported between objects of type `Column[str]` and `Literal[5]`
+e14-column-refs/examples/b_attr.py:15:21: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]`, found `Column[float | None]`
+e14-column-refs/examples/b_attr.py:16:27: error[invalid-assignment] Object of type `Table` is not assignable to `DataFrame[Order]`
+e14-column-refs/examples/b_attr.py:17:34: error[invalid-argument-type] Argument to bound method `GroupedTable.agg` is incorrect: Expected `ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Order, Any]`, found `Column[float]`
+e14-column-refs/examples/b_attr.py:18:28: error[invalid-argument-type] Argument to bound method `TableAPI.join` is incorrect: Expected `BooleanValue | Column[bool | None] | Deferred | ... omitted 3 union elements`, found `bool`
+e14-column-refs/examples/b_attr.py:22:22: error[unresolved-attribute] Object of type `S@bad_generic` has no attribute `status`
+e14-column-refs/examples/b_ref.py:11:19: error[unresolved-attribute] Class `RawOrder` has no attribute `statuz`
+e14-column-refs/examples/b_ref.py:12:19: error[unsupported-operator] Operator `>` is not supported between objects of type `Ref[RawOrder, str]` and `Literal[5]`
+e14-column-refs/examples/b_ref.py:13:19: error[invalid-argument-type] Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred | Ref[RawOrder, bool | None]`, found `Ref[RawCustomer, bool]`
+e14-column-refs/examples/b_ref.py:14:29: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]`, found `Ref[RawOrder, float | None]`
+e14-column-refs/examples/b_ref.py:15:27: error[invalid-assignment] Object of type `Table` is not assignable to `DataFrame[Order]`
+e14-column-refs/examples/b_ref.py:16:35: error[invalid-argument-type] Argument to bound method `GroupedTable.agg` is incorrect: Expected `ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Order, Any]`, found `Ref[Order, float]`
+e14-column-refs/examples/b_ref.py:21:22: error[invalid-argument-type] Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred | Ref[S@bad_generic, bool | None]`, found `Ref[RawOrder, bool]`
+e14-column-refs/examples/b_str.py:11:19: error[invalid-argument-type] Method `__getitem__` of type `Overload[(key: Literal["customer_id"], /) -> Column[int], (key: Literal["order_ts"], /) -> Column[datetime], (key: Literal["order_id"], /) -> Column[int], (key: Literal["status"], /) -> Column[str], (key: Literal["amount"], /) -> Column[float], (key: Literal["discount"], /) -> Column[float | None]]` cannot be called with key of type `Literal["statuz"]` on object of type `RawOrder`
+e14-column-refs/examples/b_str.py:12:19: error[unsupported-operator] Operator `>` is not supported between objects of type `Column[str]` and `Literal[5]`
+e14-column-refs/examples/b_str.py:14:21: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]`, found `Column[float | None]`
+e14-column-refs/examples/b_str.py:15:27: error[invalid-assignment] Object of type `Table` is not assignable to `DataFrame[Order]`
+e14-column-refs/examples/b_str.py:16:37: error[invalid-argument-type] Argument to bound method `GroupedTable.agg` is incorrect: Expected `ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Order, Any]`, found `Column[float]`
+e14-column-refs/examples/b_str.py:17:28: error[invalid-argument-type] Argument to bound method `TableAPI.join` is incorrect: Expected `BooleanValue | Column[bool | None] | Deferred | ... omitted 3 union elements`, found `bool`
+e14-column-refs/examples/b_str.py:21:22: error[invalid-argument-type] Method `__getitem__` of type `Overload[(key: Literal["customer_id"], /) -> Column[int], (key: Literal["order_ts"], /) -> Column[datetime]]` cannot be called with key of type `Literal["status"]` on object of type `S@bad_generic`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:56:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:57:17: info[revealed-type] Revealed type: `Column[int]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:58:17: info[revealed-type] Revealed type: `IntegerScalar`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:59:17: info[revealed-type] Revealed type: `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:60:5: error[unresolved-attribute] Object of type `Orders` has no attribute `amout`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:61:5: error[unresolved-attribute] Object of type `DataFrame[Orders]` has no attribute `amount`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:62:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e14-column-refs/tests/typecheck/r00_t2_regress.py:63:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:65:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:66:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:67:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:69:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:70:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:71:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:72:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:73:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:75:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `DataFrame[Customers]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:76:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `Table`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:77:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `Table`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:80:31: error[invalid-assignment] Object of type `DataFrame[Orders]` is not assignable to `DataFrame[NetOrders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:85:17: info[revealed-type] Revealed type: `DataFrame[Net]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:86:15: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]`, found `Column[str]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:87:5: error[missing-argument] No argument provided for required parameter `net_amount` of bound method `Schema.build`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:88:38: error[unknown-argument] Argument `bogus` does not match any known parameter of bound method `Schema.build`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:89:17: info[revealed-type] Revealed type: `DataFrame[Stats]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:90:36: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[int] | Scalar[int] | int | Ref[Any, int] | RefScalar[Any, int]`, found `Scalar[float]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:92:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:93:22: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Customers]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:93:25: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Net]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:94:18: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Stats | Orders | Net]`, found `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:94:21: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Stats | Orders | Net]`, found `DataFrame[Net]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:102:17: info[revealed-type] Revealed type: `Column[datetime]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:103:5: error[unresolved-attribute] Object of type `S@recent` has no attribute `event_tss`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:109:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:110:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:111:17: info[revealed-type] Revealed type: `DataFrame[Clicks]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:112:12: error[invalid-argument-type] Argument to function `recent` is incorrect: Argument type `Orders` does not satisfy upper bound `HasEventTs` of type variable `S`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:116:5: error[unresolved-attribute] Object of type `Net` has no attribute `net_amont`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:117:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r00_t2_regress.py:119:20: error[invalid-assignment] Object of type `DataFrame[Orders]` is not assignable to `Table`
+e14-column-refs/tests/typecheck/r01_refs.py:56:17: info[revealed-type] Revealed type: `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:57:17: info[revealed-type] Revealed type: `Ref[NetOrders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:58:17: info[revealed-type] Revealed type: `Ref[Orders, int]`
+e14-column-refs/tests/typecheck/r01_refs.py:59:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r01_refs.py:60:5: error[unresolved-attribute] Class `Orders` has no attribute `amout`
+e14-column-refs/tests/typecheck/r01_refs.py:61:5: error[no-matching-overload] No overload of bound method `Ref.upper` matches arguments
+e14-column-refs/tests/typecheck/r01_refs.py:62:17: info[revealed-type] Revealed type: `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:63:17: info[revealed-type] Revealed type: `Ref[Orders, int]`
+e14-column-refs/tests/typecheck/r01_refs.py:64:17: info[revealed-type] Revealed type: `Ref[Orders, datetime]`
+e14-column-refs/tests/typecheck/r01_refs.py:65:17: info[revealed-type] Revealed type: `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:66:17: info[revealed-type] Revealed type: `RefScalar[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:67:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Ref[Orders, float]` and `Literal["x"]`
+e14-column-refs/tests/typecheck/r01_refs.py:69:17: info[revealed-type] Revealed type: `Ref[Orders, float | None]`
+e14-column-refs/tests/typecheck/r01_refs.py:70:17: info[revealed-type] Revealed type: `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:71:17: info[revealed-type] Revealed type: `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:73:5: error[unresolved-attribute] Object of type `Ref[Orders, float]` has no attribute `get_name`
+e14-column-refs/tests/typecheck/r01_refs.py:74:5: error[unresolved-attribute] Object of type `Ref[Orders, float]` has no attribute `execute`
+e14-column-refs/tests/typecheck/r01_refs.py:75:18: error[invalid-argument-type] Argument to function `takes_column` is incorrect: Expected `Column[float]`, found `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:76:19: error[invalid-assignment] Object of type `Ref[Orders, float]` is not assignable to `Value`
+e14-column-refs/tests/typecheck/r01_refs.py:81:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r01_refs.py:82:14: error[invalid-argument-type] Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]`, found `Ref[Customers, bool]`
+e14-column-refs/tests/typecheck/r01_refs.py:83:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e14-column-refs/tests/typecheck/r01_refs.py:84:14: error[invalid-argument-type] Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]`, found `Ref[NetOrders, bool]`
+e14-column-refs/tests/typecheck/r01_refs.py:85:14: error[invalid-argument-type] Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]`, found `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:86:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r01_refs.py:87:16: error[invalid-argument-type] Argument to bound method `DataFrame.order_by` is incorrect: Expected `Value | Deferred | str | Ref[Orders, Any]`, found `Ref[Customers, str]`
+e14-column-refs/tests/typecheck/r01_refs.py:88:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r01_refs.py:89:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e14-column-refs/tests/typecheck/r01_refs.py:90:16: error[invalid-argument-type] Argument to bound method `DataFrame.order_by` is incorrect: Expected `Value | Deferred | str | Ref[Orders, Any]`, found `Ref[NetOrders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:91:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r01_refs.py:93:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r01_refs.py:94:14: error[invalid-argument-type] Argument to bound method `TableAPI.mutate` is incorrect: Expected `float | None | Value | ... omitted 4 union elements`, found `Ref[Customers, str]`
+e14-column-refs/tests/typecheck/r01_refs.py:95:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r01_refs.py:96:14: error[invalid-argument-type] Argument to bound method `TableAPI.select` is incorrect: Expected `Iterable[Value | str] | Selector | Ref[Orders, Any] | RefScalar[Orders, Any]`, found `Ref[Customers, str]`
+e14-column-refs/tests/typecheck/r01_refs.py:97:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r01_refs.py:98:16: error[invalid-argument-type] Argument to bound method `TableAPI.group_by` is incorrect: Expected `Iterable[str] | Ref[Orders, Any] | RefScalar[Orders, Any] | Iterable[Value] | Iterable[Deferred | Ref[Orders, Any] | RefScalar[Orders, Any]]`, found `Ref[Customers, str]`
+e14-column-refs/tests/typecheck/r01_refs.py:99:35: error[invalid-argument-type] Argument to bound method `GroupedTable.agg` is incorrect: Expected `ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Orders, Any]`, found `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:100:35: error[invalid-argument-type] Argument to bound method `GroupedTable.agg` is incorrect: Expected `ibis.expr.types.generic.Scalar | tacit_thin._column.Scalar[Any] | Deferred | RefScalar[Orders, Any]`, found `RefScalar[Customers, int]`
+e14-column-refs/tests/typecheck/r01_refs.py:101:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r01_refs.py:110:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Ref[Orders, float]` and `Ref[Customers, int]`
+e14-column-refs/tests/typecheck/r01_refs.py:111:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Ref[Orders, float]` and `Ref[Customers, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:112:14: error[unsupported-operator] Operator `>` is not supported between objects of type `Ref[Orders, float]` and `Ref[Customers, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:113:17: info[revealed-type] Revealed type: `Ref[NetOrders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:114:17: info[revealed-type] Revealed type: `Ref[NetOrders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:115:17: info[revealed-type] Revealed type: `Ref[NetOrders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:116:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Ref[Orders, float]` and `Column[float]`
+e14-column-refs/tests/typecheck/r01_refs.py:121:17: info[revealed-type] Revealed type: `Table`
+e14-column-refs/tests/typecheck/r01_refs.py:122:15: error[invalid-argument-type] Argument to bound method `TableAPI.join` is incorrect: Expected `BooleanValue | Column[bool | None] | Deferred | ... omitted 3 union elements`, found `list[tuple[Ref[Customers, int], Ref[Orders, int]]]`
+e14-column-refs/tests/typecheck/r01_refs.py:123:15: error[invalid-argument-type] Argument to bound method `TableAPI.join` is incorrect: Expected `BooleanValue | Column[bool | None] | Deferred | ... omitted 3 union elements`, found `bool`
+e14-column-refs/tests/typecheck/r01_refs.py:129:17: info[revealed-type] Revealed type: `DataFrame[Net]`
+e14-column-refs/tests/typecheck/r01_refs.py:130:18: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float | Ref[Any, float] | RefScalar[Any, float]`, found `Ref[Orders, str]`
+e14-column-refs/tests/typecheck/r01_refs.py:132:17: info[revealed-type] Revealed type: `DataFrame[Stats]`
+e14-column-refs/tests/typecheck/r01_refs.py:133:42: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[int] | Scalar[int] | int | Ref[Any, int] | RefScalar[Any, int]`, found `RefScalar[Orders, float]`
+e14-column-refs/tests/typecheck/r01_refs.py:134:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e14-column-refs/tests/typecheck/r01_refs.py:135:22: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Customers]`
+e14-column-refs/tests/typecheck/r01_refs.py:135:25: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Net]`
+e14-column-refs/tests/typecheck/r01_refs.py:139:5: error[unresolved-attribute] Class `HasEventTs` has no attribute `event_tss`
+e14-column-refs/tests/typecheck/r01_refs.py:148:22: error[invalid-argument-type] Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred | Ref[S@wrong_generic, bool | None]`, found `Ref[Clicks, bool]`
+e14-column-refs/tests/typecheck/r01_refs.py:153:17: info[revealed-type] Revealed type: `DataFrame[Clicks]`
+e14-column-refs/tests/typecheck/r01_refs.py:154:17: info[revealed-type] Revealed type: `DataFrame[Clicks]`
+e14-column-refs/tests/typecheck/r01_refs.py:155:12: error[invalid-argument-type] Argument to function `recent` is incorrect: Argument type `Orders` does not satisfy upper bound `HasEventTs` of type variable `S`
+e14-column-refs/tests/typecheck/r02_strings.py:14:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r02_strings.py:15:17: info[revealed-type] Revealed type: `Column[float | None]`
+e14-column-refs/tests/typecheck/r02_strings.py:16:5: error[invalid-argument-type] Method `__getitem__` of type `Overload[(key: Literal["order_id"], /) -> Column[int], (key: Literal["customer_id"], /) -> Column[int], (key: Literal["order_ts"], /) -> Column[datetime], (key: Literal["status"], /) -> Column[str], (key: Literal["amount"], /) -> Column[float], (key: Literal["discount"], /) -> Column[float | None]]` cannot be called with key of type `Literal["amout"]` on object of type `Orders`
+e14-column-refs/tests/typecheck/r02_strings.py:17:5: error[invalid-argument-type] Method `__getitem__` of type `Overload[(key: Literal["order_id"], /) -> Column[int], (key: Literal["customer_id"], /) -> Column[int], (key: Literal["order_ts"], /) -> Column[datetime], (key: Literal["status"], /) -> Column[str], (key: Literal["amount"], /) -> Column[float], (key: Literal["discount"], /) -> Column[float | None]]` cannot be called with key of type `str` on object of type `Orders`
+e14-column-refs/tests/typecheck/r02_strings.py:18:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r02_strings.py:19:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e14-column-refs/tests/typecheck/r02_strings.py:20:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r02_strings.py:21:17: info[revealed-type] Revealed type: `Column[float]`
+e14-column-refs/tests/typecheck/r02_strings.py:22:5: error[invalid-argument-type] Method `__getitem__` of type `Overload[(key: Literal["order_id"], /) -> Column[int], (key: Literal["customer_id"], /) -> Column[int], (key: Literal["order_ts"], /) -> Column[datetime], (key: Literal["status"], /) -> Column[str], (key: Literal["amount"], /) -> Column[float], (key: Literal["discount"], /) -> Column[float | None]]` cannot be called with key of type `Literal["net_amount"]` on object of type `Orders`
+e14-column-refs/tests/typecheck/r02_strings.py:23:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r02_strings.py:28:17: info[revealed-type] Revealed type: `Unknown`
+e14-column-refs/tests/typecheck/r02_strings.py:29:17: info[revealed-type] Revealed type: `Unknown`
+e14-column-refs/tests/typecheck/r02_strings.py:31:17: info[revealed-type] Revealed type: `Unknown`
+e14-column-refs/tests/typecheck/r02_strings.py:32:17: info[revealed-type] Revealed type: `Unknown`
+e14-column-refs/tests/typecheck/r02_strings.py:33:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r02_strings.py:38:17: info[revealed-type] Revealed type: `Ref[Orders, float]`
+e14-column-refs/tests/typecheck/r02_strings.py:39:17: info[revealed-type] Revealed type: `Ref[NetOrders, float]`
+e14-column-refs/tests/typecheck/r02_strings.py:40:5: error[no-matching-overload] No overload of bound method `Orders.col` matches arguments
+e14-column-refs/tests/typecheck/r02_strings.py:41:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e14-column-refs/tests/typecheck/r02_strings.py:42:14: error[invalid-argument-type] Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred | Ref[Orders, bool | None]`, found `Ref[Customers, bool]`
+e14-column-refs/tests/typecheck/r02_strings.py:43:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e14-column-refs/tests/typecheck/r02_strings.py:47:17: info[revealed-type] Revealed type: `Column[datetime]`
+e14-column-refs/tests/typecheck/r02_strings.py:48:5: error[invalid-argument-type] Method `__getitem__` of type `bound method S@recent.__getitem__(key: Literal["event_ts"], /) -> Column[datetime]` cannot be called with key of type `Literal["url"]` on object of type `S@recent`
+e14-column-refs/tests/typecheck/r02_strings.py:49:17: info[revealed-type] Revealed type: `Unknown`
+e14-column-refs/tests/typecheck/r02_strings.py:55:17: info[revealed-type] Revealed type: `DataFrame[Clicks]`
+e14-column-refs/tests/typecheck/r02_strings.py:56:17: info[revealed-type] Revealed type: `Column[str]`
+e14-column-refs/tests/typecheck/r02_strings.py:57:17: info[revealed-type] Revealed type: `Unknown`
+e14-column-refs/tests/typecheck/r03_interop.py:13:5: error[unsupported-operator] Operator `+` is not supported between objects of type `Ref[Orders, float]` and `Scalar[float*]`
+e14-column-refs/tests/typecheck/r03_interop.py:14:14: error[invalid-argument-type] Argument to function `cases` is incorrect: Expected `tuple[Column[bool] | Scalar[bool], Literal[1, 0] | Column[Literal[1, 0]] | Scalar[Literal[1, 0]]]`, found `tuple[Ref[Orders, bool], Literal[1]]`
+e14-column-refs/tests/typecheck/r03_interop.py:19:17: info[revealed-type] Revealed type: `Ref[Orders, int]`
+Found 152 diagnostics
