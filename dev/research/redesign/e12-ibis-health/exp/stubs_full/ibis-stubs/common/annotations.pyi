@@ -1,0 +1,76 @@
+import inspect
+from _typeshed import Incomplete
+from collections.abc import Callable as Callable, Sequence
+from ibis.common.bases import Immutable as Immutable, Slotted as Slotted
+from ibis.common.patterns import Any as Any, FrozenDictOf as FrozenDictOf, NoMatch as NoMatch, Option as Option, Pattern as Pattern, TupleOf as TupleOf
+from ibis.common.typing import format_typehint as format_typehint, get_type_hints as get_type_hints
+from typing import Any as AnyType
+from typing_extensions import Self
+
+EMPTY: Incomplete
+KEYWORD_ONLY: Incomplete
+POSITIONAL_ONLY: Incomplete
+POSITIONAL_OR_KEYWORD: Incomplete
+VAR_KEYWORD: Incomplete
+VAR_POSITIONAL: Incomplete
+
+class ValidationError(Exception): ...
+
+class AttributeValidationError(ValidationError):
+    name: Incomplete
+    value: Incomplete
+    pattern: Incomplete
+    def __init__(self, name: str, value: AnyType, pattern: Pattern) -> None: ...
+
+class ReturnValidationError(ValidationError):
+    func: Incomplete
+    value: Incomplete
+    pattern: Incomplete
+    def __init__(self, func: Callable, value: AnyType, pattern: Pattern) -> None: ...
+
+class SignatureValidationError(ValidationError):
+    msg: Incomplete
+    sig: Incomplete
+    func: Incomplete
+    args: Incomplete
+    kwargs: Incomplete
+    errors: Incomplete
+    def __init__(self, msg: str, sig: Signature, func: Callable, args: tuple[AnyType, ...], kwargs: dict[str, AnyType], errors: Sequence[tuple[str, AnyType, Pattern]] = ()) -> None: ...
+
+class Annotation(Slotted, Immutable):
+    pattern: Pattern
+    default: AnyType
+    def validate(self, name: str, value: AnyType, this: AnyType) -> AnyType: ...
+
+class Attribute(Annotation):
+    def __init__(self, pattern: Pattern = ..., default: AnyType = ...) -> None: ...
+    def has_default(self): ...
+    def get_default(self, name: str, this: AnyType) -> AnyType: ...
+    def __call__(self, default): ...
+
+class Argument(Annotation):
+    typehint: AnyType
+    kind: int
+    def __init__(self, pattern: Pattern = ..., default: AnyType = ..., typehint: type | None = None, kind: int = ...) -> None: ...
+
+def attribute(pattern=..., default=...) -> Attribute: ...
+def argument(pattern=..., default=..., typehint=None) -> Argument: ...
+def optional(pattern=..., default=None, typehint=None) -> Argument: ...
+def varargs(pattern=..., typehint=None): ...
+def varkwargs(pattern=..., typehint=None): ...
+
+class Parameter(inspect.Parameter):
+    @classmethod
+    def from_argument(cls, name: str, annotation: Argument) -> Self: ...
+
+class Signature(inspect.Signature):
+    @classmethod
+    def merge(cls, *signatures, **annotations): ...
+    @classmethod
+    def from_callable(cls, fn, patterns=None, return_pattern=None): ...
+    def unbind(self, this: dict[str, Any]) -> tuple[tuple[Any, ...], dict[str, Any]]: ...
+    def validate(self, func, args, kwargs): ...
+    def validate_nobind(self, func, kwargs): ...
+    def validate_return(self, func, value): ...
+
+def annotated(_1=None, _2=None, _3=None, **kwargs): ...

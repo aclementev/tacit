@@ -1,0 +1,61 @@
+total PRs 3080
+month  opened merged  merged_by_top  ext_opened ext_merged ext_med_h  ext_merge_rate
+2024-01 154 142 [('cpcloud', 90), ('kszucs', 27)] 16 11 209 0.69
+2024-02 203 172 [('cpcloud', 95), ('kszucs', 26)] 23 16 10 0.70
+2024-03 184 157 [('cpcloud', 115), ('gforsyth', 22)] 46 39 4 0.85
+2024-04 143 120 [('cpcloud', 79), ('gforsyth', 19)] 12 5 12 0.42
+2024-05 84 75 [('cpcloud', 38), ('gforsyth', 22)] 17 14 133 0.82
+2024-06 112 97 [('cpcloud', 69), ('gforsyth', 16)] 8 7 35 0.88
+2024-07 146 128 [('cpcloud', 88), ('gforsyth', 21)] 18 12 27 0.67
+2024-08 149 132 [('cpcloud', 91), ('gforsyth', 23)] 17 10 10 0.59
+2024-09 150 140 [('cpcloud', 94), ('jcrist', 24)] 8 6 7 0.75
+2024-10 70 66 [('cpcloud', 62), ('gforsyth', 4)] 5 4 75 0.80
+2024-11 72 67 [('cpcloud', 52), ('gforsyth', 15)] 8 7 37 0.88
+2024-12 50 48 [('cpcloud', 41), ('gforsyth', 7)] 4 4 20 1.00
+2025-01 49 41 [('cpcloud', 40), ('gforsyth', 1)] 5 3 214 0.60
+2025-02 85 75 [('cpcloud', 74), ('gforsyth', 1)] 10 8 10 0.80
+2025-03 61 54 [('cpcloud', 52), ('gforsyth', 2)] 9 7 17 0.78
+2025-04 57 46 [('cpcloud', 45), ('gforsyth', 1)] 8 5 76 0.62
+2025-05 40 34 [('cpcloud', 34)] 8 7 75 0.88
+2025-06 53 44 [('cpcloud', 44)] 4 1 2 0.25
+2025-07 55 48 [('cpcloud', 48)] 5 3 42 0.60
+2025-08 17 15 [('cpcloud', 14), ('gforsyth', 1)] 4 4 46 1.00
+2025-09 23 9 [('cpcloud', 8), ('gforsyth', 1)] 9 4 336 0.44
+2025-10 25 18 [('cpcloud', 16), ('tswast', 1)] 7 5 52 0.71
+2025-11 14 9 [('cpcloud', 8), ('gforsyth', 1)] 1 1 0 1.00
+2025-12 8 6 [('cpcloud', 4), ('gforsyth', 2)] 2 1 49 0.50
+2026-01 33 25 [('cpcloud', 21), ('NickCrews', 3)] 9 5 66 0.56
+2026-02 37 22 [('cpcloud', 14), ('gforsyth', 6)] 23 9 17 0.39
+2026-03 12 3 [('NickCrews', 2), ('deepyaman', 1)] 8 1 3491 0.12
+2026-04 6 3 [('NickCrews', 2), ('cpcloud', 1)] 3 0 - 0.00
+2026-05 8 4 [('NickCrews', 4)] 6 3 136 0.50
+2026-06 13 5 [('deepyaman', 3), ('NickCrews', 1)] 7 2 17 0.29
+2026-07 21 4 [('deepyaman', 2), ('NickCrews', 1)] 17 2 1141 0.12
+2026-08 23 8 [('deepyaman', 6), ('NickCrews', 1)] 13 4 75 0.31
+2026-09 31 5 [('deepyaman', 5)] 22 5 604 0.23
+2026-10 41 6 [('deepyaman', 4), ('NickCrews', 2)] 23 1 121 0.04
+
+merged human PRs by merge month, merger
+2025-06 48 {'cpcloud': 48}
+2025-07 52 {'cpcloud': 52}
+2025-08 15 {'cpcloud': 14, 'gforsyth': 1}
+2025-09 3 {'cpcloud': 3}
+2025-10 19 {'cpcloud': 18, 'tswast': 1}
+2025-11 4 {'cpcloud': 3, 'gforsyth': 1}
+2025-12 6 {'gforsyth': 3, 'NickCrews': 1, 'cpcloud': 2}
+2026-01 32 {'cpcloud': 28, 'NickCrews': 3, 'lostmygithubaccount': 1}
+2026-02 25 {'cpcloud': 18, 'gforsyth': 6, 'NickCrews': 1}
+2026-03 2 {'NickCrews': 2}
+2026-05 3 {'NickCrews': 3}
+2026-06 9 {'NickCrews': 4, 'cpcloud': 2, 'deepyaman': 3}
+2026-07 2 {'NickCrews': 1, 'gforsyth': 1}
+2026-08 8 {'deepyaman': 6, 'NickCrews': 1, 'gforsyth': 1}
+2026-09 2 {'deepyaman': 2}
+2026-10 13 {'NickCrews': 3, 'deepyaman': 10}
+
+ext PRs created since 2026-02-08: 119 merged 24 median days 5.913576388888889 p75 35.10053240740741 closed unmerged 52 open 43
+small (<=50 lines) ext merged 14 median days 4.947089120370371
+ext PRs 2025-02-07..2026-02-07: 78 merged 53 median days 1.9213194444444444
+open PRs (created>=2024) now: 140  drafts 30
+ext PR first human response 2025-02-07..2026-02-07 n 71 of 78 median days 0.3 no response 7
+ext PR first human response since 2026-02-08 n 94 of 119 median days 1.5 no response 25

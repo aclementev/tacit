@@ -1,0 +1,16 @@
+from _typeshed import Incomplete
+from ibis.expr.operations import AnalyticVectorizedUDF as AnalyticVectorizedUDF, ElementWiseVectorizedUDF as ElementWiseVectorizedUDF, ReductionVectorizedUDF as ReductionVectorizedUDF
+from ibis.util import deprecated as deprecated
+
+class UserDefinedFunction:
+    func: Incomplete
+    func_type: Incomplete
+    input_type: Incomplete
+    output_type: Incomplete
+    coercion_fn: Incomplete
+    def __init__(self, func, func_type, input_type, output_type) -> None: ...
+    def __call__(self, *args, **kwargs): ...
+
+def analytic(input_type, output_type): ...
+def elementwise(input_type, output_type): ...
+def reduction(input_type, output_type): ...

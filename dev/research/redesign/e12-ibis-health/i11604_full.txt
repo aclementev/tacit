@@ -1,0 +1,31 @@
+
+===== 11604 maintenance of ibis open JonAnCla 2025-09-09 None None 
+Hi there, with @cpcloud moving to a different role it seems like day-to-day maintenance of ibis has stalled.  This is quite understandable on the part of cpcloud who I'm sure is now busy with new projects :)
+
+Are there plans for someone else to continue day-to-day maintenance, and if not is there a route open for the community to continue maintenance?
+
+Many thanks!
+--- cpcloud 2025-10-14
+There's always a route for the community to continue maintenance. I am happy to discuss details with anyone interested. I am not stopping maintenance myself, but I won't be working on Ibis full time.
+--- JonAnCla 2025-10-14
+thanks very much for your continued work on the library :)
+--- JonAnCla 2025-10-14
+Since I asked this question there's been a lot more activity so hopefully I jumped to conclusions too early :)
+
+If you are still expecting to be able to have capacity to continue maintenance then that's amazing, and OTOH if you think your capacity is soon going to be significantly reduced then hopefully there's a way to pass on maintenance to other current maintainers etc?
+
+I'm asking as an interested user rather than a maintainer, so I hope you don't mind the questions.  Thanks!
+--- NickCrews 2025-10-17
+I am happy to help shepherd work along, but I have found in the past that often when I author PRs, @cpcloud has great feedback on things that I had not thought of. So, if I became solely able to merge PRs, I would be nervous that I wouldn't have the experience needed, and would start merging things that aren't up to the quality bar that we want, or I would take the project in the wrong direction.
+
+I do feel like I would love some more velocity here. I have many PRs that are green that I would love to see a resolution on.
+
+Maybe could it work if we settle on a policy where I will merge a PR if it gets a LGTM from me and then one or two other common contributors? Or @cpcloud do you have any other ideas on some heuristic that you would be comfortable with so that I can merge PRs without your approval?
+--- deepyaman 2025-10-23
+I'm also willing to help, to some extent. Part of the problem is that I also have limited time and want to make sure I'm spending that on things with a path forward. 
+
+For example, I could probably take a pass at reviewing https://github.com/ibis-project/ibis/pull/11595#issuecomment-3438917072, but I can't actually sign off on the inclusion of a new backend, so it would be great to have a maintainer first decide whether the contribution is welcome.
+
+> There's always a route for the community to continue maintenance. I am happy to discuss details with anyone interested.
+
+@cpcloud I'd be happy to discuss how can be a bit more involved. As with @NickCrews, I don’t feel comfortable unilaterally making or approving major changes (yet, maybe at some point), but I could potentially help with smaller fixes and reviews.

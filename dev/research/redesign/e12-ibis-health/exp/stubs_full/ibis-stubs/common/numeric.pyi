@@ -1,0 +1,3 @@
+from decimal import Decimal
+
+def normalize_decimal(value, precision: int | None = None, scale: int | None = None, strict: bool = True) -> Decimal: ...

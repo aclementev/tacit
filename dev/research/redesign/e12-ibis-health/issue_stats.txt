@@ -1,0 +1,7 @@
+period  n  any_resp%  team_resp%  median_days_to_team_resp  team_resp_within7d%  closed%  stale_open
+2024H1 513 71 76 0.5 64 79 107
+2024H2 294 80 82 0.4 74 71 85
+2025H1 186 69 68 0.7 59 56 81
+2025H2 130 50 41 1.1 26 42 75
+2026H1 57 49 32 7.1 16 40 34
+2026Q3+ 20 45 30 5.3 15 35 13

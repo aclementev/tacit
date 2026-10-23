@@ -1,0 +1,38 @@
+2024-01 human 224 bot 24  top: Phillip Cloud:120, Krisztián Szűcs:22, Gil Forsyth:17
+2024-02 human 220 bot 28  top: Phillip Cloud:95, Krisztián Szűcs:41, Gil Forsyth:17
+2024-03 human 175 bot 28  top: Phillip Cloud:62, Gil Forsyth:23, Krisztián Szűcs:19
+2024-04 human 130 bot 23  top: Phillip Cloud:54, Krisztián Szűcs:25, Gil Forsyth:15
+2024-05 human 75 bot 34  top: Phillip Cloud:22, Gil Forsyth:16, Jim Crist-Harif:11
+2024-06 human 91 bot 33  top: Phillip Cloud:48, Nick Crews:11, Gil Forsyth:9
+2024-07 human 135 bot 27  top: Phillip Cloud:79, Gil Forsyth:11, Nick Crews:8
+2024-08 human 156 bot 32  top: Phillip Cloud:87, Jim Crist-Harif:27, Gil Forsyth:13
+2024-09 human 165 bot 35  top: Phillip Cloud:78, Gil Forsyth:33, Jim Crist-Harif:25
+2024-10 human 70 bot 31  top: Phillip Cloud:28, Tyler White:21, Nick Crews:11
+2024-11 human 71 bot 32  top: Phillip Cloud:28, Tyler White:25, Nick Crews:4
+2024-12 human 77 bot 25  top: Phillip Cloud:49, Tyler White:11, Gil Forsyth:5
+2025-01 human 134 bot 32  top: Phillip Cloud:125, Nick Crews:4, hussainsultan:1
+2025-02 human 86 bot 34  top: Phillip Cloud:70, Nick Crews:4, Romain Girard:2
+2025-03 human 67 bot 38  top: Phillip Cloud:47, Nick Crews:7, ibis-squawk-bot[bot]:3
+2025-04 human 45 bot 14  top: Phillip Cloud:29, Nick Crews:11, Daniel Mesejo:1
+2025-05 human 48 bot 26  top: Phillip Cloud:25, Nick Crews:11, dtran-im:3
+2025-06 human 52 bot 18  top: Phillip Cloud:34, Nick Crews:14, Cypher Pepe:1
+2025-07 human 74 bot 24  top: Phillip Cloud:64, Tyler White:3, Nick Crews:3
+2025-08 human 19 bot 17  top: Phillip Cloud:11, Víctor Zabalza:3, Ashray Manepalli:1
+2025-09 human 8 bot 16  top: Nick Crews:3, Víctor Zabalza:1, Shawn Strasser:1
+2025-10 human 58 bot 22  top: Phillip Cloud:36, Daniel Mesejo:9, Nick Crews:5
+2025-11 human 12 bot 16  top: Phillip Cloud:4, Nick Crews:3, Daniel Mesejo:3
+2025-12 human 10 bot 2  top: Deepyaman Datta:5, Nick Crews:4, Jason Hernandez:1
+2026-01 human 40 bot 19  top: Nick Crews:15, Phillip Cloud:13, Deepyaman Datta:5
+2026-02 human 23 bot 16  top: Phillip Cloud:6, Nick Crews:4, Deepyaman Datta:4
+2026-03 human 3 bot 0  top: Deepyaman Datta:1, Nick Crews:1, Gil Forsyth:1
+2026-04 human 13 bot 0  top: Deepyaman Datta:13
+2026-05 human 15 bot 0  top: Deepyaman Datta:9, Robert Silén:2, Nick Crews:2
+2026-06 human 7 bot 0  top: Deepyaman Datta:4, Ghiles Meddour:2, Theo:1
+2026-07 human 6 bot 10  top: Deepyaman Datta:3, Gil Forsyth:2, lita:1
+2026-08 human 9 bot 4  top: Deepyaman Datta:5, Peter:1, Andrej730:1
+2026-09 human 6 bot 0  top: Deepyaman Datta:3, fbossiere:1, JustinClarke:1
+2026-10 human 18 bot 15  top: Deepyaman Datta:10, Bhargavi Sriram:3, Nick Crews:2
+human 2025-02..2026-01 519
+human 2026-02..2026-10 100
+human 2025-10..2026-02 incl 143
+human 2024 1589 2025 613 2026ytd 140

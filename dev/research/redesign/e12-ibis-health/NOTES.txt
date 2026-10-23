@@ -1,0 +1,8 @@
+E12 ibis health - raw data index (collected 2026-10-23, read-only GitHub API / PyPI / ClickPy)
+i6844*.json i5279*.json i5304*.json p7563*.json   py.typed history (issue/PR bodies + comments)
+i11604_full.txt, discussions.json, governance.md, who.qmd, why_voda.qmd   governance / statements
+ibis_commits_since2023.txt, monthly.py, monthly_commits.txt   human commit counts per month (bots excluded)
+prs_since2024.json, pr_stats.py/.txt, issues_since2024.json, issue_stats.py/.txt   PR/issue latency stats
+clickpy_monthly.txt, clickpy.sh   monthly PyPI downloads (ClickPy public ClickHouse)
+releases.tsv   ibis releases
+exp/   stub-overlay experiment: case_raw.py, run.sh, out_*.txt, stubs_partial/, stubs_full/ (stubgen output + 2 hand edits)

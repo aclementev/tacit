@@ -1,0 +1,20 @@
+##### partial2
+-- pyright
+  case_raw.py:19:3 - error: Argument of type "Table" cannot be assigned to parameter "a" of type "A" in function "f"
+  case_raw.py:20:3 - error: Argument of type "Literal[5]" cannot be assigned to parameter "a" of type "A" in function "f"
+  case_raw.py:23:3 - error: Argument of type "B" cannot be assigned to parameter "a" of type "A" in function "f"
+-- mypy
+e12-ibis-health/exp/case_raw.py:20: error: Argument 1 to "f" has incompatible type "int"; expected "A"  [arg-type]
+e12-ibis-health/exp/case_raw.py:23: error: Argument 1 to "f" has incompatible type "B"; expected "A"  [arg-type]
+Found 2 errors in 1 file (checked 1 source file)
+-- ty
+e12-ibis-health/exp/case_raw.py:19:3: error[invalid-argument-type] Argument to function `f` is incorrect: Expected `A`, found `Table`
+e12-ibis-health/exp/case_raw.py:20:3: error[invalid-argument-type] Argument to function `f` is incorrect: Expected `A`, found `Literal[5]`
+e12-ibis-health/exp/case_raw.py:23:3: error[invalid-argument-type] Argument to function `f` is incorrect: Expected `A`, found `B`
+Found 3 diagnostics
+-- pyrefly
+ERROR e12-ibis-health/exp/case_raw.py:18:7-17: No attribute `table` in module `ibis` [missing-attribute]
+ERROR e12-ibis-health/exp/case_raw.py:20:3-4: Argument `Literal[5]` is not assignable to parameter `a` with type `A` in function `f` [bad-argument-type]
+ERROR e12-ibis-health/exp/case_raw.py:22:13-23: No attribute `table` in module `ibis` [missing-attribute]
+ERROR e12-ibis-health/exp/case_raw.py:23:3-5: Argument `B` is not assignable to parameter `a` with type `A` in function `f` [bad-argument-type]
+ INFO 4 errors

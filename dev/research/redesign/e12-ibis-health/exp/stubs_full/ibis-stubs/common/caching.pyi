@@ -1,0 +1,3 @@
+from collections.abc import Callable as Callable
+
+def memoize(func: Callable) -> Callable: ...

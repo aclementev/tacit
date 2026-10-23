@@ -1,0 +1,43 @@
+import ibis.expr.datashape as ds
+import ibis.expr.datatypes as dt
+from ibis.common.typing import VarTuple
+from ibis.expr.operations.analytic import Analytic
+from ibis.expr.operations.core import Value
+from ibis.expr.operations.reductions import Reduction
+from ibis.expr.operations.sortkeys import SortKey
+from typing import Literal as LiteralType
+from typing_extensions import TypeVar
+
+__all__ = ['WindowBoundary', 'WindowFunction', 'WindowOp', 'Window']
+
+T = TypeVar('T', bound=dt.Numeric | dt.Interval, covariant=True)
+S = TypeVar('S', bound=ds.DataShape, default=ds.Any, covariant=True)
+
+class WindowBoundary(Value[T, S]):
+    value: Value[T, S]
+    preceding: bool
+    @property
+    def following(self) -> bool: ...
+    @property
+    def shape(self) -> S: ...
+    @property
+    def dtype(self) -> T: ...
+    @classmethod
+    def __coerce__(cls, value, **kwargs): ...
+
+class WindowFunction(Value):
+    func: Analytic | Reduction
+    how: LiteralType['rows', 'range'] = ...
+    start: WindowBoundary[dt.Numeric | dt.Interval] | None = ...
+    end: WindowBoundary[dt.Numeric | dt.Interval] | None = ...
+    group_by: VarTuple[Value] = ...
+    order_by: VarTuple[SortKey] = ...
+    dtype = ...
+    shape = ...
+    def __init__(self, how, start, end, **kwargs) -> None: ...
+    @property
+    def name(self): ...
+
+# Names in __all__ with no definition:
+#   Window
+#   WindowOp

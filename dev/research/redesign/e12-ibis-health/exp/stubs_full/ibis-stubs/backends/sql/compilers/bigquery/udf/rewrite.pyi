@@ -1,0 +1,13 @@
+import ast
+from _typeshed import Incomplete
+from collections.abc import Callable as Callable
+
+def matches(value: ast.AST, pattern: ast.AST) -> bool: ...
+
+class Rewriter:
+    funcs: list[tuple[ast.AST, Callable[[ast.expr], ast.expr]]]
+    def __init__(self) -> None: ...
+    def register(self, pattern): ...
+    def __call__(self, node): ...
+
+rewrite: Incomplete
