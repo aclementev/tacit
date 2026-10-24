@@ -1,0 +1,82 @@
+e15-e2e/tests/typecheck/t3_cases.py:53: note: Revealed type is "tacit_t3._column.Column[bool | None]"
+e15-e2e/tests/typecheck/t3_cases.py:54: note: Revealed type is "tacit_t3._column.Column[bool]"
+e15-e2e/tests/typecheck/t3_cases.py:55: note: Revealed type is "tacit_t3._column.Scalar[float | None]"
+e15-e2e/tests/typecheck/t3_cases.py:56: note: Revealed type is "tacit_t3._column.Scalar[float]"
+e15-e2e/tests/typecheck/t3_cases.py:57: note: Revealed type is "tacit_t3._df.DataFrame[t3_cases.Trips]"
+e15-e2e/tests/typecheck/t3_cases.py:58: note: Revealed type is "tacit_t3._column.Column[float]"
+e15-e2e/tests/typecheck/t3_cases.py:59: note: Revealed type is "tacit_t3._column.Column[float]"
+e15-e2e/tests/typecheck/t3_cases.py:60: note: Revealed type is "tacit_t3._column.Scalar[float | None]"
+e15-e2e/tests/typecheck/t3_cases.py:61: note: Revealed type is "ibis.expr.types.arrays.ArrayColumn"
+e15-e2e/tests/typecheck/t3_cases.py:62: error: Invalid self argument "Column[str]" to attribute function "mean" with type "def mean(self, self: Column[bool], *, where: bool | Column[bool] | Scalar[bool] | None = ...) -> Scalar[float]"  [misc]
+e15-e2e/tests/typecheck/t3_cases.py:63: note: Revealed type is "tacit_t3._column.Column[str]"
+e15-e2e/tests/typecheck/t3_cases.py:65: note: Revealed type is "tacit_t3._column.Column[datetime.datetime]"
+e15-e2e/tests/typecheck/t3_cases.py:66: note: Revealed type is "tacit_t3._column.Scalar[float]"
+e15-e2e/tests/typecheck/t3_cases.py:67: note: Revealed type is "tacit_t3._column.Column[int | None]"
+e15-e2e/tests/typecheck/t3_cases.py:68: note: Revealed type is "tacit_t3._column.Column[int]"
+e15-e2e/tests/typecheck/t3_cases.py:69: note: Revealed type is "tacit_t3._column.Column[int]"
+e15-e2e/tests/typecheck/t3_cases.py:70: error: Argument "minutes" to "build" of "Schema" has incompatible type "Column[int | None]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:72: note: Revealed type is "tacit_t3._column.Column[datetime.date]"
+e15-e2e/tests/typecheck/t3_cases.py:79: note: Revealed type is "tacit_t3._join.Join[t3_cases.Trips, t3_cases.Drivers]"
+e15-e2e/tests/typecheck/t3_cases.py:80: note: Revealed type is "tacit_t3._column.Column[float]"
+e15-e2e/tests/typecheck/t3_cases.py:81: note: Revealed type is "tacit_t3._column.Column[float | None]"
+e15-e2e/tests/typecheck/t3_cases.py:82: error: "Drivers" has no attribute "fare"  [attr-defined]
+e15-e2e/tests/typecheck/t3_cases.py:83: error: "Trips" has no attribute "driver_idd"; maybe "driver_id"?  [attr-defined]
+e15-e2e/tests/typecheck/t3_cases.py:85: error: Unsupported operand types for == ("Column[int]" and "Column[str]")  [operator]
+e15-e2e/tests/typecheck/t3_cases.py:87: note: Revealed type is "tacit_t3._df.DataFrame[t3_cases.TripDriver]"
+e15-e2e/tests/typecheck/t3_cases.py:88: error: Argument "fare" to "build" of "Schema" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:89: error: Missing named argument "fare" for "build" of "Schema"  [call-arg]
+e15-e2e/tests/typecheck/t3_cases.py:89: note: "build" defined in "tacit_t3._df"
+e15-e2e/tests/typecheck/t3_cases.py:90: error: Argument 2 to "join" has incompatible type "Table"; expected "DataFrame[Never]"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:96: note: Revealed type is "tacit_t3._df.DataFrame[t3_cases.CityStats]"
+e15-e2e/tests/typecheck/t3_cases.py:97: error: Argument "trips" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:98: error: Argument "revenue" has incompatible type "Scalar[float | None]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:99: error: Missing named argument "revenue"  [call-arg]
+e15-e2e/tests/typecheck/t3_cases.py:100: error: Argument "by" to "aggregate" of "Schema" has incompatible type "Column[str]"; expected "Sequence[Column[Any]]"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:116: note: Revealed type is "tacit_t3._df.DataFrame[t3_cases.Trips]"
+e15-e2e/tests/typecheck/t3_cases.py:117: error: Argument 1 to "clean" has incompatible type "DataFrame[Drivers]"; expected "DataFrame[Trips]"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:118: note: Revealed type is "tacit_t3._df.DataFrame[t3_cases.Trips]"
+e15-e2e/tests/typecheck/t3_cases.py:128: note: Revealed type is "tacit_t3._df.DataFrame[t3_cases.Trips]"
+e15-e2e/tests/typecheck/t3_cases.py:129: error: Argument 3 to "generic_handles" has incompatible type "Column[datetime | None]"; expected "Column[datetime]"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:130: error: Argument 3 to "generic_handles" has incompatible type "Column[float]"; expected "Column[datetime]"  [arg-type]
+e15-e2e/tests/typecheck/t3_cases.py:131: note: Revealed type is "tacit_t3._column.Column[bool]"
+e15-e2e/tests/typecheck/t3_cases.py:132: note: Revealed type is "tacit_t3._column.Column[bool]"
+e15-e2e/tests/typecheck/t2_cases.py:55: note: Revealed type is "tacit_t3._column.Column[float]"
+e15-e2e/tests/typecheck/t2_cases.py:56: note: Revealed type is "tacit_t3._column.Column[int]"
+e15-e2e/tests/typecheck/t2_cases.py:57: note: Revealed type is "ibis.expr.types.numeric.IntegerScalar"
+e15-e2e/tests/typecheck/t2_cases.py:58: note: Revealed type is "tacit_t3._column.Column[float]"
+e15-e2e/tests/typecheck/t2_cases.py:59: error: "Orders" has no attribute "amout"; maybe "amount"?  [attr-defined]
+e15-e2e/tests/typecheck/t2_cases.py:60: error: "DataFrame[Orders]" has no attribute "amount"  [attr-defined]
+e15-e2e/tests/typecheck/t2_cases.py:61: error: Invalid self argument "Column[float]" to attribute function "upper" with type "Callable[[Column[str]], Column[str]]"  [misc]
+e15-e2e/tests/typecheck/t2_cases.py:62: note: Revealed type is "tacit_t3._column.Column[float]"
+e15-e2e/tests/typecheck/t2_cases.py:64: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Orders]"
+e15-e2e/tests/typecheck/t2_cases.py:65: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Orders]"
+e15-e2e/tests/typecheck/t2_cases.py:66: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Orders]"
+e15-e2e/tests/typecheck/t2_cases.py:68: note: Revealed type is "tacit_t3._ibis_api.Table"
+e15-e2e/tests/typecheck/t2_cases.py:69: note: Revealed type is "tacit_t3._ibis_api.Table"
+e15-e2e/tests/typecheck/t2_cases.py:70: note: Revealed type is "tacit_t3._ibis_api.Table"
+e15-e2e/tests/typecheck/t2_cases.py:71: note: Revealed type is "tacit_t3._ibis_api.Table"
+e15-e2e/tests/typecheck/t2_cases.py:72: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Orders]"
+e15-e2e/tests/typecheck/t2_cases.py:74: error: Argument 1 to "takes_orders" has incompatible type "DataFrame[Customers]"; expected "DataFrame[Orders]"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:75: error: Argument 1 to "takes_orders" has incompatible type "Table"; expected "DataFrame[Orders]"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:76: error: Argument 1 to "takes_orders" has incompatible type "Table"; expected "DataFrame[Orders]"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:79: error: Incompatible types in assignment (expression has type "DataFrame[Orders]", variable has type "DataFrame[NetOrders]")  [assignment]
+e15-e2e/tests/typecheck/t2_cases.py:84: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Net]"
+e15-e2e/tests/typecheck/t2_cases.py:85: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Column[str]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:86: error: Missing named argument "net_amount" for "build" of "Schema"  [call-arg]
+e15-e2e/tests/typecheck/t2_cases.py:86: note: "build" defined in "tacit_t3._df"
+e15-e2e/tests/typecheck/t2_cases.py:87: error: Unexpected keyword argument "bogus" for "build" of "Schema"  [call-arg]
+e15-e2e/tests/typecheck/t2_cases.py:87: note: "build" defined in "tacit_t3._df"
+e15-e2e/tests/typecheck/t2_cases.py:88: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Stats]"
+e15-e2e/tests/typecheck/t2_cases.py:89: error: Argument "n" to "build" of "Schema" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:91: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.NetOrders]"
+e15-e2e/tests/typecheck/t2_cases.py:92: error: Argument 1 to "extend" of "Schema" has incompatible type "DataFrame[Customers]"; expected "Into[NetOrders]"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:93: error: Argument 1 to "extend" of "Schema" has incompatible type "DataFrame[Orders]"; expected "Into[Stats]"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:93: error: Argument 2 to "extend" of "Schema" has incompatible type "DataFrame[Net]"; expected "Into[Stats]"  [arg-type]
+e15-e2e/tests/typecheck/t2_cases.py:101: note: Revealed type is "tacit_t3._column.Column[datetime.datetime]"
+e15-e2e/tests/typecheck/t2_cases.py:102: error: "S" has no attribute "event_tss"  [attr-defined]
+e15-e2e/tests/typecheck/t2_cases.py:108: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Orders]"
+e15-e2e/tests/typecheck/t2_cases.py:109: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.NetOrders]"
+e15-e2e/tests/typecheck/t2_cases.py:110: note: Revealed type is "tacit_t3._df.DataFrame[t2_cases.Clicks]"
+e15-e2e/tests/typecheck/t2_cases.py:111: error: Value of type variable "S" of "recent" cannot be "Orders"  [type-var]
+e15-e2e/tests/typecheck/t2_cases.py:115: error: "Net" has no attribute "net_amont"; maybe "net_amount"?  [attr-defined]
+e15-e2e/tests/typecheck/t2_cases.py:116: note: Revealed type is "tacit_t3._column.Column[float]"

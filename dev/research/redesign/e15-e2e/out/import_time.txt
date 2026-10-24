@@ -1,0 +1,4 @@
+import ibis: 1.1561205509933643 s
+import tacit_t3: 1.1984521189588122 s
+import pandera.ibis: 4.277445845014881 s
+import ibis, pandera.ibis, tacit_t3: 3.096657120040618 s

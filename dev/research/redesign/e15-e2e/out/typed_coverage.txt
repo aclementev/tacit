@@ -1,0 +1,135 @@
+== e15-e2e/examples/e2e.py: 205 wrapped expressions, 205 revealed, 0 errors in instrumented copy []
+   data expressions: schema 155 (87%), deferred 11 (6%), unknown 8 (4%), ibis 4 (2%)   [other/non-data: 27]
+   ibis     facts).group_by('customer_id', 'country').agg(orders=_.order_id) : Table
+   ibis     facts).group_by('customer_id', 'country')                        : GroupedTable
+   deferred _.order_id).count()                                              : Deferred
+   deferred _.order_id                                                       : Deferred
+   deferred _.net_amount).sum()                                              : Deferred
+   deferred _.net_amount                                                     : Deferred
+   deferred _.order_month).min()                                             : Deferred
+   deferred _.order_month                                                    : Deferred
+   ibis     per_customer).mutate(share_of_country=_.revenue) / _.revenue).su : Table
+   ibis     per_customer                                                     : Table
+   deferred _.revenue) / _.revenue).sum().over(group_by='country')           : Deferred
+   deferred _.revenue                                                        : Deferred
+   deferred _.revenue).sum().over(group_by='country')                        : Deferred
+   deferred _.revenue).sum()                                                 : Deferred
+   deferred _.revenue                                                        : Deferred
+   unknown  ibis.duckdb).connect()                                           : Any
+   unknown  ibis.duckdb                                                      : Any
+   unknown  con).read_csv(sources) / 'orders.csv')                           : Any
+   unknown  con                                                              : Any
+   unknown  con).read_csv(sources) / 'customers.csv')                        : Any
+   unknown  con                                                              : Any
+   unknown  monthly).head(6).execute()                                       : DataFrame | Series | Any
+   unknown  top).head(6).execute()                                           : DataFrame | Series | Any
+== e15-e2e/examples/e2e_plain.py: 144 wrapped expressions, 144 revealed, 0 errors in instrumented copy []
+   data expressions: ibis 61 (56%), deferred 41 (38%), unknown 6 (6%)   [other/non-data: 36]
+   ibis     t).filter(ibis.row_number().over(group_by=key), order_by=ibis.de : Table
+   ibis     t                                                                : Table
+   ibis     ibis.row_number().over(group_by=key), order_by=ibis.desc(ts))    : IntegerColumn
+   ibis     ibis.row_number()                                                : IntegerColumn
+   deferred ibis.desc(ts)                                                    : Deferred
+   ibis     events).mutate(net_amount=_.amount) - _.discount).fill_null(0)), : Table
+   ibis     events                                                           : Table
+   deferred _.amount) - _.discount).fill_null(0)                             : Deferred
+   deferred _.amount                                                         : Deferred
+   deferred _.discount).fill_null(0)                                         : Deferred
+   deferred _.discount                                                       : Deferred
+   deferred _.ordered_at).truncate('M').date()                               : Deferred
+   deferred _.ordered_at).truncate('M')                                      : Deferred
+   deferred _.ordered_at                                                     : Deferred
+   ibis     orders).filter(_.status) == 'delivered')).mutate(delivery_hours= : Table
+   ibis     orders).filter(_.status) == 'delivered')                         : Table
+   ibis     orders                                                           : Table
+   deferred _.status) == 'delivered'                                         : Deferred
+   deferred _.status                                                         : Deferred
+   deferred _.delivered_at).delta(_.ordered_at), unit='hour')                : Deferred
+   deferred _.delivered_at                                                   : Deferred
+   deferred _.ordered_at                                                     : Deferred
+   ibis     orders).join(customers), 'customer_id').select('order_id', 'cust : Table
+   ibis     orders).join(customers), 'customer_id')                          : Table
+   ibis     orders                                                           : Table
+   ibis     customers                                                        : Table
+   deferred _.segment).fill_null('unknown')                                  : Deferred
+   deferred _.segment                                                        : Deferred
+   ibis     facts).group_by('country', 'order_month').agg(orders=_.order_id) : Table
+   ibis     facts).group_by('country', 'order_month').agg(orders=_.order_id) : Table
+   ibis     facts).group_by('country', 'order_month')                        : GroupedTable
+   ibis     facts                                                            : Table
+   deferred _.order_id).count()                                              : Deferred
+   deferred _.order_id                                                       : Deferred
+   deferred _.order_id).count(where=_.channel) == 'app')                     : Deferred
+   deferred _.order_id                                                       : Deferred
+   deferred _.channel) == 'app'                                              : Deferred
+   deferred _.channel                                                        : Deferred
+   deferred _.net_amount).sum()                                              : Deferred
+   deferred _.net_amount                                                     : Deferred
+   deferred _.net_amount).mean()                                             : Deferred
+   deferred _.net_amount                                                     : Deferred
+   deferred _.delivery_hours).mean()                                         : Deferred
+   deferred _.delivery_hours                                                 : Deferred
+   ibis     facts).group_by('customer_id', 'country').agg(orders=_.order_id) : Table
+   ibis     facts).group_by('customer_id', 'country')                        : GroupedTable
+   ibis     facts                                                            : Table
+   deferred _.order_id).count()                                              : Deferred
+   deferred _.order_id                                                       : Deferred
+   deferred _.net_amount).sum()                                              : Deferred
+   deferred _.net_amount                                                     : Deferred
+   deferred _.order_month).min()                                             : Deferred
+   deferred _.order_month                                                    : Deferred
+   ibis     CustomerValue.validate(per_customer).mutate(share_of_country=_.r : Table[CustomerValue]
+   ibis     per_customer).mutate(share_of_country=_.revenue) / _.revenue).su : Table
+   ibis     per_customer                                                     : Table
+   deferred _.revenue) / _.revenue).sum().over(group_by='country')           : Deferred
+   deferred _.revenue                                                        : Deferred
+   deferred _.revenue).sum().over(group_by='country')                        : Deferred
+   deferred _.revenue).sum()                                                 : Deferred
+   deferred _.revenue                                                        : Deferred
+   ibis     value).mutate(rank_in_country=ibis.row_number().over(group_by='c : Table
+   ibis     value                                                            : Table
+   ibis     ibis.row_number().over(group_by='country', order_by=ibis.desc('r : NumericValue
+   ibis     ibis.row_number().over(group_by='country', order_by=ibis.desc('r : IntegerColumn
+   ibis     ibis.row_number()                                                : IntegerColumn
+   deferred ibis.desc('revenue')                                             : Deferred
+   ibis     ranked).filter(_.rank_in_country) <= n)).order_by('country', 'ra : Table
+   ibis     ranked).filter(_.rank_in_country) <= n))                         : Table
+   ibis     ranked                                                           : Table
+   deferred _.rank_in_country) <= n)                                         : Deferred
+   deferred _.rank_in_country                                                : Deferred
+   ibis     con).read_csv(path)                                              : Table
+   ibis     con                                                              : BaseBackend
+   ibis     t).cast({ c): 'timestamp' for (c, d) in t).schema().items() if d : Table
+   ibis     t                                                                : Table
+   ibis     t                                                                : Table
+   unknown  ibis.duckdb).connect()                                           : Any
+   unknown  ibis.duckdb                                                      : Any
+   ibis     OrderEvents.validate(read(con), sources) / 'orders.csv'))        : Table[OrderEvents]
+   ibis     read(con), sources) / 'orders.csv')                              : Table
+   unknown  con                                                              : Any
+   ibis     Customers.validate(read(con), sources) / 'customers.csv'))       : Table[Customers]
+   ibis     read(con), sources) / 'customers.csv')                           : Table
+   unknown  con                                                              : Any
+   ibis     add_metrics(keep_latest(events), key='order_id', ts='updated_at' : Table
+   ibis     keep_latest(events), key='order_id', ts='updated_at')            : Table
+   ibis     events                                                           : Table[OrderEvents]
+   ibis     with_customer(delivered(orders)), customers)                     : Table
+   ibis     delivered(orders)                                                : Table
+   ibis     orders                                                           : Table
+   ibis     customers                                                        : Table[Customers]
+   ibis     monthly_revenue(facts)                                           : Table
+   ibis     facts                                                            : Table
+   ibis     top_customers(customer_value(facts))                             : Table
+   ibis     customer_value(facts)                                            : Table
+   ibis     facts                                                            : Table
+   ibis     monthly                                                          : Table
+   ibis     top                                                              : Table
+   ibis     monthly                                                          : Table
+   ibis     top                                                              : Table
+   ibis     run(Path(sys.argv)[1]) if len(sys.argv) > 1) else here) / 'sourc : tuple[Table, Table]
+   unknown  monthly).head(6).execute()                                       : DataFrame | Series | Any
+   ibis     monthly).head(6)                                                 : Table
+   ibis     monthly                                                          : Table
+   unknown  top).head(6).execute()                                           : DataFrame | Series | Any
+   ibis     top).head(6)                                                     : Table
+   ibis     top                                                              : Table

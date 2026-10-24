@@ -1,0 +1,8 @@
+source: e15-e2e/examples/sources (1436 order events); min / median of 9 runs, seconds; q = data queries
+variant                               ingest                 build                 write                 total
+tacit                         0.603/0.645 q8        0.124/0.138 q3        0.077/0.084 q2             0.804 q13
+ibis+pandera                 4.744/4.841 q20        2.516/2.552 q8        0.342/0.351 q2             7.602 q30
+ibis+pandera, cached         0.705/0.737 q24        0.247/0.273 q8        0.053/0.061 q2             1.005 q34
+ibis only                     0.429/0.442 q2        0.010/0.011 q0        0.349/0.360 q2              0.789 q4
+pure expression build (tacit): min 15.2 ms, median 16.6 ms
+pure expression build (ibis ): min 8.6 ms, median 8.9 ms

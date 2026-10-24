@@ -1,0 +1,12 @@
+ecommerce_t2                   not caught (steps ran 0 queries; outputs pass validation)
+b_a1_typo_join_view            A BUILD (0 queries)     AttributeError: 'Order' object has no attribute 'ordr_id'
+b_a2_typo_namespace            A BUILD (0 queries)     AttributeError: 'RawOrder' object has no attribute 'discont'
+b_a3_typo_table_attr           A BUILD (0 queries)     AttributeError: 'Table' object has no attribute 'statsu'
+b_a4_typo_deferred             A BUILD (0 queries)     AttributeError: 'Table' object has no attribute 'revenu'
+b_b1_raw_orders_into_step      A BUILD (0 queries)     AttributeError: 'RawOrder' object has no attribute 'net_amount'
+b_b2_swapped_args              A BUILD (0 queries)     AttributeError: 'Order' object has no attribute 'country'
+b_b3_forgot_conform            A BUILD (0 queries)     AttributeError: 'Table' object has no attribute '_schema'
+b_c1_missing_column            A BUILD (0 queries)     ValidationError: CountryMonthStats.build: 1 issue for CountryMonthStats - avg_net: missing column
+b_d1_count_cast_float          A BUILD (0 queries)     ValidationError: CountryMonthStats.build: 1 issue for CountryMonthStats - order_count: expected dtype int64, got float64
+b_d2_sum_into_int              A BUILD (0 queries)     ValidationError: CountryMonthStats.build: 1 issue for CountryMonthStats - order_count: expected dtype int64, got float64
+b_f1_nullable_into_nonnull     B VALIDATE (0 q at build, 2 q total) ValidationError: Order.parse: 1 issue for Order - net_amount: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 21 rows; e.g. [None, None, None, 

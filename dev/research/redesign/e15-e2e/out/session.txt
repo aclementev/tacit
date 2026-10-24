@@ -1,0 +1,441 @@
+
+# ---- setup ---------------------------------------------------------------------------
+>>> import ibis
+>>> import ibis.expr.types as ir
+>>> from ibis import _
+>>> import tacit_t3 as tacit
+>>> from e2e import *
+>>> con = ibis.duckdb.connect()
+>>> events = OrderEvents.parse(con.read_csv("examples/sources/orders.csv"))
+>>> customers = Customers.parse(con.read_csv("examples/sources/customers.csv"))
+>>> orders = add_metrics(keep_latest(events, key=events.c.order_id, ts=events.c.updated_at))
+>>> facts = with_customer(delivered(orders), customers)
+
+# ---- what is a frame -----------------------------------------------------------------
+>>> type(events), isinstance(events, ir.Table)
+(<class 'tacit_t3._df.DataFrame'>, True)
+>>> events
+DataFrame[OrderEvents]
+r0 := DatabaseTable: temp.main.tacit_parsed_1
+  order_id     int64
+  customer_id  int64
+  status       string
+  channel      string
+  amount       float64
+  discount     float64
+  ordered_at   timestamp(6)
+  delivered_at timestamp(6)
+  updated_at   timestamp(6)
+
+Project[r0]
+  order_id:     r0.order_id
+  customer_id:  r0.customer_id
+  status:       r0.status
+  channel:      r0.channel
+  amount:       r0.amount
+  discount:     r0.discount
+  ordered_at:   r0.ordered_at
+  delivered_at: r0.delivered_at
+  updated_at:   r0.updated_at
+>>> events.head()
+DataFrame[OrderEvents]
+r0 := DatabaseTable: temp.main.tacit_parsed_1
+  order_id     int64
+  customer_id  int64
+  status       string
+  channel      string
+  amount       float64
+  discount     float64
+  ordered_at   timestamp(6)
+  delivered_at timestamp(6)
+  updated_at   timestamp(6)
+
+r1 := Project[r0]
+  order_id:     r0.order_id
+  customer_id:  r0.customer_id
+  status:       r0.status
+  channel:      r0.channel
+  amount:       r0.amount
+  discount:     r0.discount
+  ordered_at:   r0.ordered_at
+  delivered_at: r0.delivered_at
+  updated_at:   r0.updated_at
+
+Limit[r1, n=5]
+>>> events.head(3).execute()
+   order_id  customer_id  ...        delivered_at          updated_at
+0        22          133  ...                 NaT 2024-01-31 02:11:00
+1       971          130  ... 2024-03-25 21:35:00 2024-03-25 21:40:00
+2       898          138  ...                 NaT 2024-06-14 06:44:00
+
+[3 rows x 9 columns]
+>>> ibis.options.interactive = True
+>>> events.head(3)
+DataFrame[OrderEvents]
+┏━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━┓
+┃ order_id ┃ customer_id ┃ status    ┃ channel ┃ amount  ┃ discount ┃ … ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━┩
+│ int64    │ int64       │ string    │ string  │ float64 │ float64  │ … │
+├──────────┼─────────────┼───────────┼─────────┼─────────┼──────────┼───┤
+│       22 │         133 │ shipped   │ web     │  341.36 │    34.14 │ … │
+│      971 │         130 │ delivered │ web     │  146.14 │    29.23 │ … │
+│      898 │         138 │ shipped   │ app     │  280.11 │    56.02 │ … │
+└──────────┴─────────────┴───────────┴─────────┴─────────┴──────────┴───┘
+>>> ibis.options.interactive = False
+
+# ---- columns, schema, docs -----------------------------------------------------------
+>>> events.c
+<OrderEvents columns: order_id, customer_id, status, channel, amount, discount, ordered_at, delivered_at, updated_at>
+>>> dir(events.c)
+['amount', 'channel', 'customer_id', 'delivered_at', 'discount', 'order_id', 'ordered_at', 'status', 'updated_at']
+>>> events.c.amount
+r0 := DatabaseTable: temp.main.tacit_parsed_1
+  order_id     int64
+  customer_id  int64
+  status       string
+  channel      string
+  amount       float64
+  discount     float64
+  ordered_at   timestamp(6)
+  delivered_at timestamp(6)
+  updated_at   timestamp(6)
+
+r1 := Project[r0]
+  order_id:     r0.order_id
+  customer_id:  r0.customer_id
+  status:       r0.status
+  channel:      r0.channel
+  amount:       r0.amount
+  discount:     r0.discount
+  ordered_at:   r0.ordered_at
+  delivered_at: r0.delivered_at
+  updated_at:   r0.updated_at
+
+amount: r1.amount
+>>> events.c.amount.sum().execute()
+297527.0900000001
+>>> events.schema()
+ibis.Schema {
+  order_id      int64
+  customer_id   int64
+  status        string
+  channel       string
+  amount        float64
+  discount      float64
+  ordered_at    timestamp(6)
+  delivered_at  timestamp(6)
+  updated_at    timestamp(6)
+}
+>>> OrderEvents
+<class 'e2e.OrderEvents'>
+>>> OrderEvents.__tacit_fields__["amount"]
+FieldSpec(attr='amount', name='amount', pytype=<class 'float'>, dtype=Float64(nullable=True), explicit_dtype=False, nullable=False, constraints=(ge(0),), checks=(), unique=False, description='gross, EUR')
+>>> help(OrderEvents)
+Help on class OrderEvents in module e2e:
+
+class OrderEvents(tacit_t3._df.Schema)
+ |  OrderEvents(**columns: 'Any') -> 'None'
+ |
+ |  Order service events: an order appears once per status change.
+ |
+ |  Columns:
+ |    order_id: Column[int]
+ |    customer_id: Column[int]
+ |    status: Column[str]  [isin(['shipped', 'delivered', 'cancelled', 'returned'])]
+ |    channel: Column[str]  [isin(['web', 'app'])]
+ |    amount: Column[float]  [ge(0)]  # gross, EUR
+ |    discount: Column[float | None]  [ge(0)]
+ |    ordered_at: Column[datetime]
+ |    delivered_at: Column[datetime | None]
+ |    updated_at: Column[datetime]
+ |
+ |  Method resolution order:
+ |      OrderEvents
+ |      tacit_t3._df.Schema
+ |      builtins.object
+ |
+ |  Data descriptors defined here:
+ |
+ |  __dict__
+ |      dictionary for instance variables
+ |
+ |  __weakref__
+ |      list of weak references to the object
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |
+ |  __annotations__ = {'amount': 'Column[float]', 'channel': 'Column[str]'...
+ |
+ |  __tacit_fields__ = {'amount': FieldSpec(attr='amount', name='amount', ...
+ |
+ |  amount = _['amount']
+ |
+ |  channel = _['channel']
+ |
+ |  customer_id = _['customer_id']
+ |
+ |  delivered_at = _['delivered_at']
+ |
+ |  discount = _['discount']
+ |
+ |  order_id = _['order_id']
+ |
+ |  ordered_at = _['ordered_at']
+ |
+ |  status = _['status']
+ |
+ |  updated_at = _['updated_at']
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from tacit_t3._df.Schema:
+ |
+ |  __dir__(self) -> 'list[str]'
+ |      Default dir() implementation.
+ |
+ |  __getattr__(self, key: 'str') -> 'Any'
+ |
+ |  __init__(self, **columns: 'Any') -> 'None'
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |
+ |  __repr__(self) -> 'str'
+ |      Return repr(self).
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods inherited from tacit_t3._df.Schema:
+ |
+ |  __init_subclass__(**kw: 'Any') -> 'None'
+ |      This method is called when a class is subclassed.
+ |
+ |      The default implementation does nothing. It may be
+ |      overridden to extend subclasses.
+ |
+ |  aggregate(*, by: 'Sequence[Column[Any]]') -> 'Callable[P, DataFrame[S]]'
+ |      Explicit grouping: `Out.aggregate(by=[k])(k=k, total=df.c.x.sum())`; non-keys must be reductions.
+ |
+ |  build(*args: 'P.args', **kwargs: 'P.kwargs') -> 'DataFrame[S]'
+ |      Checked projection: `Out.build(a=df.c.x, n=df.c.y * 2)`; all-reduction calls are a global aggregate.
+ |
+ |  conform(table: 'ir.Table | _TableBase', *, extra: 'Extra' = 'ignore') -> 'DataFrame[Self]'
+ |      Trusted data: check names and dtypes (no query), project to the declared columns.
+ |
+ |  extend(base: 'Into[Self]', delta: 'Into[Self]', /, *more: 'Into[Self]') -> 'DataFrame[Self]'
+ |      base's columns + the new columns of `Delta.build(...)` frames derived from base.
+ |
+ |  parse(table: 'ir.Table | _TableBase', *, extra: 'Extra' = 'ignore') -> 'DataFrame[Self]'
+ |      Untrusted data: coerce, then nulls / uniqueness / checks in one query (+1 for samples on failure).
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes inherited from tacit_t3._df.Schema:
+ |
+ |  __dataclass_transform__ = {'eq_default': True, 'field_specifiers': (<f...
+
+
+# ---- plain ibis on the frame ---------------------------------------------------------
+>>> type(events.mutate(x=1))
+<class 'ibis.expr.types.relations.Table'>
+>>> events.group_by("status").agg(n=_.count()).order_by("status").execute()
+      status    n
+0  cancelled  110
+1  delivered  851
+2   returned  104
+3    shipped  371
+>>> ibis.union(events, events).count().execute()
+2872
+
+# ---- error: bad CSV rows at ingestion ------------------------------------------------
+>>> OrderEvents.parse(con.read_csv("examples/sources/orders_bad.csv"))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 215, in parse
+    out = parse_table(cls.__name__, cls.__tacit_fields__, _plain(table), extra=extra, context=f"{cls.__name__}.parse")
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_validate.py", line 166, in parse_table
+    raise ValidationError(schema_name, context, out + consts)
+tacit_t3._errors.ValidationError: OrderEvents.parse: 4 issues for OrderEvents
+  - status: constraint isin(['shipped', 'delivered', 'cancelled', 'returned']) failed; 1 row; e.g. ['refunded']
+  - amount: cannot convert string to float64; 1 row; e.g. ['12,50']
+  - amount: constraint ge(0) failed; 1 row; e.g. ['-19.99']
+  - ordered_at: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 1 row
+
+# ---- error: structured issues --------------------------------------------------------
+>>> try:
+...     OrderEvents.parse(con.read_csv("examples/sources/orders_bad.csv"))
+... except tacit.ValidationError as e:
+...     err = e
+... 
+>>> 
+>>> [(i.code, i.column, i.count, i.samples) for i in err.issues]
+[('constraint', 'status', 1, ('refunded',)), ('coercion', 'amount', 1, ('12,50',)), ('constraint', 'amount', 1, ('-19.99',)), ('null', 'ordered_at', 1, ())]
+
+# ---- error: wrong frame passed to a step (with and without @tacit.step) --------------
+>>> customer_value(orders)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_step.py", line 125, in wrapper
+    checker.check(value, hints[pname], f"argument {pname!r}", tvars)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_step.py", line 71, in check
+    self._instance(value, s, where)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_step.py", line 100, in _instance
+    raise ValidationError(s.__name__, f"step {self.name}(), {where}", [issue])
+tacit_t3._errors.ValidationError: step customer_value(), argument 'facts': 1 issue for OrderFacts
+  - wrong frame; expected DataFrame[OrderFacts]; got DataFrame[Orders]
+>>> monthly_revenue(orders)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e.py", line 142, in monthly_revenue
+    return MonthlyRevenue.aggregate(by=[f.country, f.order_month])(
+                                        ^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 103, in __getattr__
+    raise AttributeError(f"{type(self).__name__} has no column {key!r}", name=key, obj=self)
+AttributeError: Orders has no column 'country'
+
+# ---- error: missing column after a raw-ibis detour -----------------------------------
+>>> per_customer = facts.group_by("customer_id", "country").agg(revenue=_.net_amount.sum())
+>>> CustomerValue.conform(per_customer)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 210, in conform
+    return DataFrame._wrap(cls._checked(_plain(table), f"{cls.__name__}.conform", extra), cls)
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 202, in _checked
+    raise ValidationError(cls.__name__, ctx, found)
+tacit_t3._errors.ValidationError: CustomerValue.conform: 3 issues for CustomerValue
+  - orders: missing column (expected int64)
+  - first_month: missing column (expected date)
+  - share_of_country: missing column (expected float64)
+
+# ---- error: typo at runtime ----------------------------------------------------------
+>>> events.c.amout
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 103, in __getattr__
+    raise AttributeError(f"{type(self).__name__} has no column {key!r}", name=key, obj=self)
+AttributeError: OrderEvents has no column 'amout'. Did you mean: 'amount'?
+>>> events.amout
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/relations.py", line 1222, in __getattr__
+    raise AttributeError(f"'Table' object has no attribute {key!r}")
+AttributeError: 'Table' object has no attribute 'amout'. Did you mean: 'amount'?
+
+# ---- error: null in a non-null output ------------------------------------------------
+>>> DeliveredOrders.extend(orders, DeliveryTime.build(delivery_hours=orders.c.delivered_at.assume_not_null().delta(orders.c.ordered_at, unit="hour")))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 118, in build
+    return sc._construct(kwargs, None, f"{sc.__name__}.build")
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 183, in _construct
+    _check_assumptions(cls.__name__, ctx, src, list(exprs.values()))
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 249, in _check_assumptions
+    raise ValidationError(schema, ctx, bad)
+tacit_t3._errors.ValidationError: DeliveryTime.build: 1 issue for DeliveryTime
+  - delivered_at: assume_not_null() was false (NULLs present); filter them out or use fill_null(...); 245 rows
+>>> leaky = facts.group_by("customer_id", "country").agg(orders=_.order_id.count(), revenue=_.net_amount.sum(), first_month=_.order_month.min()).mutate(share_of_country=ibis.null("float64"))
+>>> accepted = CustomerValue.conform(leaky)          # structural only: no query, NULLs pass
+>>> accepted.c.share_of_country.isnull().sum().execute()
+150
+>>> CustomerValue.parse(leaky)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 215, in parse
+    out = parse_table(cls.__name__, cls.__tacit_fields__, _plain(table), extra=extra, context=f"{cls.__name__}.parse")
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_validate.py", line 166, in parse_table
+    raise ValidationError(schema_name, context, out + consts)
+tacit_t3._errors.ValidationError: CustomerValue.parse: 1 issue for CustomerValue
+  - share_of_country: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 150 rows
+
+# ---- error: join on the wrong key ----------------------------------------------------
+>>> j = tacit.join(orders, customers, on=lambda o, c: o.order_id == c.customer_id)
+>>> j
+Join[Orders, Customers]
+>>> tacit.join(orders, customers, on=[(orders.c.customer_id, events.c.customer_id)])
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_join.py", line 67, in join
+    preds = [lt["l__" + _key(left, a, "left")] == rt["r__" + _key(right, b, "right")] for a, b in on]
+                                                             ~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_join.py", line 46, in _key
+    raise ValidationError(df._schema.__name__, "join", [Issue("relation", detail=f"{side} key {col.get_name()!r} is not a column of the {side} frame")])
+tacit_t3._errors.ValidationError: join: 1 issue for Customers
+  - relation; right key 'customer_id' is not a column of the right frame
+>>> tacit.join(orders, customers, on=lambda o, c: o.customer_id == c.country)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_join.py", line 65, in join
+    preds: list[Any] = [on(ls._bind(lt, "l__"), rs._bind(rt, "r__"))]  # type: ignore[arg-type]
+                        ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<console>", line 1, in <lambda>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/generic.py", line 1299, in __eq__
+    return _binop(ops.Equals, self, other)
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/generic.py", line 3187, in _binop
+    node = op_class(left, right)
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/common/bases.py", line 72, in __call__
+    return cls.__create__(*args, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/common/grounds.py", line 120, in __create__
+    return super().__create__(**kwargs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/operations/logical.py", line 68, in __init__
+    raise IbisTypeError(
+    ...<2 lines>...
+    )
+ibis.common.exceptions.IbisTypeError: Arguments l__customer_id:int64 and r__country:string are not comparable
+
+# ---- error: forgotten reduction / mixed build ----------------------------------------
+>>> MonthlyRevenue.aggregate(by=[facts.c.country])(country=facts.c.country, order_month=facts.c.order_month, orders=facts.c.order_id.count(), app_orders=facts.c.order_id.count(), revenue=facts.c.net_amount.sum(), avg_order_value=facts.c.net_amount.mean(), avg_delivery_hours=facts.c.delivery_hours.mean())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 128, in run
+    return sc._construct(kwargs, list(by), f"{sc.__name__}.aggregate")
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 165, in _construct
+    raise ValidationError(cls.__name__, ctx, [Issue("not_a_reduction", a, detail=detail) for a in bad])
+tacit_t3._errors.ValidationError: MonthlyRevenue.aggregate: 1 issue for MonthlyRevenue
+  - order_month: not a reduction; neither one of the by=[...] keys nor a reduction (.sum(), .count(), ...)
+>>> MonthlyRevenue.build(country=facts.c.country, order_month=facts.c.order_month, orders=facts.c.order_id.count(), app_orders=facts.c.order_id.count(), revenue=facts.c.net_amount.sum(), avg_order_value=facts.c.net_amount.mean(), avg_delivery_hours=facts.c.delivery_hours.mean())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 118, in build
+    return sc._construct(kwargs, None, f"{sc.__name__}.build")
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/src/tacit_t3/_df.py", line 168, in _construct
+    raise ValidationError(cls.__name__, ctx, [Issue("not_a_reduction", detail=detail)])
+tacit_t3._errors.ValidationError: MonthlyRevenue.build: 1 issue for MonthlyRevenue
+  - not a reduction; build() mixes reductions with plain columns (country, order_month); use MonthlyRevenue.aggregate(by=[...])(...)
+
+# ---- error: handle from another frame in a generic step ------------------------------
+>>> keep_latest(events, key=customers.c.customer_id, ts=events.c.updated_at)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e.py", line 107, in keep_latest
+    return df.filter(tacit.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/types/generic.py", line 894, in over
+    window = ibis.window(
+        rows=rows,
+    ...<2 lines>...
+        order_by=order_by,
+    )
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/api.py", line 1857, in window
+    builder = bl.LegacyWindowBuilder().group_by(group_by).order_by(order_by)
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/builders.py", line 221, in order_by
+    return self.copy(orderings=self.orderings + util.promote_tuple(expr))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/common/grounds.py", line 239, in copy
+    return self.__recreate__(kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/common/grounds.py", line 126, in __recreate__
+    return super().__create__(**kwargs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/common/grounds.py", line 212, in __init__
+    object.__setattr__(self, name, field.get_default(name, self))
+                                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/common/annotations.py", line 180, in get_default
+    value = self.default(this)
+  File "/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/.venv/lib/python3.13/site-packages/ibis/expr/builders.py", line 162, in _table
+    raise IbisInputError("Window frame can only depend on a single relation")
+ibis.common.exceptions.IbisInputError: Window frame can only depend on a single relation

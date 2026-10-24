@@ -1,0 +1,20 @@
+feature                                                               pyright           mypy             ty        pyrefly
+t2_cases: (module)                                                        0/0            0/0            0/0            0/0
+t2_cases: typed namespace access, typos                                   8/8            8/8            8/8            8/8
+t2_cases: schema-preserving methods keep DataFrame[S]                     3/3            3/3            3/3            3/3
+t2_cases: ibis API directly; results are plain tables                     5/5            5/5            5/5            5/5
+t2_cases: wrong frame / forgot cast / subtyping                           5/5         4/5 m1         4/5 m1         4/5 m1
+t2_cases: build(): checked projection and implicit GROUP BY               6/6            6/6            6/6            6/6
+t2_cases: extend: Out must subclass the base schema and every             5/5            5/5            5/5            5/5
+t2_cases: generic steps over S                                            4/4            4/4            4/4            4/4
+t2_cases: typed namespace survives build() (inference of S thr            2/2            2/2            2/2            2/2
+t2_cases: frame accepted by ibis functions typed ir.Table              0/0 f1            0/0         0/0 f1            0/0
+t3_cases: (module)                                                        0/0            0/0            0/0            0/0
+t3_cases: derived facade: nullability propagates through compa          11/11          11/11       10/11 w1          11/11
+t3_cases: assume_not_null and durations                                7/8 m1         7/8 m1         7/8 m1         7/8 m1
+t3_cases: typed join scope                                              10/10          10/10          10/10          10/10
+t3_cases: explicit aggregate(by=)                                         5/5            5/5            5/5            5/5
+t3_cases: @step preserves signatures                                      4/4         3/4 m1            4/4         3/4 m1
+t3_cases: generic steps                                                   5/5            5/5            5/5            5/5
+TOTAL                                                             80/81 m1 f1       78/81 m3 78/81 m2 w1 f1       78/81 m3
+cell = ok/cases [mN = missed errors, wN = wrong revealed type, fN = false positives]

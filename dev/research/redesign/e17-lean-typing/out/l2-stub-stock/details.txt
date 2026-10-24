@@ -1,0 +1,31 @@
+MISSED  mypy     t2_cases.py:78  takes_orders(t)  # E: [raw-table] raw ibis table
+MISSED  ty       t2_cases.py:78  takes_orders(t)  # E: [raw-table] raw ibis table
+MISSED  pyrefly  t2_cases.py:78  takes_orders(t)  # E: [raw-table] raw ibis table
+FP      pyright  t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> Type "DataFrame[Orders]" is not assignable to declared type "Table" (reportAssignmentType)
+FP      ty       t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> invalid-assignment: Object of type `DataFrame[Orders]` is not assignable to `Table`
+MISSED  pyright  t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  mypy     t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  ty       t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  pyrefly  t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  pyright  t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  mypy     t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  ty       t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  pyrefly  t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+FP      pyright  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument of type "Value" cannot be assigned to parameter "label" of type "_Fam[str] | str | Deferred" in function "build" (reportArgumentType)
+FP      mypy     t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument "label" to "build" of "Schema" has incompatible type "Value"; expected "_Fam[str] | str | Deferred"  [arg-type]
+FP      ty       t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> invalid-argument-type: Argument to bound method `Schema.build` is incorrect: Expected `_Fam[str] | str | Deferred`, found `Value`
+FP      pyrefly  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> bad-argument-type: Argument `Value` is not assignable to parameter `label` with type `Deferred | _Fam[str] | str` in function `tacit_t2._df.Schema.build`
+MISSED  pyright  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  mypy     b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  ty       b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  pyrefly  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  pyright  b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  mypy     b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  ty       b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  pyrefly  b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull

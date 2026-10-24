@@ -1,0 +1,61 @@
+TYPE    mypy     t2_cases.py:58  expected IntegerScalar, got Any
+MISSED  pyright  t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  mypy     t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  ty       t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  pyrefly  t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+TYPE    mypy     t2_cases.py:69  expected Table, got Any
+TYPE    mypy     t2_cases.py:70  expected Table, got Any
+FP      pyright  t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> Argument of type "Column[bool]" cannot be assigned to parameter "predicates" of type "str | Sequence[str | BooleanColumn | tuple[str | Column | Deferred, str | Column | Deferred] | BooleanValue | bool]" in function "join
+TYPE    mypy     t2_cases.py:71  expected Table, got Any
+FP      ty       t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> invalid-argument-type: Argument to bound method `Table.join` is incorrect: Expected `Sequence[str | BooleanValue | bool | tuple[str | ibis.expr.types.generic.Column | Deferred, str | ibis.expr.types.generic.Column | Defe
+FP      pyrefly  t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> bad-argument-type: Argument `tacit_thin._column.Column[bool]` is not assignable to parameter `predicates` with type `Sequence[BooleanColumn | BooleanValue | bool | str | tuple[ibis.expr.types.generic.Column | Deferred | 
+TYPE    mypy     t2_cases.py:72  expected Table, got Any
+MISSED  mypy     t2_cases.py:75  takes_orders(c)  # E: [wrong-frame] Customers frame
+MISSED  mypy     t2_cases.py:76  takes_orders(o.mutate(x=o.c.amount * 2))  # E: [forgot-cast] forgot to conform
+MISSED  ty       t2_cases.py:76  takes_orders(o.mutate(x=o.c.amount * 2))  # E: [forgot-cast] forgot to conform
+MISSED  pyrefly  t2_cases.py:76  takes_orders(o.mutate(x=o.c.amount * 2))  # E: [forgot-cast] forgot to conform
+MISSED  mypy     t2_cases.py:77  takes_orders(o.group_by(o.c.status).agg(n=o.c.order_id.count()))  # E: [forgot-cast] forgot to conform
+MISSED  ty       t2_cases.py:77  takes_orders(o.group_by(o.c.status).agg(n=o.c.order_id.count()))  # E: [forgot-cast] forgot to conform
+MISSED  pyrefly  t2_cases.py:77  takes_orders(o.group_by(o.c.status).agg(n=o.c.order_id.count()))  # E: [forgot-cast] forgot to conform
+MISSED  mypy     t2_cases.py:78  takes_orders(t)  # E: [raw-table] raw ibis table
+MISSED  ty       t2_cases.py:78  takes_orders(t)  # E: [raw-table] raw ibis table
+MISSED  pyrefly  t2_cases.py:78  takes_orders(t)  # E: [raw-table] raw ibis table
+MISSED  mypy     t2_cases.py:80  x: DataFrame[NetOrders] = o  # E: [wrong-frame] Orders is not NetOrders
+MISSED  mypy     t2_cases.py:93  NetOrders.extend(c, Net.build(net_amount=o.c.amount))  # E: [wrong-frame] Customers is not a base of NetOrders
+MISSED  ty       t2_cases.py:93  NetOrders.extend(c, Net.build(net_amount=o.c.amount))  # E: [wrong-frame] Customers is not a base of NetOrders
+MISSED  pyrefly  t2_cases.py:93  NetOrders.extend(c, Net.build(net_amount=o.c.amount))  # E: [wrong-frame] Customers is not a base of NetOrders
+MISSED  mypy     t2_cases.py:94  Stats.extend(o, Net.build(net_amount=o.c.amount))  # E: [wrong-frame] Stats does not subclass Orders
+MISSED  ty       t2_cases.py:94  Stats.extend(o, Net.build(net_amount=o.c.amount))  # E: [wrong-frame] Stats does not subclass Orders
+MISSED  pyrefly  t2_cases.py:94  Stats.extend(o, Net.build(net_amount=o.c.amount))  # E: [wrong-frame] Stats does not subclass Orders
+MISSED  pyright  t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  mypy     t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  ty       t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  pyrefly  t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  pyright  t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  mypy     t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  ty       t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  pyrefly  t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+TYPE    ty       t_columns.py:115  expected Column[str], got Column[Literal["y", "n"]]
+FP      pyright  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument of type "Value" cannot be assigned to parameter "label" of type "Column[str] | Scalar[str] | str" in function "build" (reportArgumentType)
+FP      mypy     t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument "label" to "build" of "Schema" has incompatible type "Value"; expected "Column[str] | Scalar[str] | str"  [arg-type]
+FP      ty       t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> invalid-argument-type: Argument to bound method `Schema.build` is incorrect: Expected `Column[str] | Scalar[str] | str`, found `Value`
+FP      pyrefly  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> bad-argument-type: Argument `Value` is not assignable to parameter `label` with type `Column[str] | Scalar[str] | str` in function `tacit_t2n._df.Schema.build`
+MISSED  mypy     b_a3_typo_table_attr.py:57  kept = orders.filter(orders.statsu != "cancelled")  # E: [typo-df] a3_typo_table_attr
+MISSED  ty       b_a3_typo_table_attr.py:57  kept = orders.filter(orders.statsu != "cancelled")  # E: [typo-df] a3_typo_table_attr
+MISSED  pyrefly  b_a3_typo_table_attr.py:57  kept = orders.filter(orders.statsu != "cancelled")  # E: [typo-df] a3_typo_table_attr
+MISSED  pyright  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  mypy     b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  ty       b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  pyrefly  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  mypy     b_b1_raw_orders_into_step.py:91  stats = country_month_stats(orders, customers)  # E: [wrong-frame] b1_raw_orders_into_step
+MISSED  mypy     b_b2_swapped_args.py:91  stats = country_month_stats(customers, cleaned)  # E: [wrong-frame] b2_swapped_args
+MISSED  mypy     b_b3_forgot_conform.py:59  return kept.mutate(net_amount=k.amount - k.discount.fill_null(0))  # E: [forgot-cast] b3_forgot_conform
+MISSED  ty       b_b3_forgot_conform.py:59  return kept.mutate(net_amount=k.amount - k.discount.fill_null(0))  # E: [forgot-cast] b3_forgot_conform
+MISSED  pyrefly  b_b3_forgot_conform.py:59  return kept.mutate(net_amount=k.amount - k.discount.fill_null(0))  # E: [forgot-cast] b3_forgot_conform

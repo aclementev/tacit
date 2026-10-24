@@ -1,0 +1,114 @@
+{
+ "tacit": {
+  "ingest": [
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_476srm46dzfojfdjtoxre2ehfa\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p",
+   "CREATE TEMPORARY TABLE \"temp\".\"main\".\"tacit_parsed_7\" (\"order_id\" BIGINT, \"customer_id\" BIGINT, \"status\" TEXT, \"channel\" TEXT, \"amount\" DOUBLE, \"discount\" DOUBL",
+   "INSERT INTO \"temp\".\"main\".\"tacit_parsed_7\" (\"order_id\", \"customer_id\", \"status\", \"channel\", \"amount\", \"discount\", \"ordered_at\", \"delivered_at\", \"updated_at\") SE",
+   "SELECT sum(CAST(COALESCE((t0.order_id IS NULL), CAST('f' AS BOOLEAN)) AS BIGINT)) AS \"null:order_id\", sum(CAST(COALESCE((t0.customer_id IS NULL), CAST('f' AS BO",
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_dev5keshxbcehfryj7r4ldfuym\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p",
+   "CREATE TEMPORARY TABLE \"temp\".\"main\".\"tacit_parsed_8\" (\"customer_id\" BIGINT, \"email\" TEXT, \"country\" TEXT, \"segment\" TEXT, \"signup_date\" DATE)",
+   "INSERT INTO \"temp\".\"main\".\"tacit_parsed_8\" (\"customer_id\", \"email\", \"country\", \"segment\", \"signup_date\") SELECT * FROM \"ibis_read_csv_dev5keshxbcehfryj7r4ldfuym",
+   "SELECT sum(CAST(COALESCE((t0.customer_id IS NULL), CAST('f' AS BOOLEAN)) AS BIGINT)) AS \"null:customer_id\", (count(t0.customer_id) - count(DISTINCT t0.customer_"
+  ],
+  "build": [
+   "SELECT sum(CAST((t3.delivered_at IS NULL) AS INTEGER)) AS a0 FROM (SELECT t2.order_id, t2.customer_id, t2.status, t2.channel, t2.amount, t2.discount, t2.ordered",
+   "SELECT sum(CAST(COALESCE((t9.order_id IS NULL), CAST('f' AS BOOLEAN)) AS BIGINT)) AS \"null:order_id\", sum(CAST(COALESCE((t9.customer_id IS NULL), CAST('f' AS BO",
+   "SELECT sum(CAST(COALESCE((t12.customer_id IS NULL), CAST('f' AS BOOLEAN)) AS BIGINT)) AS \"null:customer_id\", sum(CAST(COALESCE((t12.country IS NULL), CAST('f' A"
+  ],
+  "write": [
+   "COPY (SELECT * FROM (SELECT \"t9\".\"country\", \"t9\".\"order_month\", COUNT(\"t9\".\"order_id\") AS \"orders\", COUNT(\"t9\".\"order_id\") FILTER(WHERE \"t9\".\"channel\" = 'app') ",
+   "COPY (SELECT * FROM (SELECT \"t12\".\"customer_id\", \"t12\".\"country\", \"t12\".\"orders\", \"t12\".\"revenue\", \"t12\".\"first_month\", \"t12\".\"share_of_country\", (ROW_NUMBER() "
+  ]
+ },
+ "ibis+pandera": {
+  "ingest": [
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_7b77nu6alrdgnoupo43zdtxjze\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p",
+   "SELECT bool_and(CAST((NOT (t1.order_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(order_id)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channel, t",
+   "SELECT bool_and(CAST((NOT (t1.customer_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(customer_id)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.chan",
+   "SELECT bool_and(CAST((NOT (t1.status IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(status)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channel, t0.am",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.status, t5.status__check_output__, ((CAST('t' AS BOOLEAN) AND t5.status",
+   "SELECT bool_and(CAST((NOT (t1.channel IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(channel)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channel, t0.",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.channel, t5.channel__check_output__, ((CAST('t' AS BOOLEAN) AND t5.chan",
+   "SELECT bool_and(CAST((NOT ((t1.amount IS NULL) OR isnan(t1.amount))) AS BOOLEAN)) AS \"All(Not(Or(IsNull(amount), IsNan(amount))))\" FROM (SELECT t0.order_id, t0.",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.amount, t5.amount__check_output__, ((CAST('t' AS BOOLEAN) AND t5.amount",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.discount, t5.discount__check_output__, ((CAST('t' AS BOOLEAN) AND t5.di",
+   "SELECT bool_and(CAST((NOT (t1.ordered_at IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(ordered_at)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channe",
+   "SELECT bool_and(CAST((NOT (t1.updated_at IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(updated_at)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channe",
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_odlyqufkmbds3j4btfyogx7v7y\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p",
+   "SELECT bool_and(CAST((NOT (t1.customer_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(customer_id)))\" FROM (SELECT * FROM ibis_read_csv_odlyqufkmbds3j4btfyogx7v7y",
+   "SELECT bool_and(CAST((NOT (t1.email IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(email)))\" FROM (SELECT * FROM ibis_read_csv_odlyqufkmbds3j4btfyogx7v7y AS t0) AS t",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.email, t5.email__check_output__, ((CAST('t' AS BOOLEAN) AND t5.email__c",
+   "SELECT bool_and(CAST((NOT (t1.country IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(country)))\" FROM (SELECT * FROM ibis_read_csv_odlyqufkmbds3j4btfyogx7v7y AS t0) ",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.country, t5.country__check_output__, ((CAST('t' AS BOOLEAN) AND t5.coun",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.segment, t5.segment__check_output__, ((CAST('t' AS BOOLEAN) AND t5.segm",
+   "SELECT bool_and(CAST((NOT (t1.signup_date IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(signup_date)))\" FROM (SELECT * FROM ibis_read_csv_odlyqufkmbds3j4btfyogx7v7y"
+  ],
+  "build": [
+   "SELECT bool_and(CAST((NOT (t10.customer_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(customer_id)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.reve",
+   "SELECT bool_and(CAST((NOT (t10.country IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(country)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.",
+   "SELECT bool_and(CAST((NOT (t10.orders IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(orders)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.fi",
+   "SELECT bool_and(CAST((NOT ((t10.revenue IS NULL) OR isnan(t10.revenue))) AS BOOLEAN)) AS \"All(Not(Or(IsNull(revenue), IsNan(revenue))))\" FROM (SELECT t9.custome",
+   "SELECT bool_and(CAST((NOT (t10.first_month IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(first_month)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.reve",
+   "SELECT bool_and(CAST((NOT ((t10.share_of_country IS NULL) OR isnan(t10.share_of_country))) AS BOOLEAN)) AS \"All(Not(Or(IsNull(share_of_country), IsNan(share_of_",
+   "WITH t10 AS (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.first_month, (t9.revenue / sum(t9.revenue) OVER (PARTITION BY t9.country ROWS BETWEEN ",
+   "WITH t10 AS (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.first_month, (t9.revenue / sum(t9.revenue) OVER (PARTITION BY t9.country ROWS BETWEEN "
+  ],
+  "write": [
+   "COPY (SELECT * FROM (SELECT \"t8\".\"country\", \"t8\".\"order_month\", COUNT(\"t8\".\"order_id\") AS \"orders\", COUNT(\"t8\".\"order_id\") FILTER(WHERE \"t8\".\"channel\" = 'app') ",
+   "COPY (SELECT * FROM (SELECT \"t10\".\"customer_id\", \"t10\".\"country\", \"t10\".\"orders\", \"t10\".\"revenue\", \"t10\".\"first_month\", \"t10\".\"share_of_country\", (ROW_NUMBER() "
+  ]
+ },
+ "ibis+pandera, cached": {
+  "ingest": [
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_x66p4khfmfenficz7dw6pekzie\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p",
+   "CREATE TEMPORARY TABLE \"temp\".\"main\".\"ibis_cached_icflf2ugubhmtbns3munsdh3zi\" (\"order_id\" BIGINT, \"customer_id\" BIGINT, \"status\" TEXT, \"channel\" TEXT, \"amount\" ",
+   "INSERT INTO \"temp\".\"main\".\"ibis_cached_icflf2ugubhmtbns3munsdh3zi\" (\"order_id\", \"customer_id\", \"status\", \"channel\", \"amount\", \"discount\", \"ordered_at\", \"deliver",
+   "SELECT bool_and(CAST((NOT (t1.order_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(order_id)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channel, t",
+   "SELECT bool_and(CAST((NOT (t1.customer_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(customer_id)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.chan",
+   "SELECT bool_and(CAST((NOT (t1.status IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(status)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channel, t0.am",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.status, t5.status__check_output__, ((CAST('t' AS BOOLEAN) AND t5.status",
+   "SELECT bool_and(CAST((NOT (t1.channel IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(channel)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channel, t0.",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.channel, t5.channel__check_output__, ((CAST('t' AS BOOLEAN) AND t5.chan",
+   "SELECT bool_and(CAST((NOT ((t1.amount IS NULL) OR isnan(t1.amount))) AS BOOLEAN)) AS \"All(Not(Or(IsNull(amount), IsNan(amount))))\" FROM (SELECT t0.order_id, t0.",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.amount, t5.amount__check_output__, ((CAST('t' AS BOOLEAN) AND t5.amount",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.discount, t5.discount__check_output__, ((CAST('t' AS BOOLEAN) AND t5.di",
+   "SELECT bool_and(CAST((NOT (t1.ordered_at IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(ordered_at)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channe",
+   "SELECT bool_and(CAST((NOT (t1.updated_at IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(updated_at)))\" FROM (SELECT t0.order_id, t0.customer_id, t0.status, t0.channe",
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_etmnohbl6jclbk5rqtrrogqoky\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p",
+   "CREATE TEMPORARY TABLE \"temp\".\"main\".\"ibis_cached_pij22bw5xzgrbe5vjrz5lpefg4\" (\"customer_id\" BIGINT, \"email\" TEXT, \"country\" TEXT, \"segment\" TEXT, \"signup_date\"",
+   "INSERT INTO \"temp\".\"main\".\"ibis_cached_pij22bw5xzgrbe5vjrz5lpefg4\" (\"customer_id\", \"email\", \"country\", \"segment\", \"signup_date\") SELECT * FROM \"ibis_read_csv_et",
+   "SELECT bool_and(CAST((NOT (t1.customer_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(customer_id)))\" FROM (SELECT * FROM \"temp\".main.ibis_cached_pij22bw5xzgrbe5v",
+   "SELECT bool_and(CAST((NOT (t1.email IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(email)))\" FROM (SELECT * FROM \"temp\".main.ibis_cached_pij22bw5xzgrbe5vjrz5lpefg4 A",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.email, t5.email__check_output__, ((CAST('t' AS BOOLEAN) AND t5.email__c",
+   "SELECT bool_and(CAST((NOT (t1.country IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(country)))\" FROM (SELECT * FROM \"temp\".main.ibis_cached_pij22bw5xzgrbe5vjrz5lpef",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.country, t5.country__check_output__, ((CAST('t' AS BOOLEAN) AND t5.coun",
+   "SELECT bool_and(CAST(t6.check_output AS BOOLEAN)) AS \"All(check_output)\" FROM (SELECT t5.segment, t5.segment__check_output__, ((CAST('t' AS BOOLEAN) AND t5.segm",
+   "SELECT bool_and(CAST((NOT (t1.signup_date IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(signup_date)))\" FROM (SELECT * FROM \"temp\".main.ibis_cached_pij22bw5xzgrbe5v"
+  ],
+  "build": [
+   "SELECT bool_and(CAST((NOT (t10.customer_id IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(customer_id)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.reve",
+   "SELECT bool_and(CAST((NOT (t10.country IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(country)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.",
+   "SELECT bool_and(CAST((NOT (t10.orders IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(orders)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.fi",
+   "SELECT bool_and(CAST((NOT ((t10.revenue IS NULL) OR isnan(t10.revenue))) AS BOOLEAN)) AS \"All(Not(Or(IsNull(revenue), IsNan(revenue))))\" FROM (SELECT t9.custome",
+   "SELECT bool_and(CAST((NOT (t10.first_month IS NULL)) AS BOOLEAN)) AS \"All(Not(IsNull(first_month)))\" FROM (SELECT t9.customer_id, t9.country, t9.orders, t9.reve",
+   "SELECT bool_and(CAST((NOT ((t10.share_of_country IS NULL) OR isnan(t10.share_of_country))) AS BOOLEAN)) AS \"All(Not(Or(IsNull(share_of_country), IsNan(share_of_",
+   "WITH t10 AS (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.first_month, (t9.revenue / sum(t9.revenue) OVER (PARTITION BY t9.country ROWS BETWEEN ",
+   "WITH t10 AS (SELECT t9.customer_id, t9.country, t9.orders, t9.revenue, t9.first_month, (t9.revenue / sum(t9.revenue) OVER (PARTITION BY t9.country ROWS BETWEEN "
+  ],
+  "write": [
+   "COPY (SELECT * FROM (SELECT \"t8\".\"country\", \"t8\".\"order_month\", COUNT(\"t8\".\"order_id\") AS \"orders\", COUNT(\"t8\".\"order_id\") FILTER(WHERE \"t8\".\"channel\" = 'app') ",
+   "COPY (SELECT * FROM (SELECT \"t10\".\"customer_id\", \"t10\".\"country\", \"t10\".\"orders\", \"t10\".\"revenue\", \"t10\".\"first_month\", \"t10\".\"share_of_country\", (ROW_NUMBER() "
+  ]
+ },
+ "ibis only": {
+  "ingest": [
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_67j6727tcfgt3lccys7opae4rq\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p",
+   "CREATE OR REPLACE TEMPORARY VIEW \"ibis_read_csv_fm3pvz2wwncfhk7d6ohtxwiii4\" AS SELECT * FROM READ_CSV(['/tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-p"
+  ],
+  "build": [],
+  "write": [
+   "COPY (SELECT * FROM (SELECT \"t8\".\"country\", \"t8\".\"order_month\", COUNT(\"t8\".\"order_id\") AS \"orders\", COUNT(\"t8\".\"order_id\") FILTER(WHERE \"t8\".\"channel\" = 'app') ",
+   "COPY (SELECT * FROM (SELECT \"t10\".\"customer_id\", \"t10\".\"country\", \"t10\".\"orders\", \"t10\".\"revenue\", \"t10\".\"first_month\", \"t10\".\"share_of_country\", (ROW_NUMBER() "
+  ]
+ }
+}

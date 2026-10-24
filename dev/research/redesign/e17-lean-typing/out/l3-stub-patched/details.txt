@@ -1,0 +1,21 @@
+FP      pyright  t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> Type "DataFrame[Orders]" is not assignable to declared type "Table" (reportAssignmentType)
+FP      mypy     t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> Incompatible types in assignment (expression has type "DataFrame[Orders]", variable has type "Table")  [assignment]
+FP      ty       t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> invalid-assignment: Object of type `DataFrame[Orders]` is not assignable to `Table`
+FP      pyrefly  t2_cases.py:119  xt: ir.Table = o  # ok at runtime
+          -> bad-assignment: `DataFrame[Orders]` is not assignable to `Table`
+TYPE    ty       t_columns.py:115  expected Column[str], got Column[Literal["y", "n"]]
+FP      pyright  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument of type "Value" cannot be assigned to parameter "label" of type "Column[str] | Scalar[str] | str" in function "build" (reportArgumentType)
+FP      mypy     t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument "label" to "build" of "Schema" has incompatible type "Value"; expected "Column[str] | Scalar[str] | str"  [arg-type]
+FP      ty       t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> invalid-argument-type: Argument to bound method `Schema.build` is incorrect: Expected `Column[str] | Scalar[str] | str`, found `Value`
+FP      pyrefly  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> bad-argument-type: Argument `Value` is not assignable to parameter `label` with type `Column[str] | Scalar[str] | str` in function `tacit_t2._df.Schema.build`
+MISSED  pyright  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  mypy     b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  ty       b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  pyrefly  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred

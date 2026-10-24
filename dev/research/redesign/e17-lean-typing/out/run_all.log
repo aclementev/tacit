@@ -1,0 +1,370 @@
+wrote /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e17-lean-typing/overlays/l2/tacit_thin/_ibis_cols.pyi (1819 lines, 30 classes, 1364 member definitions)
+  class:Column: 10
+  class:Scalar: 10
+  class:Value: 10
+  rule:value->column: 693
+  patch sites used: 278
+  unresolved names: none
+wrote e17-lean-typing/overlays/l2/tacit_thin/_ibis_api.pyi (164 lines, returns=getattr)
+  alias: 5
+  method: 102
+  overloaded: 1
+  property: 1
+  rewrite:param:Table: 18
+  rewrite:param:mirror-widening: 52
+  rewrite:return:GroupedTable: 4
+  rewrite:return:Table: 56
+  unannotated:param: 19
+  unannotated:return: 5
+  hand fixes: none
+  upstream-bug patches applied: 13 params: ['Table.anti_join(predicates)', 'Table.any_inner_join(predicates)', 'Table.any_left_join(predicates)', 'Table.asof_join(predicates)', 'Table.inner_join(predicates)', 'Table.join(predicates)', 'Table.left_join(predicates)', 'Table.mutate(mutations)', 'Table.outer_join(predicates)', 'Table.projection(exprs)', 'Table.right_join(predicates)', 'Table.select(exprs)', 'Table.semi_join(predicates)']
+  unresolved names: none
+wrote e17-lean-typing/overlays/l1/tacit_thin/_ibis_api.pyi (163 lines, returns=getattr)
+  alias: 5
+  method: 102
+  overloaded: 1
+  property: 1
+  rewrite:param:Table: 18
+  rewrite:return:GroupedTable: 4
+  rewrite:return:Table: 56
+  unannotated:param: 19
+  unannotated:return: 5
+  hand fixes: none
+  upstream-bug patches applied: 13 params: ['Table.anti_join(predicates)', 'Table.any_inner_join(predicates)', 'Table.any_left_join(predicates)', 'Table.asof_join(predicates)', 'Table.inner_join(predicates)', 'Table.join(predicates)', 'Table.left_join(predicates)', 'Table.mutate(mutations)', 'Table.outer_join(predicates)', 'Table.projection(exprs)', 'Table.right_join(predicates)', 'Table.select(exprs)', 'Table.semi_join(predicates)']
+  unresolved names: none
+built /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e17-lean-typing/layers/l1
+built /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e17-lean-typing/layers/l2
+built /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e17-lean-typing/layers/l3
+wrote 11 bug files to /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e17-lean-typing/bugs
+[l1-stub-stock]
+TOTAL                                                      84/103 m15 f54 83/103 m16 f53 58/103 m33 w12 f1 67/103 m31 w1 f52
+[l1-stub-patched]
+TOTAL                                                      84/103 m15 f54 84/103 m15 f54 84/103 m15 f54 84/103 m15 f54
+[l1-nostub-stock]
+TOTAL                                                      80/103 m18 f54 66/103 m28 w5 f53 49/103 m42 w12 58/103 m39 w1 f53
+[l1-nostub-patched]
+TOTAL                                                      80/103 m18 f54 80/103 m18 f54 80/103 m18 f54 80/103 m18 f54
+[l2-stub-stock]
+TOTAL                                                       99/103 m4 f2  98/103 m5 f1  98/103 m5 f2  98/103 m5 f1
+[l2-stub-patched]
+TOTAL                                                       99/103 m4 f2  99/103 m4 f2  99/103 m4 f2  99/103 m4 f2
+[l2-nostub-stock]
+TOTAL                                                       95/103 m7 f2 80/103 m18 w5 f1 88/103 m14 f2 88/103 m14 f2
+[l2-nostub-patched]
+TOTAL                                                       95/103 m7 f2  95/103 m7 f2  95/103 m7 f2  95/103 m7 f2
+[l3-stub-stock]
+TOTAL                                                      102/103 m1 f2 101/103 m2 f1 100/103 m2 w1 f2 101/103 m2 f1
+[l3-stub-patched]
+TOTAL                                                      102/103 m1 f2 102/103 m1 f2 101/103 m1 w1 f2 102/103 m1 f2
+[l3-nostub-stock]
+TOTAL                                                       98/103 m4 f2 83/103 m15 w5 f1 90/103 m11 w1 f2 91/103 m11 f2
+[l3-nostub-patched]
+TOTAL                                                       98/103 m4 f2  98/103 m4 f2 97/103 m4 w1 f2  98/103 m4 f2
+ecommerce_t2                   not caught (steps ran 0 queries; outputs pass validation)
+b_a1_typo_join_view            A BUILD (0 queries)     AttributeError: 'Order' object has no attribute 'ordr_id'
+b_a2_typo_namespace            A BUILD (0 queries)     AttributeError: 'RawOrder' object has no attribute 'discont'
+b_a3_typo_table_attr           A BUILD (0 queries)     AttributeError: 'Table' object has no attribute 'statsu'
+b_a4_typo_deferred             A BUILD (0 queries)     AttributeError: 'Table' object has no attribute 'revenu'
+b_b1_raw_orders_into_step      A BUILD (0 queries)     AttributeError: 'RawOrder' object has no attribute 'net_amount'
+b_b2_swapped_args              A BUILD (0 queries)     AttributeError: 'Order' object has no attribute 'country'
+b_b3_forgot_conform            A BUILD (0 queries)     AttributeError: 'Table' object has no attribute '_schema'
+b_c1_missing_column            A BUILD (0 queries)     ValidationError: CountryMonthStats.build: 1 issue for CountryMonthStats - avg_net: missing column
+b_d1_count_cast_float          A BUILD (0 queries)     ValidationError: CountryMonthStats.build: 1 issue for CountryMonthStats - order_count: expected dtype int64, got float64
+b_d2_sum_into_int              A BUILD (0 queries)     ValidationError: CountryMonthStats.build: 1 issue for CountryMonthStats - order_count: expected dtype int64, got float64
+b_f1_nullable_into_nonnull     B VALIDATE (0 q at build, 2 q total) ValidationError: Order.parse: 1 issue for Order - net_amount: NULL in a non-nullable column (declare `Column[T | None]` to allow it); 21 rows; e.g. [None, None, None, 
+[l1-nostub-patched]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        0/3      0/3      0/3      0/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      1/1      1/1      1/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        1/6      1/6      1/6      1/6
+  int-float        cases                        0/4      0/4      0/4      0/4
+  int-float        bugs                         0/2      0/2      0/2      0/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                          20       20       20       20
+  FP ecommerce_t2.py                                 3        3        3        3
+  FP iris_t2.py                                      2        2        2        2
+  reveal mismatches (cases)                          0        0        0        0
+
+[l1-nostub-stock]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        0/3      0/3      0/3      0/3
+  typo-df          bugs                         1/1      0/1      0/1      0/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12     1/12     2/12
+  bad-operator     cases                        6/6      6/6      0/6      1/6
+  wrong-frame      cases                        5/5      1/5      3/5      3/5
+  wrong-frame      bugs                         2/2      0/2      2/2      2/2
+  forgot-cast      cases                        2/2      0/2      0/2      0/2
+  forgot-cast      bugs                         1/1      1/1      0/1      1/1
+  raw-table        cases                        1/1      0/1      0/1      0/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        1/6      1/6      1/6      1/6
+  int-float        cases                        0/4      0/4      0/4      0/4
+  int-float        bugs                         0/2      0/2      0/2      0/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                          20       19        0       19
+  FP ecommerce_t2.py                                 3        3        0        3
+  FP iris_t2.py                                      2        2        0        2
+  reveal mismatches (cases)                          0        5       12        1
+
+[l1-stub-patched]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        3/3      3/3      3/3      3/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      1/1      1/1      1/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        1/6      1/6      1/6      1/6
+  int-float        cases                        0/4      0/4      0/4      0/4
+  int-float        bugs                         0/2      0/2      0/2      0/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                          20       20       20       20
+  FP ecommerce_t2.py                                 3        3        3        3
+  FP iris_t2.py                                      2        2        2        2
+  reveal mismatches (cases)                          0        0        0        0
+
+[l1-stub-stock]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        3/3      3/3      3/3      3/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12     1/12     2/12
+  bad-operator     cases                        6/6      6/6      0/6      1/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      0/1      0/1      0/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        1/6      1/6      1/6      1/6
+  int-float        cases                        0/4      0/4      0/4      0/4
+  int-float        bugs                         0/2      0/2      0/2      0/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                          20       19        1       18
+  FP ecommerce_t2.py                                 3        3        0        3
+  FP iris_t2.py                                      2        2        0        2
+  reveal mismatches (cases)                          0        0       12        1
+
+[l2-nostub-patched]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        0/3      0/3      0/3      0/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      1/1      1/1      1/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                           2        2        2        2
+  reveal mismatches (cases)                          0        0        0        0
+
+[l2-nostub-stock]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        0/3      0/3      0/3      0/3
+  typo-df          bugs                         1/1      0/1      0/1      0/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      1/5      3/5      3/5
+  wrong-frame      bugs                         2/2      0/2      2/2      2/2
+  forgot-cast      cases                        2/2      0/2      0/2      0/2
+  forgot-cast      bugs                         1/1      0/1      0/1      0/1
+  raw-table        cases                        1/1      0/1      0/1      0/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                           2        1        2        2
+  reveal mismatches (cases)                          0        5        0        0
+
+[l2-stub-patched]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        3/3      3/3      3/3      3/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      1/1      1/1      1/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                           2        2        2        2
+  reveal mismatches (cases)                          0        0        0        0
+
+[l2-stub-stock]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        3/3      3/3      3/3      3/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      0/1      0/1      0/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        0/2      0/2      0/2      0/2
+  nullable         bugs                         0/1      0/1      0/1      0/1
+  FP cases (correct lines)                           2        1        2        1
+  reveal mismatches (cases)                          0        0        0        0
+
+[l3-nostub-patched]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        0/3      0/3      0/3      0/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      1/1      1/1      1/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        2/2      2/2      2/2      2/2
+  nullable         bugs                         1/1      1/1      1/1      1/1
+  FP cases (correct lines)                           2        2        2        2
+  reveal mismatches (cases)                          0        0        1        0
+
+[l3-nostub-stock]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        0/3      0/3      0/3      0/3
+  typo-df          bugs                         1/1      0/1      0/1      0/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      1/5      3/5      3/5
+  wrong-frame      bugs                         2/2      0/2      2/2      2/2
+  forgot-cast      cases                        2/2      0/2      0/2      0/2
+  forgot-cast      bugs                         1/1      0/1      0/1      0/1
+  raw-table        cases                        1/1      0/1      0/1      0/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        2/2      2/2      2/2      2/2
+  nullable         bugs                         1/1      1/1      1/1      1/1
+  FP cases (correct lines)                           2        1        2        2
+  reveal mismatches (cases)                          0        5        1        0
+
+[l3-stub-patched]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        3/3      3/3      3/3      3/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      1/1      1/1      1/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        2/2      2/2      2/2      2/2
+  nullable         bugs                         1/1      1/1      1/1      1/1
+  FP cases (correct lines)                           2        2        2        2
+  reveal mismatches (cases)                          0        0        1        0
+
+[l3-stub-stock]  caught/planted per checker:  pyright     mypy       ty  pyrefly
+  typo-c           cases                        5/5      5/5      5/5      5/5
+  typo-c           bugs                         2/2      2/2      2/2      2/2
+  typo-df          cases                        3/3      3/3      3/3      3/3
+  typo-df          bugs                         1/1      1/1      1/1      1/1
+  typo-deferred    bugs                         0/1      0/1      0/1      0/1
+  wrong-method     cases                      12/12    12/12    12/12    12/12
+  bad-operator     cases                        6/6      6/6      6/6      6/6
+  wrong-frame      cases                        5/5      5/5      5/5      5/5
+  wrong-frame      bugs                         2/2      2/2      2/2      2/2
+  forgot-cast      cases                        2/2      2/2      2/2      2/2
+  forgot-cast      bugs                         1/1      1/1      1/1      1/1
+  raw-table        cases                        1/1      0/1      0/1      0/1
+  build-missing    cases                        3/3      3/3      3/3      3/3
+  build-missing    bugs                         1/1      1/1      1/1      1/1
+  build-extra      cases                        2/2      2/2      2/2      2/2
+  build-family     cases                        6/6      6/6      6/6      6/6
+  int-float        cases                        4/4      4/4      4/4      4/4
+  int-float        bugs                         2/2      2/2      2/2      2/2
+  nullable         cases                        2/2      2/2      2/2      2/2
+  nullable         bugs                         1/1      1/1      1/1      1/1
+  FP cases (correct lines)                           2        1        2        1
+  reveal mismatches (cases)                          0        0        1        0
+

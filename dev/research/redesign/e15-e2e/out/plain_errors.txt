@@ -1,0 +1,78 @@
+>>> OrderEvents.validate(read(con, 'orders_bad.csv'))
+SchemaError: Column 'status' failed element-wise validator number 0: isin(['shipped', 'delivered', 'cancelled', 'returned']) failure cases: {'status': 'refunded'}
+
+>>> OrderEvents.validate(read(con, 'orders_bad.csv'), lazy=True)
+SchemaErrors: {
+    "DATA": {
+        "DATAFRAME_CHECK": [
+            {
+                "schema": "OrderEvents",
+                "column": "status",
+                "check": "isin(['shipped', 'delivered', 'cancelled', 'returned'])",
+                "error": "Column 'status' failed element-wise validator number 0: isin(['shipped', 'delivered', 'cancelled', 'returned']) failure cases: {'status': 'refunded'}"
+            }
+        ],
+        "CHECK_ERROR": [
+            {
+                "schema": "OrderEvents",
+                "column": "amount",
+                "check": "greater_than_or_equal_to(0)",
+                "error": "IbisTypeError(\"Arguments amount:string and Literal(0):int8 are not comparable\")"
+            }
+        ]
+    },
+    "SCHEMA": {
+        "WRONG_DATATYPE": [
+            {
+                "schema": "OrderEvents",
+                "column": "amount",
+                "check": "dtype('float64')",
+                "error": "expected column 'amount' to have type float64, got string"
+            }
+        ],
+        "SERIES_CONTAINS_NULLS": [
+            {
+                "schema": "OrderEvents",
+                "column": "ordered_at",
+                "check": "not_nullable",
+                "error": "non-nullable column 'ordered_at' contains null values"
+            }
+        ]
+    }
+}
+
+>>> # coerce by hand (pandera's ibis backend ignores coerce=True): amount.try_cast('float64')
+SchemaErrors: {
+    "DATA": {
+        "DATAFRAME_CHECK": [
+            {
+                "schema": "OrderEvents",
+                "column": "status",
+                "check": "isin(['shipped', 'delivered', 'cancelled', 'returned'])",
+                "error": "Column 'status' failed element-wise validator number 0: isin(['shipped', 'delivered', 'cancelled', 'returned']) failure cases: {'status': 'refunded'}"
+            },
+            {
+                "schema": "OrderEvents",
+                "column": "amount",
+                "check": "greater_than_or_equal_to(0)",
+                "error": "Column 'amount' failed element-wise validator number 0: greater_than_or_equal_to(0) failure cases: {'amount': -19.99}"
+            }
+        ]
+    },
+    "SCHEMA": {
+        "SERIES_CONTAINS_NULLS": [
+            {
+                "schema": "OrderEvents",
+                "column": "amount",
+                "check": "not_nullable",
+                "error": "non-nullable column 'amount' contains null values"
+            },
+            {
+                "schema": "OrderEvents",
+                "column": "ordered_at",
+                "check": "not_nullable",
+                "error": "non-nullable column 'ordered_at' contains null values"
+            }
+        ]
+    }
+}

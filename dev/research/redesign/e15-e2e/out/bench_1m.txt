@@ -1,0 +1,8 @@
+source: /tmp/claude-1000/-home-dev-code-tacit-f3529d373e83e544-pipeline-type-safety-redesign-a60149/7966e571-487a-449d-bf51-a9f52ad75ed3/scratchpad/src_1m (1175184 order events); min / median of 3 runs, seconds; q = data queries
+variant                               ingest                 build                 write                 total
+tacit                         1.420/1.440 q8        0.872/0.905 q3        0.675/0.804 q2             2.967 q13
+ibis+pandera                 8.691/8.810 q20        7.571/8.904 q8        1.864/2.625 q2            18.126 q30
+ibis+pandera, cached         1.634/2.059 q24        2.094/3.253 q8        0.618/0.986 q2             4.346 q34
+ibis only                     0.405/0.406 q2        0.010/0.011 q0        1.857/1.870 q2              2.273 q4
+pure expression build (tacit): min 15.5 ms, median 16.2 ms
+pure expression build (ibis ): min 8.9 ms, median 9.3 ms

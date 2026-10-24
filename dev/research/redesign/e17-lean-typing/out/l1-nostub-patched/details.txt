@@ -1,0 +1,504 @@
+MISSED  pyright  t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  mypy     t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  ty       t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  pyrefly  t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+FP      pyright  t2_cases.py:65  reveal_type(o.filter(o.c.amount > 0))  # R: DataFrame[Orders]
+          -> Operator ">" not supported for types "FloatingColumn" and "Literal[0]" (reportOperatorIssue)
+FP      mypy     t2_cases.py:65  reveal_type(o.filter(o.c.amount > 0))  # R: DataFrame[Orders]
+          -> Unsupported operand types for > ("FloatingColumn" and "int")  [operator]
+FP      ty       t2_cases.py:65  reveal_type(o.filter(o.c.amount > 0))  # R: DataFrame[Orders]
+          -> unsupported-operator: Operator `>` is not supported between objects of type `FloatingColumn` and `Literal[0]`
+FP      pyrefly  t2_cases.py:65  reveal_type(o.filter(o.c.amount > 0))  # R: DataFrame[Orders]
+          -> unsupported-operation: `>` is not supported between `FloatingColumn` and `Literal[0]`
+FP      pyright  t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> Argument of type "BooleanValue" cannot be assigned to parameter "predicates" of type "str | Sequence[str | BooleanColumn | tuple[str | Column | Deferred, str | Column | Deferred] | BooleanValue | bool]" in function "join
+FP      mypy     t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> Argument 2 to "join" of "Table" has incompatible type "BooleanValue"; expected "str | Sequence[Literal[True, False] | str | BooleanColumn | tuple[str | Column | Deferred, str | Column | Deferred] | BooleanValue]"  [arg-t
+FP      ty       t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> invalid-argument-type: Argument to bound method `Table.join` is incorrect: Expected `Sequence[str | BooleanValue | bool | tuple[str | Column | Deferred, str | Column | Deferred]]`, found `BooleanValue`
+FP      pyrefly  t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> bad-argument-type: Argument `BooleanValue` is not assignable to parameter `predicates` with type `Sequence[BooleanColumn | BooleanValue | bool | str | tuple[Column | Deferred | str, Column | Deferred | str]] | str` in fu
+MISSED  pyright  t2_cases.py:86  Net.build(net_amount=o.c.status)  # E: [build-family] str into float
+MISSED  mypy     t2_cases.py:86  Net.build(net_amount=o.c.status)  # E: [build-family] str into float
+MISSED  ty       t2_cases.py:86  Net.build(net_amount=o.c.status)  # E: [build-family] str into float
+MISSED  pyrefly  t2_cases.py:86  Net.build(net_amount=o.c.status)  # E: [build-family] str into float
+MISSED  pyright  t2_cases.py:90  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float into int
+MISSED  mypy     t2_cases.py:90  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float into int
+MISSED  ty       t2_cases.py:90  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float into int
+MISSED  pyrefly  t2_cases.py:90  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float into int
+FP      pyright  t2_cases.py:104  return df.filter(df.c.event_ts >= since)
+          -> Operator ">=" not supported for types "TimestampColumn" and "datetime" (reportOperatorIssue)
+FP      mypy     t2_cases.py:104  return df.filter(df.c.event_ts >= since)
+          -> Unsupported operand types for >= ("TimestampColumn" and "datetime")  [operator]
+FP      ty       t2_cases.py:104  return df.filter(df.c.event_ts >= since)
+          -> unsupported-operator: Operator `>=` is not supported between objects of type `TimestampColumn` and `datetime`
+FP      pyrefly  t2_cases.py:104  return df.filter(df.c.event_ts >= since)
+          -> unsupported-operation: `>=` is not supported between `TimestampColumn` and `datetime`
+MISSED  pyright  t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  mypy     t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  ty       t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  pyrefly  t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  pyright  t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  mypy     t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  ty       t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  pyrefly  t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+FP      pyright  t_columns.py:89  o.filter(o.c.amount > 5)
+          -> Operator ">" not supported for types "FloatingColumn" and "Literal[5]" (reportOperatorIssue)
+FP      mypy     t_columns.py:89  o.filter(o.c.amount > 5)
+          -> Unsupported operand types for > ("FloatingColumn" and "int")  [operator]
+FP      ty       t_columns.py:89  o.filter(o.c.amount > 5)
+          -> unsupported-operator: Operator `>` is not supported between objects of type `FloatingColumn` and `Literal[5]`
+FP      pyrefly  t_columns.py:89  o.filter(o.c.amount > 5)
+          -> unsupported-operation: `>` is not supported between `FloatingColumn` and `Literal[5]`
+FP      pyright  t_columns.py:90  o.filter(o.c.status == "shipped")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     t_columns.py:90  o.filter(o.c.status == "shipped")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       t_columns.py:90  o.filter(o.c.status == "shipped")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  t_columns.py:90  o.filter(o.c.status == "shipped")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  t_columns.py:91  o.filter(o.c.order_ts >= datetime(2024, 1, 1))
+          -> Operator ">=" not supported for types "TimestampColumn" and "datetime" (reportOperatorIssue)
+FP      mypy     t_columns.py:91  o.filter(o.c.order_ts >= datetime(2024, 1, 1))
+          -> Unsupported operand types for >= ("TimestampColumn" and "datetime")  [operator]
+FP      ty       t_columns.py:91  o.filter(o.c.order_ts >= datetime(2024, 1, 1))
+          -> unsupported-operator: Operator `>=` is not supported between objects of type `TimestampColumn` and `datetime`
+FP      pyrefly  t_columns.py:91  o.filter(o.c.order_ts >= datetime(2024, 1, 1))
+          -> unsupported-operation: `>=` is not supported between `TimestampColumn` and `datetime`
+FP      pyright  t_columns.py:92  o.filter(o.c.day < date(2024, 1, 1))
+          -> Operator "<" not supported for types "DateColumn" and "date" (reportOperatorIssue)
+FP      mypy     t_columns.py:92  o.filter(o.c.day < date(2024, 1, 1))
+          -> Unsupported operand types for < ("DateColumn" and "date")  [operator]
+FP      ty       t_columns.py:92  o.filter(o.c.day < date(2024, 1, 1))
+          -> unsupported-operator: Operator `<` is not supported between objects of type `DateColumn` and `date`
+FP      pyrefly  t_columns.py:92  o.filter(o.c.day < date(2024, 1, 1))
+          -> unsupported-operation: `<` is not supported between `DateColumn` and `date`
+FP      pyright  t_columns.py:93  o.filter(o.c.price > 0)
+          -> Operator ">" not supported for types "DecimalColumn" and "Literal[0]" (reportOperatorIssue)
+FP      mypy     t_columns.py:93  o.filter(o.c.price > 0)
+          -> Unsupported operand types for > ("DecimalColumn" and "int")  [operator]
+FP      ty       t_columns.py:93  o.filter(o.c.price > 0)
+          -> unsupported-operator: Operator `>` is not supported between objects of type `DecimalColumn` and `Literal[0]`
+FP      pyrefly  t_columns.py:93  o.filter(o.c.price > 0)
+          -> unsupported-operation: `>` is not supported between `DecimalColumn` and `Literal[0]`
+FP      pyright  t_columns.py:94  o.filter((o.c.amount > 5) & (o.c.status != "x"))
+          -> Operator ">" not supported for types "FloatingColumn" and "Literal[5]" (reportOperatorIssue)
+FP      mypy     t_columns.py:94  o.filter((o.c.amount > 5) & (o.c.status != "x"))
+          -> Unsupported operand types for > ("FloatingColumn" and "int")  [operator]
+FP      ty       t_columns.py:94  o.filter((o.c.amount > 5) & (o.c.status != "x"))
+          -> unsupported-operator: Operator `>` is not supported between objects of type `FloatingColumn` and `Literal[5]`
+FP      pyrefly  t_columns.py:94  o.filter((o.c.amount > 5) & (o.c.status != "x"))
+          -> unsupported-operation: `>` is not supported between `FloatingColumn` and `Literal[5]`
+FP      pyright  t_columns.py:96  o.filter(o.c.status.isin(["a", "b"]))
+          -> Argument of type "list[str]" cannot be assigned to parameter "values" of type "ArrayValue | Column | Iterable[Value]" in function "isin" (reportArgumentType)
+FP      mypy     t_columns.py:96  o.filter(o.c.status.isin(["a", "b"]))
+          -> List item 0 has incompatible type "str"; expected "Value"  [list-item]
+FP      ty       t_columns.py:96  o.filter(o.c.status.isin(["a", "b"]))
+          -> invalid-argument-type: Argument to bound method `Value.isin` is incorrect: Expected `Iterable[Value]`, found `list[str]`
+FP      pyrefly  t_columns.py:96  o.filter(o.c.status.isin(["a", "b"]))
+          -> bad-argument-type: Argument `list[str]` is not assignable to parameter `values` with type `ArrayValue | Column | Iterable[Value]` in function `ibis.expr.types.generic.Value.isin`
+FP      pyright  t_columns.py:97  o.filter(o.c.amount.between(0, 10))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "lower" of type "Value" in function "between" (reportArgumentType)
+FP      mypy     t_columns.py:97  o.filter(o.c.amount.between(0, 10))
+          -> Argument 1 to "between" of "Value" has incompatible type "int"; expected "Value"  [arg-type]
+FP      ty       t_columns.py:97  o.filter(o.c.amount.between(0, 10))
+          -> invalid-argument-type: Argument to bound method `Value.between` is incorrect: Expected `Value`, found `Literal[0]`
+FP      pyrefly  t_columns.py:97  o.filter(o.c.amount.between(0, 10))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `lower` with type `Value` in function `ibis.expr.types.generic.Value.between`
+FP      pyright  t_columns.py:103  reveal_type((o.c.amount / o.c.order_id).mean())  # R: Scalar[float] ;; l1=NumericScalar ;; l2=NumericScalar
+          -> Cannot access attribute "mean" for class "NumericValue" (reportAttributeAccessIssue)
+FP      mypy     t_columns.py:103  reveal_type((o.c.amount / o.c.order_id).mean())  # R: Scalar[float] ;; l1=NumericScalar ;; l2=NumericScalar
+          -> "NumericValue" has no attribute "mean"  [attr-defined]
+FP      ty       t_columns.py:103  reveal_type((o.c.amount / o.c.order_id).mean())  # R: Scalar[float] ;; l1=NumericScalar ;; l2=NumericScalar
+          -> unresolved-attribute: Object of type `NumericValue` has no attribute `mean`
+FP      pyrefly  t_columns.py:103  reveal_type((o.c.amount / o.c.order_id).mean())  # R: Scalar[float] ;; l1=NumericScalar ;; l2=NumericScalar
+          -> missing-attribute: Object of class `NumericValue` has no attribute `mean`
+FP      pyright  t_columns.py:110  reveal_type(o.c.discount.fill_null(0))  # R: Column[float] ;; l1,l2=FloatingColumn
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     t_columns.py:110  reveal_type(o.c.discount.fill_null(0))  # R: Column[float] ;; l1,l2=FloatingColumn
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       t_columns.py:110  reveal_type(o.c.discount.fill_null(0))  # R: Column[float] ;; l1,l2=FloatingColumn
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  t_columns.py:110  reveal_type(o.c.discount.fill_null(0))  # R: Column[float] ;; l1,l2=FloatingColumn
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  t_columns.py:115  reveal_type(o.c.flag.ifelse("y", "n"))  # R: Column[str] ;; l1=Value ;; l2=StringColumn
+          -> Argument of type "Literal['y']" cannot be assigned to parameter "true_expr" of type "Value" in function "ifelse" (reportArgumentType)
+FP      mypy     t_columns.py:115  reveal_type(o.c.flag.ifelse("y", "n"))  # R: Column[str] ;; l1=Value ;; l2=StringColumn
+          -> Argument 1 to "ifelse" of "BooleanValue" has incompatible type "str"; expected "Value"  [arg-type]
+FP      ty       t_columns.py:115  reveal_type(o.c.flag.ifelse("y", "n"))  # R: Column[str] ;; l1=Value ;; l2=StringColumn
+          -> invalid-argument-type: Argument to bound method `BooleanValue.ifelse` is incorrect: Expected `Value`, found `Literal["y"]`
+FP      pyrefly  t_columns.py:115  reveal_type(o.c.flag.ifelse("y", "n"))  # R: Column[str] ;; l1=Value ;; l2=StringColumn
+          -> bad-argument-type: Argument `Literal['y']` is not assignable to parameter `true_expr` with type `Value` in function `ibis.expr.types.logical.BooleanValue.ifelse`
+MISSED  pyright  t_columns.py:129  Proj.build(order_id=o.c.order_id, amount=o.c.status, label=o.c.status)  # E: [build-family] str into float
+MISSED  mypy     t_columns.py:129  Proj.build(order_id=o.c.order_id, amount=o.c.status, label=o.c.status)  # E: [build-family] str into float
+MISSED  ty       t_columns.py:129  Proj.build(order_id=o.c.order_id, amount=o.c.status, label=o.c.status)  # E: [build-family] str into float
+MISSED  pyrefly  t_columns.py:129  Proj.build(order_id=o.c.order_id, amount=o.c.status, label=o.c.status)  # E: [build-family] str into float
+MISSED  pyright  t_columns.py:130  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=o.c.amount)  # E: [build-family] float into str
+MISSED  mypy     t_columns.py:130  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=o.c.amount)  # E: [build-family] float into str
+MISSED  ty       t_columns.py:130  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=o.c.amount)  # E: [build-family] float into str
+MISSED  pyrefly  t_columns.py:130  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=o.c.amount)  # E: [build-family] float into str
+MISSED  pyright  t_columns.py:131  Day.build(day=o.c.order_ts.year())  # E: [build-family] int into date
+MISSED  mypy     t_columns.py:131  Day.build(day=o.c.order_ts.year())  # E: [build-family] int into date
+MISSED  ty       t_columns.py:131  Day.build(day=o.c.order_ts.year())  # E: [build-family] int into date
+MISSED  pyrefly  t_columns.py:131  Day.build(day=o.c.order_ts.year())  # E: [build-family] int into date
+MISSED  pyright  t_columns.py:133  Stats.build(status=o.c.status, n=o.c.order_id.count(), total=o.c.status.max())  # E: [build-family] str max into float
+MISSED  mypy     t_columns.py:133  Stats.build(status=o.c.status, n=o.c.order_id.count(), total=o.c.status.max())  # E: [build-family] str max into float
+MISSED  ty       t_columns.py:133  Stats.build(status=o.c.status, n=o.c.order_id.count(), total=o.c.status.max())  # E: [build-family] str max into float
+MISSED  pyrefly  t_columns.py:133  Stats.build(status=o.c.status, n=o.c.order_id.count(), total=o.c.status.max())  # E: [build-family] str max into float
+MISSED  pyright  t_columns.py:135  Proj.build(order_id=o.c.amount, amount=o.c.amount, label=o.c.status)  # E: [int-float] float into int
+MISSED  mypy     t_columns.py:135  Proj.build(order_id=o.c.amount, amount=o.c.amount, label=o.c.status)  # E: [int-float] float into int
+MISSED  ty       t_columns.py:135  Proj.build(order_id=o.c.amount, amount=o.c.amount, label=o.c.status)  # E: [int-float] float into int
+MISSED  pyrefly  t_columns.py:135  Proj.build(order_id=o.c.amount, amount=o.c.amount, label=o.c.status)  # E: [int-float] float into int
+MISSED  pyright  t_columns.py:136  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float sum into int
+MISSED  mypy     t_columns.py:136  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float sum into int
+MISSED  ty       t_columns.py:136  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float sum into int
+MISSED  pyrefly  t_columns.py:136  Stats.build(status=o.c.status, n=o.c.amount.sum(), total=o.c.amount.sum())  # E: [int-float] float sum into int
+MISSED  pyright  t_columns.py:137  Stats.build(status=o.c.status, n=o.c.order_id.mean(), total=o.c.amount.sum())  # E: [int-float] mean into int
+MISSED  mypy     t_columns.py:137  Stats.build(status=o.c.status, n=o.c.order_id.mean(), total=o.c.amount.sum())  # E: [int-float] mean into int
+MISSED  ty       t_columns.py:137  Stats.build(status=o.c.status, n=o.c.order_id.mean(), total=o.c.amount.sum())  # E: [int-float] mean into int
+MISSED  pyrefly  t_columns.py:137  Stats.build(status=o.c.status, n=o.c.order_id.mean(), total=o.c.amount.sum())  # E: [int-float] mean into int
+MISSED  pyright  t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  mypy     t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  ty       t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  pyrefly  t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  pyright  t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  mypy     t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  ty       t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  pyrefly  t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+FP      pyright  t_columns.py:145  Net.build(net_amount=o.c.amount * (1 - o.c.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     t_columns.py:145  Net.build(net_amount=o.c.amount * (1 - o.c.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       t_columns.py:145  Net.build(net_amount=o.c.amount * (1 - o.c.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  t_columns.py:145  Net.build(net_amount=o.c.amount * (1 - o.c.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  t_columns.py:146  Net.build(net_amount=o.c.amount - o.c.discount.fill_null(0.0))
+          -> Argument of type "float" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     t_columns.py:146  Net.build(net_amount=o.c.amount - o.c.discount.fill_null(0.0))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "float"; expected "Scalar"  [arg-type]
+FP      ty       t_columns.py:146  Net.build(net_amount=o.c.amount - o.c.discount.fill_null(0.0))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `float*`
+FP      pyrefly  t_columns.py:146  Net.build(net_amount=o.c.amount - o.c.discount.fill_null(0.0))
+          -> bad-argument-type: Argument `float` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  t_columns.py:149  Stats.build(status=o.c.status, n=o.c.order_id.nunique(), total=(o.c.amount / o.c.order_id).mean())
+          -> Cannot access attribute "mean" for class "NumericValue" (reportAttributeAccessIssue)
+FP      mypy     t_columns.py:149  Stats.build(status=o.c.status, n=o.c.order_id.nunique(), total=(o.c.amount / o.c.order_id).mean())
+          -> "NumericValue" has no attribute "mean"  [attr-defined]
+FP      ty       t_columns.py:149  Stats.build(status=o.c.status, n=o.c.order_id.nunique(), total=(o.c.amount / o.c.order_id).mean())
+          -> unresolved-attribute: Object of type `NumericValue` has no attribute `mean`
+FP      pyrefly  t_columns.py:149  Stats.build(status=o.c.status, n=o.c.order_id.nunique(), total=(o.c.amount / o.c.order_id).mean())
+          -> missing-attribute: Object of class `NumericValue` has no attribute `mean`
+FP      pyright  ecommerce_t2.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     ecommerce_t2.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       ecommerce_t2.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  ecommerce_t2.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  ecommerce_t2.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     ecommerce_t2.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       ecommerce_t2.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  ecommerce_t2.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  ecommerce_t2.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     ecommerce_t2.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       ecommerce_t2.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  ecommerce_t2.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  iris_t2.py:50  (c.petal_length < 2.5, "setosa"),
+          -> Operator "<" not supported for types "FloatingColumn" and "float" (reportOperatorIssue)
+FP      mypy     iris_t2.py:50  (c.petal_length < 2.5, "setosa"),
+          -> Unsupported operand types for < ("FloatingColumn" and "float")  [operator]
+FP      ty       iris_t2.py:50  (c.petal_length < 2.5, "setosa"),
+          -> unsupported-operator: Operator `<` is not supported between objects of type `FloatingColumn` and `float*`
+FP      pyrefly  iris_t2.py:50  (c.petal_length < 2.5, "setosa"),
+          -> unsupported-operation: `<` is not supported between `FloatingColumn` and `float`
+FP      pyright  iris_t2.py:51  (c.petal_length < 4.8, "versicolor"),
+          -> Operator "<" not supported for types "FloatingColumn" and "float" (reportOperatorIssue)
+FP      mypy     iris_t2.py:51  (c.petal_length < 4.8, "versicolor"),
+          -> Unsupported operand types for < ("FloatingColumn" and "float")  [operator]
+FP      ty       iris_t2.py:51  (c.petal_length < 4.8, "versicolor"),
+          -> unsupported-operator: Operator `<` is not supported between objects of type `FloatingColumn` and `float*`
+FP      pyrefly  iris_t2.py:51  (c.petal_length < 4.8, "versicolor"),
+          -> unsupported-operation: `<` is not supported between `FloatingColumn` and `float`
+FP      pyright  tpch_q1_t2.py:41  return lineitem.filter(lineitem.c.l_shipdate <= date(1998, 9, 2))
+          -> Operator "<=" not supported for types "DateColumn" and "date" (reportOperatorIssue)
+FP      mypy     tpch_q1_t2.py:41  return lineitem.filter(lineitem.c.l_shipdate <= date(1998, 9, 2))
+          -> Unsupported operand types for <= ("DateColumn" and "date")  [operator]
+FP      ty       tpch_q1_t2.py:41  return lineitem.filter(lineitem.c.l_shipdate <= date(1998, 9, 2))
+          -> unsupported-operator: Operator `<=` is not supported between objects of type `DateColumn` and `date`
+FP      pyrefly  tpch_q1_t2.py:41  return lineitem.filter(lineitem.c.l_shipdate <= date(1998, 9, 2))
+          -> unsupported-operation: `<=` is not supported between `DateColumn` and `date`
+FP      pyright  tpch_q1_t2.py:52  sum_disc_price=disc_price.sum(),
+          -> Cannot access attribute "sum" for class "NumericValue" (reportAttributeAccessIssue)
+FP      mypy     tpch_q1_t2.py:52  sum_disc_price=disc_price.sum(),
+          -> "NumericValue" has no attribute "sum"  [attr-defined]
+FP      ty       tpch_q1_t2.py:52  sum_disc_price=disc_price.sum(),
+          -> unresolved-attribute: Object of type `NumericValue` has no attribute `sum`
+FP      pyrefly  tpch_q1_t2.py:52  sum_disc_price=disc_price.sum(),
+          -> missing-attribute: Object of class `NumericValue` has no attribute `sum`
+FP      pyright  tpch_q1_t2.py:53  sum_charge=(disc_price * (1 + li.l_tax)).sum(),
+          -> Cannot access attribute "sum" for class "NumericValue" (reportAttributeAccessIssue)
+FP      mypy     tpch_q1_t2.py:53  sum_charge=(disc_price * (1 + li.l_tax)).sum(),
+          -> "NumericValue" has no attribute "sum"  [attr-defined]
+FP      ty       tpch_q1_t2.py:53  sum_charge=(disc_price * (1 + li.l_tax)).sum(),
+          -> unresolved-attribute: Object of type `NumericValue` has no attribute `sum`
+FP      pyrefly  tpch_q1_t2.py:53  sum_charge=(disc_price * (1 + li.l_tax)).sum(),
+          -> missing-attribute: Object of class `NumericValue` has no attribute `sum`
+FP      pyright  b_a1_typo_join_view.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_a1_typo_join_view.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_a1_typo_join_view.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_a1_typo_join_view.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_a1_typo_join_view.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_a1_typo_join_view.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_a1_typo_join_view.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_a1_typo_join_view.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  b_a1_typo_join_view.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_a1_typo_join_view.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_a1_typo_join_view.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_a1_typo_join_view.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_a2_typo_namespace.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_a2_typo_namespace.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_a2_typo_namespace.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_a2_typo_namespace.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_a2_typo_namespace.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_a2_typo_namespace.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_a2_typo_namespace.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_a2_typo_namespace.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_a3_typo_table_attr.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_a3_typo_table_attr.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_a3_typo_table_attr.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_a3_typo_table_attr.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  b_a3_typo_table_attr.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_a3_typo_table_attr.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_a3_typo_table_attr.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_a3_typo_table_attr.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_a4_typo_deferred.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_a4_typo_deferred.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_a4_typo_deferred.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_a4_typo_deferred.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_a4_typo_deferred.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_a4_typo_deferred.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_a4_typo_deferred.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_a4_typo_deferred.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+MISSED  pyright  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  mypy     b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  ty       b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  pyrefly  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+FP      pyright  b_a4_typo_deferred.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_a4_typo_deferred.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_a4_typo_deferred.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_a4_typo_deferred.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_b1_raw_orders_into_step.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_b1_raw_orders_into_step.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_b1_raw_orders_into_step.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_b1_raw_orders_into_step.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_b1_raw_orders_into_step.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_b1_raw_orders_into_step.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_b1_raw_orders_into_step.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_b1_raw_orders_into_step.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  b_b1_raw_orders_into_step.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_b1_raw_orders_into_step.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_b1_raw_orders_into_step.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_b1_raw_orders_into_step.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_b2_swapped_args.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_b2_swapped_args.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_b2_swapped_args.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_b2_swapped_args.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_b2_swapped_args.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_b2_swapped_args.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_b2_swapped_args.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_b2_swapped_args.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  b_b2_swapped_args.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_b2_swapped_args.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_b2_swapped_args.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_b2_swapped_args.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_b3_forgot_conform.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_b3_forgot_conform.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_b3_forgot_conform.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_b3_forgot_conform.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_b3_forgot_conform.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_b3_forgot_conform.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_b3_forgot_conform.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_b3_forgot_conform.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_c1_missing_column.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_c1_missing_column.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_c1_missing_column.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_c1_missing_column.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_c1_missing_column.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_c1_missing_column.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_c1_missing_column.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_c1_missing_column.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+FP      pyright  b_c1_missing_column.py:82  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_c1_missing_column.py:82  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_c1_missing_column.py:82  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_c1_missing_column.py:82  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_d1_count_cast_float.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_d1_count_cast_float.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_d1_count_cast_float.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_d1_count_cast_float.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_d1_count_cast_float.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_d1_count_cast_float.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_d1_count_cast_float.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_d1_count_cast_float.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+MISSED  pyright  b_d1_count_cast_float.py:68  order_count=o.order_id.count().cast("float64"),  # E: [int-float] d1_count_cast_float
+MISSED  mypy     b_d1_count_cast_float.py:68  order_count=o.order_id.count().cast("float64"),  # E: [int-float] d1_count_cast_float
+MISSED  ty       b_d1_count_cast_float.py:68  order_count=o.order_id.count().cast("float64"),  # E: [int-float] d1_count_cast_float
+MISSED  pyrefly  b_d1_count_cast_float.py:68  order_count=o.order_id.count().cast("float64"),  # E: [int-float] d1_count_cast_float
+FP      pyright  b_d1_count_cast_float.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_d1_count_cast_float.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_d1_count_cast_float.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_d1_count_cast_float.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_d2_sum_into_int.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_d2_sum_into_int.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_d2_sum_into_int.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_d2_sum_into_int.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_d2_sum_into_int.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument of type "Literal[0]" cannot be assigned to parameter "fill_value" of type "Scalar" in function "fill_null" (reportArgumentType)
+FP      mypy     b_d2_sum_into_int.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> Argument 1 to "fill_null" of "Value" has incompatible type "int"; expected "Scalar"  [arg-type]
+FP      ty       b_d2_sum_into_int.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> invalid-argument-type: Argument to bound method `Value.fill_null` is incorrect: Expected `Scalar`, found `Literal[0]`
+FP      pyrefly  b_d2_sum_into_int.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount.fill_null(0)))
+          -> bad-argument-type: Argument `Literal[0]` is not assignable to parameter `fill_value` with type `Scalar` in function `ibis.expr.types.generic.Value.fill_null`
+MISSED  pyright  b_d2_sum_into_int.py:68  order_count=o.net_amount.sum(),  # E: [int-float] d2_sum_into_int
+MISSED  mypy     b_d2_sum_into_int.py:68  order_count=o.net_amount.sum(),  # E: [int-float] d2_sum_into_int
+MISSED  ty       b_d2_sum_into_int.py:68  order_count=o.net_amount.sum(),  # E: [int-float] d2_sum_into_int
+MISSED  pyrefly  b_d2_sum_into_int.py:68  order_count=o.net_amount.sum(),  # E: [int-float] d2_sum_into_int
+FP      pyright  b_d2_sum_into_int.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_d2_sum_into_int.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_d2_sum_into_int.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_d2_sum_into_int.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+FP      pyright  b_f1_nullable_into_nonnull.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_f1_nullable_into_nonnull.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_f1_nullable_into_nonnull.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_f1_nullable_into_nonnull.py:57  kept = orders.filter(orders.c.status != "cancelled")
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`
+MISSED  pyright  b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  mypy     b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  ty       b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  pyrefly  b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+FP      pyright  b_f1_nullable_into_nonnull.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument of type "bool" cannot be assigned to parameter "predicates" of type "Column[bool | None] | BooleanValue | Deferred" in function "filter" (reportArgumentType)
+FP      mypy     b_f1_nullable_into_nonnull.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> Argument 1 to "filter" of "DataFrame" has incompatible type "bool"; expected "Column[bool | None] | BooleanValue | Deferred"  [arg-type]
+FP      ty       b_f1_nullable_into_nonnull.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> invalid-argument-type: Argument to bound method `DataFrame.filter` is incorrect: Expected `Column[bool | None] | BooleanValue | Deferred`, found `bool`
+FP      pyrefly  b_f1_nullable_into_nonnull.py:83  return df.filter(tc2.row_number().over(group_by=key, order_by=ts.desc()) == 0)
+          -> bad-argument-type: Argument `bool` is not assignable to parameter `*predicates` with type `BooleanValue | Column[bool | None] | Deferred` in function `tacit_t2n._df.DataFrame.filter`

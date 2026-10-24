@@ -1,0 +1,6 @@
+layers/
+.mypy_cache/
+out/*/raw_*.txt
+out/*/cfg/
+out/*/_files/
+__pycache__/

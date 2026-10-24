@@ -1,0 +1,37 @@
+planted: nullable->non-null, wrong frame, typo, forgot conform, int==str join key, float count, column on frame (no .c), datetime->date
+### pyright
+  tests/bugs/e2e_bugs.py:113:20 - error: Argument of type "Column[float | None]" cannot be assigned to parameter "net_amount" of type "Column[float] | Scalar[float] | float" in function "build"
+  tests/bugs/e2e_bugs.py:126:55 - error: Operator "==" not supported for types "Column[int]" and "Column[str]" (reportOperatorIssue)
+  tests/bugs/e2e_bugs.py:145:16 - error: Argument of type "Scalar[float]" cannot be assigned to parameter "orders" of type "Column[int] | Scalar[int] | int"
+  tests/bugs/e2e_bugs.py:149:30 - error: Cannot access attribute "delivery_hour" for class "OrderFacts"
+  tests/bugs/e2e_bugs.py:158:12 - error: Type "Table" is not assignable to return type "DataFrame[CustomerValue]"
+  tests/bugs/e2e_bugs.py:174:12 - error: Cannot access attribute "order_id" for class "DataFrame[OrderEvents]"
+  tests/bugs/e2e_bugs.py:178:27 - error: Argument of type "DataFrame[Orders]" cannot be assigned to parameter "orders" of type "DataFrame[DeliveredOrders]" in function "with_customer"
+### mypy
+e15-e2e/tests/bugs/e2e_bugs.py:113: error: Argument "net_amount" to "build" of "Schema" has incompatible type "Column[float | None]"; expected "Column[float] | Scalar[float] | float"  [arg-type]
+e15-e2e/tests/bugs/e2e_bugs.py:126: error: Unsupported operand types for == ("Column[int]" and "Column[str]")  [operator]
+e15-e2e/tests/bugs/e2e_bugs.py:145: error: Argument "orders" has incompatible type "Scalar[float]"; expected "Column[int] | Scalar[int] | int"  [arg-type]
+e15-e2e/tests/bugs/e2e_bugs.py:149: error: "OrderFacts" has no attribute "delivery_hour"; maybe "delivery_hours"?  [attr-defined]
+e15-e2e/tests/bugs/e2e_bugs.py:159: error: Incompatible return value type (got "Table", expected "DataFrame[CustomerValue]")  [return-value]
+e15-e2e/tests/bugs/e2e_bugs.py:174: error: "DataFrame[OrderEvents]" has no attribute "order_id"  [attr-defined]
+e15-e2e/tests/bugs/e2e_bugs.py:178: error: Argument 1 to "with_customer" has incompatible type "DataFrame[Orders]"; expected "DataFrame[DeliveredOrders]"  [arg-type]
+Found 7 errors in 1 file (checked 1 source file)
+### ty
+e15-e2e/tests/bugs/e2e_bugs.py:113:9: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[float | None]`
+e15-e2e/tests/bugs/e2e_bugs.py:126:39: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `((DeliveredOrders, Customers, /) -> Column[bool | None]) | Sequence[tuple[Column
+e15-e2e/tests/bugs/e2e_bugs.py:145:9: error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Scalar[float]`
+e15-e2e/tests/bugs/e2e_bugs.py:149:28: error[unresolved-attribute] Object of type `OrderFacts` has no attribute `delivery_hour`
+e15-e2e/tests/bugs/e2e_bugs.py:159:9: error[invalid-return-type] Return type does not match returned value: expected `DataFrame[CustomerValue]`, found `Table`
+e15-e2e/tests/bugs/e2e_bugs.py:174:5: error[unresolved-attribute] Object of type `DataFrame[OrderEvents]` has no attribute `order_id`
+e15-e2e/tests/bugs/e2e_bugs.py:178:27: error[invalid-argument-type] Argument to function `with_customer` is incorrect: Expected `DataFrame[DeliveredOrders]`, found `DataFrame[Orders]`
+Found 7 diagnostics
+### pyrefly
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:113:20-41: Argument `Column[float | None]` is not assignable to parameter `net_amount` with type `Column[float] | Scalar[float] | float` in function `tacit_t3._df.
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:126:42-81: Argument `(o: DeliveredOrders, c: Customers) -> bool` is not assignable to parameter `on` with type `((DeliveredOrders, Customers) -> Column[bool | None
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:126:55-81: `==` is not supported between `Column[int]` and `Column[str]` [unsupported-operation]
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:145:16-34: Argument `Scalar[float]` is not assignable to parameter `orders` with type `Column[int] | Scalar[int] | int` [bad-argument-type]
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:149:28-43: Object of class `OrderFacts` has no attribute `delivery_hour` [missing-attribute]
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:159:9-99: Returned type `Table` is not assignable to declared return type `DataFrame[CustomerValue]` [bad-return]
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:174:5-20: Object of class `DataFrame` has no attribute `order_id` [missing-attribute]
+ERROR e15-e2e/tests/bugs/e2e_bugs.py:178:27-33: Argument `DataFrame[Orders]` is not assignable to parameter `orders` with type `DataFrame[DeliveredOrders]` in function `with_customer` [bad-argument-ty
+ INFO 8 errors

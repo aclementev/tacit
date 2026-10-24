@@ -1,0 +1,16 @@
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e.py:29:40 - error: Type of "str_matches" is partially unknown
+    Type of "str_matches" is "(pattern: str | Pattern[Unknown], **kwargs: Unknown) -> Check" (reportUnknownMemberType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e.py:155:20 - error: Type of "agg" is partially unknown
+    Type of "agg" is "(...) -> Table" (reportUnknownMemberType)
+2 errors, 0 warnings, 0 informations
+/home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e_plain.py
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e_plain.py:58:21 - error: Type of "over" is partially unknown
+    Type of "over" is "(window: Unknown | None = None, *, rows: Unknown | None = None, range: Unknown | None = None, group_by: Unknown | None = None, order_by: Unknown | None = None) -> IntegerColumn" (reportUnknownMemberType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e_plain.py:82:12 - error: Type of "agg" is partially unknown
+    Type of "agg" is "(...) -> Table" (reportUnknownMemberType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e_plain.py:92:20 - error: Type of "agg" is partially unknown
+    Type of "agg" is "(...) -> Table" (reportUnknownMemberType)
+  /home/dev/code/tacit-f3529d373e83e544/pipeline-type-safety-redesign-a60149/dev/research/redesign/e15-e2e/examples/e2e_plain.py:101:43 - error: Type of "over" is partially unknown
+    Type of "over" is "(window: Unknown | None = None, *, rows: Unknown | None = None, range: Unknown | None = None, group_by: Unknown | None = None, order_by: Unknown | None = None) -> IntegerColumn" (reportUnknownMemberType)
+4 errors, 0 warnings, 0 informations

@@ -1,0 +1,14 @@
+MISSED  mypy     t2_cases.py:77  takes_orders(t)  # E: raw ibis table
+MISSED  ty       t2_cases.py:77  takes_orders(t)  # E: raw ibis table
+MISSED  pyrefly  t2_cases.py:77  takes_orders(t)  # E: raw ibis table
+FP      pyright  t2_cases.py:118  xt: ir.Table = o  # ok at runtime
+          -> Type "DataFrame[Orders]" is not assignable to declared type "Table" (reportAssignmentType)
+FP      ty       t2_cases.py:118  xt: ir.Table = o  # ok at runtime
+          -> invalid-assignment: Object of type `DataFrame[Orders]` is not assignable to `Table`
+TYPE    ty       t3_cases.py:63  expected Column[str], got Column[Literal["big", "small"]]
+MISSED  pyright  t3_cases.py:73  Day.build(day=t.c.started_at)  # E: datetime into date (known hole: datetime subclasses date; runtime dtype check catches it)
+MISSED  mypy     t3_cases.py:73  Day.build(day=t.c.started_at)  # E: datetime into date (known hole: datetime subclasses date; runtime dtype check catches it)
+MISSED  ty       t3_cases.py:73  Day.build(day=t.c.started_at)  # E: datetime into date (known hole: datetime subclasses date; runtime dtype check catches it)
+MISSED  pyrefly  t3_cases.py:73  Day.build(day=t.c.started_at)  # E: datetime into date (known hole: datetime subclasses date; runtime dtype check catches it)
+MISSED  mypy     t3_cases.py:119  ingest(t.c)  # E: not a table
+MISSED  pyrefly  t3_cases.py:119  ingest(t.c)  # E: not a table

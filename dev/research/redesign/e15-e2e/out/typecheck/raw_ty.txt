@@ -1,0 +1,83 @@
+e15-e2e/tests/typecheck/t2_cases.py:55:17: info[revealed-type] Revealed type: `Column[float]`
+e15-e2e/tests/typecheck/t2_cases.py:56:17: info[revealed-type] Revealed type: `Column[int]`
+e15-e2e/tests/typecheck/t2_cases.py:57:17: info[revealed-type] Revealed type: `IntegerScalar`
+e15-e2e/tests/typecheck/t2_cases.py:58:17: info[revealed-type] Revealed type: `Column[float]`
+e15-e2e/tests/typecheck/t2_cases.py:59:5: error[unresolved-attribute] Object of type `Orders` has no attribute `amout`
+e15-e2e/tests/typecheck/t2_cases.py:60:5: error[unresolved-attribute] Object of type `DataFrame[Orders]` has no attribute `amount`
+e15-e2e/tests/typecheck/t2_cases.py:61:5: error[no-matching-overload] No overload of bound method `Column.upper` matches arguments
+e15-e2e/tests/typecheck/t2_cases.py:62:17: info[revealed-type] Revealed type: `Column[float]`
+e15-e2e/tests/typecheck/t2_cases.py:64:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e15-e2e/tests/typecheck/t2_cases.py:65:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e15-e2e/tests/typecheck/t2_cases.py:66:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e15-e2e/tests/typecheck/t2_cases.py:68:17: info[revealed-type] Revealed type: `Table`
+e15-e2e/tests/typecheck/t2_cases.py:69:17: info[revealed-type] Revealed type: `Table`
+e15-e2e/tests/typecheck/t2_cases.py:70:17: info[revealed-type] Revealed type: `Table`
+e15-e2e/tests/typecheck/t2_cases.py:71:17: info[revealed-type] Revealed type: `Table`
+e15-e2e/tests/typecheck/t2_cases.py:72:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e15-e2e/tests/typecheck/t2_cases.py:74:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `DataFrame[Customers]`
+e15-e2e/tests/typecheck/t2_cases.py:75:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `Table`
+e15-e2e/tests/typecheck/t2_cases.py:76:18: error[invalid-argument-type] Argument to function `takes_orders` is incorrect: Expected `DataFrame[Orders]`, found `Table`
+e15-e2e/tests/typecheck/t2_cases.py:79:31: error[invalid-assignment] Object of type `DataFrame[Orders]` is not assignable to `DataFrame[NetOrders]`
+e15-e2e/tests/typecheck/t2_cases.py:84:17: info[revealed-type] Revealed type: `DataFrame[Net]`
+e15-e2e/tests/typecheck/t2_cases.py:85:15: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[str]`
+e15-e2e/tests/typecheck/t2_cases.py:86:5: error[missing-argument] No argument provided for required parameter `net_amount` of bound method `Schema.build`
+e15-e2e/tests/typecheck/t2_cases.py:87:38: error[unknown-argument] Argument `bogus` does not match any known parameter of bound method `Schema.build`
+e15-e2e/tests/typecheck/t2_cases.py:88:17: info[revealed-type] Revealed type: `DataFrame[Stats]`
+e15-e2e/tests/typecheck/t2_cases.py:89:36: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Scalar[float]`
+e15-e2e/tests/typecheck/t2_cases.py:91:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e15-e2e/tests/typecheck/t2_cases.py:92:22: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Customers]`
+e15-e2e/tests/typecheck/t2_cases.py:92:25: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Net | Customers]`, found `DataFrame[Net]`
+e15-e2e/tests/typecheck/t2_cases.py:93:18: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Stats | Orders | Net]`, found `DataFrame[Orders]`
+e15-e2e/tests/typecheck/t2_cases.py:93:21: error[invalid-argument-type] Argument to bound method `Schema.extend` is incorrect: Expected `Into[Stats | Orders | Net]`, found `DataFrame[Net]`
+e15-e2e/tests/typecheck/t2_cases.py:101:17: info[revealed-type] Revealed type: `Column[datetime]`
+e15-e2e/tests/typecheck/t2_cases.py:102:5: error[unresolved-attribute] Object of type `S@recent` has no attribute `event_tss`
+e15-e2e/tests/typecheck/t2_cases.py:108:17: info[revealed-type] Revealed type: `DataFrame[Orders]`
+e15-e2e/tests/typecheck/t2_cases.py:109:17: info[revealed-type] Revealed type: `DataFrame[NetOrders]`
+e15-e2e/tests/typecheck/t2_cases.py:110:17: info[revealed-type] Revealed type: `DataFrame[Clicks]`
+e15-e2e/tests/typecheck/t2_cases.py:111:12: error[invalid-argument-type] Argument to function `recent` is incorrect: Argument type `Orders` does not satisfy upper bound `HasEventTs` of type variable `S`
+e15-e2e/tests/typecheck/t2_cases.py:115:5: error[unresolved-attribute] Object of type `Net` has no attribute `net_amont`
+e15-e2e/tests/typecheck/t2_cases.py:116:17: info[revealed-type] Revealed type: `Column[float]`
+e15-e2e/tests/typecheck/t2_cases.py:118:20: error[invalid-assignment] Object of type `DataFrame[Orders]` is not assignable to `Table`
+e15-e2e/tests/typecheck/t3_cases.py:53:17: info[revealed-type] Revealed type: `Column[bool | None]`
+e15-e2e/tests/typecheck/t3_cases.py:54:17: info[revealed-type] Revealed type: `Column[bool]`
+e15-e2e/tests/typecheck/t3_cases.py:55:17: info[revealed-type] Revealed type: `Scalar[float | None]`
+e15-e2e/tests/typecheck/t3_cases.py:56:17: info[revealed-type] Revealed type: `Scalar[float]`
+e15-e2e/tests/typecheck/t3_cases.py:57:17: info[revealed-type] Revealed type: `DataFrame[Trips]`
+e15-e2e/tests/typecheck/t3_cases.py:58:17: info[revealed-type] Revealed type: `Column[float]`
+e15-e2e/tests/typecheck/t3_cases.py:59:17: info[revealed-type] Revealed type: `Column[float]`
+e15-e2e/tests/typecheck/t3_cases.py:60:17: info[revealed-type] Revealed type: `Scalar[float | None]`
+e15-e2e/tests/typecheck/t3_cases.py:61:17: info[revealed-type] Revealed type: `ArrayColumn`
+e15-e2e/tests/typecheck/t3_cases.py:62:5: error[no-matching-overload] No overload of bound method `Column.mean` matches arguments
+e15-e2e/tests/typecheck/t3_cases.py:63:17: info[revealed-type] Revealed type: `Column[Literal["big", "small"]]`
+e15-e2e/tests/typecheck/t3_cases.py:65:17: info[revealed-type] Revealed type: `Column[datetime]`
+e15-e2e/tests/typecheck/t3_cases.py:66:17: info[revealed-type] Revealed type: `Scalar[float]`
+e15-e2e/tests/typecheck/t3_cases.py:67:17: info[revealed-type] Revealed type: `Column[int | None]`
+e15-e2e/tests/typecheck/t3_cases.py:68:17: info[revealed-type] Revealed type: `Column[int]`
+e15-e2e/tests/typecheck/t3_cases.py:69:17: info[revealed-type] Revealed type: `Column[int]`
+e15-e2e/tests/typecheck/t3_cases.py:70:19: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Column[int | None]`
+e15-e2e/tests/typecheck/t3_cases.py:72:17: info[revealed-type] Revealed type: `Column[date]`
+e15-e2e/tests/typecheck/t3_cases.py:79:17: info[revealed-type] Revealed type: `Join[Trips, Drivers]`
+e15-e2e/tests/typecheck/t3_cases.py:80:17: info[revealed-type] Revealed type: `Column[float]`
+e15-e2e/tests/typecheck/t3_cases.py:81:17: info[revealed-type] Revealed type: `Column[float | None]`
+e15-e2e/tests/typecheck/t3_cases.py:82:5: error[unresolved-attribute] Object of type `Drivers` has no attribute `fare`
+e15-e2e/tests/typecheck/t3_cases.py:83:38: error[unresolved-attribute] Object of type `Trips` has no attribute `driver_idd`
+e15-e2e/tests/typecheck/t3_cases.py:85:22: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `((Trips, Drivers, /) -> Column[bool | None]) | Sequence[tuple[Column[Any], Column[Any]]]`, found `(a: Trips, b: Drivers) -> bool`
+e15-e2e/tests/typecheck/t3_cases.py:87:17: info[revealed-type] Revealed type: `DataFrame[TripDriver]`
+e15-e2e/tests/typecheck/t3_cases.py:88:65: error[invalid-argument-type] Argument to bound method `Schema.build` is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Column[float | None]`
+e15-e2e/tests/typecheck/t3_cases.py:89:5: error[missing-argument] No argument provided for required parameter `fare` of bound method `Schema.build`
+e15-e2e/tests/typecheck/t3_cases.py:90:19: error[invalid-argument-type] Argument to function `join` is incorrect: Expected `DataFrame[UnspecializedTypeVar & Schema]`, found `Table`
+e15-e2e/tests/typecheck/t3_cases.py:96:17: info[revealed-type] Revealed type: `DataFrame[CityStats]`
+e15-e2e/tests/typecheck/t3_cases.py:97:24: error[invalid-argument-type] Argument is incorrect: Expected `Column[int] | Scalar[int] | int`, found `Scalar[float]`
+e15-e2e/tests/typecheck/t3_cases.py:98:51: error[invalid-argument-type] Argument is incorrect: Expected `Column[float] | Scalar[float] | float`, found `Scalar[float | None]`
+e15-e2e/tests/typecheck/t3_cases.py:99:5: error[missing-argument] No argument provided for required parameter `revenue`
+e15-e2e/tests/typecheck/t3_cases.py:100:25: error[invalid-argument-type] Argument to bound method `Schema.aggregate` is incorrect: Expected `Sequence[Column[Any]]`, found `Column[str]`
+e15-e2e/tests/typecheck/t3_cases.py:116:17: info[revealed-type] Revealed type: `DataFrame[Trips]`
+e15-e2e/tests/typecheck/t3_cases.py:117:11: error[invalid-argument-type] Argument is incorrect: Expected `DataFrame[Trips]`, found `DataFrame[Drivers]`
+e15-e2e/tests/typecheck/t3_cases.py:118:17: info[revealed-type] Revealed type: `DataFrame[Trips]`
+e15-e2e/tests/typecheck/t3_cases.py:119:12: error[invalid-argument-type] Argument is incorrect: Expected `Table`, found `Trips`
+e15-e2e/tests/typecheck/t3_cases.py:128:17: info[revealed-type] Revealed type: `DataFrame[Trips]`
+e15-e2e/tests/typecheck/t3_cases.py:129:37: error[invalid-argument-type] Argument to function `generic_handles` is incorrect: Expected `Column[datetime]`, found `Column[datetime | None]`
+e15-e2e/tests/typecheck/t3_cases.py:130:37: error[invalid-argument-type] Argument to function `generic_handles` is incorrect: Expected `Column[datetime]`, found `Column[float]`
+e15-e2e/tests/typecheck/t3_cases.py:131:17: info[revealed-type] Revealed type: `Column[bool]`
+e15-e2e/tests/typecheck/t3_cases.py:132:17: info[revealed-type] Revealed type: `Column[bool]`
+Found 82 diagnostics

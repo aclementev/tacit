@@ -1,0 +1,44 @@
+MISSED  pyright  t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  mypy     t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  ty       t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+MISSED  pyrefly  t2_cases.py:61  o.amount  # E: [typo-df] columns are not table attributes in T2
+FP      pyright  t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> Argument of type "BooleanColumn" cannot be assigned to parameter "predicates" of type "str | Sequence[str | BooleanColumn | tuple[str | Column | Deferred, str | Column | Deferred] | BooleanValue | bool]" in function "joi
+FP      mypy     t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> Argument 2 to "join" of "Table" has incompatible type "tacit_thin._ibis_cols.BooleanColumn"; expected "str | Sequence[Literal[True, False] | str | ibis.expr.types.logical.BooleanColumn | tuple[str | Column | Deferred, st
+FP      ty       t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> invalid-argument-type: Argument to bound method `Table.join` is incorrect: Expected `Sequence[str | BooleanValue | bool | tuple[str | Column | Deferred, str | Column | Deferred]]`, found `BooleanColumn`
+FP      pyrefly  t2_cases.py:71  reveal_type(o.join(c, o.c.customer_id == c.c.customer_id))  # R: Table
+          -> bad-argument-type: Argument `tacit_thin._ibis_cols.BooleanColumn` is not assignable to parameter `predicates` with type `Sequence[ibis.expr.types.logical.BooleanColumn | BooleanValue | bool | str | tuple[Column | Deferre
+MISSED  pyright  t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  mypy     t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  ty       t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  pyrefly  t_columns.py:58  o.amout  # E: [typo-df] attribute typo on the frame
+MISSED  pyright  t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  mypy     t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  ty       t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  pyrefly  t_columns.py:59  o.status  # E: [typo-df] column read as a table attribute
+MISSED  pyright  t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  mypy     t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  ty       t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  pyrefly  t_columns.py:139  Net.build(net_amount=o.c.discount)  # E: [nullable] nullable into non-null
+MISSED  pyright  t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  mypy     t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  ty       t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+MISSED  pyrefly  t_columns.py:140  Net.build(net_amount=o.c.amount - o.c.discount)  # E: [nullable] nullable arithmetic into non-null
+FP      pyright  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument of type "Value" cannot be assigned to parameter "label" of type "_Fam[str] | str | Deferred" in function "build" (reportArgumentType)
+FP      mypy     t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> Argument "label" to "build" of "Schema" has incompatible type "Value"; expected "_Fam[str] | str | Deferred"  [arg-type]
+FP      ty       t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> invalid-argument-type: Argument to bound method `Schema.build` is incorrect: Expected `_Fam[str] | str | Deferred`, found `Value`
+FP      pyrefly  t_columns.py:153  Proj.build(order_id=o.c.order_id, amount=o.c.amount, label=ibis.cases((o.c.flag, "y"), else_="n"))
+          -> bad-argument-type: Argument `Value` is not assignable to parameter `label` with type `Deferred | _Fam[str] | str` in function `tacit_t2n._df.Schema.build`
+MISSED  pyright  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  mypy     b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  ty       b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  pyrefly  b_a4_typo_deferred.py:79  return StatusSummary.conform(by_status.mutate(share=_.revenue / _.revenu.sum()))  # E: [typo-deferred] a4_typo_deferred
+MISSED  pyright  b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  mypy     b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  ty       b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull
+MISSED  pyrefly  b_f1_nullable_into_nonnull.py:59  return Order.extend(kept, NetAmount.build(net_amount=k.amount - k.discount))  # E: [nullable] f1_nullable_into_nonnull

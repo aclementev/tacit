@@ -1,0 +1,40 @@
+[l3-nostub-patched]
+feature                                                          pyright          mypy            ty       pyrefly
+t2_cases: (module)                                                   0/0           0/0           0/0           0/0
+t2_cases: typed namespace access, typos                           7/8 m1        7/8 m1        7/8 m1        7/8 m1
+t2_cases: schema-preserving methods keep DataFrame[S]                3/3           3/3           3/3           3/3
+t2_cases: ibis API directly; results are plain tables             4/5 f1        4/5 f1        4/5 f1        4/5 f1
+t2_cases: wrong frame / forgot cast / subtyping                      5/5           5/5           5/5           5/5
+t2_cases: build(): checked projection and implicit GROUP B           6/6           6/6           6/6           6/6
+t2_cases: extend: Out must subclass the base schema and ev           5/5           5/5           5/5           5/5
+t2_cases: generic steps over S                                       4/4           4/4           4/4           4/4
+t2_cases: typed namespace survives build() (inference of S           2/2           2/2           2/2           2/2
+t2_cases: frame accepted by ibis functions typed ir.Table            0/0           0/0           0/0           0/0
+t_columns: (module)                                                  0/0           0/0           0/0           0/0
+t_columns: typed access (precision of the revealed type)             6/6           6/6           6/6           6/6
+t_columns: typos                                                  2/4 m2        2/4 m2        2/4 m2        2/4 m2
+t_columns: wrong method for the column's family                    11/11         11/11         11/11         11/11
+t_columns: operators between incompatible families                   6/6           6/6           6/6           6/6
+t_columns: comparisons with Python literals (correct code)           0/0           0/0           0/0           0/0
+t_columns: arithmetic and reductions (correct code)                14/14         14/14      13/14 w1         14/14
+t_columns: build(): names                                            3/3           3/3           3/3           3/3
+t_columns: build(): value family                                     5/5           5/5           5/5           5/5
+t_columns: build(): int vs float output                              3/3           3/3           3/3           3/3
+t_columns: build(): nullable into non-null                           2/2           2/2           2/2           2/2
+t_columns: build(): correct code                                  0/0 f1        0/0 f1        0/0 f1        0/0 f1
+ecommerce_t2: (module)                                               0/0           0/0           0/0           0/0
+iris_t2: (module)                                                    0/0           0/0           0/0           0/0
+tpch_q1_t2: (module)                                                 0/0           0/0           0/0           0/0
+b_a1_typo_join_view: (module)                                        1/1           1/1           1/1           1/1
+b_a2_typo_namespace: (module)                                        1/1           1/1           1/1           1/1
+b_a3_typo_table_attr: (module)                                       1/1           1/1           1/1           1/1
+b_a4_typo_deferred: (module)                                      0/1 m1        0/1 m1        0/1 m1        0/1 m1
+b_b1_raw_orders_into_step: (module)                                  1/1           1/1           1/1           1/1
+b_b2_swapped_args: (module)                                          1/1           1/1           1/1           1/1
+b_b3_forgot_conform: (module)                                        1/1           1/1           1/1           1/1
+b_c1_missing_column: (module)                                        1/1           1/1           1/1           1/1
+b_d1_count_cast_float: (module)                                      1/1           1/1           1/1           1/1
+b_d2_sum_into_int: (module)                                          1/1           1/1           1/1           1/1
+b_f1_nullable_into_nonnull: (module)                                 1/1           1/1           1/1           1/1
+TOTAL                                                       98/103 m4 f2  98/103 m4 f2 97/103 m4 w1 f2  98/103 m4 f2
+cell = ok/cases [mN = missed errors, wN = wrong revealed type, fN = false positives]
