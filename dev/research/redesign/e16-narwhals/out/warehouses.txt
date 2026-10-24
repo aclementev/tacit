@@ -1,0 +1,14 @@
+bigquery   sqlframe-standalone  tpch_q1=OK  stats=OK  status=OK  latest=OK
+bigquery   ibis-unbound         tpch_q1=OK  stats=OK  status=OK  latest=OK
+snowflake  sqlframe-standalone  tpch_q1=OK  stats=OK  status=OK  latest=OK
+snowflake  ibis-unbound         tpch_q1=OK  stats=OK  status=OK  latest=OK
+databricks sqlframe-standalone  tpch_q1=OK  stats=OK  status=OK  latest=OK
+databricks ibis-unbound         tpch_q1=OK  stats=OK  status=OK  latest=OK
+redshift   sqlframe-standalone  tpch_q1=OK  stats=OK  status=OK  latest=OK
+redshift   ibis-unbound         tpch_q1=ERROR ValueError: Unknown dialect redshift  stats=ERROR ValueError: Unknown dialect redshift  status=ERROR ValueError: Unknown dialect redshift  latest=ERROR ValueError: Unknown dialect redshift
+                                tpch_q1: ERROR ValueError: Unknown dialect redshift
+                                stats: ERROR ValueError: Unknown dialect redshift
+                                status: ERROR ValueError: Unknown dialect redshift
+                                latest: ERROR ValueError: Unknown dialect redshift
+postgres   sqlframe-standalone  tpch_q1=OK  stats=OK  status=OK  latest=OK
+postgres   ibis-unbound         tpch_q1=OK  stats=OK  status=OK  latest=OK

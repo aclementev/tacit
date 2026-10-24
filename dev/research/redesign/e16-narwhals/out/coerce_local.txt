@@ -1,0 +1,29 @@
+== polars-lazy
+   str->Int64 ('x')                     -> RAISES InvalidOperationError: conversion from `str` to `i64` failed in column 's_int' for 1 out of 1 values: ["x"]
+   str->Float64 ('y')                   -> RAISES InvalidOperationError: conversion from `str` to `f64` failed in column 's_float' for 1 out of 1 values: ["y"]
+   str->Date cast ('2024-02-30','z')    -> RAISES InvalidOperationError: casting from string to date is not supported.
+   str.to_date ('2024-02-30','z')       -> RAISES InvalidOperationError: conversion from `str` to `date` failed in column 's_date' for 1 out of 2 values: ["2024-02
+   Int64->Int8 overflow (300)           -> RAISES InvalidOperationError: conversion from `i64` to `i8` failed in column 'i' for 1 out of 2 values: [300]
+   Int64->UInt8 negative (-5)           -> RAISES InvalidOperationError: conversion from `i64` to `u8` failed in column 'i' for 1 out of 2 values: [300]
+== duckdb
+   str->Int64 ('x')                     -> RAISES ConversionException: Conversion Error: Could not convert string 'x' to INT64 when casting from source column s_
+   str->Float64 ('y')                   -> RAISES ConversionException: Conversion Error: Could not convert string 'y' to DOUBLE when casting from source column s
+   str->Date cast ('2024-02-30','z')    -> RAISES ConversionException: Conversion Error: date field value out of range: "2024-02-30" when casting from source col
+   str.to_date ('2024-02-30','z')       -> RAISES ConversionException: Conversion Error: Date out of range: 2024-2-30
+   Int64->Int8 overflow (300)           -> RAISES ConversionException: Conversion Error: Type INT64 with value 300 can't be cast because the value is out of rang
+   Int64->UInt8 negative (-5)           -> RAISES ConversionException: Conversion Error: Type INT64 with value 300 can't be cast because the value is out of rang
+== sqlframe-duckdb
+   str->Int64 ('x')                     -> RAISES ConversionException: Conversion Error: Could not convert string 'x' to INT64 when casting from source column s_
+   str->Float64 ('y')                   -> RAISES ConversionException: Conversion Error: Could not convert string 'y' to DOUBLE when casting from source column s
+   str->Date cast ('2024-02-30','z')    -> RAISES ConversionException: Conversion Error: date field value out of range: "2024-02-30" when casting from source col
+   str.to_date ('2024-02-30','z')       -> RAISES ConversionException: Conversion Error: date field value out of range: "2024-02-30" when casting from source col
+   Int64->Int8 overflow (300)           -> RAISES ConversionException: Conversion Error: Type INT64 with value 300 can't be cast because the value is out of rang
+   Int64->UInt8 negative (-5)           -> RAISES UnsupportedDTypeError: Converting to UInt8 dtype is not supported for Spark-Like backend.
+== ibis-duckdb
+   str->Int64 ('x')                     -> RAISES ConversionException: Conversion Error: Could not convert string 'x' to INT64 when casting from source column s_
+   str->Float64 ('y')                   -> RAISES ConversionException: Conversion Error: Could not convert string 'y' to DOUBLE when casting from source column s
+   str->Date cast ('2024-02-30','z')    -> RAISES ConversionException: Conversion Error: date field value out of range: "2024-02-30" when casting from source col
+   str.to_date ('2024-02-30','z')       -> RAISES ConversionException: Conversion Error: Date out of range: 2024-2-30
+   Int64->Int8 overflow (300)           -> RAISES ConversionException: Conversion Error: Type INT64 with value 300 can't be cast because the value is out of rang
+   Int64->UInt8 negative (-5)           -> RAISES ConversionException: Conversion Error: Type INT64 with value 300 can't be cast because the value is out of rang
+pandera-narwhals coerce=True on polars -> RAISES SchemaError expected column 's_int' to have type Int64, got String

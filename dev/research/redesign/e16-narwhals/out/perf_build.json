@@ -1,0 +1,9 @@
+{
+ "native polars (lazy)": 143,
+ "narwhals -> polars": 1463,
+ "narwhals -> duckdb": 14478,
+ "native duckdb (relation from SQL)": 2884,
+ "ibis (duckdb)": 6677,
+ "ibis (duckdb) + compile to SQL": 29291,
+ "tacit_nw T2 -> polars (incl. checked build/extend/conform)": 1901
+}

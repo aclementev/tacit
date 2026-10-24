@@ -1,0 +1,46 @@
+[
+ {
+  "who": "pandera-narwhals",
+  "backend": "polars",
+  "rows": 100000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 11,
+  "seconds": 0.02,
+  "error": ""
+ },
+ {
+  "who": "pandera-narwhals",
+  "backend": "polars",
+  "rows": 100000,
+  "bad": true,
+  "valid": false,
+  "issues": 100,
+  "engine_queries": 21,
+  "seconds": 0.027,
+  "error": ""
+ },
+ {
+  "who": "pandera-narwhals",
+  "backend": "ibis-duckdb",
+  "rows": 100000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 11,
+  "seconds": 0.08,
+  "error": ""
+ },
+ {
+  "who": "pandera-narwhals",
+  "backend": "ibis-duckdb",
+  "rows": 100000,
+  "bad": true,
+  "valid": false,
+  "issues": -1,
+  "engine_queries": 17,
+  "seconds": 0.163,
+  "error": "RelationError: Table schemas must be equal for set operations."
+ }
+]

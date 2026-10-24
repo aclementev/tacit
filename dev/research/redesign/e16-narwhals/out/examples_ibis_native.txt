@@ -1,0 +1,24 @@
+== ibis-native on ibis-duckdb
+   iris             OK
+   tpch_q1          OK
+   ecom.stats       OK
+   ecom.status      OK
+   ecom.latest      OK
+   ecom.latest_max  OK
+   ecom.checks      OK
+== ibis-native on ibis-polars
+   iris             OK
+   tpch_q1          OK
+   ecom.stats       OK
+   ecom.status      ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   ecom.latest      ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   ecom.latest_max  ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   ecom.checks      OK
+== ibis-native on ibis-postgres
+   iris             OK
+   tpch_q1          OK
+   ecom.stats       OK
+   ecom.status      OK
+   ecom.latest      OK
+   ecom.latest_max  ERROR UndefinedTable: missing FROM-clause entry for table "t1"
+   ecom.checks      ERROR CannotCoerce: cannot cast type boolean to bigint

@@ -1,0 +1,47 @@
+== ibis:ibis-duckdb  ok 64/72
+   fill_null_forward_ordered    DIFF col d: [3.61, 11.29, 6.28] vs [3.61, 11.29, 6.28]
+   is_first_distinct_ordered    n/a (no direct ibis spelling)
+   dt_truncate_week             OK (no polars reference)
+   horizontal_ops               n/a (no direct ibis spelling)
+   join_asof                    n/a (no direct ibis spelling)
+   unique_keep_first_ordered    n/a (no direct ibis spelling)
+   pivot                        DIFF col shipped: [711.95, 431.71, 277.42] vs [711.95, 431.71, 277.42]
+   map_batches_udf              n/a (no direct ibis spelling)
+== ibis:ibis-polars  ok 50/72
+   rank_ordinal_over            ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   rank_dense_over              ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   rank_min_global              ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   cum_sum_over_ordered         ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   lag_over_ordered             ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   diff_over_ordered            ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   rolling_mean_ordered         ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   share_of_partition           ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   row_index_ordered            ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   fill_null_forward_ordered    ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   is_first_distinct_ordered    n/a (no direct ibis spelling)
+   dt_truncate_week             OK (no polars reference)
+   dt_offset_by                 ERROR TypeError: duration() got an unexpected keyword argument 'months'
+   horizontal_ops               n/a (no direct ibis spelling)
+   agg_n_unique_with_nulls      DIFF col n: [7, 8, 14] vs [8, 9, 15]
+   agg_global_broadcast         ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   join_asof                    n/a (no direct ibis spelling)
+   unique_keep_first_ordered    n/a (no direct ibis spelling)
+   explode                      ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.relations.TableUnnest'>
+   pivot                        DIFF col shipped: [711.95, 431.71, 277.42] vs [711.95, 431.71, 277.42]
+   is_duplicated_expr           ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+   map_batches_udf              n/a (no direct ibis spelling)
+== ibis:ibis-postgres  ok 58/72
+   fill_null_forward_ordered    DIFF col d: [3.61, 11.29, 6.28] vs [3.61, 11.29, 6.28]
+   is_first_distinct_ordered    n/a (no direct ibis spelling)
+   dt_truncate_week             OK (no polars reference)
+   null_count_and_is_null       ERROR CannotCoerce: cannot cast type boolean to bigint
+   horizontal_ops               n/a (no direct ibis spelling)
+   agg_n_unique_with_nulls      ERROR CannotCoerce: cannot cast type boolean to bigint
+   agg_first_v2_unordered       ERROR UndefinedFunction: function first(double precision) does not exist
+   agg_first_ordered_main_ns    ERROR UndefinedFunction: function first(double precision) does not exist
+   join_asof                    n/a (no direct ibis spelling)
+   unique_subset                ERROR UndefinedFunction: function first(bigint) does not exist
+   unique_keep_first_ordered    n/a (no direct ibis spelling)
+   unpivot                      ERROR InvalidParameterValue: cannot cast jsonb null to type double precision
+   pivot                        DIFF col shipped: [711.95, 431.71, 277.42] vs [711.95, 431.71, 277.42]
+   map_batches_udf              n/a (no direct ibis spelling)

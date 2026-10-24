@@ -1,0 +1,10 @@
+== DataFrame ==
+== DataFrame ==
+== DataFrame ==
+== pyspark
+   str->Int64 ('x')                     -> RAISES NumberFormatException: [CAST_INVALID_INPUT] The value 'x' of the type "STRING" cannot be cast to "BIGINT" because
+   str->Float64 ('y')                   -> RAISES NumberFormatException: [CAST_INVALID_INPUT] The value 'y' of the type "STRING" cannot be cast to "DOUBLE" because
+   str->Date cast ('2024-02-30','z')    -> RAISES DateTimeException: [CAST_INVALID_INPUT] The value '2024-02-30' of the type "STRING" cannot be cast to "DATE" 
+   str.to_date ('2024-02-30','z')       -> RAISES DateTimeException: [CANNOT_PARSE_TIMESTAMP] Text 'z' could not be parsed at index 0. Use `try_to_date` to tol
+   Int64->Int8 overflow (300)           -> RAISES ArithmeticException: [CAST_OVERFLOW] The value 300L of the type "BIGINT" cannot be cast to "TINYINT" due to an 
+   Int64->UInt8 negative (-5)           -> RAISES UnsupportedDTypeError: Converting to UInt8 dtype is not supported for Spark-Like backend.

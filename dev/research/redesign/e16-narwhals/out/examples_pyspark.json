@@ -1,0 +1,11 @@
+{
+ "pyspark": {
+  "iris": "OK  (5.40s)",
+  "tpch_q1": "OK  (2.27s)",
+  "ecom.stats": "OK  (1.66s)",
+  "ecom.status": "OK  (0.75s)",
+  "ecom.latest": "OK  (0.51s)",
+  "ecom.latest_max": "OK  (0.38s)",
+  "ecom.checks": "ERROR AnalysisException: [DATATYPE_MISMATCH.UNEXPECTED_INPUT_TYPE] Cannot resolve \"sum((NOT REGEXP(email, ^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$)))\" due to data type mismatch: The first parameter requires the \"NUMERIC\" or \"ANSI INTERVAL\"  (0.08s)"
+ }
+}

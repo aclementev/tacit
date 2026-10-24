@@ -1,0 +1,74 @@
+== nw:polars-eager  ok 71/72
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+== nw:polars-lazy  ok 68/72
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+   agg_first_v2_unordered       UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+   pivot                        ERROR AttributeError: 'LazyFrame' object has no attribute 'pivot'
+   map_batches_udf              UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+== nw:duckdb  ok 65/72
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+   dt_diff_days                 DIFF col d: [103, 67, 96] vs [0, 0, 0]
+   agg_filtered                 UNSUP NotImplementedError: 'filter' is not implemented for: "<Implementation.DUCKDB: 'duckdb'>".
+   agg_first_v2_unordered       UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+   unpivot                      DIFF shape (120, 3) vs (86, 3)
+   pivot                        ERROR AttributeError: 'LazyFrame' object has no attribute 'pivot'
+   map_batches_udf              UNSUP NotImplementedError: 'map_batches' is not implemented for: "<Implementation.DUCKDB: 'duckdb'>".
+== nw:duckdb-conn  ok 63/72
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+   dt_diff_days                 DIFF col d: [103, 67, 96] vs [0, 0, 0]
+   agg_filtered                 UNSUP NotImplementedError: 'filter' is not implemented for: "<Implementation.DUCKDB: 'duckdb'>".
+   agg_first_v2_unordered       UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+   join_asof                    ERROR InvalidInputException: Invalid Input Error: Python Object "lhs" of type "DuckDBPyRelation" not suitable for replacement scan.
+   top_k                        ERROR InvalidInputException: Invalid Input Error: Python Object "_rel" of type "DuckDBPyRelation" not suitable for replacement scan.
+   unpivot                      ERROR InvalidInputException: Invalid Input Error: Python Object "_rel" of type "DuckDBPyRelation" not suitable for replacement scan.
+   pivot                        ERROR AttributeError: 'LazyFrame' object has no attribute 'pivot'
+   map_batches_udf              UNSUP NotImplementedError: 'map_batches' is not implemented for: "<Implementation.DUCKDB: 'duckdb'>".
+== nw:sqlframe-duckdb  ok 63/72
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+   dt_parts                     DIFF col wd: [6, 5, 6] vs [6, 5, 6]
+   dt_diff_days                 UNSUP NotImplementedError: 'total_seconds' is not implemented for: 'SparkLikeExprDateTimeNamespace'.
+   agg_filtered                 UNSUP NotImplementedError: 'filter' is not implemented for: "<Implementation.SQLFRAME: 'sqlframe'>".
+   agg_first_v2_unordered       UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+   agg_first_ordered_main_ns    UNSUP NotImplementedError: `first` is not supported for PySpark.
+   join_asof                    UNSUP NotImplementedError: 'join_asof' is not implemented for: "<Implementation.SQLFRAME: 'sqlframe'>".
+   pivot                        ERROR AttributeError: 'LazyFrame' object has no attribute 'pivot'
+   map_batches_udf              UNSUP NotImplementedError: 'map_batches' is not implemented for: "<Implementation.SQLFRAME: 'sqlframe'>".
+== nw:ibis-duckdb  ok 65/72
+   fill_null_forward_ordered    UNSUP NotImplementedError: `strategy` is not supported for the Ibis backend
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+   dt_diff_days                 UNSUP NotImplementedError: 'total_seconds' is not implemented for: 'IbisExprDateTimeNamespace'.
+   agg_filtered                 UNSUP NotImplementedError: 'filter' is not implemented for: "<Implementation.IBIS: 'ibis'>".
+   agg_first_v2_unordered       UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+   pivot                        ERROR AttributeError: 'LazyFrame' object has no attribute 'pivot'
+   map_batches_udf              UNSUP NotImplementedError: 'map_batches' is not implemented for: "<Implementation.IBIS: 'ibis'>".
+== nw:sqlframe-postgres  ok 54/72
+   fill_null_forward_ordered    ERROR AttributeError: module 'sqlframe.postgres.functions' has no attribute 'last_value'
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+   dt_parts                     DIFF col wd: [6, 5, 6] vs [6, 5, 6]
+   dt_diff_days                 UNSUP NotImplementedError: 'total_seconds' is not implemented for: 'SparkLikeExprDateTimeNamespace'.
+   str_contains_literal         ERROR AttributeError: module 'sqlframe.postgres.functions' has no attribute 'contains'
+   str_slice                    ERROR AttributeError: module 'sqlframe.postgres.functions' has no attribute 'substr'
+   str_strip_pad                ERROR AttributeError: module 'sqlframe.postgres.functions' has no attribute 'substr'
+   str_split_list_len           DIFF col n: [2, 2, 2] vs [1, 1, 1]
+   null_count_and_is_null       ERROR AttributeError: module 'sqlframe.postgres.functions' has no attribute 'count_if'
+   bool_sum                     ERROR UndefinedFunction: function sum(boolean) does not exist
+   agg_filtered                 UNSUP NotImplementedError: 'filter' is not implemented for: "<Implementation.SQLFRAME: 'sqlframe'>".
+   agg_first_v2_unordered       UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+   agg_first_ordered_main_ns    UNSUP NotImplementedError: `first` is not supported for PySpark.
+   join_asof                    UNSUP NotImplementedError: 'join_asof' is not implemented for: "<Implementation.SQLFRAME: 'sqlframe'>".
+   explode                      DIFF shape (40, 2) vs (20, 2)
+   pivot                        ERROR AttributeError: 'LazyFrame' object has no attribute 'pivot'
+   cast_schema_dtypes           DIFF col amount: [96.0, 33.740002, 131.139999] vs [96.0, 33.74, 131.14]
+   map_batches_udf              UNSUP NotImplementedError: 'map_batches' is not implemented for: "<Implementation.SQLFRAME: 'sqlframe'>".
+== nw:ibis-postgres  ok 61/72
+   fill_null_forward_ordered    UNSUP NotImplementedError: `strategy` is not supported for the Ibis backend
+   dt_truncate_week             ERROR ValueError: Invalid `every` string: 1w. Expected string of kind <number><unit>, where 'unit' is one of: ('ns', 'us', 'ms', 's', 'm', 'h', 'd', 'mo', 'q', 'y').
+   dt_diff_days                 UNSUP NotImplementedError: 'total_seconds' is not implemented for: 'IbisExprDateTimeNamespace'.
+   null_count_and_is_null       ERROR CannotCoerce: cannot cast type boolean to bigint
+   agg_n_unique_with_nulls      ERROR CannotCoerce: cannot cast type boolean to smallint
+   agg_filtered                 UNSUP NotImplementedError: 'filter' is not implemented for: "<Implementation.IBIS: 'ibis'>".
+   agg_first_v2_unordered       UNSUP InvalidOperationError: Order-dependent expressions are not supported for use in LazyFrame.
+   agg_first_ordered_main_ns    UNSUP UnsupportedOperationError: `include_null=True` is not supported by the postgres backend
+   unpivot                      ERROR InvalidParameterValue: cannot cast jsonb null to type double precision
+   pivot                        ERROR AttributeError: 'LazyFrame' object has no attribute 'pivot'
+   map_batches_udf              UNSUP NotImplementedError: 'map_batches' is not implemented for: "<Implementation.IBIS: 'ibis'>".

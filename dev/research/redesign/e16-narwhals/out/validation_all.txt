@@ -1,0 +1,14 @@
+{"who": "tacit", "backend": "polars", "rows": 1000000, "bad": false, "valid": true, "issues": 0, "engine_queries": 1, "seconds": 0.068, "error": ""}
+{"who": "tacit", "backend": "polars", "rows": 1000000, "bad": true, "valid": false, "issues": 2, "engine_queries": 3, "seconds": 0.071, "error": ""}
+{"who": "tacit", "backend": "duckdb", "rows": 1000000, "bad": false, "valid": true, "issues": 0, "engine_queries": 1, "seconds": 0.16, "error": ""}
+{"who": "tacit", "backend": "duckdb", "rows": 1000000, "bad": true, "valid": false, "issues": 2, "engine_queries": 3, "seconds": 0.151, "error": ""}
+{"who": "tacit", "backend": "ibis-duckdb", "rows": 1000000, "bad": false, "valid": true, "issues": 0, "engine_queries": 1, "seconds": 0.166, "error": ""}
+{"who": "tacit", "backend": "ibis-duckdb", "rows": 1000000, "bad": true, "valid": false, "issues": 2, "engine_queries": 3, "seconds": 0.203, "error": ""}
+{"who": "pandera-narwhals", "backend": "polars", "rows": 1000000, "bad": false, "valid": true, "issues": 0, "engine_queries": 11, "seconds": 0.08, "error": ""}
+{"who": "pandera-narwhals", "backend": "polars", "rows": 1000000, "bad": true, "valid": false, "issues": 1000, "engine_queries": 21, "seconds": 0.169, "error": ""}
+{"who": "pandera-narwhals", "backend": "ibis-duckdb", "rows": 1000000, "bad": false, "valid": true, "issues": 0, "engine_queries": 11, "seconds": 0.382, "error": ""}
+{"who": "pandera-narwhals", "backend": "ibis-duckdb", "rows": 1000000, "bad": true, "valid": false, "issues": -1, "engine_queries": 17, "seconds": 0.644, "error": "RelationError: Table schemas must be equal for set operations."}
+{"who": "pandera", "backend": "polars", "rows": 1000000, "bad": false, "valid": true, "issues": 0, "engine_queries": 21, "seconds": 0.125, "error": ""}
+{"who": "pandera", "backend": "polars", "rows": 1000000, "bad": true, "valid": false, "issues": 1000, "engine_queries": 23, "seconds": 0.131, "error": ""}
+{"who": "pandera", "backend": "ibis-duckdb", "rows": 1000000, "bad": false, "valid": true, "issues": 0, "engine_queries": 10, "seconds": 0.293, "error": ""}
+{"who": "pandera", "backend": "ibis-duckdb", "rows": 1000000, "bad": true, "valid": false, "issues": 1000, "engine_queries": 14, "seconds": 0.453, "error": ""}

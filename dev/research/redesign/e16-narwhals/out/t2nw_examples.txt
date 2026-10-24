@@ -1,0 +1,106 @@
+== polars-eager
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== polars-lazy
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== duckdb
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== duckdb-conn
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== sqlframe-duckdb
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== ibis-duckdb
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== ibis-polars
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom                         ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>
+== sqlframe-postgres
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== ibis-postgres
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom                         ERROR CannotCoerce: cannot cast type boolean to smallint
+== native-polars
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      8
+                                                                                
+== pyspark
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2
+== native-pyspark
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      8
+                                                                                
+== pyspark-connect
+   iris                         OK
+   iris.validation_queries      2
+   tpch_q1                      OK
+   tpch_q1.validation_queries   1
+   ecom.stats                   OK
+   ecom.status                  OK
+   ecom.latest                  OK
+   ecom.validation_queries      2

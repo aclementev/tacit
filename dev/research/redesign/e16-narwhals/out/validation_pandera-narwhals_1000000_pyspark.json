@@ -1,0 +1,24 @@
+[
+ {
+  "who": "pandera-narwhals",
+  "backend": "pyspark",
+  "rows": 1000000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 40,
+  "seconds": 5.361,
+  "error": ""
+ },
+ {
+  "who": "pandera-narwhals",
+  "backend": "pyspark",
+  "rows": 1000000,
+  "bad": true,
+  "valid": false,
+  "issues": -1,
+  "engine_queries": 115,
+  "seconds": 7.789,
+  "error": ""
+ }
+]

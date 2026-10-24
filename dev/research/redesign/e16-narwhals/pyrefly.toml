@@ -1,0 +1,3 @@
+python-version = "3.13"
+search-path = ["src", "examples"]
+python-interpreter-path = ".venv/bin/python"

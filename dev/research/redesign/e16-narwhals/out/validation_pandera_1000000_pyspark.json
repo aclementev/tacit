@@ -1,0 +1,24 @@
+[
+ {
+  "who": "pandera",
+  "backend": "pyspark",
+  "rows": 1000000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 40,
+  "seconds": 5.787,
+  "error": ""
+ },
+ {
+  "who": "pandera",
+  "backend": "pyspark",
+  "rows": 1000000,
+  "bad": true,
+  "valid": false,
+  "issues": 2,
+  "engine_queries": 83,
+  "seconds": 4.867,
+  "error": ""
+ }
+]

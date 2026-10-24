@@ -1,0 +1,10 @@
+pyright  errors 9/9 caught, 0 false pos | reveals 4/4 | ideal-only 0/5
+mypy     errors 9/9 caught, 0 false pos | reveals 4/4 | ideal-only 0/5
+ty       errors 9/9 caught, 0 false pos | reveals 4/4 | ideal-only 0/5
+pyrefly  errors 9/9 caught, 0 false pos | reveals 4/4 | ideal-only 0/5
+
+## tests/typecheck/t_native.py
+### pyright: caught 9/9, missed 0, false positives 0, reveals ok 4/4, ideal-only caught 0/5
+### mypy: caught 9/9, missed 0, false positives 0, reveals ok 4/4, ideal-only caught 0/5
+### ty: caught 9/9, missed 0, false positives 0, reveals ok 4/4, ideal-only caught 0/5
+### pyrefly: caught 9/9, missed 0, false positives 0, reveals ok 4/4, ideal-only caught 0/5

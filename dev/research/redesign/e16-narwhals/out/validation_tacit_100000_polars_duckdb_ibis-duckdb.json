@@ -1,0 +1,68 @@
+[
+ {
+  "who": "tacit",
+  "backend": "polars",
+  "rows": 100000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 1,
+  "seconds": 0.011,
+  "error": ""
+ },
+ {
+  "who": "tacit",
+  "backend": "polars",
+  "rows": 100000,
+  "bad": true,
+  "valid": false,
+  "issues": 2,
+  "engine_queries": 3,
+  "seconds": 0.013,
+  "error": ""
+ },
+ {
+  "who": "tacit",
+  "backend": "duckdb",
+  "rows": 100000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 1,
+  "seconds": 0.033,
+  "error": ""
+ },
+ {
+  "who": "tacit",
+  "backend": "duckdb",
+  "rows": 100000,
+  "bad": true,
+  "valid": false,
+  "issues": 2,
+  "engine_queries": 3,
+  "seconds": 0.031,
+  "error": ""
+ },
+ {
+  "who": "tacit",
+  "backend": "ibis-duckdb",
+  "rows": 100000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 1,
+  "seconds": 0.044,
+  "error": ""
+ },
+ {
+  "who": "tacit",
+  "backend": "ibis-duckdb",
+  "rows": 100000,
+  "bad": true,
+  "valid": false,
+  "issues": 2,
+  "engine_queries": 3,
+  "seconds": 0.056,
+  "error": ""
+ }
+]

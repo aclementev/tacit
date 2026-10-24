@@ -1,0 +1,6 @@
+narwhals last_month 113431080
+ibis-framework last_month 3309457
+pandera last_month 8362307
+sqlframe last_month 59118
+polars last_month 50696797
+pyspark last_month 47831780

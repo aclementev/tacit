@@ -1,0 +1,19 @@
+{
+ "tpch_q1": {
+  "native polars": 0.02,
+  "narwhals -> polars": 0.0207,
+  "native duckdb SQL": 0.031,
+  "narwhals -> duckdb": 0.0368,
+  "ibis -> duckdb": 0.0399,
+  "ibis -> polars": 0.0663,
+  "narwhals -> ibis -> duckdb": 0.0453
+ },
+ "ecommerce(3 outputs)": {
+  "native polars": 0.2371,
+  "narwhals -> polars": 0.2357,
+  "native duckdb SQL": 0.2152,
+  "narwhals -> duckdb": 0.2886,
+  "ibis -> duckdb": 0.243,
+  "narwhals -> ibis -> duckdb": 0.2896
+ }
+}

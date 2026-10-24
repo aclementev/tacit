@@ -1,0 +1,83 @@
+{
+ "polars-eager": {
+  "iris": "OK  (0.00s)",
+  "tpch_q1": "OK  (0.01s)",
+  "ecom.stats": "OK  (0.00s)",
+  "ecom.status": "OK  (0.00s)",
+  "ecom.latest": "OK  (0.00s)",
+  "ecom.latest_max": "OK  (0.00s)",
+  "ecom.checks": "OK  (0.00s)"
+ },
+ "polars-lazy": {
+  "iris": "OK  (0.00s)",
+  "tpch_q1": "OK  (0.02s)",
+  "ecom.stats": "OK  (0.01s)",
+  "ecom.status": "OK  (0.00s)",
+  "ecom.latest": "OK  (0.00s)",
+  "ecom.latest_max": "OK  (0.00s)",
+  "ecom.checks": "OK  (0.00s)"
+ },
+ "duckdb": {
+  "iris": "OK  (0.01s)",
+  "tpch_q1": "OK  (0.01s)",
+  "ecom.stats": "OK  (0.02s)",
+  "ecom.status": "OK  (0.01s)",
+  "ecom.latest": "OK  (0.01s)",
+  "ecom.latest_max": "OK  (0.01s)",
+  "ecom.checks": "OK  (0.00s)"
+ },
+ "duckdb-conn": {
+  "iris": "OK  (0.00s)",
+  "tpch_q1": "OK  (0.01s)",
+  "ecom.stats": "OK  (0.02s)",
+  "ecom.status": "OK  (0.01s)",
+  "ecom.latest": "OK  (0.01s)",
+  "ecom.latest_max": "OK  (0.01s)",
+  "ecom.checks": "OK  (0.00s)"
+ },
+ "sqlframe-duckdb": {
+  "iris": "OK  (0.11s)",
+  "tpch_q1": "OK  (0.11s)",
+  "ecom.stats": "OK  (0.51s)",
+  "ecom.status": "OK  (0.20s)",
+  "ecom.latest": "OK  (0.15s)",
+  "ecom.latest_max": "OK  (0.29s)",
+  "ecom.checks": "OK  (0.03s)"
+ },
+ "ibis-duckdb": {
+  "iris": "OK  (0.01s)",
+  "tpch_q1": "OK  (0.02s)",
+  "ecom.stats": "OK  (0.03s)",
+  "ecom.status": "OK  (0.01s)",
+  "ecom.latest": "OK  (0.01s)",
+  "ecom.latest_max": "OK  (0.01s)",
+  "ecom.checks": "OK  (0.01s)"
+ },
+ "ibis-polars": {
+  "iris": "OK  (0.01s)",
+  "tpch_q1": "OK  (0.01s)",
+  "ecom.stats": "OK  (0.01s)",
+  "ecom.status": "ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>  (0.00s)",
+  "ecom.latest": "ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>  (0.00s)",
+  "ecom.latest_max": "ERROR OperationNotDefinedError: No translation rule for <class 'ibis.expr.operations.window.WindowFunction'>  (0.00s)",
+  "ecom.checks": "OK  (0.00s)"
+ },
+ "sqlframe-postgres": {
+  "iris": "OK  (0.05s)",
+  "tpch_q1": "OK  (0.04s)",
+  "ecom.stats": "OK  (0.13s)",
+  "ecom.status": "OK  (0.06s)",
+  "ecom.latest": "OK  (0.05s)",
+  "ecom.latest_max": "OK  (0.03s)",
+  "ecom.checks": "ERROR UndefinedFunction: function sum(boolean) does not exist  (0.01s)"
+ },
+ "ibis-postgres": {
+  "iris": "OK  (0.01s)",
+  "tpch_q1": "OK  (0.02s)",
+  "ecom.stats": "ERROR CannotCoerce: cannot cast type boolean to smallint  (0.02s)",
+  "ecom.status": "OK  (0.01s)",
+  "ecom.latest": "ERROR UndefinedTable: missing FROM-clause entry for table \"t1\"  (0.01s)",
+  "ecom.latest_max": "ERROR UndefinedTable: missing FROM-clause entry for table \"t1\"  (0.01s)",
+  "ecom.checks": "OK  (0.01s)"
+ }
+}

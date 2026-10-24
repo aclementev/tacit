@@ -1,0 +1,6 @@
+Stage 19:===============================================>       (86 + 4) / 100]                                                                                count() on cached df                                       jobs=2
+fused checks, no unique: narwhals collect()                jobs=2
+fused checks, no unique: native .collect() rows            jobs=2
+fused checks + unique (count distinct)                     jobs=3
+fused checks + unique, AQE off                             jobs=1
+checks one-per-query (3 queries, pandera-style)            jobs=6

@@ -1,0 +1,18 @@
+E16 narwhals as engine -- index of files and how to regenerate (uv project of its own; python 3.13).
+Pins: narwhals 2.27.1, polars 2.0.0, duckdb 1.5.6, sqlglot 30.10.0 (>=30.1x breaks ibis 12 create_table),
+pyspark 4.2.0 (ibis 12's pyspark backend needs <4.1: separate throwaway env in cap/run_all.sh), sqlframe 4.6.0,
+ibis 12.0.0, pandera 0.34.1, pyright 1.1.414, mypy 2.4.0, ty 0.0.89, pyrefly 1.4.0. Java 21 (system).
+Postgres for *-postgres backends: docker run -d --name e16-pg -e POSTGRES_PASSWORD=pw -p 127.0.0.1:55432:5432 docker.io/library/postgres:17
+
+Q1 capability   cap/examples_nw.py, cap/examples_ibis.py, cap/ops.py (72 ops), cap/run_all.sh -> out/examples_*.txt, out/ops_*.txt, out/ops_matrix.txt
+                cap/warehouses.py -> out/warehouses.txt (compile-only BigQuery/Snowflake/Databricks/Redshift)
+Q2/Q3 prototype src/tacit_nw (T2 on narwhals + native tags), src/tacit_nwn (control: no generated stub)
+                tools/gen_frame_stub.py -> src/tacit_nw/_lazy_api.pyi
+                tests/typecheck/t_nw.py, t_nw_nostub.py, t_native.py; tests/score.py -> out/typecheck_*.txt
+                typing_probes/p1_reveal.py (plain narwhals/polars/pyspark reveal types; ./chk.sh)
+                examples/t2nw.py, examples/native.py, examples/run_all.sh -> out/t2nw_examples*.txt
+                tests/test_runtime.py (E16_SPARK=1 adds pyspark)
+Q4 validation   val/run_all.sh, val/run_spark.sh -> out/validation_all.txt, out/validation_spark.txt
+                val/spark_jobs.py -> out/spark_jobs.txt; val/coerce.py -> out/coerce_*.txt
+Q5 perf         perf/bench.py gen 1000000 10000000 (data/ deleted after the run; regenerate), build, exec -> out/perf_*.json
+Q6 health       health/*.tsv|json|txt|md (releases, contributors, downstream PyPI deps, downloads, backcompat policy)

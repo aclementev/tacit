@@ -1,0 +1,4 @@
+[environment]
+python-version = "3.13"
+python = ".venv"
+extra-paths = ["src", "examples"]

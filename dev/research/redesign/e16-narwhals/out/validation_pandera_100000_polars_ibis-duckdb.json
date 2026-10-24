@@ -1,0 +1,46 @@
+[
+ {
+  "who": "pandera",
+  "backend": "polars",
+  "rows": 100000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 21,
+  "seconds": 0.017,
+  "error": ""
+ },
+ {
+  "who": "pandera",
+  "backend": "polars",
+  "rows": 100000,
+  "bad": true,
+  "valid": false,
+  "issues": 100,
+  "engine_queries": 23,
+  "seconds": 0.023,
+  "error": ""
+ },
+ {
+  "who": "pandera",
+  "backend": "ibis-duckdb",
+  "rows": 100000,
+  "bad": false,
+  "valid": true,
+  "issues": 0,
+  "engine_queries": 10,
+  "seconds": 0.107,
+  "error": ""
+ },
+ {
+  "who": "pandera",
+  "backend": "ibis-duckdb",
+  "rows": 100000,
+  "bad": true,
+  "valid": false,
+  "issues": 100,
+  "engine_queries": 14,
+  "seconds": 0.18,
+  "error": ""
+ }
+]

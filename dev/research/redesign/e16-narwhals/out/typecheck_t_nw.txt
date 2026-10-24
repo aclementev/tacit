@@ -1,0 +1,14 @@
+pyright  errors 27/27 caught, 0 false pos | reveals 29/29 | ideal-only 0/0
+mypy     errors 27/27 caught, 0 false pos | reveals 29/29 | ideal-only 0/0
+ty       errors 25/27 caught, 0 false pos | reveals 27/29 | ideal-only 0/0
+pyrefly  errors 27/27 caught, 0 false pos | reveals 29/29 | ideal-only 0/0
+
+## tests/typecheck/t_nw.py
+### pyright: caught 27/27, missed 0, false positives 0, reveals ok 29/29, ideal-only caught 0/0
+### mypy: caught 27/27, missed 0, false positives 0, reveals ok 29/29, ideal-only caught 0/0
+### ty: caught 25/27, missed 2, false positives 0, reveals ok 27/29, ideal-only caught 0/0
+  WRONG-R 62: want str got ['Unknown']
+  MISS 66: o.c.status.dt.year()  # E dt method on a str column
+  WRONG-R 73: want Column[date] got ['Column[Unknown]']
+  MISS 80: Orders.amount > 0  # E name (str) used as an expression
+### pyrefly: caught 27/27, missed 0, false positives 0, reveals ok 29/29, ideal-only caught 0/0
